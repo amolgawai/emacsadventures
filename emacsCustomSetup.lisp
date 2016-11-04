@@ -24,7 +24,8 @@
 ;; line numbers
 (global-linum-mode t)
 ;; split the window vertically on right - useful for wide screen
-(split-window-right)
+(setq split-width-threshold nil)
+(setq split-width-threshold 0)
 ;; ECB with multiple framews
 (defun ecb-activated-in-selected-frame ()
   "A hack to use ECB in multiple frames.
