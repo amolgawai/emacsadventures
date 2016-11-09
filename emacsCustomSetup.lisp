@@ -1,3 +1,6 @@
+;; load theme - make sure the theme is installed
+(add-hook 'after-init-hook (lambda () (load-theme 'spacemacs-dark)))
+
 ;; Tab Completion of local names - Bind hippie-expand
 (global-set-key [(meta f1)] (make-hippie-expand-function
                                '(try-expand-dabbrev-visible
