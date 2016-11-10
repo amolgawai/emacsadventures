@@ -1,6 +1,11 @@
 ;; load theme - make sure the theme is installed
 (add-hook 'after-init-hook (lambda () (load-theme 'spacemacs-dark)))
 
+;; set the frame size in win32
+(add-hook 'after-init-hook '(lambda () (w32-send-sys-command #xf030)))
+;; set the font for all the frames
+(add-to-list 'default-frame-alist
+             '(font . "Source Code Pro-12"))
 ;; Tab Completion of local names - Bind hippie-expand
 (global-set-key [(meta f1)] (make-hippie-expand-function
                                '(try-expand-dabbrev-visible
