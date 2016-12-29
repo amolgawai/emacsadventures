@@ -1,6 +1,7 @@
 ; load theme - make sure the theme is installed
 (add-hook 'after-init-hook (lambda () (load-theme 'spacemacs-dark)))
-
+;; Auto-refresh dired on file change
+(add-hook 'dired-mode-hook 'auto-revert-mode)
 ;; set the frame size in win32
 (add-hook 'after-init-hook '(lambda () (w32-send-sys-command #xf030)))
 ;; set the font for all the frames
