@@ -26,7 +26,8 @@
     (local-set-key (kbd "C-c <down>")  'hs-show-all)
     (hs-minor-mode t)))
 
-;; function list    
+;; function list with imenu-list
+(global-set-key (kbd "C-'") #'imenu-list-smart-toggle)
 (setq imenu-list-auto-resize t)
 ;; save the desktop
 (desktop-save-mode 1)
