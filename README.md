@@ -9,15 +9,15 @@ Also see the github source for extensive thing similar to this note - [Awesome-e
 - [Spacemacs](https://github.com/syl20bnr/spacemacs) - This looks like the best solution for out of the box experience.
 - [super-emacs](https://github.com/myTerminal/super-emacs)
 - [Starter Kit](http://eschulte.me/emacs24-starter-kit/)
-- [Windows integration](http://www.emacswiki.org/emacs/EmacsMsWindowsIntegration)
 - [Emacs Client](http://www.emacswiki.org/emacs/EmacsClient)
 - [My customizations](https://gist.github.com/amolgawai/de50c4f613c73cc0eae52e0bdc233e18)
 
 ## Window management and Navigation
 
 - [Winner mode](https://www.emacswiki.org/emacs?search=%22WinnerMode%22) ->  it allows you to “undo” (and “redo”) changes in the window configuration with the key commands ‘C-c left’ and ‘C-c right’
-
 - [Wind Move](https://www.emacswiki.org/emacs?search=%22WindMove%22) ->   It lets you move point from window to window using Shift and the arrow keys.
+- [E2WM : Equilibrium Emacs Window Manager](https://github.com/kiwanami/emacs-window-manager)
+- [emacs-purpose](https://github.com/bmag/emacs-purpose/wiki)
 - [ibuffer](https://www.emacswiki.org/emacs/IbufferMode)
 - [bookmarks +](https://www.emacswiki.org/emacs/BookmarkPlus#Bookmark%2b)
 
