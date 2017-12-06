@@ -34,6 +34,9 @@ Also see the github source for extensive thing similar to this note - [Awesome-e
 - [Simplify Package loading - use-package](https://github.com/jwiegley/use-package)
 - [quelpa](https://github.com/quelpa/quelpa)
 
+## Editing helpers
+- [Multiple Cursors](https://github.com/magnars/multiple-cursors.el)
+
 ## GUI Elements
 
 - [neotree](https://github.com/jaypei/emacs-neotree)
