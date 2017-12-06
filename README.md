@@ -56,6 +56,7 @@ Also see the github source for extensive thing similar to this note - [Awesome-e
 - [Emacs Code Browser](https://www.emacswiki.org/emacs/EmacsCodeBrowser)
 - [Web Dev](https://github.com/smihica/emmet-mode)
 - [Syntax Checking - Flycheck](http://www.flycheck.org/en/latest/)
+- [Origami - Rich Folding mode](https://github.com/gregsexton/origami.el)
 
 ## OS Specific Setup
 
