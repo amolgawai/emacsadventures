@@ -38,6 +38,8 @@ Also see the github source for extensive thing similar to this note - [Awesome-e
 
 ## Editing helpers
 - [Multiple Cursors](https://github.com/magnars/multiple-cursors.el)
+- [Helm - incremental completion and selection narrowing framework](https://emacs-helm.github.io/helm/)
+- [Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more](https://github.com/abo-abo/swiper)
 
 ## GUI Elements
 
