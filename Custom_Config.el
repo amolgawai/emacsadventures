@@ -25,10 +25,13 @@
     (local-set-key (kbd "C-c <up>")    'hs-hide-all)
     (local-set-key (kbd "C-c <down>")  'hs-show-all)
     (hs-minor-mode t)))
-
 ;; function list with imenu-list
 (global-set-key (kbd "C-'") #'imenu-list-smart-toggle)
-(setq imenu-list-auto-resize t)
+(setq imenu-list-auto-resize t)            ;; resize automatically
+(setq imenu-list-focus-after-activation t)
+(setq imenu-list-after-jump-hook nil)      ;; disable repositioning to centre
+(add-hook 'imenu-list-after-jump-hook #'recenter-top-bottom) ;; reposition to top
+
 ;; save the desktop
 (desktop-save-mode 1)
 ;; line numbers
