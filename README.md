@@ -8,6 +8,7 @@ Also see the github source for extensive thing similar to this note - [Awesome-e
 ## My favourite themes
 - [Spacemacs](https://github.com/nashamri/spacemacs-theme)
 - [Material](https://github.com/cpaulik/emacs-material-theme)
+- [sanitynic-tomorrow](https://github.com/purcell/color-theme-sanityinc-tomorrow)
 
 ## Starter Kits
 

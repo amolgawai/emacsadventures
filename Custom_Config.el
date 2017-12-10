@@ -1,5 +1,9 @@
 ; load theme - make sure the theme is installed
 (add-hook 'after-init-hook (lambda () (load-theme 'spacemacs-dark)))
+
+;; Enable filesets to group a set of files
+(filesets-init)
+
 ;; Auto-refresh dired on file change
 (add-hook 'dired-mode-hook 'auto-revert-mode)
 ;; set the frame size in win32
