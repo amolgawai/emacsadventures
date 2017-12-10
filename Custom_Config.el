@@ -17,8 +17,16 @@
   (local-set-key (kbd "RET") 'newline-and-indent))
 (add-hook 'c-mode 'set-newline-and-indent)
 
+;; reset winner mode keys so that hide shows can bind them
+(global-set-key [f7] 'winner-undo)
+(global-set-key [C-f7] 'winner-redo)
+(eval-after-load "winner"
+  '(define-key winner-mode-map (kbd "C-c <right>") nil))
+(eval-after-load "winner"
+  '(define-key winner-mode-map (kbd "C-c <left>") nil))
+
 ;; code folding using hs-minor-mode
-(add-hook 'c-mode-common-hook
+(add-hook 'prog-mode-hook
   (lambda()
     (local-set-key (kbd "C-c <right>") 'hs-show-block)
     (local-set-key (kbd "C-c <left>")  'hs-hide-block)
