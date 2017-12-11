@@ -52,6 +52,11 @@
 (setq split-width-threshold nil)
 (setq split-width-threshold 0)
 
+;; magit
+(global-set-key (kbd "C-x g") 'magit-status)
+;; Ask password for pushing to remote
+(setenv "SSH_ASKPASS" "git-gui--askpass")
+
 ;; golang
 (add-hook 'go-mode-hook
           (lambda ()
