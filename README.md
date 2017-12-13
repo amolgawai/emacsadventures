@@ -15,8 +15,9 @@ Also see the github source for extensive thing similar to this note - [Awesome-e
 - [Prelude (For emacs 24 and above)](https://github.com/bbatsov/prelude#readme)
 - [Spacemacs](https://github.com/syl20bnr/spacemacs) - This looks like the best solution for out of the box experience.
 - [super-emacs](https://github.com/myTerminal/super-emacs) - Great package with most of my requirements
-- [Starter Kit](http://eschulte.me/emacs24-starter-kit/)
+- [Starter Kit](https://github.com/eschulte/emacs24-starter-kit)
 - [Emacs Client](http://www.emacswiki.org/emacs/EmacsClient)
+- [Literate Programming](https://github.com/danielmai/.emacs.d) Daniel Mai's Emacs Configuration with org mode
 - [My customizations](https://gist.github.com/amolgawai/de50c4f613c73cc0eae52e0bdc233e18)
 
 ## Window management and Navigation
@@ -70,3 +71,7 @@ Also see the github source for extensive thing similar to this note - [Awesome-e
 
 - [Windows](https://www.emacswiki.org/emacs/EmacsMsWindowsIntegration)
 - [MacOS](https://www.emacswiki.org/emacs/EmacsForMacOS)
+
+## Misc.
+  * When using emacs server in the background, if you need to close it use
+  `M-x save-buffers-kill-emacs`

@@ -1,4 +1,7 @@
-; load theme - make sure the theme is installed
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
+;; Load  theme - make sure the theme is installed
 (add-hook 'after-init-hook (lambda () (load-theme 'spacemacs-dark)))
 
 ;; Enable filesets to group a set of files
