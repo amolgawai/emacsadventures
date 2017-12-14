@@ -76,3 +76,12 @@
   (setq powerline-default-separator 'arrow)
   :ensure t)
 
+;; rainboaw delimiters
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+(provide 'appearance)
+;;; appearance.el ends here
+
