@@ -30,7 +30,7 @@
   :config
   (progn
     (setq guide-key/guide-key-sequence t)
-    (setq guide-key/highlight-command-regexp "rectangle")
+    (setq guide-key/popup-window-position 'bottom)
     (guide-key-mode 1)))
 
 ;; reformat buffer
