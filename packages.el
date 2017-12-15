@@ -1,10 +1,28 @@
-;;; packages.el --- tempalte for managing  packages from various repositories  -*- lexical-binding: t; -*-
+;;; packages.el --- Add package repositories and initialise use-package  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2017  
-;; Ref - https://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
-;; Author:  Amol Gawai
-;; Keywords: lisp, convenience,
+;; Copyright (C) 2017  Amol Gawai
 
+;; Author: Amol Gawai <amol@doesnot.exist>
+;; Keywords: lisp
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Add package repositories and enable package loading with use-package
+
+;;; Code:
 
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
@@ -19,7 +37,7 @@
 ; activate all the packages (in particular autoloads)
 (package-initialize)
 
-; fetch the list of packages available 
+; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
@@ -38,3 +56,7 @@
 ;; (dolist (package package-list)
 ;;   (unless (package-installed-p package)
 ;;     (package-install package)))
+
+
+(provide 'packages)
+;;; packages.el ends here

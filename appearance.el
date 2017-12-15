@@ -1,10 +1,28 @@
-;;; appearance.el --- Adjust appearance of emacs by customizing themes, fonts, mode line etc.  -*- lexical-binding: t; -*-
+;;; appearance.el --- Set the appearance of emacs as per my test  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2017  
+;; Copyright (C) 2017  Amol Gawai
 
-;; Author:  Amol Gawai
-;; Keywords: lisp, convenience,
-;; dependency - use-package
+;; Author: Amol Gawai <amol@doesnot.exist>
+;; Keywords: lisp
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Setting appearance of Emacs with font, themes, powerline, rainbow brackets etc.
+
+;;; Code:
 
 ;; set the font for all the frames
 (add-to-list 'default-frame-alist
@@ -82,6 +100,6 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+
 (provide 'appearance)
 ;;; appearance.el ends here
-
