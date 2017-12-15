@@ -1,11 +1,28 @@
-;;; initWithSaneDefaults.el --- Initialise emacs and set sane defaults  -*- lexical-binding: t; -*-
+;;; initWithSaneDefaults.el --- Initialise clean Emacs and set sane defaults  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2017  
+;; Copyright (C) 2017  Amol Gawai
 
-;; Author:  Amol Gawai
-;; Keywords: lisp,
+;; Author: Amol Gawai;;; initWithSaneDefaults.el --- Initialise emacs and set sane defaults  -*- lexical-binding: t; -*- <amol@doesnot.exist>
+;; Keywords: lisp
 
-;;; code
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Initialise Emacs with clean looks and set sane defaults expeced from a modern text editor.
+
+;;; Code:
 
 (setq user-full-name "Amol Gawai"
       user-mail-address "amol@doesnot.exist")
@@ -92,5 +109,4 @@
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 
 (provide 'initWithSaneDefaults)
-
 ;;; initWithSaneDefaults.el ends here
