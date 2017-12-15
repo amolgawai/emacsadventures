@@ -5,7 +5,8 @@
 ;; Author:  Amol Gawai
 ;; Keywords: lisp,
 
-;;
+;;; code
+
 (setq user-full-name "Amol Gawai"
       user-mail-address "amol@doesnot.exist")
 
@@ -40,6 +41,7 @@
 (column-number-mode t)
 (global-visual-line-mode t)
 (global-linum-mode t)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;;(diminish 'visual-line-mode)
 
 (if (display-graphic-p)
@@ -88,3 +90,7 @@
 
 (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+
+(provide 'initWithSaneDefaults)
+
+;;; initWithSaneDefaults.el ends here

@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -41,14 +41,14 @@
 (global-set-key [f12] 'indent-buffer)
 
 (use-package auto-complete
-  :commands auto-complete-mode
+  :ensure t
   :init
   (progn
     (auto-complete-mode t))
   :bind (("C-n" . ac-next)
          ("C-p" . ac-previous))
   :config
-  (progn 
+  (progn
     (use-package auto-complete-config)
 
     (ac-set-trigger-key "TAB")
@@ -57,7 +57,7 @@
     (setq ac-delay 0.02)
     (setq ac-use-menu-map t)
     (setq ac-menu-height 50)
-    (setq ac-use-quick-help nil) 
+    (setq ac-use-quick-help nil)
     (setq ac-comphist-file  "~/.emacs.d/ac-comphist.dat")
     (setq ac-ignore-case nil)
     (setq ac-dwim  t)

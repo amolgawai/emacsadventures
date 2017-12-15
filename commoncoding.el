@@ -73,5 +73,6 @@
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
+
 (provide 'commoncoding)
 ;;; commoncoding.el ends here
