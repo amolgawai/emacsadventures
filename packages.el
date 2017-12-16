@@ -46,6 +46,8 @@
 
 (eval-when-compile
   (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 
 ;; If you want to install multiple packages at once, creat a list
 ;; use-package is much better alternative to reduce startup delay
