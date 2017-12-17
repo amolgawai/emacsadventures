@@ -1,9 +1,9 @@
-;;; loadMyConfig.el --- Load all my configurations   -*- lexical-binding: t; -*-
+;;; fileNav.el --- Utilities for quick navigation in the file  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017  Amol Gawai
 
-;; Author: Amol Gawai;; loads all files in my configuration. <amol@doesnot.exist>
-;; Keywords: lisp
+;; Author: Amol Gawai <amol@doesnot.exist>
+;; Keywords: lisp, abbrev, abbrev
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,25 +20,18 @@
 
 ;;; Commentary:
 
-;; This file loads all my Eacs configurations.  oad this file in the init.el
+;; various utilities to navigate file
 
 ;;; Code:
 
-;; Load this file from init.el
+(use-package imenu-list
+  :ensure t
+  :defer t
+  :bind ("C-'" . imenu-list-smart-toggle)
+  :config
+  (setq imenu-list-auto-resize t)            ;; resize automatically
+  (setq imenu-list-focus-after-activation t))
 
-;; add the directory to load path
-(add-to-list 'load-path (locate-user-emacs-file "emacsadventures/"))
 
-;Load configuration files
-(require 'initWithSaneDefaults)
-(require 'packages)
-(require 'appearance)
-(require 'commoncoding)
-(require 'productivity)
-(require 'ivycounselswiper)
-;; (require 'helm-ido-like)
-(require 'markdownAndOrg)
-(require 'fileNav)
-
-(provide 'loadMyConfig)
-;;; loadMyConfig.el ends here
+(provide 'fileNav)
+;;; fileNav.el ends here

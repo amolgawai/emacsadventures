@@ -33,26 +33,25 @@
 ;; default theme - sanityinc-tomorrow-night
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
-  :config
-  (load-theme 'sanityinc-tomorrow-night t))
+  :defer t)
 
 ;;  material-theme
 (use-package material-theme
-  :defer 10
-  :init
-  (setq material-use-variable-pitch nil)
-  :ensure t)
+;;  :defer 10
+  :ensure t
+  :config
+  (load-theme 'material t))
 
 ;; spacemacs
 (use-package spacemacs-theme
-  :defer 10
+  :defer t
   :init
   (setq spacemacs-use-variable-pitch nil)
   :ensure t)
 
 ;; solarised
 (use-package solarized-theme
-  :defer 10
+  :defer t
   :init
   (setq solarized-use-variable-pitch nil)
   :ensure t)
@@ -60,6 +59,7 @@
 ;; monokai
 (use-package monokai-theme
   :if (window-system)
+  :defer t
   :ensure t
   :init
   (setq monokai-use-variable-pitch nil))
@@ -97,8 +97,8 @@
 ;; rainboaw delimiters
 (use-package rainbow-delimiters
   :ensure t
-  :config
   :diminish
+  :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 

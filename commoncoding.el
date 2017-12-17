@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -63,6 +63,7 @@
 ;; snippets
 (use-package yasnippet
   :ensure t
+  :diminish
   :config
   (progn
     (yas-global-mode)
@@ -72,6 +73,7 @@
 ;; syntax checking with flycheck
 (use-package flycheck
   :ensure t
+  :diminish
   :init (global-flycheck-mode))
 
 (provide 'commoncoding)
