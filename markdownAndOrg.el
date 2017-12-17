@@ -1,8 +1,8 @@
-;;; loadMyConfig.el --- Load all my configurations   -*- lexical-binding: t; -*-
+;;; markdownAndOrg.el --- Configure markdown and org modes  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017  Amol Gawai
 
-;; Author: Amol Gawai;; loads all files in my configuration. <amol@doesnot.exist>
+;; Author: Amol Gawai <amolgawai@Amols-MBP>
 ;; Keywords: lisp
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -20,24 +20,17 @@
 
 ;;; Commentary:
 
-;; This file loads all my Eacs configurations.  oad this file in the init.el
+;; Setup markdown and Org modes
 
 ;;; Code:
 
-;; Load this file from init.el
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
-;; add the directory to load path
-(add-to-list 'load-path (locate-user-emacs-file "emacsadventures/"))
-
-;Load configuration files
-(require 'initWithSaneDefaults)
-(require 'packages)
-(require 'appearance)
-(require 'commoncoding)
-(require 'productivity)
-(require 'ivycounselswiper)
-;; (require 'helm-ido-like)
-(require 'markdownAndOrg)
-
-(provide 'loadMyConfig)
-;;; loadMyConfig.el ends here
+(provide 'markdownAndOrg)
+;;; markdownAndOrg.el ends here
