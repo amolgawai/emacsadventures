@@ -28,6 +28,7 @@
   :bind
   (:map ivy-mode-map
         ("C-'" . ivy-avy))
+  :diminish
   :config
   (ivy-mode 1)
   ;; add 'recentf-mode' and bookmarks to 'ivy-switch-buffer'.
@@ -45,10 +46,12 @@
 
 (use-package counsel
   :ensure t
+  :diminish
   )
 
 (use-package swiper
   :ensure t
+  :diminish
   :config
   (progn
     (ivy-mode 1)

@@ -45,6 +45,10 @@
 
 (blink-cursor-mode -1)
 
+;; mac specifi key setup
+(when (eq system-type 'darwin)
+  (setq mac-right-option-modifier 'none))
+
 ;; delete the previous selection when overrides it with a new insertion.
 (delete-selection-mode t)
 
