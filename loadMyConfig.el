@@ -26,13 +26,17 @@
 
 ;; Load this file from init.el
 
+;; add the directory to load path
+(add-to-list 'load-path (locate-user-emacs-file "emacsadventures/"))
+
 ;Load configuration files
-(load-file "~/.emacs.d/emacsadventures/initWithSaneDefaults.el")
-(load-file "~/.emacs.d/emacsadventures/packages.el")
-(load-file "~/.emacs.d/emacsadventures/appearance.el")
-(load-file "~/.emacs.d/emacsadventures/commoncoding.el")
-(load-file "~/.emacs.d/emacsadventures/productivity.el")
-(load-file "~/.emacs.d/emacsadventures/ivycounselswiper.el")
+(require 'initWithSaneDefaults)
+(require 'packages)
+(require 'appearance)
+(require 'commoncoding)
+(require 'productivity)
+(require 'ivycounselswiper)
+;; (require 'helm-ido-like)
 
 (provide 'loadMyConfig)
 ;;; loadMyConfig.el ends here
