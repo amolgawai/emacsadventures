@@ -98,6 +98,7 @@
 (use-package rainbow-delimiters
   :ensure t
   :config
+  :diminish
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 
