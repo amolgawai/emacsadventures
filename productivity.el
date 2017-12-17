@@ -25,13 +25,19 @@
 ;;; Code:
 
 ;; guide-key is helful for displaying available key bindings
-(use-package guide-key
-  :ensure t
-  :config
-  (progn
-    (setq guide-key/guide-key-sequence t)
-    (setq guide-key/popup-window-position 'bottom)
-    (guide-key-mode 1)))
+;; (use-package guide-key
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (setq guide-key/guide-key-sequence t)
+;;     (setq guide-key/popup-window-position 'bottom)
+;;     (guide-key-mode 1)))
+
+;; which-key is similar to guide-key but little more powerful
+;; which-key
+(use-package which-key
+  :diminish which-key-mode
+  :config (which-key-mode))
 
 ;; reformat buffer
 (defun indent-buffer ()
