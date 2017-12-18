@@ -46,7 +46,15 @@
 
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)
+;;(require 'diminish)
+(use-package diminish
+  :ensure t
+  :demand t
+  :diminish (visual-line-mode . "?")
+  :diminish hs-minor-mode
+  :diminish abbrev-mode
+  :diminish auto-fill-function
+  :diminish subword-mode)
 (require 'bind-key)
 (require 'delight)
 ;; If you want to install multiple packages at once, creat a list

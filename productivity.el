@@ -131,5 +131,9 @@
                      sclang-mode
                      verilog-mode))))
 
+(use-package restart-emacs
+  :ensure t
+  :bind* (("C-x M-c" . restart-emacs)))
+
 (provide 'productivity)
 ;;; productivity.el ends here
