@@ -24,10 +24,8 @@
 
 ;;; Code:
 
-(use-package ivy :ensure t
-  :bind
-  (:map ivy-mode-map
-        ("C-'" . ivy-avy))
+(use-package ivy
+  :ensure t
   :diminish
   :config
   (ivy-mode 1)

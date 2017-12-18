@@ -101,6 +101,9 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+(use-package all-the-icons
+  :ensure t
+  :diminish) ; call M-x all-the-icons-install-fonts
 
 (provide 'appearance)
 ;;; appearance.el ends here

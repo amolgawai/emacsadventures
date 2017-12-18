@@ -39,6 +39,7 @@
 ;; (require 'helm-ido-like)
 (require 'markdownAndOrg)
 (require 'fileNav)
+(require 'dirNav)
 
 (provide 'loadMyConfig)
 ;;; loadMyConfig.el ends here
