@@ -46,6 +46,18 @@
     (indent-region (point-min) (point-max) nil)))
 (global-set-key [f12] 'indent-buffer)
 
+;; search multiple buffers - ref https://github.com/jwiegley/use-package
+(use-package color-moccur
+  :commands (isearch-moccur isearch-all)
+  :bind (("M-s O" . moccur)
+         :map isearch-mode-map
+         ("M-o" . isearch-moccur)
+         ("M-O" . isearch-moccur-all))
+  :init
+  (setq isearch-lazy-highlight t)
+  :config
+  (use-package moccur-edit))
+
 (use-package auto-complete
   :ensure t
   :init
