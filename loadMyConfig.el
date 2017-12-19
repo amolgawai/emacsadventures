@@ -40,6 +40,7 @@
 (require 'markdownAndOrg)
 (require 'fileNav)
 (require 'dirNav)
+(require 'pythonWithAnaconda)
 
 (provide 'loadMyConfig)
 ;;; loadMyConfig.el ends here
