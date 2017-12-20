@@ -38,6 +38,8 @@
   (local-set-key (kbd "RET") 'newline-and-indent))
 (add-hook 'prog-mode-hook 'set-newline-and-indent)
 
+(which-func-mode 1)
+
 ;; Magit for git interactions
 (use-package magit
   :ensure t
@@ -75,6 +77,16 @@
   :ensure t
   :diminish
   :init (global-flycheck-mode))
+
+;; Company -- complete anything
+(use-package company
+  :ensure t
+  :diminish company-mode
+  :config
+  (setq company-backends (remove 'company-ropemacs company-backends)
+        company-tooltip-limit 20
+        company-tooltip-align-annotations t)
+  (global-company-mode 1))
 
 (provide 'commoncoding)
 ;;; commoncoding.el ends here
