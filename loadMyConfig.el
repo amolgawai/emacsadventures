@@ -40,6 +40,7 @@
 (require 'fileNav)
 (require 'dirNav)
 (require 'pythonWithAnaconda)
+(require 'golang)
 
 (provide 'loadMyConfig)
 ;;; loadMyConfig.el ends here
