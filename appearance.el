@@ -37,7 +37,7 @@
 
 ;;  material-theme
 (use-package material-theme
-;;  :defer 10
+  ;;  :defer 10
   :ensure t
   :config
   (load-theme 'material t))
@@ -104,6 +104,12 @@
 (use-package all-the-icons
   :ensure t
   :diminish) ; call M-x all-the-icons-install-fonts
+
+(use-package all-the-icons-dired
+  :ensure t
+  :diminish
+  :init
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
 (provide 'appearance)
 ;;; appearance.el ends here
