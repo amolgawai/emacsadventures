@@ -51,5 +51,21 @@
      ("d"          . neotree-delete-node)
      ("r"          . neotree-rename-node))))
 
+;; http://emacsrocks.com/e16.html
+(setq dired-dwim-target t)
+
+;; http://pragmaticemacs.com/emacs/tree-style-directory-views-in-dired-with-dired-subtree/
+(use-package dired-subtree
+  :ensure t
+  :bind (:map dired-mode-map
+	      ("i" . dired-subtree-insert)
+	      ("I" . dired-subtree-remove)))
+
+(use-package dired-collapse
+  :ensure t
+  :commands (dired-collapse dired-collapse-mode)
+  :init
+  (add-hook 'dired-mode-hook 'dired-collapse-mode))
+
 (provide 'dirNav)
 ;;; dirNav.el ends here

@@ -55,8 +55,15 @@
   :diminish abbrev-mode
   :diminish auto-fill-function
   :diminish subword-mode)
-(require 'bind-key)
-(require 'delight)
+(use-package delight
+  :ensure t)
+
+(use-package bind-key
+  :ensure t)
+
+;; enhance emacs list - https://github.com/rolandwalker/list-utils
+(use-package list-utils
+  :ensure t)
 ;; If you want to install multiple packages at once, creat a list
 ;; use-package is much better alternative to reduce startup delay
 ; list the packages you want
