@@ -1,4 +1,4 @@
-;;; packages.el --- Add package repositories and initialise use-package  -*- lexical-binding: t; -*-
+;;; bootstrapPackaging.el --- Add package repositories and initialise use-package  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017  Amol Gawai
 
@@ -75,5 +75,5 @@
 ;;     (package-install package)))
 
 
-(provide 'packages)
-;;; packages.el ends here
+(provide 'bootstrapPackaging)
+;;; bootstrapPackaging.el ends here

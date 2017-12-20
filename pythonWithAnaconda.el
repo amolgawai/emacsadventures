@@ -26,12 +26,12 @@
 
 ;;; Code:
 
-(use-package flycheck-local-flake8
-  :load-path "flycheck-local-flake8"
-  :commands flycheck-local-flake8/flycheck-virtualenv-set-python-executables
-  :init
-  (add-hook 'flycheck-before-syntax-check-hook
-	    #'flycheck-local-flake8/flycheck-virtualenv-set-python-executables 'local))
+;; (use-package flycheck-local-flake8
+;;   :load-path "flycheck-local-flake8"
+;;   :commands flycheck-local-flake8/flycheck-virtualenv-set-python-executables
+;;   :init
+;;   (add-hook 'flycheck-before-syntax-check-hook
+;; 	    #'flycheck-local-flake8/flycheck-virtualenv-set-python-executables 'local))
 
 (use-package anaconda-mode
   :ensure t

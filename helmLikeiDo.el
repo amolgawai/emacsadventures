@@ -1,4 +1,4 @@
-;;; helm-ido-like.el --- Setup helm and make it similar to ido  -*- lexical-binding: t; -*-
+;;; helmLikeiDo.el --- Setup helm and make it similar to ido  -*- lexical-binding: t; -*-
 
 ;;; Original code at https://github.com/compunaut/helm-ido-like-guide
 
@@ -27,6 +27,7 @@
 ;;; Code:
 
 ;; TODO - add use-package for all modes
+
 (require 'helm-config)
 (helm-mode 1)
 (helm-flx-mode +1)
@@ -262,5 +263,5 @@ Its element is a pair of `buffer-name' and `mode-line-format'.")
   (helm-ido-like-load-fuzzy-enhancements)
   (helm-ido-like-fix-fuzzy-files))
 
-(provide 'helm-ido-like)
-;;; helm-ido-like.el ends here
+(provide 'helmLikeiDo)
+;;; helmLikeiDo.el ends here

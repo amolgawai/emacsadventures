@@ -21,22 +21,21 @@
 ;;; Commentary:
 
 ;; This file loads all my Eacs configurations.  oad this file in the init.el
+;; Load this file from init.el - (load-file "~/.emacs.d/emacsadventures/loadMyConfig.el")
 
 ;;; Code:
-
-;; Load this file from init.el
 
 ;; add the directory to load path
 (add-to-list 'load-path (locate-user-emacs-file "emacsadventures/"))
 
 ;Load configuration files
 (require 'initWithSaneDefaults)
-(require 'packages)
+(require 'bootstrapPackaging)
 (require 'appearance)
 (require 'commoncoding)
 (require 'productivity)
 (require 'ivycounselswiper)
-;; (require 'helm-ido-like)
+;; (require 'helmLikeiDo)
 (require 'markdownAndOrg)
 (require 'fileNav)
 (require 'dirNav)
