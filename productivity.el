@@ -36,6 +36,7 @@
 ;; which-key is similar to guide-key but little more powerful
 ;; which-key
 (use-package which-key
+  :ensure t
   :diminish which-key-mode
   :config (which-key-mode))
 
@@ -48,6 +49,7 @@
 
 ;; search multiple buffers - ref https://github.com/jwiegley/use-package
 (use-package color-moccur
+  :ensure t
   :commands (isearch-moccur isearch-all)
   :bind (("M-s O" . moccur)
          :map isearch-mode-map
