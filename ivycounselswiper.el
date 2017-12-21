@@ -42,6 +42,11 @@
 	;; allow input not in order
         '((t   . ivy--regex-ignore-order))))
 
+(use-package all-the-icons-ivy
+  :ensure t
+  :config
+  (all-the-icons-ivy-setup))
+
 (use-package counsel
   :ensure t
   :diminish
@@ -73,4 +78,5 @@
     ))
 
 (provide 'ivycounselswiper)
+
 ;;; ivycounselswiper.el ends here
