@@ -86,14 +86,6 @@
 (bind-key "s-<f11>" 'disable-active-themes)
 
 
-;; Powerline
-(use-package powerline
-  :init
-  :config
-  (powerline-center-theme)
-  (setq powerline-default-separator 'arrow)
-  :ensure t)
-
 ;; rainboaw delimiters
 (use-package rainbow-delimiters
   :ensure t
@@ -101,6 +93,7 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+;; icons
 (use-package all-the-icons
   :ensure t
   :diminish) ; call M-x all-the-icons-install-fonts
@@ -110,6 +103,45 @@
   :diminish
   :init
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
+
+
+;; mode line
+
+;; Powerline
+;; (use-package powerline
+;;   :init
+;;   :config
+;;   (powerline-center-theme)
+;;   (setq powerline-default-separator 'arrow)
+;;   :ensure t)
+
+;; Spaceline - a modified powerline from spacemacs
+;; ref - https://github.com/TheBB/spaceline
+;; config ref - https://writequit.org/eos/eos-appearance.html
+(use-package spaceline
+  :ensure t
+  :init
+  (setq powerline-default-separator 'arrow
+        spaceline-minor-modes-separator " ")
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme))
+;;  (spaceline-helm-mode)
+  ;; (use-package info+
+  ;;   :ensure t
+  ;;   :init
+  ;;   (spaceline-info-mode))
+  ;; (use-package fancy-battery
+  ;;   :ensure t
+  ;;   :init
+  ;;   (add-hook 'after-init-hook #'fancy-battery-mode)
+  ;;   (display-battery-mode -1)))
+
+(use-package spaceline-all-the-icons
+  :after spaceline
+  :ensure t
+  :config
+  (spaceline-all-the-icons-theme))
+;;  (spaceline-all-the-icons--setup-neotree))
 
 (provide 'appearance)
 ;;; appearance.el ends here
