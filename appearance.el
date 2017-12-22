@@ -124,24 +124,25 @@
   (setq powerline-default-separator 'arrow
         spaceline-minor-modes-separator " ")
   (require 'spaceline-config)
-  (spaceline-spacemacs-theme))
+  (spaceline-emacs-theme)
 ;;  (spaceline-helm-mode)
-  ;; (use-package info+
-  ;;   :ensure t
-  ;;   :init
-  ;;   (spaceline-info-mode))
-  ;; (use-package fancy-battery
-  ;;   :ensure t
-  ;;   :init
-  ;;   (add-hook 'after-init-hook #'fancy-battery-mode)
-  ;;   (display-battery-mode -1)))
+  (use-package info+
+    :ensure t
+    :init
+    (spaceline-info-mode))
+  (use-package fancy-battery
+    :ensure t
+    :init
+    (add-hook 'after-init-hook #'fancy-battery-mode)
+    (display-battery-mode -1)))
 
 (use-package spaceline-all-the-icons
   :after spaceline
   :ensure t
   :config
-  (spaceline-all-the-icons-theme))
-;;  (spaceline-all-the-icons--setup-neotree))
+  (setq spaceline-all-the-icons-separator-type 'arrow)
+  (spaceline-all-the-icons-theme)
+  (spaceline-all-the-icons--setup-neotree))
 
 (provide 'appearance)
 ;;; appearance.el ends here

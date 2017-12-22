@@ -41,9 +41,11 @@
       echo-keystrokes 0.1
       use-dialog-box nil
       apropos-do-all t
+      inhibit-compacting-font-caches t
       initial-scratch-message nil)
 
 (blink-cursor-mode -1)
+(global-hl-line-mode 1)
 
 ;; mac specifi key setup
 (when (eq system-type 'darwin)
