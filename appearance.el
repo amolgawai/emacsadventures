@@ -124,6 +124,7 @@
   (setq powerline-default-separator 'arrow
         spaceline-minor-modes-separator " ")
   (require 'spaceline-config)
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (spaceline-emacs-theme)
 ;;  (spaceline-helm-mode)
   (use-package info+
