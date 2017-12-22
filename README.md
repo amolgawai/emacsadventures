@@ -75,3 +75,11 @@ Also see the github source for extensive thing similar to this note - [Awesome-e
 ## Misc.
   * When using emacs server in the background, if you need to close it use
   `M-x save-buffers-kill-emacs`
+  
+## To Try
+* pacckages by the author of ivy for fast buffer, window movements
+* beacon-mode -> highlight temporarily when moving through buffer
+* hungry-delete -> fast deleting
+* iedit -> edit multiple places somewhat similar to multiple cursor
+* narrowing and widening
+* expand-region -> fast marking
