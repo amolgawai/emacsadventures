@@ -61,10 +61,13 @@
         (list (concat d
                       (file-name-as-directory ".GOPATH"))))))
 
-(use-package company-go
-  :ensure t
-  :commands company-go
-  :init (add-to-list 'company-backends 'company-go))
+;; (use-package company-go
+;;   :ensure t
+;;   :commands company-go
+;;   :init (add-to-list 'company-backends 'company-go))
+
+(use-package go-autocomplete
+  :ensure t)
 
 (use-package go-eldoc
   :ensure t

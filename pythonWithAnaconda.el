@@ -41,10 +41,13 @@
   (progn
     (add-hook 'python-mode-hook 'anaconda-mode)
     (add-hook 'python-mode-hook 'eldoc-mode)))
-
-(use-package company-anaconda
+(use-package ac-anaconda
   :ensure t
-  :init (add-to-list 'company-backends 'company-anaconda))
+  :init
+  (add-hook 'python-mode-hook 'ac-anaconda-setup))
+;; (use-package company-anaconda
+;;   :ensure t
+;;   :init (add-to-list 'company-backends 'company-anaconda))
 
 ;; (use-package company-capf
 ;;   :ensure t

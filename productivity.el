@@ -62,6 +62,7 @@
 
 (use-package auto-complete
   :ensure t
+  :diminish
   :init
   (progn
     (auto-complete-mode t))
