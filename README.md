@@ -83,6 +83,7 @@ Also see the github source for extensive thing similar to this note - [Awesome-e
 * iedit -> edit multiple places somewhat similar to multiple cursor
 * narrowing and widening
 * expand-region -> fast marking
+* dumb-jump -> jump to definition
 Emacs packages from YouTube video of buildfunthings
 * perspectives - workspaces
 * paredit - sane parenthesis editing
