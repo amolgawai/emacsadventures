@@ -155,5 +155,25 @@
   :config
   (counsel-projectile-on))
 
+                                        ; flashes the cursor's line when you scroll
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1)
+                                        ; (setq beacon-color "#666600")
+  )
+
+                                        ; deletes all the whitespace when you hit backspace or delete
+(use-package hungry-delete
+  :ensure t
+  :config
+  (global-hungry-delete-mode))
+
+                                        ; expand the marked region in semantic increments (negative prefix to reduce region)
+(use-package expand-region
+  :ensure t
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
 (provide 'productivity)
 ;;; productivity.el ends here
