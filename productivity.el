@@ -155,6 +155,15 @@
   :config
   (counsel-projectile-on))
 
+(use-package ibuffer-projectile
+  :ensure t
+  :config
+  (add-hook 'ibuffer-hook
+    (lambda ()
+      (ibuffer-projectile-set-filter-groups)
+      (unless (eq ibuffer-sorting-mode 'alphabetic)
+        (ibuffer-do-sort-by-alphabetic)))))
+
                                         ; flashes the cursor's line when you scroll
 (use-package beacon
   :ensure t
