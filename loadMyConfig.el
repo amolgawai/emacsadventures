@@ -29,12 +29,12 @@
 (add-to-list 'load-path (locate-user-emacs-file "emacsadventures/"))
 
 ;Load configuration files
-(require 'initWithSaneDefaults)
 (require 'bootstrapPackaging)
 (require 'appearance)
-(require 'commoncoding)
+(require 'initWithSaneDefaults)
 (require 'productivity)
 (require 'ivycounselswiper)
+(require 'commoncoding)
 ;; (require 'helmLikeiDo)
 (require 'markdownAndOrg)
 (require 'fileNav)

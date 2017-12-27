@@ -153,7 +153,7 @@
 (use-package counsel-projectile
   :ensure t
   :config
-  (counsel-projectile-on))
+  (counsel-projectile-mode))
 
 (use-package ibuffer-projectile
   :ensure t
