@@ -40,6 +40,11 @@
   :diminish which-key-mode
   :config (which-key-mode))
 
+(use-package dired+
+  :ensure t
+  :config (require 'dired+)
+  )
+
 ;; reformat buffer
 (defun indent-buffer ()
   (interactive)
@@ -137,6 +142,18 @@
 (use-package restart-emacs
   :ensure t
   :bind* (("C-x M-c" . restart-emacs)))
+
+;; projectile
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-global-mode)
+  (setq projectile-completion-system 'ivy))
+
+(use-package counsel-projectile
+  :ensure t
+  :config
+  (counsel-projectile-on))
 
 (provide 'productivity)
 ;;; productivity.el ends here
