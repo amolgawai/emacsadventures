@@ -40,11 +40,6 @@
   :diminish which-key-mode
   :config (which-key-mode))
 
-(use-package dired+
-  :ensure t
-  :config (require 'dired+)
-  )
-
 ;; reformat buffer
 (defun indent-buffer ()
   (interactive)
@@ -183,6 +178,12 @@
   :ensure t
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
+
+;; move lines/regions
+(use-package move-text
+  :ensure t
+  :config
+  (move-text-default-bindings))
 
 (provide 'productivity)
 ;;; productivity.el ends here
