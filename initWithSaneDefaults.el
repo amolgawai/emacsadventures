@@ -49,7 +49,9 @@
 
 ;; mac specifi key setup
 (when (eq system-type 'darwin)
-  (setq mac-right-option-modifier 'none))
+  (setq mac-right-option-modifier 'none)
+  (require 'ls-lisp)
+  (setq ls-lisp-use-insert-directory-program nil))
 
 ;; delete the previous selection when overrides it with a new insertion.
 (delete-selection-mode t)

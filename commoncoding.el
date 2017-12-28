@@ -64,7 +64,7 @@
 
 (use-package git-gutter
   :ensure t
-  :init
+  :config
   (global-git-gutter-mode +1))
 
 (use-package git-timemachine
