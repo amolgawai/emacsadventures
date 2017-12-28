@@ -109,8 +109,8 @@ It added extra strings at the front and back of the default dired buffer name."
       :config
       (progn
         (require 'dired+)
-        (setq diredp-hide-details-initially-flag nil))
-      (diredp-toggle-find-file-reuse-dir 1))
+        (setq diredp-hide-details-initially-flag nil)
+        (diredp-toggle-find-file-reuse-dir 1)))
 
     ;; http://pragmaticemacs.com/emacs/tree-style-directory-views-in-dired-with-dired-subtree/
     (use-package dired-subtree
