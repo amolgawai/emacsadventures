@@ -32,5 +32,11 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package pdf-tools
+  :load-path "site-lisp/pdf-tools/lisp"
+  :magic ("%PDF" . pdf-view-mode)
+  :config
+  (pdf-tools-install))
+
 (provide 'markdownAndOrg)
 ;;; markdownAndOrg.el ends here
