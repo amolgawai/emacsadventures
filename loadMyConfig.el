@@ -26,7 +26,7 @@
 ;;; Code:
 
 ;; add the directory to load path
-(add-to-list 'load-path (locate-user-emacs-file "emacsadventures/"))
+(add-to-list 'load-path (locate-user-emacs-file "emacsadventures/config"))
                                         ;Load configuration files
 (require 'bootstrapPackaging)
 (require 'appearance)
