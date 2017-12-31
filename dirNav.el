@@ -63,6 +63,8 @@
 
 (use-package dired
   :commands (dired-toggle-read-only) ; to toggle read-only state of any buffer
+  :init
+  (add-hook 'dired-mode-hook 'auto-revert-mode) ; Auto-refresh dired on file change
   :config
   (progn
     (setq dired-recursive-deletes 'always)
