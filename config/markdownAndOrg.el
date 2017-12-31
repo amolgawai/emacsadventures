@@ -38,5 +38,28 @@
   :config
   (pdf-tools-install))
 
+;; org mode
+
+(use-package org
+  :mode ("\\.org\\'" . org-mode)
+  :bind (("C-c l" . org-store-link)
+	 ("C-c a" . org-agenda)
+	 ("C-c b" . org-iswitchb))
+  :config
+  (progn
+    (global-set-key "\C-c a" 'org-agenda)
+    (global-set-key (kbd "C-c c") 'org-capture)
+    (bind-key "C-M-g" 'org-plot/gnuplot org-mode-map)
+    (add-to-list 'org-babel-load-languages '(ditaa . t))))
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(use-package org-ac
+  :ensure t
+  :init (progn
+          (require 'org-ac)
+          (org-ac/config-default)))
+
 (provide 'markdownAndOrg)
 ;;; markdownAndOrg.el ends here
