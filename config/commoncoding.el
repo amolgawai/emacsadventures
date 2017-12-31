@@ -65,7 +65,8 @@
 (use-package git-gutter
   :ensure t
   :config
-  (global-git-gutter-mode +1))
+  (global-git-gutter-mode +1)
+  (git-gutter:linum-setup))
 
 (use-package git-timemachine
   :ensure t
