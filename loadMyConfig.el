@@ -27,8 +27,7 @@
 
 ;; add the directory to load path
 (add-to-list 'load-path (locate-user-emacs-file "emacsadventures/"))
-
-;Load configuration files
+                                        ;Load configuration files
 (require 'bootstrapPackaging)
 (require 'appearance)
 (require 'initWithSaneDefaults)
@@ -41,6 +40,9 @@
 (require 'dirNav)
 (require 'pythonWithAnaconda)
 (require 'golang)
+
+(require 'load-directory)
+(load-directory (locate-user-emacs-file "emacsadventures/private"))
 
 (provide 'loadMyConfig)
 ;;; loadMyConfig.el ends here
