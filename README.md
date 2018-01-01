@@ -44,8 +44,11 @@ Here are some hints about the features
   * Folding keys
 
   `Fold all - C-c Up Arrow`
+
   `UnFold all - C-c Down Arrow`
+
   `Fold current - C-c Left Arrow`
+
   `UnFold current - C-c Righ Arrow`
   * Navigate buffers easily `C-x Right/Left arrows`
   * Function List (imenu-list) `C-'`
