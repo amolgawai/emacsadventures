@@ -36,6 +36,20 @@ You can customize the configuration the usual emacs way.
   * Add yout personal configuration in the 'private' directory
   * The personal configuration is loaded as a last step
 
+Hints
+-----
+Here are some hints about the features
+  * Invoke the directory explorer "Neotree" - `F8`
+  * Format the current buffer - `F12`
+  * Folding keys
+
+  `Fold all - C-c Up Arrow`
+  `UnFold all - C-c Down Arrow`
+  `Fold current - C-c Left Arrow`
+  `UnFold current - C-c Righ Arrow`
+  * Navigate buffers easily `C-x Right/Left arrows`
+  * Function List (imenu-list) `C-'`
+
 Cheatsheets
 -----------
 All the important cheatsheets are located in the [quickref](/quickref) directory
