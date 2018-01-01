@@ -36,6 +36,10 @@ You can customize the configuration the usual emacs way.
   * Add yout personal configuration in the 'private' directory
   * The personal configuration is loaded as a last step
 
+Cheatsheets
+-----------
+All the important cheatsheets are located in the [quickref](/quickref) directory
+
 Feedback
 --------
 I would be very pleased if you give me feedback to improve this configuration. I will try to improve as I go along using it.
