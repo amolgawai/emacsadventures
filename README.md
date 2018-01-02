@@ -52,6 +52,8 @@ Here are some hints about the features
   `UnFold current - C-c Righ Arrow`
   * Navigate buffers easily `C-x Right/Left arrows`
   * Function List (imenu-list) `C-'`
+  * Magit - `M-x g`
+  * Exapnd selected region -> `C-=`
 
 Cheatsheets
 -----------
