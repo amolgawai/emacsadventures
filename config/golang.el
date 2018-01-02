@@ -39,6 +39,7 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
 
   :config
+  (progn
   (add-to-list 'go-guess-gopath-functions #'schnouki/go-hellogopher-gopath)
   (defadvice go-root-and-paths (around schnouki/go-root-and-paths)
     (let* ((root-and-paths ad-do-it)
@@ -53,7 +54,7 @@
       (set (make-local-variable 'compile-command)
            "go build -v && go test -v && go vet"))
   (setq tab-width 4)
-  (setq indent-tabs-mode 1))
+  (setq indent-tabs-mode 1)))
 
 (defun schnouki/go-hellogopher-gopath ()
   (let ((d (locate-dominating-file buffer-file-name ".GOPATH")))
