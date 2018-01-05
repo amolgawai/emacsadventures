@@ -75,24 +75,24 @@
                           (lambda (buf)
                             (delete-window (get-buffer-window buf)))
                           buffer)))
-    (defcustom emcsadvntr/compile-window-size 105
-      "Width given to the non-compilation window."
-      :type 'integer
-      :group 'my)
+    (setq compilation-window-height 10)
     (defun emcsadvntr/compile-please (comint)
       "Compile without confirmation.
 With a prefix argument, use comint-mode."
       (interactive "P")
       ;; Do the command without a prompt.
-      (save-window-excursion
-        (compile (eval compile-command) (and comint t)))
-      ;; Create a compile window of the desired width.
-      (pop-to-buffer (get-buffer "*compilation*"))
-      (enlarge-window
-       (- (frame-width)
-          emcsadvntr/compile-window-size
-          (window-width))
-       'vertical))
+      ;;      (save-window-excursion
+      (compile (eval compile-command) (and comint t)))
+    (defun my-compilation-hook ()
+      (when (not (get-buffer-window "*compilation*"))
+        (save-selected-window
+          (save-excursion
+            (let* ((w (split-window-vertically))
+                   (h (window-height w)))
+              (select-window w)
+              (switch-to-buffer "*compilation*")
+              (shrink-window (- h compilation-window-height)))))))
+    (add-hook 'compilation-mode-hook 'my-compilation-hook)
 
     ;; jump to first error
     (setq compilation-auto-jump-to-first-error t)
