@@ -38,7 +38,73 @@
   (local-set-key (kbd "RET") 'newline-and-indent))
 (add-hook 'prog-mode-hook 'set-newline-and-indent)
 
-(which-func-mode 1)
+;; show what function we're in
+(use-package which-func
+  :ensure t
+  :init
+  (which-function-mode 1))
+
+;; compile command improvements
+;; ref - http://endlessparentheses.com/better-compile-command.html
+;; https://github.com/krgn/emacs.d/blob/824b4f7b0c1f19ac15942f404c94e5e98c3d8820/config/setup-compile.el
+(use-package compile
+  :commands (emcsadvntr/compile-please)
+  :bind (:map prog-mode-map
+              ([f5] . emcsadvntr/compile-please)
+              ([C-f5] . compile))
+  :init
+  (progn
+    (use-package ansi-color)
+
+    ;; colorize that buffer plz
+    (defun colorize-compilation-buffer ()
+      (toggle-read-only)
+      (ansi-color-apply-on-region (point-min) (point-max))
+      (toggle-read-only))
+
+    ;; close if compilation was successful
+    (defun compile-autoclose (buffer string)
+      "Bury a compilation buffer if succeeded without warnings "
+      (if (and
+           (string-match "compilation" (buffer-name buffer))
+           (string-match "finished" string)
+           (not
+            (with-current-buffer buffer
+              (search-forward "warning" nil t))))
+          (run-with-timer 1 nil
+                          (lambda (buf)
+                            (delete-window (get-buffer-window buf)))
+                          buffer)))
+    (defcustom emcsadvntr/compile-window-size 105
+      "Width given to the non-compilation window."
+      :type 'integer
+      :group 'my)
+    (defun emcsadvntr/compile-please (comint)
+      "Compile without confirmation.
+With a prefix argument, use comint-mode."
+      (interactive "P")
+      ;; Do the command without a prompt.
+      (save-window-excursion
+        (compile (eval compile-command) (and comint t)))
+      ;; Create a compile window of the desired width.
+      (pop-to-buffer (get-buffer "*compilation*"))
+      (enlarge-window
+       (- (frame-width)
+          emcsadvntr/compile-window-size
+          (window-width))
+       'vertical))
+
+    ;; jump to first error
+    (setq compilation-auto-jump-to-first-error t)
+
+    ;; and add the hook
+    (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+    ;; scroll output
+    (setq compilation-scroll-output t)
+    ;; don't hang on warnings, only errors
+    (setq compilation-skip-threshold 2)
+
+    (setq compilation-finish-functions 'compile-autoclose)))
 
 ;; Magit for git interactions
 (use-package magit
