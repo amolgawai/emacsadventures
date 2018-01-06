@@ -138,6 +138,10 @@
   :ensure t
   :bind* (("C-x M-c" . restart-emacs)))
 
+(use-package smartparens
+  :ensure t
+  :init (smartparens-global-mode 1)
+  :diminish smartparens-mode)
 ;; projectile
 (use-package projectile
   :ensure t
