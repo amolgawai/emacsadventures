@@ -53,6 +53,18 @@
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
 
+;; set path - especially useful on mac
+;; ref - https://github.com/manute/emacs.d/blob/master/init.el
+(use-package exec-path-from-shell
+  :ensure t
+  :if (memq window-system '(mac ns))
+  :config
+  (setq exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOROOT")
+  (exec-path-from-shell-copy-env "GOPATH")
+  (exec-path-from-shell-copy-env "NPMBIN"))
+
 ;; delete the previous selection when overrides it with a new insertion.
 (delete-selection-mode t)
 
