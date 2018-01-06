@@ -51,7 +51,7 @@ Here are some hints about the features
 
 `UnFold current - C-c Righ Arrow`
 * Navigate buffers easily `C-x Right/Left arrows`
-* Function List (imenu-list) `C-'`
+* Function List (imenu-list) `F9'`
 * Magit - `M-x g`
 * Exapnd selected region -> `C-=`
 * Fast movement with [Avy](https://github.com/abo-abo/avy)
