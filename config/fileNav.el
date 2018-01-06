@@ -27,10 +27,16 @@
 (use-package imenu-list
   :ensure t
   :defer t
-  :bind ("C-'" . imenu-list-smart-toggle)
+  :bind ([f9] . imenu-list-smart-toggle)
   :config
   (setq imenu-list-auto-resize t)            ;; resize automatically
   (setq imenu-list-focus-after-activation t))
+
+(use-package avy
+  :load-path "site-lisp/avy"
+  :diminish
+  :config
+  (avy-setup-default))
 
 
 (provide 'fileNav)
