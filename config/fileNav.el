@@ -33,7 +33,7 @@
   (setq imenu-list-focus-after-activation t))
 
 (use-package avy
-  :load-path "site-lisp/avy"
+  :ensure t
   :diminish
   :config
   (avy-setup-default))
