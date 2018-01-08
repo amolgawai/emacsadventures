@@ -35,6 +35,10 @@
 (use-package avy
   :ensure t
   :diminish
+  :bind (("M-g l" . avy-goto-line)
+         ("M-g w" . avy-goto-word-1)
+         ("C-:" . avy-goto-char)
+         ("C-'" . avy-goto-char-2))
   :config
   (avy-setup-default))
 
