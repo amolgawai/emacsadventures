@@ -44,12 +44,10 @@
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
 	 ("C-c a" . org-agenda)
-	 ("C-c b" . org-iswitchb))
+	 ("C-c b" . org-iswitchb)
+         ("C-M-g" 'org-plot/gnuplot org-mode-map))
   :config
   (progn
-    (global-set-key "\C-c a" 'org-agenda)
-    (global-set-key (kbd "C-c c") 'org-capture)
-    (bind-key "C-M-g" 'org-plot/gnuplot org-mode-map)
     (add-to-list 'org-babel-load-languages '(ditaa . t))))
 (use-package org-bullets
   :ensure t
