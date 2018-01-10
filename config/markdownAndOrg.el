@@ -36,7 +36,8 @@
   :ensure t
   :magic ("%PDF" . pdf-view-mode)
   :config
-  (pdf-tools-install))
+  (pdf-tools-install)
+  (add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1))))
 
 ;; org mode
 
@@ -44,20 +45,31 @@
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
 	 ("C-c a" . org-agenda)
-	 ("C-c b" . org-iswitchb)
-         ("C-M-g" 'org-plot/gnuplot org-mode-map))
-  :config
-  (progn
-    (add-to-list 'org-babel-load-languages '(ditaa . t))))
+	 ("C-c b" . org-iswitchb)))
+
 (use-package org-bullets
   :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
 (use-package org-ac
   :ensure t
   :init (progn
           (require 'org-ac)
           (org-ac/config-default)))
+
+;; deft for managing notes
+(use-package deft
+  :ensure t
+  :bind ("<f7>" . deft)
+  :config
+  (setq deft-directory "~/MyOrganiser")
+  (setq deft-recursive t)
+  (setq deft-use-filename-as-title nil)
+  (setq deft-use-filter-string-for-filename t)
+  (setq deft-file-naming-rules '((noslash . "-")
+                                 (nospace . "-")
+                                 (case-fn . downcase))))
 
 (provide 'markdownAndOrg)
 ;;; markdownAndOrg.el ends here
