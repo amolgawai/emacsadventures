@@ -61,15 +61,68 @@
 ;; deft for managing notes
 (use-package deft
   :ensure t
-  :bind ("<f7>" . deft)
+  :bind ("<f7>" . emcsadvntr/deft-dwim)
   :config
-  (setq deft-directory "~/MyOrganiser")
-  (setq deft-recursive t)
-  (setq deft-use-filename-as-title nil)
-  (setq deft-use-filter-string-for-filename t)
-  (setq deft-file-naming-rules '((noslash . "-")
-                                 (nospace . "-")
-                                 (case-fn . downcase))))
+  (progn
+    (setq deft-directory "~/MyOrganiser")
+    (setq deft-recursive t)
+    (setq deft-use-filename-as-title nil)
+    (setq deft-use-filter-string-for-filename t)
+    (setq deft-file-naming-rules '((noslash . "-")
+                                   (nospace . "-")
+                                   (case-fn . downcase)))
+    ;; better deft invoke and quite
+    ;; ref - https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-deft.el
+    (defvar emcsadvntr/pre-deft-window-configuration nil
+      "Variable to store the window configuration before `deft' was called.")
+
+    ;; Advise deft to save window config
+    (defun emcsadvntr/deft-dwim-save-windows (orig-fun &rest args)
+      (setq emcsadvntr/pre-deft-window-configuration (current-window-configuration))
+      (apply orig-fun args))
+    (advice-add 'deft :around #'emcsadvntr/deft-dwim-save-windows)
+
+    (defun emcsadvntr/deft-quit ()
+      "Save buffer, kill both the deft-opened file buffer and the *Deft* buffer,
+and restore the window config to the way it was before deft was invoked."
+      (interactive)
+      (let ((buf (buffer-name)))
+        (save-buffer)
+        (kill-buffer buf)
+        (delq buf deft-auto-save-buffers) ; Remove the buffer from `deft-auto-save-buffers'
+        (kill-buffer "*Deft*")
+        (when (window-configuration-p emcsadvntr/pre-deft-window-configuration)
+          (set-window-configuration emcsadvntr/pre-deft-window-configuration)
+          ;; Reset `emcsadvntr/pre-deft-window-configuration' back to `nil' because
+          ;; that value is one of the criteria to check if the user is currently
+          ;; editing a deft-opened file
+          (setq emcsadvntr/pre-deft-window-configuration nil))))
+
+    (defun emcsadvntr/deft-dwim (option)
+      "Launch deft or quit a deft opened file based on context.
+If OPTION is \\='(4), call `deft-find-file'.
+Else if OPTION is \\='(16), call `deft'.
+Else if major-mode is `deft-mode', bury the buffer.
+Else if in a deft-opened file buffer, call `emcsadvntr/deft-quit'.
+Else call `deft'."
+      (interactive "P")
+      (cond
+       ((equal '(4) option) ; when using C-u
+        (call-interactively #'deft-find-file))
+       ((equal '(16) option) ; when using C-u C-u
+        (call-interactively #'deft))
+       ((derived-mode-p 'deft-mode)
+        (bury-buffer))
+       ;; If the user is in a file buffer opened by deft,
+       ;; - `emcsadvntr/pre-deft-window-configuration' will be non-nil, AND
+       ;; - the buffer name would have been added to `deft-auto-save-buffers'
+       ;;   by the `deft-open-file' function (whether the user has chosen to
+       ;;   auto save the deft files or not).
+       ((and emcsadvntr/pre-deft-window-configuration
+             (member (get-buffer (buffer-name)) deft-auto-save-buffers))
+        (emcsadvntr/deft-quit))
+       (t
+        (call-interactively #'deft))))))
 
 (provide 'markdownAndOrg)
 ;;; markdownAndOrg.el ends here
