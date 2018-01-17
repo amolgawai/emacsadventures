@@ -44,14 +44,14 @@
 (use-package org
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
-	 ("C-c a" . org-agenda)
-	 ("C-c b" . org-iswitchb)
+		 ("C-c a" . org-agenda)
+		 ("C-c b" . org-iswitchb)
          ("C-c c" . org-capture))
   :config
   (progn
     (setq org-directory (expand-file-name "~/MyOrganiser"))
     (setq org-default-notes-file (concat org-directory "/Inbox.org"))
-                                        ;    (setq org-agenda-files '("~/org" "~/www/org" "~/www/_org"))
+    (setq org-agenda-files '("~/MyOrganiser"))
     (setq org-log-done t)
     (setq org-fast-tag-selection-single-key t)
     (setq org-use-fast-todo-selection t)
