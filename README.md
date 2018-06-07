@@ -80,3 +80,4 @@ Furhter research for improvements
 * [page-break-lines](https://github.com/purcell/page-break-lines)
 * [Fill-Column-Indicator](https://github.com/alpaker/Fill-Column-Indicator)
 * [taskpaper-mode](https://github.com/saf-dmitry/taskpaper-mode)
+* [buffer tabs - nerdtab](https://github.com/casouri/nerdtab)
