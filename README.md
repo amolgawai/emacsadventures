@@ -72,3 +72,11 @@ Feedback
 --------
 I would be very pleased if you give me feedback to improve this configuration. I will try to improve as I go along using it.
 Thank You.
+
+Further Research
+-----------------
+Furhter research for improvements
+* [emacs dashboard](https://github.com/rakanalh/emacs-dashboard)
+* [page-break-lines](https://github.com/purcell/page-break-lines)
+* [Fill-Column-Indicator](https://github.com/alpaker/Fill-Column-Indicator)
+* [taskpaper-mode](https://github.com/saf-dmitry/taskpaper-mode)
