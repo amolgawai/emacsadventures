@@ -90,3 +90,5 @@ Emacs packages from YouTube video of buildfunthings
 * paredit - sane parenthesis editing
 * paredit-anywhere
 * counsel-imenu - jump within buffer
+* [Better company UI with icons](https://github.com/sebastiencs/company-box)
+* [Highlight indent guides](https://github.com/DarthFennec/highlight-indent-guides)
