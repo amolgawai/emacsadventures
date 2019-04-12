@@ -36,7 +36,7 @@ You can customize the configuration the usual emacs way.
 * Add yout personal configuration in the 'private' directory
 * The personal configuration is loaded as a last step
 
-Hints
+Quick Start
 -----
 Here are some hints about the features
 * Invoke the directory explorer "Neotree" - `F8`
@@ -51,6 +51,7 @@ Here are some hints about the features
 
 `UnFold current - C-c Righ Arrow`
 * Navigate buffers easily `C-x Right/Left arrows`
+* Move to windows with [Ace Window](https://github.com/abo-abo/ace-window) `C-x O`
 * Function List (imenu-list) `F9'`
 * Magit - `M-x g`
 * Exapnd selected region -> `C-=`
