@@ -38,6 +38,7 @@
 (require 'markdownAndOrg)
 (require 'fileNav)
 (require 'dirNav)
+(require 'windowNav)
 (require 'pythonWithAnaconda)
 (require 'golang)
 
