@@ -189,6 +189,23 @@
   :config
   (move-text-default-bindings))
 
+;; wiki-summary for searching wikipedia
+(use-package wiki-summary
+  :defer 1
+  :bind ("C-c W" . wiki-summary)
+  :preface
+  (defun my/format-summary-in-buffer (summary)
+    "Given a summary, stick it in the *wiki-summary* buffer and display the buffer"
+    (let ((buf (generate-new-buffer "*wiki-summary*")))
+      (with-current-buffer buf
+        (princ summary buf)
+        (fill-paragraph)
+        (goto-char (point-min))
+        (text-mode)
+        (view-mode))
+      (pop-to-buffer buf))))
+(advice-add 'wiki-summary/format-summary-in-buffer :override #'my/format-summary-in-buffer)
+
 ;; smart C-a
 ;; Ref - http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
 (defun smarter-move-beginning-of-line (arg)
