@@ -40,6 +40,8 @@ Quick Start
 -----
 Here are some hints about the features
 * Invoke the directory explorer "Neotree" - `F8`
+* Invoke [Deft - nvAlt like note system](https://jblevins.org/projects/deft/) `F7`
+* Function List (imenu-list) `F9`
 * Format the current buffer - `F12`
 * Folding keys
 
@@ -52,7 +54,6 @@ Here are some hints about the features
 `UnFold current - C-c Righ Arrow`
 * Navigate buffers easily `C-x Right/Left arrows`
 * Move to windows with [Ace Window](https://github.com/abo-abo/ace-window) `C-x O`
-* Function List (imenu-list) `F9'`
 * Magit - `M-x g`
 * Exapnd selected region -> `C-=`
 * Fast movement with [Avy](https://github.com/abo-abo/avy)
