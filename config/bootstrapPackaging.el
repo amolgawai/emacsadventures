@@ -74,6 +74,17 @@
 ;;   (unless (package-installed-p package)
 ;;     (package-install package)))
 
+;; Additional information about packages in the mode-line
+(use-package paradox
+  :defer 1
+  :custom
+  (paradox-column-width-package 27)
+  (paradox-column-width-version 13)
+  (paradox-execute-asynchronously t)
+  (paradox-hide-wiki-packages t)
+  :config
+  (paradox-enable)
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print))
 
 (provide 'bootstrapPackaging)
 ;;; bootstrapPackaging.el ends here
