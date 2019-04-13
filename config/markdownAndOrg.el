@@ -226,5 +226,10 @@ Else call `deft'."
        (t
         (call-interactively #'deft))))))
 
+;; taskpaper mode to support taskpaper
+(use-package taskpaper-mode
+  :ensure t
+  :mode ("\\.todo\\'" . taskpaper-mode))
+
 (provide 'markdownAndOrg)
 ;;; markdownAndOrg.el ends here
