@@ -1,4 +1,6 @@
-# emacsadventures
+emacsadventures
+===============
+
 This is my adventure of setting up emacs for everyday use. I was inspired by [Spacemacs](https://github.com/syl20bnr/spacemacs) and [super-emacs](https://github.com/myTerminal/super-emacs).
 My goals for the configuration are
 * Asthetic - an eye pleasing emacs
@@ -7,6 +9,7 @@ My goals for the configuration are
 
 Screenshots
 -----------
+
 Let the pictures do talking...
 ![Config In Action](/screenshots/InAction.png)
 ![With Spaceline](/screenshots/WithSpaceLine.png)
@@ -67,6 +70,12 @@ Here are some hints about the features
 `Go to Word -> M-g w`
 
 * Quickly get summary from wikipedia `C-c W`
+* [Markdown mode User Guide](https://jblevins.org/projects/markdown-mode/)
+
+User Guide
+==========
+
+Please find the user guide at [User Guide](/userguide.md)
 
 Cheatsheets
 -----------
