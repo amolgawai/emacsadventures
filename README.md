@@ -66,6 +66,8 @@ Here are some hints about the features
 
 `Go to Word -> M-g w`
 
+* Quickly get summary from wikipedia `C-c W`
+
 Cheatsheets
 -----------
 All the important cheatsheets are located in the [quickref](/quickref) directory
