@@ -70,7 +70,6 @@ Here are some hints about the features
 `Go to Word -> M-g w`
 
 * Quickly get summary from wikipedia `C-c W`
-* [Markdown mode User Guide](https://jblevins.org/projects/markdown-mode/)
 
 User Guide
 ==========
@@ -80,6 +79,8 @@ Please find the user guide at [User Guide](/userguide.md)
 Cheatsheets
 -----------
 All the important cheatsheets are located in the [quickref](/quickref) directory
+* [Markdown mode User Guide](https://jblevins.org/projects/markdown-mode/)
+* [Taskpaper mode User Guide](https://github.com/saf-dmitry/taskpaper-mode)
 
 Feedback
 --------
