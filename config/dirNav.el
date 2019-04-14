@@ -125,7 +125,18 @@ It added extra strings at the front and back of the default dired buffer name."
       :ensure t
       :commands (dired-collapse dired-collapse-mode)
       :config
-      (add-hook 'dired-mode-hook 'dired-collapse-mode))))
+      (add-hook 'dired-mode-hook 'dired-collapse-mode)))
+  ;; filter dired buffer. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
+  (use-package dired-narrow
+    :ensure t
+    :bind (:map dired-mode-map
+                ("/" . dired-narrow)))
+  ;; quicj preview certain files. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
+  (use-package quick-preview
+    :ensure t
+    :init
+    (global-set-key (kbd "C-c q") 'quick-preview-at-point)
+    (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point)))
 
 (provide 'dirNav)
 ;;; dirNav.el ends here
