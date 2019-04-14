@@ -30,17 +30,23 @@
 
 ;; themes
 
-;; default theme - sanityinc-tomorrow-night
+;; sanityinc-tomorrow-night
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
   :defer t)
 
 ;;  material-theme
 (use-package material-theme
-  ;;  :defer 10
-  :ensure t
-  :config
-  (load-theme 'material t))
+  :defer t
+  :ensure t)
+
+;;  :config
+;;  (load-theme 'material t))
+
+;; dracula theme
+(use-package dracula-theme
+  :init (load-theme 'dracula t)
+  :ensure t)
 
 ;; spacemacs
 (use-package spacemacs-theme
