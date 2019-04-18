@@ -91,6 +91,7 @@ Thank You.
 Further Research
 -----------------
 Furhter research for improvements
+* [Replace Neotree with Treemacs](https://github.com/Alexander-Miller/treemacs)
 * [emacs dashboard](https://github.com/rakanalh/emacs-dashboard)
 * [page-break-lines](https://github.com/purcell/page-break-lines)
 * [Fill-Column-Indicator](https://github.com/alpaker/Fill-Column-Indicator)
