@@ -42,7 +42,8 @@ You can customize the configuration the usual emacs way.
 Quick Start
 -----
 Here are some hints about the features
-* Invoke the directory explorer "Neotree" - `F8`
+* --Invoke the directory explorer "Neotree" - `F8`--
+* Invoke [Treemacs - a tree layout file explorer for Emacs](https://github.com/Alexander-Miller/treemacs) `C-x t t`
 * Invoke [Deft - nvAlt like note system](https://jblevins.org/projects/deft/) `F7`
 * Function List (imenu-list) `F9`
 * Format the current buffer - `F12`
