@@ -41,12 +41,13 @@
     ;;    (setq neo-theme 'nerd) ; 'classic, 'nerd, 'ascii, 'arrow
 
     (setq neo-window-fixed-size nil)
+    (setq neo-fit-to-contents t)
     (global-set-key [f8] 'neotree-toggle)
 
-    (add-hook 'neo-change-root-hook
-              (lambda () (neo-buffer--with-resizable-window
-                          (let ((fit-window-to-buffer-horizontally t))
-                            (fit-window-to-buffer)))))
+    ;; (add-hook 'neo-change-root-hook
+    ;;           (lambda () (neo-buffer--with-resizable-window
+    ;;                       (let ((fit-window-to-buffer-horizontally t))
+    ;;                         (fit-window-to-buffer)))))
 
     (bind-keys
      :map neotree-mode-map
