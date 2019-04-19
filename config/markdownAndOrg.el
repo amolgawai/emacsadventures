@@ -137,6 +137,13 @@
              ;;nil                      ;; i.e., no local settings
              ("~/next-actions.txt"))
             ))
+    ;; Refiling - Ref -> https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
+    (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+    (setq org-refile-use-outline-path 'file)
+    (setq org-outline-path-complete-in-steps nil)
+    (setq org-refile-allow-creating-parent-nodes 'confirm)
+
+
     ;; capture
     (setq org-reverse-note-order t)
 
