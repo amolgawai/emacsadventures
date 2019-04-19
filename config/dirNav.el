@@ -27,35 +27,35 @@
 
 ;;; Code:
 
-;; (use-package neotree
-;;   :ensure t
-;;   :config
-;;   (progn
-;;     (setq-default neo-smart-open t)    ;  every time when the neotree window is
-;;                                         ;  opened, it will try to find current
-;;                                         ;  file and jump to node.
-;;     (setq-default neo-dont-be-alone t) ; Don't allow neotree to be the only open
-;;                                         ; window
-;;     (setq neo-theme 'icons ) ;; make sure all-the-icons
-;;     ;; is installed
-;;     ;;    (setq neo-theme 'nerd) ; 'classic, 'nerd, 'ascii, 'arrow
+(use-package neotree
+  :ensure t
+  :config
+  (progn
+    (setq-default neo-smart-open t)    ;  every time when the neotree window is
+                                        ;  opened, it will try to find current
+                                        ;  file and jump to node.
+    (setq-default neo-dont-be-alone t) ; Don't allow neotree to be the only open
+                                        ; window
+    (setq neo-theme 'icons ) ;; make sure all-the-icons
+    ;; is installed
+    ;;    (setq neo-theme 'nerd) ; 'classic, 'nerd, 'ascii, 'arrow
 
-;;     (setq neo-window-fixed-size nil)
-;;     ;; (global-set-key [f8] 'neotree-toggle)
+    (setq neo-window-fixed-size nil)
+    (global-set-key [f8] 'neotree-toggle)
 
-;;     (add-hook 'neo-change-root-hook
-;;               (lambda () (neo-buffer--with-resizable-window
-;;                           (let ((fit-window-to-buffer-horizontally t))
-;;                             (fit-window-to-buffer)))))
+    (add-hook 'neo-change-root-hook
+              (lambda () (neo-buffer--with-resizable-window
+                          (let ((fit-window-to-buffer-horizontally t))
+                            (fit-window-to-buffer)))))
 
-;;     (bind-keys
-;;      :map neotree-mode-map
-;;      ("<C-return>" . neotree-change-root)
-;;      ("C"          . neotree-change-root)
-;;      ("c"          . neotree-create-node)
-;;      ("+"          . neotree-create-node)
-;;      ("d"          . neotree-delete-node)
-;;      ("r"          . neotree-rename-node))))
+    (bind-keys
+     :map neotree-mode-map
+     ("<C-return>" . neotree-change-root)
+     ("C"          . neotree-change-root)
+     ("c"          . neotree-create-node)
+     ("+"          . neotree-create-node)
+     ("d"          . neotree-delete-node)
+     ("r"          . neotree-rename-node))))
 
 ;; Treemacs - replaces the Neotree
 ;; Ref - https://github.com/Alexander-Miller/treemacs
@@ -105,7 +105,6 @@
     ;; using a Hi-DPI display, uncomment this to double the icon size.
     ;;(treemacs-resize-icons 44)
 
-    ;; (global-set-key [f8] 'neotree-toggle)
     (treemacs-follow-mode t)
     (treemacs-filewatch-mode t)
     (treemacs-fringe-indicator-mode t)
