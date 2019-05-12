@@ -190,6 +190,42 @@
       (setq emcsadvntr/pre-deft-window-configuration (current-window-configuration))
       (apply orig-fun args))
     (advice-add 'deft :around #'emcsadvntr/deft-dwim-save-windows)
+    (advice-add 'deft-parse-title :around #'emcsadvntr/parse-title-with-directory-prepended)
+
+    ;; better names in deft listing including directory name
+    ;; ref - https://jingsi.space/post/2017/04/05/organizing-a-complex-directory-for-emacs-org-mode-and-deft/
+    (defun emcsadvntr/strip-quotes (str)
+      (cond ((string-match "\"\\(.+\\)\"" str) (match-string 1 str))
+            ((string-match "'\\(.+\\)'" str) (match-string 1 str))
+            (t str)))
+
+    (defun emcsadvntr/parse-title-from-front-matter-data (str)
+      (if (string-match "^title: \\(.+\\)" str)
+          (let* ((title-text (emcsadvntr/strip-quotes (match-string 1 str)))
+                 (is-draft (string-match "^draft: true" str)))
+            (concat (if is-draft "[DRAFT] " "") title-text))))
+
+    (defun emcsadvntr/deft-file-relative-directory (filename)
+      (file-name-directory (file-relative-name filename deft-directory)))
+
+    (defun emcsadvntr/title-prefix-from-file-name (filename)
+      (let ((reldir (emcsadvntr/deft-file-relative-directory filename)))
+        (if reldir
+            (concat (directory-file-name reldir) " > "))))
+
+    (defun emcsadvntr/parse-title-with-directory-prepended (orig &rest args)
+      (let ((str (nth 1 args))
+            (filename (car args)))
+        (concat
+         (emcsadvntr/title-prefix-from-file-name filename)
+         (let ((nondir (file-name-nondirectory filename)))
+           (if (or (string-prefix-p "README" nondir)
+                   (string-suffix-p ".txt" filename))
+               nondir
+             (if (string-prefix-p "---\n" str)
+                 (emcsadvntr/parse-title-from-front-matter-data
+                  (car (split-string (substring str 4) "\n---\n")))
+               (apply orig args)))))))
 
     (defun emcsadvntr/deft-quit ()
       "Save buffer, kill both the deft-opened file buffer and the *Deft* buffer,
