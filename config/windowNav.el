@@ -36,5 +36,11 @@
        ((t (:inherit ace-jump-face-foreground :height 3.0)))))
     ))
 
+;; Fast move between adjacent windows with windmove
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
+
 (provide 'windowNav)
 ;;; windowNav.el ends here
