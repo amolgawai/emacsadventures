@@ -71,9 +71,8 @@ Here are some hints about the features
 
 * Quickly get summary from wikipedia `C-c W`
 
-User Guide
+User Guide [Not started]
 ==========
-
 Please find the user guide at [User Guide](/userguide.md)
 
 Cheatsheets
