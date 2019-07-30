@@ -134,6 +134,7 @@
   (spaceline-emacs-theme)
 ;;  (spaceline-helm-mode)
   (use-package info+
+    :quelpa (info+ :fetcher url :url "https://www.emacswiki.org/emacs/download/info+.el")
     :ensure t
     :init
     (spaceline-info-mode))

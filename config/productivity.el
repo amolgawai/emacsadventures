@@ -58,7 +58,8 @@
   :init
   (setq isearch-lazy-highlight t)
   :config
-  (use-package moccur-edit))
+  (use-package moccur-edit)
+  :quelpa (moccur-edit :fetcher url :url "https://www.emacswiki.org/emacs/download/moccur-edit.el"))
 
 (use-package auto-complete
   :ensure t
@@ -85,6 +86,7 @@
     (setq ac-fuzzy-enable t)
 
     (use-package ac-dabbrev
+      :quelpa (ac-dabbrev :fetcher url :url "https://www.emacswiki.org/emacs/download/ac-dabbrev.el")
       :config
       (progn
         (add-to-list 'ac-sources 'ac-source-dabbrev)))
