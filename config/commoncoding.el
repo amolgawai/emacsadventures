@@ -131,8 +131,7 @@ With a prefix argument, use comint-mode."
 (use-package git-gutter
   :ensure t
   :config
-  (global-git-gutter-mode +1)
-  (git-gutter:linum-setup))
+  (global-git-gutter-mode t))
 
 (use-package git-timemachine
   :ensure t
@@ -163,6 +162,38 @@ With a prefix argument, use comint-mode."
 ;;         company-tooltip-limit 20
 ;;         company-tooltip-align-annotations t)
 ;;   (global-company-mode 1))
+
+;; LSP - Language Server Protocol Support for Emacs
+;; Ref - https://github.com/emacs-lsp/lsp-mode
+;; Configure the hookjs for each language in the respective language config
+;; Install LSPs for specific language. See - https://github.com/emacs-lsp/lsp-mode#supported-languages
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :config (require 'lsp-clients))
+(use-package lsp-ui
+  :requires lsp-mode flycheck
+  :config
+
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-use-childframe t
+        lsp-ui-doc-position 'top
+        lsp-ui-doc-include-signature t
+        lsp-ui-sideline-enable nil
+        lsp-ui-flycheck-enable t
+        lsp-ui-flycheck-list-position 'right
+        lsp-ui-flycheck-live-reporting t
+        lsp-ui-peek-enable t
+        lsp-ui-peek-list-width 60
+        lsp-ui-peek-peek-height 25)
+
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+(use-package company-lsp :commands company-lsp)
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+;; optionally if you want to use debugger
+(use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
 
 (provide 'commoncoding)
 ;;; commoncoding.el ends here
