@@ -191,7 +191,14 @@ With a prefix argument, use comint-mode."
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 ;; optionally if you want to use debugger
-(use-package dap-mode)
+(use-package dap-mode
+  :ensure t
+  :commands dap-mode
+  :config
+  (dap-mode 1)
+  (require 'dap-ui)
+  (dap-ui-mode 1)
+  (require 'dap-lldb))
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 
