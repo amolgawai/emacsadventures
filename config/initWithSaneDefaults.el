@@ -47,11 +47,31 @@
 (blink-cursor-mode -1)
 (global-hl-line-mode 1)
 
+;;; keyboard config start
 ;; mac specifi key setup
 (when (eq system-type 'darwin)
   (setq mac-right-option-modifier 'none)
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
+
+;; super and hyper keys for modern keyboard
+;; ref - http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
+;; make PC keyboard's Win key or other to type Super or Hyper, for emacs running on Windows.
+(setq w32-pass-lwindow-to-system nil)
+(setq w32-lwindow-modifier 'super) ; Left Windows key
+
+(setq w32-pass-rwindow-to-system nil)
+(setq w32-rwindow-modifier 'super) ; Right Windows key
+
+(setq w32-pass-apps-to-system nil)
+(setq w32-apps-modifier 'hyper) ; Menu/App key
+
+;; set keys for Apple keyboard, for emacs in OS X
+(setq mac-command-modifier 'meta) ; make cmd key do Meta
+(setq mac-option-modifier 'super) ; make opt key do Super
+(setq mac-control-modifier 'control) ; make Control key do Control
+(setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
+;;; keyboard config end
 
 ;; set path - especially useful on mac
 ;; ref - https://github.com/manute/emacs.d/blob/master/init.el
