@@ -30,6 +30,21 @@
 ;; Add keybindings for interacting with Cargo
 (use-package cargo
   :hook (rust-mode . cargo-minor-mode))
+;; add following at commandline  for cargo mode to work properly
+
+;; In order to run cargo-process-fmt you need to have the rustfmt package installed.
+;; rustup component add rustfmt-preview
+
+;; In order to run cargo-process-check you need to have the cargo-check package installed.
+;; cargo install cargo-check
+
+;; In order to run cargo-process-clippy you need to have the clippy package installed.
+;; cargo install clippy
+;; or
+;; rustup component add clippy-preview
+
+;; In order to run cargo-process-{add,rm,upgrade} you need to have the cargo-edit package installed.
+;; cargo install cargo-edit
 
 (use-package flycheck-rust
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
