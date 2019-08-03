@@ -58,8 +58,7 @@
   :init
   (setq isearch-lazy-highlight t)
   :config
-  (use-package moccur-edit)
-  :quelpa (moccur-edit :fetcher url :url "https://www.emacswiki.org/emacs/download/moccur-edit.el"))
+  (use-package moccur-edit :quelpa t))
 
 (use-package auto-complete
   :ensure t
@@ -86,7 +85,7 @@
     (setq ac-fuzzy-enable t)
 
     (use-package ac-dabbrev
-      :quelpa (ac-dabbrev :fetcher url :url "https://www.emacswiki.org/emacs/download/ac-dabbrev.el")
+      :quelpa (ac-dabbrev :fetcher github :repo "emacsmirror/ac-dabbrev")
       :config
       (progn
         (add-to-list 'ac-sources 'ac-source-dabbrev)))
@@ -243,8 +242,7 @@ point reaches the beginning or end of the buffer, stop there."
   (eshell-toggle-use-projectile-root t)
   (eshell-toggle-run-command nil)
   (eshell-toggle-init-function #'eshell-toggle-init-eshell)
-  :quelpa
-  (eshell-toggle :repo "4DA/eshell-toggle" :fetcher github :version original)
+  :quelpa (eshell-toggle :fetcher github :repo "4DA/eshell-toggle" :version original)
   :bind
   ("s-`" . eshell-toggle))
 

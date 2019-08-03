@@ -27,7 +27,6 @@
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("melpa" . "http://melpa.org/packages/")
-                         ("quelpa" . "https://github.com/quelpa/quelpa")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 ;; avoid problems with files newer than their byte-compiled counterparts
@@ -42,19 +41,28 @@
   (package-refresh-contents))
 
 ;; bootstrap quelpa
-;; (if (require 'quelpa nil t)
-;;     (quelpa-self-upgrade)
-;;   (with-temp-buffer
-;;     (url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
-;;     (eval-buffer)))
+(if (require 'quelpa nil t)
+    (quelpa-self-upgrade)
+  (with-temp-buffer
+    (url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
+    (eval-buffer)))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+;; use quelpa with use-package
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://framagit.org/steckerhalter/quelpa-use-package.git"))
 
 (require 'quelpa-use-package)
+(setq use-package-ensure-function 'quelpa)
 
-(eval-when-compile
-  (require 'use-package))
+;; (unless (package-installed-p 'use-package)
+;;   (package-install 'use-package))
+
+;; (require 'quelpa-use-package)
+
+;; (eval-when-compile
+;;   (require 'use-package))
 
 ;; bootstrap quelpa for use-package
 ;; (quelpa
@@ -73,6 +81,7 @@
   :diminish auto-fill-function
   :diminish subword-mode)
 (use-package delight
+  :quelpa (delight :fetcher github :repo "emacsmirror/delight")
   :ensure t)
 
 (use-package bind-key

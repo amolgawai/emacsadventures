@@ -26,7 +26,7 @@
 
 ;; set the font for all the frames
 (add-to-list 'default-frame-alist
-             '(font . "Source Code Pro-14"))
+             '(font . "Source Code Pro-16"))
 
 ;; themes
 
@@ -134,7 +134,7 @@
   (spaceline-emacs-theme)
 ;;  (spaceline-helm-mode)
   (use-package info+
-    :quelpa (info+ :fetcher url :url "https://www.emacswiki.org/emacs/download/info+.el")
+    :quelpa (info+ :fetcher github :repo "emacsmirror/info-plus")
     :ensure t
     :init
     (spaceline-info-mode))

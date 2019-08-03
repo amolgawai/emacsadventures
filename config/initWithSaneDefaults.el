@@ -98,7 +98,7 @@
 (column-number-mode t)
 (global-visual-line-mode t)
 ;; (global-linum-mode t)
-(global-display-line-numbers-mode t)
+(global-display-line-numbers-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;;(diminish 'visual-line-mode)
 

@@ -191,6 +191,7 @@ It added extra strings at the front and back of the default dired buffer name."
         ;; omit mode can be toggled using `M-o' in dired buffer
         (add-hook 'dired-mode-hook #'dired-omit-mode)))
     (use-package dired+
+      :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus")
       :ensure t
       :config
       (progn
