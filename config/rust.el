@@ -22,10 +22,14 @@
 ;;; Code:
 
 
-(use-package toml-mode)
+(use-package toml-mode
+  :quelpa (toml-mode :fetcher github :repo "dryman/toml-mode")
+  :ensure t)
 
 (use-package rust-mode
-  :hook (rust-mode . lsp))
+  :hook (rust-mode . lsp)
+  :init
+  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode)))
 
 ;; Add keybindings for interacting with Cargo
 (use-package cargo
@@ -47,6 +51,8 @@
 ;; cargo install cargo-edit
 
 (use-package flycheck-rust
+  :quelpa (flycheck-rust :fetcher github :repo "flycheck/flycheck-rust")
+  :ensure t
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (provide 'rust)

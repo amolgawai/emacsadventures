@@ -41,6 +41,7 @@
 (require 'windowNav)
 (require 'pythonWithAnaconda)
 (require 'golang)
+(require 'rust)
 
 ;; Load private config
 (defun my-load-all-in-directory (dir)
