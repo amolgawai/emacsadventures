@@ -24,37 +24,34 @@
 
 ;;; Code:
 
+(require 'package)
+(package-initialize)
 ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("melpa" . "http://melpa.org/packages/")
-			 ("quelpa" . "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
+;			 ("quelpa" . "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 ;; avoid problems with files newer than their byte-compiled counterparts
 ;; it's better a lower startup than load an outdated and maybe bugged package
 (setq load-prefer-newer t)
 
-; activate all the packages (in particular autoloads)
-(package-initialize)
-
 ; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+
 ;; bootstrap quelpa
-(if (require 'quelpa nil t)
-    (quelpa-self-upgrade)
+(unless (require 'quelpa nil t)
   (with-temp-buffer
     (url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
     (eval-buffer)))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
- (eval-when-compile
-   (require 'use-package))
-
 ;; bootstrap quelpa for use-package
+;; source - https://github.com/quelpa/quelpa-use-package
 (quelpa
  '(quelpa-use-package
    :fetcher git
