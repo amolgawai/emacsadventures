@@ -27,12 +27,14 @@
   :ensure t)
 
 (use-package rust-mode
+  :ensure t
   :hook (rust-mode . lsp)
   :init
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode)))
 
 ;; Add keybindings for interacting with Cargo
 (use-package cargo
+  :ensure t
   :hook (rust-mode . cargo-minor-mode))
 ;; add following at commandline  for cargo mode to work properly
 
