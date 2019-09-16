@@ -163,9 +163,22 @@ With a prefix argument, use comint-mode."
 ;;         company-tooltip-align-annotations t)
 ;;   (global-company-mode 1))
 
+;; dash documentation
+;; ref - https://github.com/tuhdo/emacs-proglang/blob/master/custom/setup-helm.el
+(use-package helm-dash
+  :ensure t
+  :init
+  (global-set-key (kbd "C-c d") 'helm-dash-at-point)
+  (defun c-doc ()
+    (setq helm-dash-docsets '("C")))
+  (defun c++-doc ()
+    (setq helm-dash-docsets '("C" "C++")))
+  (add-hook 'c-mode-hook 'c-doc)
+  (add-hook 'c++-mode-hook 'c++-doc))
+
 ;; LSP - Language Server Protocol Support for Emacs
 ;; Ref - https://github.com/emacs-lsp/lsp-mode
-;; Configure the hookjs for each language in the respective language config
+;; Configure the hooks for each language in the respective language config
 ;; Install LSPs for specific language. See - https://github.com/emacs-lsp/lsp-mode#supported-languages
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
