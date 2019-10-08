@@ -154,51 +154,59 @@ With a prefix argument, use comint-mode."
   :init (global-flycheck-mode))
 
 ;; Company -- complete anything
-;; (use-package company
-;;   :ensure t
-;;   :diminish company-mode
-;;   :config
-;;   (setq company-backends (remove 'company-ropemacs company-backends)
-;;         company-tooltip-limit 20
-;;         company-tooltip-align-annotations t)
-;;   (global-company-mode 1))
+(use-package company
+  :ensure t
+  :diminish company-mode
+  :config
+  (setq company-backends (remove 'company-ropemacs company-backends)
+        company-tooltip-limit 20
+        company-tooltip-align-annotations t)
+  (global-company-mode 1))
 
 ;; LSP - Language Server Protocol Support for Emacs
 ;; Ref - https://github.com/emacs-lsp/lsp-mode
 ;; Configure the hookjs for each language in the respective language config
 ;; Install LSPs for specific language. See - https://github.com/emacs-lsp/lsp-mode#supported-languages
 (use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :config (require 'lsp-clients))
-(use-package lsp-ui
-  :requires lsp-mode flycheck
-  :config
-
-  (setq lsp-ui-doc-enable t
-        lsp-ui-doc-use-childframe t
-        lsp-ui-doc-position 'top
-        lsp-ui-doc-include-signature t
-        lsp-ui-sideline-enable nil
-        lsp-ui-flycheck-enable t
-        lsp-ui-flycheck-list-position 'right
-        lsp-ui-flycheck-live-reporting t
-        lsp-ui-peek-enable t
-        lsp-ui-peek-list-width 60
-        lsp-ui-peek-peek-height 25)
-
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
-(use-package company-lsp :commands company-lsp)
-(use-package helm-lsp :commands helm-lsp-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+  :hook (rust-mode .  lsp-deferred)
+  :commands lsp)
+(use-package lsp-ui :ensure t :commands lsp-ui-mode)
+(use-package company-lsp :ensure t :commands company-lsp)
+(use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol)
+(use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list)
 ;; optionally if you want to use debugger
-(use-package dap-mode
-  :ensure t
-  :commands dap-mode
-  :config
-  (dap-mode 1)
-  (require 'dap-ui)
-  (dap-ui-mode 1)
-  (require 'dap-lldb))
+(use-package dap-mode)
+;; (use-package lsp-mode
+;;   :hook (rust-mode . lsp)
+;;   :commands (lsp lsp-deferred))
+;; (use-package lsp-ui
+;;   :requires lsp-mode flycheck
+;;   :config
+;;   (setq lsp-ui-doc-enable t
+;;         lsp-ui-doc-use-childframe t
+;;         lsp-ui-doc-position 'top
+;;         lsp-ui-doc-include-signature t
+;;         lsp-ui-sideline-enable nil
+;;         lsp-ui-flycheck-enable t
+;;         lsp-ui-flycheck-list-position 'right
+;;         lsp-ui-flycheck-live-reporting t
+;;         lsp-ui-peek-enable t
+;;         lsp-ui-peek-list-width 60
+;;         lsp-ui-peek-peek-height 25)
+
+;;   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+;; (use-package company-lsp :commands company-lsp)
+;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+;; ;; optionally if you want to use debugger
+;; (use-package dap-mode
+;;   :ensure t
+;;   :commands dap-mode
+;;   :config
+;;   (dap-mode 1)
+;;   (require 'dap-ui)
+;;   (dap-ui-mode 1)
+;;   (require 'dap-lldb))
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 

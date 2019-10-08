@@ -26,14 +26,22 @@
   :quelpa (toml-mode :fetcher github :repo "dryman/toml-mode")
   :ensure t)
 
-(use-package rust-mode
-  :hook (rust-mode . lsp)
-  :init
-  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode)))
+(use-package rustic
+  :ensure t)
+  ;; :hook (rust-mode . (lambda ()
+  ;;                       (lsp)
+  ;;                       (lsp-ui-doc-mode)
+  ;;                       (lsp-ui-sideline-mode)
+  ;;                       (eldoc-mode)
+  ;;                       (smart-dash-mode)))
+  ;; :init
+  ;; (add-to-list 'auto-mode-alist '("\\.rs\\'" . rustic)))
 
 ;; Add keybindings for interacting with Cargo
-(use-package cargo
-  :hook (rust-mode . cargo-minor-mode))
+;; (use-package cargo
+;;   :ensure t
+;;   :after rust-mode
+;;   :hook (rust-mode . cargo-minor-mode))
 ;; add following at commandline  for cargo mode to work properly
 
 ;; In order to run cargo-process-fmt you need to have the rustfmt package installed.

@@ -51,6 +51,11 @@
 ;; mac specifi key setup
 (when (eq system-type 'darwin)
   (setq mac-right-option-modifier 'none)
+  ;; set keys for Apple keyboard, for emacs in OS X
+  (setq mac-command-modifier 'meta) ; make cmd key do Meta
+  (setq mac-option-modifier 'super) ; make opt key do Super
+  (setq mac-control-modifier 'control) ; make Control key do Control
+  (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
 
@@ -66,11 +71,7 @@
 (setq w32-pass-apps-to-system nil)
 (setq w32-apps-modifier 'hyper) ; Menu/App key
 
-;; set keys for Apple keyboard, for emacs in OS X
-(setq mac-command-modifier 'meta) ; make cmd key do Meta
-(setq mac-option-modifier 'super) ; make opt key do Super
-(setq mac-control-modifier 'control) ; make Control key do Control
-(setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
+
 ;;; keyboard config end
 
 ;; set path - especially useful on mac
