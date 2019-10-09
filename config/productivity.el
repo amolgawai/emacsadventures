@@ -246,5 +246,19 @@ point reaches the beginning or end of the buffer, stop there."
   :bind
   ("s-`" . eshell-toggle))
 
+;; ** edit browser text area in Emacs (sync both ways)
+;; ref - https://superuser.com/questions/488348/edit-any-text-input-shown-by-a-browser-mostly-chrome-with-emacs?noredirect=1
+;; source - https://github.com/alpha22jp/atomic-chrome
+(use-package atomic-chrome
+  ;; dependency Atomic Chrome extension (in Chrome)
+  :ensure t
+  :init
+  (setq atomic-chrome-default-major-mode 'markdown-mode)
+  (setq atomic-chrome-extension-type-list '(atomic-chrome))
+  (setq atomic-chrome-url-major-mode-alist
+      '(("github\\.com" . gfm-mode)))
+  :config
+  (atomic-chrome-start-server))
+
 (provide 'productivity)
 ;;; productivity.el ends here
