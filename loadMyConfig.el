@@ -39,7 +39,8 @@
 (require 'fileNav)
 (require 'dirNav)
 (require 'windowNav)
-(require 'pythonWithAnaconda)
+;;(require 'pythonWithAnaconda)
+(require 'pythonWithElpy)
 (require 'golang)
 (require 'rust)
 
