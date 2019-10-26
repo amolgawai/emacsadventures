@@ -40,6 +40,11 @@
   :diminish which-key-mode
   :config (which-key-mode))
 
+;; advanced meta -x
+(use-package smex
+  :init (smex-initialize)
+  :bind ("M-x" . smex))
+
 ;; reformat buffer
 (defun indent-buffer ()
   (interactive)
@@ -256,7 +261,7 @@ point reaches the beginning or end of the buffer, stop there."
   (setq atomic-chrome-default-major-mode 'markdown-mode)
   (setq atomic-chrome-extension-type-list '(atomic-chrome))
   (setq atomic-chrome-url-major-mode-alist
-      '(("github\\.com" . gfm-mode)))
+		'(("github\\.com" . gfm-mode)))
   :config
   (atomic-chrome-start-server))
 
