@@ -24,7 +24,7 @@
 
 ;;; Code:
 
-; list the repositories containing them
+                                        ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("melpa" . "http://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
@@ -33,10 +33,10 @@
 ;; it's better a lower startup than load an outdated and maybe bugged package
 (setq load-prefer-newer t)
 
-; activate all the packages (in particular autoloads)
+                                        ; activate all the packages (in particular autoloads)
 (package-initialize)
 
-; fetch the list of packages available
+                                        ; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
@@ -83,6 +83,8 @@
 (use-package delight
   :quelpa (delight :fetcher github :repo "emacsmirror/delight")
   :ensure t)
+(use-package try
+  :ensure t)
 
 (use-package bind-key
   :ensure t)
@@ -92,10 +94,10 @@
   :ensure t)
 ;; If you want to install multiple packages at once, creat a list
 ;; use-package is much better alternative to reduce startup delay
-; list the packages you want
+                                        ; list the packages you want
 ;;(setq package-list '(package1 package2))
 
-; install the missing packages
+                                        ; install the missing packages
 ;; (dolist (package package-list)
 ;;   (unless (package-installed-p package)
 ;;     (package-install package)))
