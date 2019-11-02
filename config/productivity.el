@@ -42,7 +42,7 @@
 
 ;; advanced meta -x
 (use-package smex
-  :init (smex-initialize)
+;  :init (smex-initialize)
   :bind ("M-x" . smex))
 
 ;; reformat buffer
