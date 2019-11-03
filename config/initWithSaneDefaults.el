@@ -47,11 +47,44 @@
 (blink-cursor-mode -1)
 (global-hl-line-mode 1)
 
+;;; keyboard config start
 ;; mac specifi key setup
 (when (eq system-type 'darwin)
   (setq mac-right-option-modifier 'none)
+  ;; set keys for Apple keyboard, for emacs in OS X
+  (setq mac-command-modifier 'meta) ; make cmd key do Meta
+  (setq mac-option-modifier 'super) ; make opt key do Super
+  (setq mac-control-modifier 'control) ; make Control key do Control
+  (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
+
+;; super and hyper keys for modern keyboard
+;; ref - http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
+;; make PC keyboard's Win key or other to type Super or Hyper, for emacs running on Windows.
+(setq w32-pass-lwindow-to-system nil)
+(setq w32-lwindow-modifier 'super) ; Left Windows key
+
+(setq w32-pass-rwindow-to-system nil)
+(setq w32-rwindow-modifier 'super) ; Right Windows key
+
+(setq w32-pass-apps-to-system nil)
+(setq w32-apps-modifier 'hyper) ; Menu/App key
+
+
+;;; keyboard config end
+
+;; set path - especially useful on mac
+;; ref - https://github.com/manute/emacs.d/blob/master/init.el
+(use-package exec-path-from-shell
+  :ensure t
+  :if (memq window-system '(mac ns))
+  :config
+  (setq exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOROOT")
+  (exec-path-from-shell-copy-env "GOPATH")
+  (exec-path-from-shell-copy-env "NPMBIN"))
 
 ;; delete the previous selection when overrides it with a new insertion.
 (delete-selection-mode t)
@@ -65,7 +98,8 @@
 (show-paren-mode 1)
 (column-number-mode t)
 (global-visual-line-mode t)
-(global-linum-mode t)
+;; (global-linum-mode t)
+(global-display-line-numbers-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;;(diminish 'visual-line-mode)
 

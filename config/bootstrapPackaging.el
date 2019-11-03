@@ -24,28 +24,53 @@
 
 ;;; Code:
 
-; list the repositories containing them
+                                        ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("melpa" . "http://melpa.org/packages/")
-                         ("quelpa" . "https://github.com/quelpa/quelpa")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 ;; avoid problems with files newer than their byte-compiled counterparts
 ;; it's better a lower startup than load an outdated and maybe bugged package
 (setq load-prefer-newer t)
 
-; activate all the packages (in particular autoloads)
+                                        ; activate all the packages (in particular autoloads)
 (package-initialize)
 
-; fetch the list of packages available
+                                        ; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+;; bootstrap quelpa
+(if (require 'quelpa nil t)
+    (quelpa-self-upgrade)
+  (with-temp-buffer
+    (url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
+    (eval-buffer)))
 
-(eval-when-compile
-  (require 'use-package))
+;; use quelpa with use-package
+(quelpa
+ '(quelpa-use-package
+   :fetcher git
+   :url "https://framagit.org/steckerhalter/quelpa-use-package.git"))
+
+(require 'quelpa-use-package)
+(setq use-package-ensure-function 'quelpa)
+
+;; (unless (package-installed-p 'use-package)
+;;   (package-install 'use-package))
+
+;; (require 'quelpa-use-package)
+
+;; (eval-when-compile
+;;   (require 'use-package))
+
+;; bootstrap quelpa for use-package
+;; (quelpa
+;;  '(quelpa-use-package
+;;    :fetcher git
+;;    :url "https://framagit.org/steckerhalter/quelpa-use-package.git"))
+;; (require 'quelpa-use-package)
+
 ;;(require 'diminish)
 (use-package diminish
   :ensure t
@@ -56,6 +81,9 @@
   :diminish auto-fill-function
   :diminish subword-mode)
 (use-package delight
+  :quelpa (delight :fetcher github :repo "emacsmirror/delight")
+  :ensure t)
+(use-package try
   :ensure t)
 
 (use-package bind-key
@@ -66,14 +94,25 @@
   :ensure t)
 ;; If you want to install multiple packages at once, creat a list
 ;; use-package is much better alternative to reduce startup delay
-; list the packages you want
+                                        ; list the packages you want
 ;;(setq package-list '(package1 package2))
 
-; install the missing packages
+                                        ; install the missing packages
 ;; (dolist (package package-list)
 ;;   (unless (package-installed-p package)
 ;;     (package-install package)))
 
+;; Additional information about packages in the mode-line
+(use-package paradox
+  :defer 1
+  :custom
+  (paradox-column-width-package 27)
+  (paradox-column-width-version 13)
+  (paradox-execute-asynchronously t)
+  (paradox-hide-wiki-packages t)
+  :config
+  (paradox-enable)
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print))
 
 (provide 'bootstrapPackaging)
 ;;; bootstrapPackaging.el ends here

@@ -38,8 +38,11 @@
 (require 'markdownAndOrg)
 (require 'fileNav)
 (require 'dirNav)
-(require 'pythonWithAnaconda)
+(require 'windowNav)
+;;(require 'pythonWithAnaconda)
+(require 'pythonWithElpy)
 (require 'golang)
+(require 'rust)
 
 ;; Load private config
 (defun my-load-all-in-directory (dir)
@@ -53,6 +56,14 @@
           (load library nil t)
           (push library libraries-loaded))))))
 (my-load-all-in-directory (locate-user-emacs-file "emacsadventures/private"))
+
+;; load keybindings in a buffer
+(condition-case err
+    (let ((buffer (get-buffer-create "*emacsadventures-keyref*")))
+      (with-current-buffer buffer
+        (insert-file-contents (locate-user-emacs-file "emacsadventures/keybindings.md"))
+        (markdown-mode)))
+  (error (message "%s" error-message-string err)))
 
 (provide 'loadMyConfig)
 ;;; loadMyConfig.el ends here

@@ -27,10 +27,20 @@
 (use-package imenu-list
   :ensure t
   :defer t
-  :bind ("C-'" . imenu-list-smart-toggle)
+  :bind ([f9] . imenu-list-smart-toggle)
   :config
   (setq imenu-list-auto-resize t)            ;; resize automatically
   (setq imenu-list-focus-after-activation t))
+
+(use-package avy
+  :ensure t
+  :diminish
+  :bind (("M-g l" . avy-goto-line)
+         ("M-g w" . avy-goto-word-1)
+         ("C-:" . avy-goto-char)
+         ("C-'" . avy-goto-char-2))
+  :config
+  (avy-setup-default))
 
 
 (provide 'fileNav)
