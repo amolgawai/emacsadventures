@@ -57,6 +57,7 @@
    ;; (centaur-tabs-enable-buffer-reordering)
    ;; (setq centaur-tabs-adjust-buffer-order t)
    (centaur-tabs-mode t)
+   (centaur-tabs-group-by-projectile-project)
    (setq uniquify-separator "/")
    (setq uniquify-buffer-name-style 'forward)
    (defun centaur-tabs-buffer-groups ()
