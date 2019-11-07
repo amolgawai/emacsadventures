@@ -153,7 +153,13 @@
   :ensure t
   :config
   (projectile-global-mode)
-  (setq projectile-completion-system 'ivy))
+  (setq projectile-keymap-prefix (kbd "C-x p"))
+  (setq projectile-completion-system 'helm))
+
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on))
 
 (use-package counsel-projectile
   :ensure t
