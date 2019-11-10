@@ -153,7 +153,7 @@
   :ensure t
   :config
   (projectile-global-mode)
-  (setq projectile-keymap-prefix (kbd "C-x p"))
+  (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   (setq projectile-completion-system 'helm))
 
 (use-package helm-projectile
