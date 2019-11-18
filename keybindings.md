@@ -4,7 +4,8 @@ Generic:
 --------
     C-x M-c           `restart-emacs'
     <f7>              `emcsadvntr/deft-dwim'                   Start/quit deft
-    <f8>               Invoke "Neotree"
+    C-<f8>               Invoke "Neotree"
+    <f8>             Invoke treemacs
     <f9>              `imenu-list-smart-toggle'                show function list
     <f12>              Format the current buffer
     C-=                Expand selected region
@@ -70,5 +71,3 @@ neotree-mode-map:
     d                 `neotree-delete-node'                   was `#<byte-compiled lambda>'
     r                 `neotree-rename-node'
     <C-return>        `neotree-change-root'
-
-
