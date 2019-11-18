@@ -42,7 +42,7 @@
 
     (setq neo-window-fixed-size nil)
     (setq neo-fit-to-contents t)
-    (global-set-key [f8] 'neotree-toggle)
+    (global-set-key [C-f8] 'neotree-toggle)
 
     ;; (add-hook 'neo-change-root-hook
     ;;           (lambda () (neo-buffer--with-resizable-window
@@ -120,6 +120,7 @@
         ("M-0"       . treemacs-select-window)
         ("C-x t 1"   . treemacs-delete-other-windows)
         ("C-x t t"   . treemacs)
+        ("<f8>"        . treemacs)
         ("C-x t B"   . treemacs-bookmark)
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)))
