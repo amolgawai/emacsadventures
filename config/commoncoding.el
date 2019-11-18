@@ -124,11 +124,6 @@ With a prefix argument, use comint-mode."
   (interactive)
   (kill-buffer)
   (jump-to-register :magit-fullscreen))
-
-(use-package treemacs-magit
-  :after treemacs magit
-  :ensure t)
-
 ;; Ask password for pushing to remote
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
