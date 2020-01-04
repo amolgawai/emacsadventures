@@ -271,5 +271,13 @@ point reaches the beginning or end of the buffer, stop there."
   :config
   (atomic-chrome-start-server))
 
+;; replace the standard kill, mark with easy kill
+;; ref - https://github.com/leoliu/easy-kill
+(use-package easy-kill
+  :ensure t
+  :config
+  (global-set-key [remap kill-ring-save] #'easy-kill)
+  (global-set-key [remap mark-sexp] #'easy-mark))
+
 (provide 'productivity)
 ;;; productivity.el ends here
