@@ -78,6 +78,30 @@
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
     ))
 
+;; display ivy things in a frame rather than in the minibuffer
+;; ref - https://ladicle.com/post/config/#
+(use-package ivy-posframe
+  :after ivy
+  :ensure t
+  :config
+  (setq ivy-posframe-display-functions-alist
+      '((swiper          . ivy-posframe-display-at-point)
+        (complete-symbol . ivy-posframe-display-at-point)
+        (counsel-M-x     . ivy-posframe-display-at-frame-center)
+        (t               . ivy-posframe-display)))
+  :custom
+  ;; (ivy-display-function #'ivy-posframe-display-at-frame-center)
+  ;; (ivy-posframe-width 130)
+  ;; (ivy-posframe-height 11)
+  (ivy-posframe-parameters
+   '((left-fringe . 5)
+     (right-fringe . 5)))
+  :custom-face
+  (ivy-posframe ((t (:background "#282a36"))))
+  (ivy-posframe-border ((t (:background "#6272a4"))))
+  (ivy-posframe-cursor ((t (:background "#61bfff"))))
+  :hook
+  (ivy-mode . ivy-posframe-enable))
 
 ;; More friendly display transformer for Ivy
 ;; ref - https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-ivy.el
