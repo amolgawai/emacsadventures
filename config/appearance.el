@@ -174,5 +174,16 @@
   (spaceline-all-the-icons-theme)
   (spaceline-all-the-icons--setup-neotree))
 
+;; posframe -  a popup frame (used for ivy and which-key)
+;; ref - https://github.com/waymondo/hemacs/blob/master/init.el
+(use-package posframe
+  :custom
+  (posframe-arghandler #'emcsadvntr-posframe-arghandler)
+  :config
+  (defun emcsadvntr-posframe-arghandler (posframe-buffer arg-name value)
+    (let ((info '(:internal-border-width 12 :min-width 80)))
+      (or (plist-get info arg-name) value))))
+
+
 (provide 'appearance)
 ;;; appearance.el ends here
