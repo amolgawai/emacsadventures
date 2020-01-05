@@ -85,7 +85,7 @@
   :ensure t
   :config
   (setq ivy-posframe-display-functions-alist
-      '((swiper          . ivy-posframe-display-at-point)
+      '((swiper          . ivy-posframe-display-at-frame-center)
         (complete-symbol . ivy-posframe-display-at-point)
         (counsel-M-x     . ivy-posframe-display-at-frame-center)
         (t               . ivy-posframe-display)))

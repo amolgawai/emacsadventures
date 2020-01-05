@@ -78,7 +78,7 @@
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-;;  (load-theme 'doom-one t)
+  ;;  (load-theme 'doom-one t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -154,7 +154,7 @@
   (require 'spaceline-config)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   (spaceline-emacs-theme)
-;;  (spaceline-helm-mode)
+  ;;  (spaceline-helm-mode)
   (use-package info+
     :quelpa (info+ :fetcher github :repo "emacsmirror/info-plus")
     :ensure t
@@ -181,7 +181,7 @@
   (posframe-arghandler #'emcsadvntr-posframe-arghandler)
   :config
   (defun emcsadvntr-posframe-arghandler (posframe-buffer arg-name value)
-    (let ((info '(:internal-border-width 12 :min-width 80)))
+    (let ((info '(:internal-border-width 12 :min-width 80 :background-color "#282a36")))
       (or (plist-get info arg-name) value))))
 
 
