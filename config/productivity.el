@@ -40,6 +40,14 @@
   :diminish which-key-mode
   :config (which-key-mode))
 
+;; display which key in a frame rather than minibuffer
+;; ref - https://github.com/waymondo/hemacs/blob/master/init.el
+(use-package which-key-posframe
+  :config
+  (which-key-posframe-mode)
+  :custom
+  (which-key-posframe-poshandler 'posframe-poshandler-frame-center))
+
 ;; advanced meta -x
 (use-package smex
 ;  :init (smex-initialize)
