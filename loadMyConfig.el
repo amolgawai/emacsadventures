@@ -32,6 +32,7 @@
 (require 'appearance)
 (require 'initWithSaneDefaults)
 (require 'productivity)
+(require 'shackleSetup)
 (require 'ivycounselswiper)
 (require 'commoncoding)
 ;; (require 'helmLikeiDo)
