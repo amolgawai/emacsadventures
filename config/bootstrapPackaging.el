@@ -44,15 +44,17 @@
 ;; don't auto-update on windows as it results in various problems
 (if (eq system-type 'windows-nt)
     (progn
-	'((unless (require 'quelpa nil t)
-         (with-temp-buffer
-           (url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
-           (eval-buffer))))
-	'((if (require 'quelpa nil t)
-           (quelpa-self-upgrade)
-         (with-temp-buffer
-           (url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
-           (eval-buffer))))))
+	  '((unless (require 'quelpa nil t)
+		  (with-temp-buffer
+			(url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
+			(eval-buffer))))))
+(if (eq system-type 'darwin)
+    (progn
+	  '((if (require 'quelpa nil t)
+			(quelpa-self-upgrade)
+		  (with-temp-buffer
+			(url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
+			(eval-buffer))))))
 
 
 ;; use quelpa with use-package
