@@ -40,7 +40,7 @@
   (setq ivy-initial-inputs-alist nil)
   ;; configure regexp engine.
   (setq ivy-re-builders-alist
-	;; allow input not in order
+		;; allow input not in order
         '((t   . ivy--regex-ignore-order))))
 
 (use-package all-the-icons-ivy
@@ -71,6 +71,7 @@
     (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
     (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
     (global-set-key (kbd "C-c g") 'counsel-git)
+    (global-set-key (kbd "C-c i") 'counsel-imenu)
     (global-set-key (kbd "C-c j") 'counsel-git-grep)
     (global-set-key (kbd "C-c k") 'counsel-ag)
     (global-set-key (kbd "C-x l") 'counsel-locate)
@@ -85,10 +86,11 @@
   :ensure t
   :config
   (setq ivy-posframe-display-functions-alist
-      '((swiper          . ivy-posframe-display-at-frame-center)
-        (complete-symbol . ivy-posframe-display-at-point)
-        (counsel-M-x     . ivy-posframe-display-at-frame-center)
-        (t               . ivy-posframe-display)))
+		'((swiper          . ivy-posframe-display-at-frame-center)
+		  (complete-symbol . ivy-posframe-display-at-point)
+		  (counsel-M-x     . ivy-posframe-display-at-frame-center)
+		  (counsel-imenu     . ivy-posframe-display-at-frame-center)
+		  (t               . ivy-posframe-display)))
   :custom
   ;; (ivy-display-function #'ivy-posframe-display-at-frame-center)
   ;; (ivy-posframe-width 130)
