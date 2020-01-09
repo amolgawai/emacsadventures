@@ -4,9 +4,10 @@ Generic:
 --------
     C-x M-c           `restart-emacs'
     <f7>              `emcsadvntr/deft-dwim'                   Start/quit deft
-    C-<f8>               Invoke "Neotree"
-    <f8>             Invoke treemacs
+    C-<f8>             Invoke "Neotree"
+    <f8>               Invoke treemacs
     <f9>              `imenu-list-smart-toggle'                show function list
+    C-c i              counsel-imenu                            navigate function list
     <f12>              Format the current buffer
     C-=                Expand selected region
     C-'               `avy-goto-char-2'
@@ -18,7 +19,7 @@ Generic:
     C-c b             `org-iswitchb'
     C-c c             `org-capture'
     C-c l             `org-store-link'
-    C-c W             get summary from wikipedia
+    C-c W              get summary from wikipedia
     C-x g             `magit-status'
     C-x t t           `treemacs'
     M-0               `treemacs-select-window'                was `digit-argument'
