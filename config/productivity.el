@@ -43,14 +43,16 @@
 ;; display which key in a frame rather than minibuffer
 ;; ref - https://github.com/waymondo/hemacs/blob/master/init.el
 (use-package which-key-posframe
+  :ensure t
+  :after which-key
   :config
-  (which-key-posframe-mode)
+  (which-key-posframe-mode t)
   :custom
   (which-key-posframe-poshandler 'posframe-poshandler-frame-center))
 
 ;; advanced meta -x
 (use-package smex
-;  :init (smex-initialize)
+                                        ;  :init (smex-initialize)
   :bind ("M-x" . smex))
 
 ;; reformat buffer
@@ -275,7 +277,7 @@ point reaches the beginning or end of the buffer, stop there."
   (setq atomic-chrome-default-major-mode 'markdown-mode)
   (setq atomic-chrome-extension-type-list '(atomic-chrome))
   (setq atomic-chrome-url-major-mode-alist
-		'(("github\\.com" . gfm-mode)))
+        '(("github\\.com" . gfm-mode)))
   :config
   (atomic-chrome-start-server))
 
