@@ -289,5 +289,13 @@ point reaches the beginning or end of the buffer, stop there."
   (global-set-key [remap kill-ring-save] #'easy-kill)
   (global-set-key [remap mark-sexp] #'easy-mark))
 
+;; homebrew on macos
+(use-package homebrew-mode
+  :if (memq window-system '(mac ns))
+  :quelpa (homebrew-mode :fetcher github :repo "dunn/homebrew-mode")
+  :ensure t
+  :config
+  (global-homebrew-mode))
+
 (provide 'productivity)
 ;;; productivity.el ends here
