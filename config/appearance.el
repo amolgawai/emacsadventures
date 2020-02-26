@@ -45,7 +45,8 @@
 
 ;; dracula theme
 (use-package dracula-theme
-  :init (load-theme 'dracula t)
+  :defer t
+;;  :init (load-theme 'dracula t)
   :ensure t)
 
 ;; spacemacs
@@ -72,13 +73,13 @@
 
 ;; doom themes - https://github.com/hlissner/emacs-doom-themes
 (use-package doom-themes
-  :defer t
+;;  :defer t
   :ensure t
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;;  (load-theme 'doom-one t)
+  (load-theme 'doom-one t)
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
