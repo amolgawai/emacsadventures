@@ -1,6 +1,9 @@
 emacsadventures
 ===============
 
+Introduction
+------------
+
 This is my adventure of setting up emacs for everyday use. I was inspired by [Spacemacs](https://github.com/syl20bnr/spacemacs) and [super-emacs](https://github.com/myTerminal/super-emacs).
 My goals for the configuration are
 * Asthetic - an eye pleasing emacs
@@ -41,7 +44,7 @@ You can customize the configuration the usual emacs way.
 
 
 User Guide [Not started]
-==========
+-------------
 [Keybinding Quickref](/keybindings.md) - This is loaded in every session - search for buffer named "*emacsadventures-keyref*"
 
 Please find the user guide at [User Guide](/userguide.md)
@@ -60,9 +63,10 @@ Thank You.
 Further Research
 -----------------
 Furhter research for improvements
-* [Replace Neotree with Treemacs](https://github.com/Alexander-Miller/treemacs)
+* ~~[Replace Neotree with Treemacs](https://github.com/Alexander-Miller/treemacs)~~
 * [emacs dashboard](https://github.com/rakanalh/emacs-dashboard)
 * [page-break-lines](https://github.com/purcell/page-break-lines)
 * [Fill-Column-Indicator](https://github.com/alpaker/Fill-Column-Indicator)
 * [taskpaper-mode](https://github.com/saf-dmitry/taskpaper-mode)
-* [buffer tabs - nerdtab](https://github.com/casouri/nerdtab)
+* ~~[buffer tabs - nerdtab](https://github.com/casouri/nerdtab)~~
+* [Experiment with Straight.el package manager](https://github.com/raxod502/straight.el)
