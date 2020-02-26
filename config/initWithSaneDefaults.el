@@ -101,6 +101,12 @@
 ;; (global-linum-mode t)
 (global-display-line-numbers-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(use-package nlinum-relative
+  :ensure t
+  :config
+  ;; something else you want
+  (nlinum-relative-setup-evil)
+  (add-hook 'prog-mode-hook 'nlinum-relative-mode))
 ;;(diminish 'visual-line-mode)
 
 (if (display-graphic-p)
