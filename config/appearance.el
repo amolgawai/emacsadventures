@@ -147,34 +147,52 @@
 ;; Spaceline - a modified powerline from spacemacs
 ;; ref - https://github.com/TheBB/spaceline
 ;; config ref - https://writequit.org/eos/eos-appearance.html
-(use-package spaceline
-  :ensure t
-  :init
-  (setq powerline-default-separator 'arrow
-        spaceline-minor-modes-separator " ")
-  (require 'spaceline-config)
-  (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
-  (spaceline-emacs-theme)
-  ;;  (spaceline-helm-mode)
-  (use-package info+
-    :quelpa (info+ :fetcher github :repo "emacsmirror/info-plus")
-    :ensure t
-    :init
-    (spaceline-info-mode))
-  (use-package fancy-battery
-    :ensure t
-    :init
-    (add-hook 'after-init-hook #'fancy-battery-mode)
-    (display-battery-mode -1)))
+;; (use-package spaceline
+;;   :ensure t
+;;   :init
+;;   (setq powerline-default-separator 'arrow
+;;         spaceline-minor-modes-separator " ")
+;;   (require 'spaceline-config)
+;;   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
+;;   (spaceline-emacs-theme)
+;;   ;;  (spaceline-helm-mode)
+;;   (use-package info+
+;;     :quelpa (info+ :fetcher github :repo "emacsmirror/info-plus")
+;;     :ensure t
+;;     :init
+;;     (spaceline-info-mode))
+;;   (use-package fancy-battery
+;;     :ensure t
+;;     :init
+;;     (add-hook 'after-init-hook #'fancy-battery-mode)
+;;     (display-battery-mode -1)))
 
-(use-package spaceline-all-the-icons
-  :after spaceline
+;; (use-package spaceline-all-the-icons
+;;   :after spaceline
+;;   :ensure t
+;;   :config
+;;   (setq spaceline-all-the-icons-separator-type 'arrow)
+;;   (spaceline-all-the-icons-theme)
+;;   (spaceline-all-the-icons--setup-neotree))
+
+;; doom-modeline, clean and beautiful modeline
+;; ref - https://github.com/seagle0128/doom-modeline#install
+(use-package doom-modeline
   :ensure t
+  :init (doom-modeline-mode 1)
   :config
-  (setq spaceline-all-the-icons-separator-type 'arrow)
-  (spaceline-all-the-icons-theme)
-  (spaceline-all-the-icons--setup-neotree))
+  ;; If non-nil, a word count will be added to the selection-info modeline segment.
+  (setq doom-modeline-enable-word-count nil)
 
+  ;; Major modes in which to display word count continuously.
+  ;; Also applies to any derived modes. Respects `doom-modeline-enable-word-count'.
+  ;; If it brings the sluggish issue, disable `doom-modeline-enable-word-count' or
+  ;; remove the modes from `doom-modeline-continuous-word-count-modes'.
+  (setq doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode))
+  ;; Whether display the `lsp' state. Non-nil to display in the mode-line.
+  (setq doom-modeline-lsp t)
+  ;; Whether display the minor modes in the mode-line.
+  (setq doom-modeline-minor-modes nil))
 ;; posframe -  a popup frame (used for ivy and which-key)
 ;; ref - https://github.com/waymondo/hemacs/blob/master/init.el
 (use-package posframe
