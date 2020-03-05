@@ -100,6 +100,7 @@
 (global-visual-line-mode t)
 ;; (global-linum-mode t)
 (global-display-line-numbers-mode)
+(setq display-line-numbers 'relative)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (use-package nlinum-relative
   :ensure t
