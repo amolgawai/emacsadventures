@@ -142,9 +142,6 @@
   :after treemacs magit
   :ensure t)
 
-(use-package ranger
-  :ensure t
-  :bind* ("C-x C-d" . ranger))
 
 ;; dired config
 ;; ref - https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-dired.el
