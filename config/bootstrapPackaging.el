@@ -42,20 +42,11 @@
 
 ;; bootstrap quelpa
 ;; don't auto-update on windows as it results in various problems
-(if (eq system-type 'windows-nt)
-    (progn
-	  '((unless (require 'quelpa nil t)
-		  (with-temp-buffer
-			(url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
-			(eval-buffer))))))
-(if (eq system-type 'darwin)
-    (progn
-	  '((if (require 'quelpa nil t)
-			(quelpa-self-upgrade)
-		  (with-temp-buffer
-			(url-insert-file-contents "https://framagit.org/steckerhalter/quelpa/raw/master/bootstrap.el")
-			(eval-buffer))))))
-
+(unless (package-installed-p 'quelpa)
+    (with-temp-buffer
+      (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+      (eval-buffer)
+      (quelpa-self-upgrade)))
 
 ;; use quelpa with use-package
 (quelpa
