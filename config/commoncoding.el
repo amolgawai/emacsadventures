@@ -139,12 +139,30 @@ With a prefix argument, use comint-mode."
 ;; snippets
 (use-package yasnippet
   :ensure t
-  :diminish
+  :diminish yas-minor-mode
   :config
-  (progn
-    (yas-global-mode)
-    (add-to-list 'yas-snippet-dirs
-                 "~/.emacs.d/snippets")))
+
+  (use-package yasnippet-snippets
+    :ensure t)
+
+  (yas-global-mode 1)
+  )
+;; (use-package yasnippet                  ; Snippets
+;;   :ensure t
+;;   :diminish
+;;   :config
+;;   (validate-setq
+;;    yas-verbosity 1                      ; No need to be so verbose
+;;    yas-wrap-around-region t)
+
+;;   (with-eval-after-load 'yasnippet
+;;     (validate-setq yas-snippet-dirs '(yasnippet-snippets-dir)))
+
+;;   (yas-reload-all)
+;;   (yas-global-mode))
+
+;; (use-package yasnippet-snippets         ; Collection of snippets
+;;    :ensure t)
 
 ;; syntax checking with flycheck
 (use-package flycheck
