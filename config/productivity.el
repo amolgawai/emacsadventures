@@ -185,6 +185,11 @@
               (unless (eq ibuffer-sorting-mode 'alphabetic)
                 (ibuffer-do-sort-by-alphabetic)))))
 
+;; projectile ripgrep
+(use-package projectile-ripgrep
+  :after projectile
+  :config
+  (add-hook 'ripgrep-search-mode-hook 'hl-line-mode))
                                         ; flashes the cursor's line when you scroll
 (use-package beacon
   :ensure t
