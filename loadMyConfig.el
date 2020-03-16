@@ -31,6 +31,7 @@
 (require 'bootstrapPackaging)
 (require 'appearance)
 (require 'initWithSaneDefaults)
+(require 'evilConfig)
 (require 'productivity)
 (require 'shackleSetup)
 (require 'ivycounselswiper)
