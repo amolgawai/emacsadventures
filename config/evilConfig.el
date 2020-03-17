@@ -20,7 +20,8 @@
 
 ;;; Commentary:
 
-;;
+;; Evil provides excellent way to emulate Vim modes.  This is to cobnfigure
+;; evil and other associated packages.
 
 ;;; Code:
 
