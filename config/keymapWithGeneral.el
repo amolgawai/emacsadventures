@@ -72,7 +72,8 @@
 	 "tt"  '(treemacs :which-key "toggle treemacs")
 	 "tn"  '(neotree-toggle :which-key "toggle neotree")
 	 "tf"  '(imenu-list-smart-toggle :which-key "function sidebar")
-	 )))
+	 ))
+  (general-nmap "SPC h" (general-simulate-key "C-h" :which-key "help")))
   ;; (general-nmap "SPC m" (general-simulate-key "," :which-key "major mode")))
 
 
