@@ -37,6 +37,9 @@
 ;; which-key
 (use-package which-key
   :ensure t
+  :init
+  (setq which-key-separator " ")
+  (setq which-key-prefix-prefix "+")
   :diminish which-key-mode
   :config (which-key-mode))
 

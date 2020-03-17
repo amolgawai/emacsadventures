@@ -32,6 +32,7 @@
 (require 'appearance)
 (require 'initWithSaneDefaults)
 (require 'evilConfig)
+(require 'keymapWithGeneral)
 (require 'productivity)
 (require 'shackleSetup)
 (require 'ivycounselswiper)

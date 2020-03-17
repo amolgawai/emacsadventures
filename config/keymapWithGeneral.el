@@ -1,0 +1,66 @@
+;;; keymapWithGeneral.el --- custom keymapping with general.el  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2020  Amol Gawai
+
+;; Author: Amol Gawai <amol@doesnot.exist>
+;; Keywords:
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; general.el provides a great way to add keybindings.  It provides many ways
+;; to add keymaps consistently in the same way use-package helps package management.
+;; Additionally, general.el helps quite a lot with implementing Vim like keymaps
+;; Refs -
+;; https://github.com/noctuid/general.el
+;; https://dev.to/huytd/emacs-from-scratch-1cg6
+
+;;; Code:
+
+(use-package general
+  :ensure t
+  :config (general-define-key
+  :states '(normal visual insert emacs)
+  :prefix "SPC"
+  :non-normal-prefix "M-SPC"
+  ;; general
+  "/"   '(helm-projectile-rg :which-key "ripgrep")
+  "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
+  "SPC" '(helm-M-x :which-key "M-x")
+  ;; projectile
+  "pf"  '(helm-projectile-find-file :which-key "find files")
+  "pp"  '(helm-projectile-switch-project :which-key "switch project")
+  "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
+  "pr"  '(helm-show-kill-ring :which-key "show kill ring")
+  ;; Buffers
+  "bb"  '(ivy-switch-buffer :which-key "buffers list")
+  "bs"  '(save-buffer :which-key "save buffer")
+  ;; Window
+  "wl"  '(windmove-right :which-key "move right")
+  "wh"  '(windmove-left :which-key "move left")
+  "wk"  '(windmove-up :which-key "move up")
+  "wj"  '(windmove-down :which-key "move bottom")
+  "w/"  '(split-window-right :which-key "split right")
+  "w-"  '(split-window-below :which-key "split bottom")
+  "wx"  '(delete-window :which-key "delete window")
+  "qz"  '(delete-frame :which-key "delete frame")
+  "qq"  '(kill-emacs :which-key "quit")
+  ;; NeoTree
+  "ft"  '(neotree-toggle :which-key "toggle neotree")
+))
+
+
+(provide 'keymapWithGeneral)
+;;; keymapWithGeneral.el ends here
