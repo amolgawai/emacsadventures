@@ -1,4 +1,4 @@
-;;; keymapWithGeneral.el --- custom keymapping with general.el  -*- lexical-binding: t; -*-
+;; keymapWithGeneral.el --- custom keymapping with general.el  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2020  Amol Gawai
 
@@ -31,35 +31,49 @@
 
 (use-package general
   :ensure t
-  :config (general-define-key
-  :states '(normal visual insert emacs)
-  :prefix "SPC"
-  :non-normal-prefix "M-SPC"
-  ;; general
-  "/"   '(helm-projectile-rg :which-key "ripgrep")
-  "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
-  "SPC" '(helm-M-x :which-key "M-x")
-  ;; projectile
-  "pf"  '(helm-projectile-find-file :which-key "find files")
-  "pp"  '(helm-projectile-switch-project :which-key "switch project")
-  "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
-  "pr"  '(helm-show-kill-ring :which-key "show kill ring")
-  ;; Buffers
-  "bb"  '(ivy-switch-buffer :which-key "buffers list")
-  "bs"  '(save-buffer :which-key "save buffer")
-  ;; Window
-  "wl"  '(windmove-right :which-key "move right")
-  "wh"  '(windmove-left :which-key "move left")
-  "wk"  '(windmove-up :which-key "move up")
-  "wj"  '(windmove-down :which-key "move bottom")
-  "w/"  '(split-window-right :which-key "split right")
-  "w-"  '(split-window-below :which-key "split bottom")
-  "wx"  '(delete-window :which-key "delete window")
-  "qz"  '(delete-frame :which-key "delete frame")
-  "qq"  '(kill-emacs :which-key "quit")
-  ;; NeoTree
-  "ft"  '(neotree-toggle :which-key "toggle neotree")
-))
+  :commands (general-define-key general-override-mode general-evil-setup general--simulate-keys)
+  :config
+  (progn
+	(general-evil-setup)
+	(general-define-key
+	 :states '(normal visual insert emacs)
+	 :prefix "SPC"
+	 :non-normal-prefix "M-SPC"
+	 ;; general
+	 "/"   '(helm-projectile-rg :which-key "ripgrep")
+	 "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
+	 "SPC" '(helm-M-x :which-key "M-x")
+	 "m"   '(magit-status :which-key "Magit")
+	 ;; projectile
+	 "p"    '(:ignore t :which-key "projectile")
+	 "pc"   '(:keymap projectile-command-map :which-key "commands")
+	 "pf"  '(helm-projectile-find-file :which-key "find files")
+	 "pp"  '(helm-projectile-switch-project :which-key "switch project")
+	 "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
+	 "pr"  '(helm-show-kill-ring :which-key "show kill ring")
+	 ;; Buffers
+	 "b"    '(:ignore t :which-key "buffer")
+	 "b."   '(counsel-projectile-switch-to-buffer :which-key "project buffer list")
+	 "bb"  '(ivy-switch-buffer :which-key "buffers list")
+	 "bs"  '(save-buffer :which-key "save buffer")
+	 ;; Window
+	 "w"   '(:ignore t :which-key "window")
+	 "wl"  '(windmove-right :which-key "move right")
+	 "wh"  '(windmove-left :which-key "move left")
+	 "wk"  '(windmove-up :which-key "move up")
+	 "wj"  '(windmove-down :which-key "move bottom")
+	 "w/"  '(split-window-right :which-key "split right")
+	 "w-"  '(split-window-below :which-key "split bottom")
+	 "wx"  '(delete-window :which-key "delete window")
+	 "qz"  '(delete-frame :which-key "delete frame")
+	 "qq"  '(kill-emacs :which-key "quit")
+	 ;; toggles
+	 "t"   '(:ignore t :which-key "toggle")
+	 "tt"  '(treemacs :which-key "toggle treemacs")
+	 "tn"  '(neotree-toggle :which-key "toggle neotree")
+	 "tf"  '(imenu-list-smart-toggle :which-key "function sidebar")
+	 )))
+  ;; (general-nmap "SPC m" (general-simulate-key "," :which-key "major mode")))
 
 
 (provide 'keymapWithGeneral)
