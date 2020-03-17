@@ -64,7 +64,10 @@
 	 "wj"  '(windmove-down :which-key "move bottom")
 	 "w/"  '(split-window-right :which-key "split right")
 	 "w-"  '(split-window-below :which-key "split bottom")
-	 "wx"  '(delete-window :which-key "delete window")
+	 "wd"  '(delete-window :which-key "delete window")
+	 "wx"  '(delete-other-windows :which-key "delete other windows")
+	 ;; quit
+	 "q"   '(:ignore t :which-key "quit")
 	 "qz"  '(delete-frame :which-key "delete frame")
 	 "qq"  '(kill-emacs :which-key "quit")
 	 ;; toggles
