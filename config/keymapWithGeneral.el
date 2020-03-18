@@ -41,10 +41,10 @@
 	 :prefix "SPC"
 	 :non-normal-prefix "M-SPC"
 	 ;; general
-	 "/"   '(helm-projectile-rg :which-key "ripgrep")
+	 "/"   '(projectile-ripgrep :which-key "ripgrep")
 	 "."   '(counsel-find-file :which-key "open file")
 	 "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
-	 "SPC" '(helm-M-x :which-key "M-x")
+	 "SPC" '(counsel-M-x :which-key "M-x")
 	 "m"   '(magit-status :which-key "Magit")
 	 ;; Buffers
 	 "b"    '(:ignore t :which-key "buffer")
