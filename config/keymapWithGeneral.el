@@ -29,6 +29,7 @@
 
 ;;; Code:
 
+;; FIXME - Make this general and remove package specific things to respective use-package
 (use-package general
   :ensure t
   :commands (general-define-key general-override-mode general-evil-setup general--simulate-keys)

@@ -27,12 +27,12 @@
 
 ;; add the directory to load path
 (add-to-list 'load-path (locate-user-emacs-file "emacsadventures/config"))
-                                        ;Load configuration files
+
+;;Load configuration files
 (require 'bootstrapPackaging)
 (require 'appearance)
 (require 'initWithSaneDefaults)
 (require 'evilConfig)
-(require 'keymapWithGeneral)
 (require 'productivity)
 (require 'shackleSetup)
 (require 'ivycounselswiper)
@@ -46,6 +46,7 @@
 (require 'pythonWithElpy)
 (require 'golang)
 (require 'rust)
+(require 'keymapWithGeneral)
 
 ;; Load private config
 (defun my-load-all-in-directory (dir)
