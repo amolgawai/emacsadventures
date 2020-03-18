@@ -54,10 +54,9 @@
 	 ;; projectile
 	 "p"    '(:ignore t :which-key "projectile")
 	 "pc"   '(:keymap projectile-command-map :which-key "commands")
-	 "pf"  '(helm-projectile-find-file :which-key "find files")
-	 "pp"  '(helm-projectile-switch-project :which-key "switch project")
-	 "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
-	 "pr"  '(helm-show-kill-ring :which-key "show kill ring")
+	 "pf"  '(counsel-projectile-find-file :which-key "find files")
+	 "pp"  '(counsel-projectile-switch-project :which-key "switch project")
+	 "pb"  '(counsel-projectile-switch-to-buffer :which-key "switch buffer")
 	 ;; search
 	 "s"   '(:ignore t :which-key "search")
 	 "sf"  '(counsel-imenu :which-key "functions")
