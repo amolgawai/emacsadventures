@@ -180,6 +180,12 @@ With a prefix argument, use comint-mode."
         company-tooltip-align-annotations t)
   (global-company-mode 1))
 
+;; Highlight todos, fixmes etc.
+(use-package hl-todo
+  :ensure t
+  :config
+  (global-hl-todo-mode))
+
 ;; dash documentation
 ;; ref - https://github.com/tuhdo/emacs-proglang/blob/master/custom/setup-helm.el
 (use-package helm-dash
