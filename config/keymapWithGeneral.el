@@ -41,6 +41,7 @@
 	 :non-normal-prefix "M-SPC"
 	 ;; general
 	 "/"   '(helm-projectile-rg :which-key "ripgrep")
+	 "."   '(counsel-find-file :which-key "open file")
 	 "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
 	 "SPC" '(helm-M-x :which-key "M-x")
 	 "m"   '(magit-status :which-key "Magit")
@@ -70,6 +71,7 @@
 	 "q"   '(:ignore t :which-key "quit")
 	 "qz"  '(delete-frame :which-key "delete frame")
 	 "qq"  '(kill-emacs :which-key "quit")
+	 "qr"  '(restart-emacs :which-key "restart")
 	 ;; toggles
 	 "t"   '(:ignore t :which-key "toggle")
 	 "tt"  '(treemacs :which-key "toggle treemacs")
