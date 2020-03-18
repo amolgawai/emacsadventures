@@ -68,8 +68,8 @@
 	 "qr"  '(restart-emacs :which-key "restart")
 	 ;; toggles
 	 "t"   '(:ignore t :which-key "toggle")
-	 "tt"  '(treemacs :which-key "toggle treemacs")
-	 "tn"  '(neotree-toggle :which-key "toggle neotree")
+	 "tt"  '(treemacs :which-key "treemacs")
+	 "tn"  '(neotree-toggle :which-key "neotree")
 	 "tf"  '(imenu-list-smart-toggle :which-key "function sidebar")
 	 "ts"  '(eshell-toggle :which-key "shell")
 	 ;; Window
