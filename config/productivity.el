@@ -163,9 +163,10 @@
   :diminish smartparens-mode)
 
 ;; workspaces
-(use-package perspective
-  :config
-  (persp-mode))
+;; (use-package perspective
+;;   :ensure t
+;;   :config
+;;   (persp-mode))
 
 ;; projectile
 (use-package projectile
@@ -194,8 +195,10 @@
               (unless (eq ibuffer-sorting-mode 'alphabetic)
                 (ibuffer-do-sort-by-alphabetic)))))
 
-(use-package persp-projectile
-  :ensure t)
+;; (use-package persp-projectile
+;;   :ensure t
+;;   :config
+;;   (persp-mode))
 
 ;; projectile ripgrep
 (use-package projectile-ripgrep
