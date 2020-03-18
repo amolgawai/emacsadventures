@@ -142,6 +142,11 @@
   :after treemacs magit
   :ensure t)
 
+(use-package treemacs-persp
+  :after treemacs persp-mode
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
+
 (use-package ranger
   :ensure t
   :bind* ("C-x C-d" . ranger))
