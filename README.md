@@ -43,7 +43,7 @@ You can customize the configuration the usual emacs way.
 * The personal configuration is loaded as a last step
 
 
-User Guide [Not started]
+User Guide [Needs work]
 -------------
 [Keybinding Quickref](/keybindings.md) - This is loaded in every session - search for buffer named "*emacsadventures-keyref*"
 

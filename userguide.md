@@ -6,6 +6,7 @@ Moved from the README
 =====================
 Quick Start
 -----
+The emacs starts now in EVIL (Vim emulation) mode. To disable the same press C-z.
 Here are some hints about the features
 * --Invoke the directory explorer "Neotree" - `F8`--
 * Invoke [Treemacs - a tree layout file explorer for Emacs](https://github.com/Alexander-Miller/treemacs) `C-x t t`
