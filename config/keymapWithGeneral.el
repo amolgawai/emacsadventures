@@ -48,9 +48,10 @@
 	 "m"   '(magit-status :which-key "Magit")
 	 ;; Buffers
 	 "b"    '(:ignore t :which-key "buffer")
-	 "b."   '(counsel-projectile-switch-to-buffer :which-key "project buffer list")
-	 "bb"   '(ivy-switch-buffer :which-key "switch")
-	 "bl"   '(list-buffers :which-key "list")"bs"   '(save-buffer :which-key "save")
+	 "bb"   '(counsel-projectile-switch-to-buffer :which-key "project buffer list")
+	 "b."   '(ivy-switch-buffer :which-key "switch")
+	 "bl"   '(list-buffers :which-key "list")
+	 "bs"   '(save-buffer :which-key "save")
 	 ;; projectile
 	 "p"    '(:ignore t :which-key "projectile")
 	 "pc"   '(:keymap projectile-command-map :which-key "commands")
