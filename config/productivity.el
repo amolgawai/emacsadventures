@@ -41,7 +41,9 @@
   (setq which-key-separator " ")
   (setq which-key-prefix-prefix "+")
   :diminish which-key-mode
-  :config (which-key-mode))
+  :config
+  (which-key-setup-side-window-right-bottom)
+  (which-key-mode))
 
 ;; display which key in a frame rather than minibuffer
 ;; ref - https://github.com/waymondo/hemacs/blob/master/init.el
