@@ -47,13 +47,13 @@
 
 ;; display which key in a frame rather than minibuffer
 ;; ref - https://github.com/waymondo/hemacs/blob/master/init.el
-(use-package which-key-posframe
-  :ensure t
-  :after which-key
-  :config
-  (which-key-posframe-mode t)
-  :custom
-  (which-key-posframe-poshandler 'posframe-poshandler-frame-center))
+;; (use-package which-key-posframe
+;;   :ensure t
+;;   :after which-key
+;;   :config
+;;   (which-key-posframe-mode t)
+;;   :custom
+;;   (which-key-posframe-poshandler 'posframe-poshandler-frame-center))
 
 ;; advanced meta -x
 (use-package smex
