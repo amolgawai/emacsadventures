@@ -52,9 +52,14 @@
 	 "b."   '(ivy-switch-buffer :which-key "switch")
 	 "bl"   '(list-buffers :which-key "list")
 	 "bs"   '(save-buffer :which-key "save")
+	 ;; eval
+	 "e"    '(:ignore t :which-key "evaluate")
+	 "ee"   '(eval-last-sexp :which-key "last expression")
+	 "eb"   '(eval-buffer :which-key "buffer")
 	 ;; Frames
 	 "f"    '(:ignore t :which-key "frames")
-	 "fn"   '(find-file-other-frame "open file -> new frame")
+	 "fn"   '(find-file-other-frame :which-key "open file -> new frame")
+	 "fo"   '(other-frame :which-key "other frame")
 	 ;; projectile
 	 "p"    '(:ignore t :which-key "projectile")
 	 "pc"   '(:keymap projectile-command-map :which-key "commands")
