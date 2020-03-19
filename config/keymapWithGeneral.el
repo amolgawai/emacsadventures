@@ -52,6 +52,9 @@
 	 "b."   '(ivy-switch-buffer :which-key "switch")
 	 "bl"   '(list-buffers :which-key "list")
 	 "bs"   '(save-buffer :which-key "save")
+	 ;; Frames
+	 "f"    '(:ignore t :which-key "frames")
+	 "fn"   '(find-file-other-frame "open file -> new frame")
 	 ;; projectile
 	 "p"    '(:ignore t :which-key "projectile")
 	 "pc"   '(:keymap projectile-command-map :which-key "commands")
