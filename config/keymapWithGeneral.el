@@ -51,6 +51,7 @@
 	 "bb"   '(counsel-projectile-switch-to-buffer :which-key "project buffer list")
 	 "b."   '(ivy-switch-buffer :which-key "switch")
 	 "bl"   '(list-buffers :which-key "list")
+	 "bk"   '(kill-buffer :which-key "kill")
 	 "bs"   '(save-buffer :which-key "save")
 	 ;; eval
 	 "e"    '(:ignore t :which-key "evaluate")
@@ -60,6 +61,7 @@
 	 "f"    '(:ignore t :which-key "frames")
 	 "fn"   '(find-file-other-frame :which-key "open file -> new frame")
 	 "fo"   '(other-frame :which-key "other frame")
+	 "fd"   '(delete-frame :which-key "delete")
 	 ;; projectile
 	 "p"    '(:ignore t :which-key "projectile")
 	 "pc"   '(:keymap projectile-command-map :which-key "commands")
@@ -92,7 +94,7 @@
 	 "wx"  '(delete-other-windows :which-key "delete other windows")
 	 ))
   (general-nmap "SPC h" (general-simulate-key "C-h" :which-key "help")))
-  ;; (general-nmap "SPC m" (general-simulate-key "," :which-key "major mode")))
+;; (general-nmap "SPC m" (general-simulate-key "," :which-key "major mode")))
 
 
 (provide 'keymapWithGeneral)
