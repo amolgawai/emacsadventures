@@ -42,7 +42,7 @@
   (setq which-key-prefix-prefix "+")
   :diminish which-key-mode
   :config
-  (which-key-setup-side-window-right-bottom)
+  ;; (which-key-setup-side-window-right-bottom)
   (which-key-mode))
 
 ;; display which key in a frame rather than minibuffer
