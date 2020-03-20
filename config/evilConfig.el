@@ -52,6 +52,23 @@
   :diminish
   :config (evil-commentary-mode +1))
 
+;; highlight the editing
+(use-package evil-goggles
+  :ensure t
+  :config
+  (evil-goggles-mode)
+
+  ;; optionally use diff-mode's faces; as a result, deleted text
+  ;; will be highlighed with `diff-removed` face which is typically
+  ;; some red color (as defined by the color theme)
+  ;; other faces such as `diff-added` will be used for other actions
+  (evil-goggles-use-diff-faces))
+
+;; align operators - adds gl and gL
+(use-package evil-lion
+  :ensure t
+  :config
+  (evil-lion-mode))
 
 (provide 'evilConfig)
 ;;; evilConfig.el ends here
