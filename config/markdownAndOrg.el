@@ -167,19 +167,38 @@
           (require 'org-ac)
           (org-ac/config-default)))
 
+
+(use-package org-journal
+  :after org
+  :custom
+  (org-journal-dir (concat (file-name-as-directory org-directory) "journal"))
+  (org-journal-file-format "%Y/%m/%Y%m%d")
+  (org-journal-date-format "%A, %Y-%m-%d")
+  ;; (org-journal-encrypt-journal t)
+  ;; (org-journal-enable-encryption nil)
+  (org-journal-enable-agenda-integration t)
+  :bind
+  ("C-x j" . org-journal-new-entry))
+
+
 ;; deft for managing notes
 (use-package deft
   :ensure t
+  :after org
   :bind ("<f7>" . emcsadvntr/deft-dwim)
+  :custom
+  (deft-directory org-directory)
+  (deft-recursive t)
+  (deft-use-filename-as-title nil)
+  (deft-use-filter-string-for-filename t)
+  (deft-file-naming-rules '((noslash . "-")
+                            (nospace . "-")
+                            (case-fn . downcase)))
+  (deft-org-mode-title-prefix t)
+  (deft-extensions '("org" "txt" "text" "md" "markdown" "org.gpg"))
+  (deft-default-extension "org")
   :config
   (progn
-    (setq deft-directory "~/MyOrganiser")
-    (setq deft-recursive t)
-    (setq deft-use-filename-as-title nil)
-    (setq deft-use-filter-string-for-filename t)
-    (setq deft-file-naming-rules '((noslash . "-")
-                                   (nospace . "-")
-                                   (case-fn . downcase)))
     ;; better deft invoke and quite
     ;; ref - https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-deft.el
     (defvar emcsadvntr/pre-deft-window-configuration nil

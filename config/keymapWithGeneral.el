@@ -39,7 +39,7 @@
 	(general-define-key
 	 :states '(normal visual insert emacs)
 	 :prefix "SPC"
-	 :non-normal-prefix "M-SPC"
+	 :non-normal-prefix "C-SPC"
 	 ;; general
 	 "/"         '(projectile-ripgrep :which-key "ripgrep")
 	 "."         '(counsel-find-file :which-key "open file")
@@ -64,6 +64,10 @@
 	 "fn"        '(find-file-other-frame :which-key "open file -> new frame")
 	 "fo"        '(other-frame :which-key "other frame")
 	 "fd"        '(delete-frame :which-key "delete")
+	 ;; notes
+	 "n"         '(:ignore t :which-key "notes")
+	 "nd"        '(emcsadvntr/deft-dwim :which-key "deft")
+	 "nj"        '(org-journal-new-entry :which-key "journal entry")
 	 ;; projectile
 	 "p"         '(:ignore t :which-key "projectile")
 	 "pc"        '(:keymap projectile-command-map :which-key "commands")
