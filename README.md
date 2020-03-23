@@ -10,6 +10,8 @@ My goals for the configuration are
 * Fast and productive
 * emacsy - keep emacs behavior and add only when necessary
 
+After I started learning Vim, I have switched to [EVIL mode](https://github.com/emacs-evil/evil). After this I (re) discovered [doom-emacs](https://github.com/hlissner/doom-emacs) which is almost on the same lines as my needs but is a much more advanced emacs "distribution". I am currently evaluating the same for long term usage.
+
 Screenshots
 -----------
 
