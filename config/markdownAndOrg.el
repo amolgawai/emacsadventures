@@ -167,7 +167,6 @@
           (require 'org-ac)
           (org-ac/config-default)))
 
-
 (use-package org-journal
   :after org
   :custom
