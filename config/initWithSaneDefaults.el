@@ -27,12 +27,11 @@
 (setq user-full-name "Amol Gawai"
       user-mail-address "amol@doesnot.exist")
 
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory)
+      ;; Keep all backup and auto-save files in one directory
+      backup-directory-alist '(("." . "~/.emacs.d/backups"))
+      auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 (load custom-file 'noerror)
-;; Keep all backup and auto-save files in one directory
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
-
 
 (setq inhibit-splash-screen t
       inhibit-startup-screen t
@@ -50,26 +49,24 @@
 ;;; keyboard config start
 ;; mac specifi key setup
 (when (eq system-type 'darwin)
-  (setq mac-right-option-modifier 'none)
-  ;; set keys for Apple keyboard, for emacs in OS X
-  (setq mac-command-modifier 'meta) ; make cmd key do Meta
-  (setq mac-option-modifier 'super) ; make opt key do Super
-  (setq mac-control-modifier 'control) ; make Control key do Control
-  (setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
+  (setq mac-right-option-modifier 'none
+        ;; set keys for Apple keyboard, for emacs in OS X
+        mac-command-modifier 'meta ; make cmd key do Meta
+        mac-option-modifier 'super ; make opt key do Super
+        mac-control-modifier 'control ; make Control key do Control
+        ns-function-modifier 'hyper)  ; make Fn key do Hyper
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
 
 ;; super and hyper keys for modern keyboard
 ;; ref - http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
 ;; make PC keyboard's Win key or other to type Super or Hyper, for emacs running on Windows.
-(setq w32-pass-lwindow-to-system nil)
-(setq w32-lwindow-modifier 'super) ; Left Windows key
-
-(setq w32-pass-rwindow-to-system nil)
-(setq w32-rwindow-modifier 'super) ; Right Windows key
-
-(setq w32-pass-apps-to-system nil)
-(setq w32-apps-modifier 'hyper) ; Menu/App key
+(setq w32-pass-lwindow-to-system nil
+      w32-lwindow-modifier 'super ; Left Windows key
+      w32-pass-rwindow-to-system nil
+      w32-rwindow-modifier 'super ; Right Windows key
+      w32-pass-apps-to-system nil
+      w32-apps-modifier 'hyper) ; Menu/App key
 
 
 ;;; keyboard config end
@@ -117,8 +114,8 @@
 (tooltip-mode -1)
 
 ;; split the window vertically on right - useful for wide screen
-(setq split-width-threshold nil)
-(setq split-width-threshold 0)
+(setq split-width-threshold nil
+      split-width-threshold 0)
 
 ;; Enable filesets to group a set of files
 (filesets-init)
@@ -134,8 +131,8 @@
 (prefer-coding-system 'utf-8) ; with sugar on top
 
 ;; indentation
-(setq-default indent-tabs-mode nil)
-(setq tab-width 4)
+(setq-default indent-tabs-mode nil
+              tab-width 4)
 
 ;; These functions are useful. Activate them.
 (put 'downcase-region 'disabled nil)
