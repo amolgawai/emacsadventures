@@ -319,5 +319,10 @@ point reaches the beginning or end of the buffer, stop there."
   :config
   (global-homebrew-mode))
 
+;; fuzzy search using fzf - make sure fzf is installed
+(use-package "fzf"
+  :init
+  (setenv "FZF_DEFAULT_COMMAND" "fd --type f"))
+
 (provide 'productivity)
 ;;; productivity.el ends here

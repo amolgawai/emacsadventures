@@ -43,6 +43,8 @@
 	 ;; general
 	 "/"         '(projectile-ripgrep :which-key "ripgrep")
 	 "."         '(counsel-find-file :which-key "open file")
+	 ","         '(fzf-projectile :which-key "fuzzy open file")
+	 ":"         '(indent-buffer :which-key "format buffer")
 	 ;; "TAB"       '(switch-to-prev-buffer :which-key "previous buffer")
 	 "SPC"       '(counsel-M-x :which-key "M-x")
 	 "m"         '(magit-status :which-key "Magit")
