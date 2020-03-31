@@ -43,7 +43,7 @@
 	 ;; general
 	 "/"         '(projectile-ripgrep :which-key "ripgrep")
 	 "."         '(counsel-find-file :which-key "open file")
-	 ","         '(fzf-projectile :which-key "fuzzy open file")
+	 ","         '(fzf-projectile :which-key "fuzzy open file in project")
 	 ":"         '(indent-buffer :which-key "format buffer")
 	 ;; "TAB"       '(switch-to-prev-buffer :which-key "previous buffer")
 	 "SPC"       '(counsel-M-x :which-key "M-x")
@@ -76,6 +76,9 @@
 	 "n"         '(:ignore t :which-key "notes")
 	 "nd"        '(emcsadvntr/deft-dwim :which-key "deft")
 	 "nj"        '(org-journal-new-entry :which-key "journal entry")
+	 ;; open
+	 "o"         '(:ignore t :which-key "open")
+	 "of"        '(counsel-fzf :which-key "file")
 	 ;; projectile
 	 "p"         '(:ignore t :which-key "projectile")
 	 "pc"        '(:keymap projectile-command-map :which-key "commands")
