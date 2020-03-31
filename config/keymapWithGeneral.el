@@ -88,6 +88,7 @@
 	 ;; search
 	 "s"         '(:ignore t :which-key "search")
 	 "sf"        '(counsel-imenu :which-key "functions")
+	 "sp"        '(projectile-multi-occur :which-key "in project")
 	 ;; quit
 	 "q"         '(:ignore t :which-key "quit")
 	 "qz"        '(delete-frame :which-key "delete frame")
