@@ -197,10 +197,10 @@
               (unless (eq ibuffer-sorting-mode 'alphabetic)
                 (ibuffer-do-sort-by-alphabetic)))))
 
-;; (use-package persp-projectile
-;;   :ensure t
-;;   :config
-;;   (persp-mode))
+(use-package persp-projectile
+  :ensure t
+  :config
+  (persp-mode))
 
 ;; projectile ripgrep
 (use-package projectile-ripgrep

@@ -43,9 +43,15 @@
 	 ;; general
 	 "/"         '(projectile-ripgrep :which-key "ripgrep")
 	 "."         '(counsel-find-file :which-key "open file")
-	 "TAB"       '(switch-to-prev-buffer :which-key "previous buffer")
+	 ;; "TAB"       '(switch-to-prev-buffer :which-key "previous buffer")
 	 "SPC"       '(counsel-M-x :which-key "M-x")
 	 "m"         '(magit-status :which-key "Magit")
+     ;; perspectives
+     "TAB"       '(:ignore t :which-key "perspectives")
+     "TAB TAB"   '(persp-switch :which-key "switch to")
+     "TAB l"     '(persp-switch-last :which-key "last")
+     "TAB n"     '(persp-new :which-key "new")
+     "TAB c"     '(:keymap perspective-map :which-key "commands")
 	 ;; Buffers
 	 "b"         '(:ignore t :which-key "buffer")
 	 "bb"        '(counsel-projectile-switch-to-buffer :which-key "project buffer list")
