@@ -210,7 +210,7 @@
         persp-add-buffer-on-find-file t
         persp-add-buffer-on-after-change-major-mode t
         persp-hook-up-emacs-buffer-completion t
-        persp-state-default-file (locate-user-emacs-file ".perspectives"))
+        persp-state-default-file (expand-file-name ".perspectives" user-emacs-directory))
   (add-hook 'kill-emacs-hook #'persp-state-save)
 
   ;; Make ivy play nice
