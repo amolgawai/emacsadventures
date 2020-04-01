@@ -167,8 +167,9 @@
 ;; workspaces
 ;; (use-package perspective
 ;;   :ensure t
+;;   ;; :defer t
 ;;   :config
-;;   (persp-mode))
+;;   (persp-mode t))
 
 ;; projectile
 (use-package projectile
@@ -199,8 +200,37 @@
 
 (use-package persp-projectile
   :ensure t
+  :after projectile
   :config
-  (persp-mode))
+  (setq wg-morph-on nil ;; switch off animation
+        persp-autokill-buffer-on-remove 'kill-weak
+        persp-auto-save-opt 0
+        persp-auto-resume-time -1
+        persp-nil-hidden t
+        persp-add-buffer-on-find-file t
+        persp-add-buffer-on-after-change-major-mode t
+        persp-hook-up-emacs-buffer-completion t
+        persp-state-default-file (locate-user-emacs-file ".perspectives"))
+  (add-hook 'kill-emacs-hook #'persp-state-save)
+
+  ;; Make ivy play nice
+  ;; (with-eval-after-load "ivy"
+  ;;   (add-hook 'ivy-ignore-buffers
+  ;;             #'(lambda (b)
+  ;;                 (when persp-mode
+  ;;                   (let ((persp (get-current-persp)))
+  ;;                     (if persp
+  ;;                         (not (persp-contain-buffer-p b persp))
+  ;;                       nil)))))
+  ;;   (setq ivy-sort-functions-alist
+  ;;         (append ivy-sort-functions-alist
+  ;;                 '((persp-kill-buffer   . nil)
+  ;;                   (persp-remove-buffer . nil)
+  ;;                   (persp-add-buffer    . nil)
+  ;;                   (persp-switch        . nil)
+  ;;                   (persp-window-switch . nil)
+  ;;                   (persp-frame-switch . nil)))))
+  (persp-mode t))
 
 ;; projectile ripgrep
 (use-package projectile-ripgrep

@@ -91,7 +91,7 @@
 (toggle-indicate-empty-lines)
 
 ;; save the desktop
-(desktop-save-mode 1)
+;; (desktop-save-mode 1)
 (show-paren-mode 1)
 (column-number-mode t)
 (global-visual-line-mode t)

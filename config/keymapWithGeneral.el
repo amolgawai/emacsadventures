@@ -91,6 +91,7 @@
 	 "sp"        '(projectile-multi-occur :which-key "in project")
 	 ;; quit
 	 "q"         '(:ignore t :which-key "quit")
+	 "ql"        '(persp-state-restore :which-key "reload last session")
 	 "qz"        '(delete-frame :which-key "delete frame")
 	 "qq"        '(kill-emacs :which-key "quit")
 	 "qr"        '(restart-emacs :which-key "restart")
