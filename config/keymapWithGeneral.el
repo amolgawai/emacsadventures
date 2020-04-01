@@ -59,7 +59,7 @@
 	 "bb"        '(counsel-projectile-switch-to-buffer :which-key "project buffer list")
 	 "b."        '(ivy-switch-buffer :which-key "switch")
 	 "bl"        '(list-buffers :which-key "list")
-	 "bk"        '(kill-buffer :which-key "kill")
+	 "bd"        '(kill-buffer :which-key "kill")
 	 "bs"        '(save-buffer :which-key "save")
 	 "b <left>"  '(projectile-previous-project-buffer :which-key "previous")
 	 "b <right>" '(projectile-next-project-buffer :which-key "next")
