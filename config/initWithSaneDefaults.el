@@ -33,6 +33,8 @@
       auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 (load custom-file 'noerror)
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 (setq inhibit-splash-screen t
       inhibit-startup-screen t
       visible-bell nil
