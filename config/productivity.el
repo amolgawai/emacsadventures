@@ -165,8 +165,9 @@
   :diminish smartparens-mode)
 
 ;; workspaces
-;; (use-package perspective
-;;   :ensure t
+(use-package perspective
+  :ensure t
+  :commands persp-mode)
 ;;   ;; :defer t
 ;;   :config
 ;;   (persp-mode t))
@@ -179,24 +180,10 @@
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   (setq projectile-completion-system 'helm))
 
-(use-package helm-projectile
-  :ensure t
-  :config
-  (helm-projectile-on))
-
 (use-package counsel-projectile
   :ensure t
   :config
   (counsel-projectile-mode))
-
-(use-package ibuffer-projectile
-  :ensure t
-  :config
-  (add-hook 'ibuffer-hook
-            (lambda ()
-              (ibuffer-projectile-set-filter-groups)
-              (unless (eq ibuffer-sorting-mode 'alphabetic)
-                (ibuffer-do-sort-by-alphabetic)))))
 
 (use-package persp-projectile
   :ensure t
@@ -210,6 +197,7 @@
         persp-add-buffer-on-find-file t
         persp-add-buffer-on-after-change-major-mode t
         persp-hook-up-emacs-buffer-completion t
+        ;; persp-state-default-file (locate-user-emacs-file "perspectives/default.persp"))
         persp-state-default-file (expand-file-name ".perspectives" user-emacs-directory))
   (add-hook 'kill-emacs-hook #'persp-state-save)
 
@@ -237,7 +225,21 @@
   :after projectile
   :config
   (add-hook 'ripgrep-search-mode-hook 'hl-line-mode))
+
+;; (use-package helm-projectile
+;;   :ensure t
+;;   :config
+;;   (helm-projectile-on))
                                         ; flashes the cursor's line when you scroll
+;; (use-package ibuffer-projectile
+;;   :ensure t
+;;   :config
+;;   (add-hook 'ibuffer-hook
+;;             (lambda ()
+;;               (ibuffer-projectile-set-filter-groups)
+;;               (unless (eq ibuffer-sorting-mode 'alphabetic)
+;;                 (ibuffer-do-sort-by-alphabetic)))))
+
 (use-package beacon
   :ensure t
   :config
