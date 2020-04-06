@@ -167,7 +167,12 @@
 ;; workspaces
 (use-package perspective
   :ensure t
-  :commands persp-mode)
+  :commands persp-mode
+  :config
+  ;; create directory for perspectives if doesn't exist
+  (let ((perspective-dir (expand-file-name "perspectives" user-emacs-directory)))
+	(make-directory perspective-dir :parents)))
+
 ;;   ;; :defer t
 ;;   :config
 ;;   (persp-mode t))
@@ -198,7 +203,8 @@
         persp-add-buffer-on-after-change-major-mode t
         persp-hook-up-emacs-buffer-completion t
         ;; persp-state-default-file (locate-user-emacs-file "perspectives/default.persp"))
-        persp-state-default-file (expand-file-name ".perspectives" user-emacs-directory))
+        persp-state-default-file (expand-file-name "perspectives/default.persp" user-emacs-directory))
+  ;; persp-state-default-file (expand-file-name ".persp-last" user-emacs-directory))
   (add-hook 'kill-emacs-hook #'persp-state-save)
 
   ;; Make ivy play nice
