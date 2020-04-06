@@ -50,9 +50,9 @@
 	 "m"         '(magit-status :which-key "Magit")
      ;; perspectives
      "TAB"       '(:ignore t :which-key "perspectives")
-     "TAB TAB"   '(persp-switch :which-key "switch to")
+     "TAB TAB"   '(persp-switch :which-key "switch to/create new")
      "TAB l"     '(persp-switch-last :which-key "last")
-     "TAB n"     '(persp-new :which-key "new")
+     "TAB d"     '(persp-kill :which-key "delete")
      "TAB c"     '(:keymap perspective-map :which-key "commands")
 	 ;; Buffers
 	 "b"         '(:ignore t :which-key "buffer")
