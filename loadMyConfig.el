@@ -66,7 +66,8 @@
     (let ((buffer (get-buffer-create "*emacsadventures-keyref*")))
       (with-current-buffer buffer
         (insert-file-contents (locate-user-emacs-file "emacsadventures/keybindings.md"))
-        (markdown-mode)))
+        (markdown-mode))
+      (switch-to-buffer "*emacsadventures-keyref*"))
   (error (message "%s" error-message-string err)))
 
 (provide 'loadMyConfig)
