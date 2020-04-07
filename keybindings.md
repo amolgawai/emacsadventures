@@ -3,7 +3,7 @@
 EVIL quickstart
 ---------------
 
-    SPC               <leader>
+    SPC               <leader>                           All the possibilities are shown after SPC
 	C-SPC             non-normal <leader>
     SPC q l           load last session
     C-z               toggle evil mode
