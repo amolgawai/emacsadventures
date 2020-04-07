@@ -13,7 +13,7 @@ EVIL quickstart
 	zc                close current fold
 	zo                open current fold
 
-Generic:
+Generic
 --------
     C-x M-c           `restart-emacs'
     <f7>              `emcsadvntr/deft-dwim'                   Start/quit deft
@@ -42,14 +42,14 @@ Generic:
     s-<f12>           `switch-theme'
     s-`               `eshell-toggle'                         was `other-frame'
 
-Folding:
+Folding
 --------
     C-c <up arrow>    Fold All
     C-c <down arrow>  UnFold All
     C-c <left arrow>  Fold Current
     C-c <right arrow> UnFold Current
 
-Buffer/Window Navigation:
+Buffer/Window Navigation
 --------
     C-M-<Left arrow>  Move to left frame
     C-M-<Right arrow> Move to right frame
@@ -64,20 +64,20 @@ prog-mode-map: <f5>
     <f5>              `emcsadvntr/compile-please'
     <C-f5>            `compile'
 
-dired-mode-map:
+dired-mode-map
 --------
     /                 `dired-narrow'
     I                 `dired-subtree-remove'                  was `dired-info'
     i                 `dired-subtree-insert'                  was `dired-maybe-insert-subdir'
 
 
-isearch-mode-map:
+isearch-mode-map
 --------
     M-O               `isearch-moccur-all'
     M-o               `isearch-moccur'
 
 
-neotree-mode-map:
+neotree-mode-map
 --------
     +                 `neotree-create-node'
     C                 `neotree-change-root'
