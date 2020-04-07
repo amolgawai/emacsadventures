@@ -1,5 +1,18 @@
 # Keybindings quickref
 
+EVIL quickstart
+---------------
+
+    SPC               <leader>
+	C-SPC             non-normal <leader>
+    SPC q l           load last session
+    C-z               toggle evil mode
+	gc                comment/uncomment
+	zm                fold-all
+	zr                open-all
+	zc                close current fold
+	zo                open current fold
+
 Generic:
 --------
     C-x M-c           `restart-emacs'
