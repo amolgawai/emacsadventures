@@ -38,8 +38,12 @@
 (use-package which-key
   :ensure t
   :init
-  (setq which-key-separator " ")
-  (setq which-key-prefix-prefix "+")
+  (setq which-key-separator " → "
+        which-key-prefix-prefix "+"
+        which-key-max-display-columns 5
+        ;; which-key-special-keys '("SPC" "TAB" "RET" "ESC" "DEL")
+        which-key-show-remaining-keys t
+        which-key-show-remaining-keys t)
   :diminish which-key-mode
   :config
   ;; (which-key-setup-side-window-right-bottom)
