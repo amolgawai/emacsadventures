@@ -88,7 +88,7 @@
 	 ;; search
 	 "s"         '(:ignore t :which-key "search")
 	 "sf"        '(counsel-imenu :which-key "functions")
-	 "sp"        '(projectile-multi-occur :which-key "in project")
+	 "sp"        '(projectile-ripgrep :which-key "in project")
 	 ;; quit
 	 "q"         '(:ignore t :which-key "quit")
 	 "ql"        '(persp-state-restore :which-key "reload last session")
