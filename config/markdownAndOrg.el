@@ -52,13 +52,50 @@
          ("C-c c" . org-capture))
   :config
   (progn
-    (setq org-directory (expand-file-name "~/MyOrganiser"))
-    (setq org-default-notes-file (concat org-directory "/Inbox.org"))
-    (setq org-agenda-files '("~/MyOrganiser"))
-    (setq org-log-done t)
-    (setq org-fast-tag-selection-single-key t)
-    (setq org-use-fast-todo-selection t)
+	;; basic
+    (setq org-directory (expand-file-name "~/MyOrganiser")
+		  org-default-notes-file (concat org-directory "/Inbox.org")
+		  org-agenda-files '("~/MyOrganiser")
+		  org-log-done t
+		  org-fast-tag-selection-single-key t
+		  org-use-fast-todo-selection t)
                                         ;    (setq org-startup-truncated nil)
+    ;; beautification
+    (set-face-attribute 'org-document-title nil :height 2.0)
+    (set-face-attribute 'org-level-1 nil :height 1.5)
+    (set-face-attribute 'org-level-2 nil :height 1.25)
+    (set-face-attribute 'org-level-3 nil :height 1.1)
+	(setq org-startup-indented t
+		  ;; org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
+		  org-ellipsis "  " ;; folding symbol
+		  org-pretty-entities t
+		  org-hide-emphasis-markers t
+		  ;; show actually italicized text instead of /italicized text/
+		  org-agenda-block-separator ""
+		  org-fontify-whole-heading-line t
+		  org-fontify-done-headline t
+		  org-fontify-quote-and-verse-blocks t)
+	(font-lock-add-keywords 'org-mode
+							'(("^ +\\([-*]\\) "
+							   (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+	(add-hook 'org-mode-hook
+			  '(lambda ()
+				 (setq line-spacing 0.2) ;; Add more line padding for readability
+				 (variable-pitch-mode 1) ;; All fonts with variable pitch.
+				 (mapc
+				  (lambda (face) ;; Other fonts with fixed-pitch.
+					(set-face-attribute face nil :inherit 'fixed-pitch))
+				  (list 'org-code
+						'org-link
+						'org-block
+						'org-table
+						'org-verbatim
+						'org-block-begin-line
+						'org-block-end-line
+						'org-meta-line
+						'org-document-info-keyword))))
+	;; GTD setup
     (setq org-todo-keywords
           '(
             (sequence "IDEA(i)" "TODO(t)" "STARTED(s)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)")
