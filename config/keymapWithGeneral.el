@@ -67,6 +67,7 @@
 	 "e"         '(:ignore t :which-key "evaluate")
 	 "ee"        '(eval-last-sexp :which-key "last expression")
 	 "eb"        '(eval-buffer :which-key "buffer")
+     "er"        '(eval-region :which-key "region")
 	 ;; Frames
 	 "f"         '(:ignore t :which-key "frames")
 	 "fn"        '(find-file-other-frame :which-key "open file -> new frame")
