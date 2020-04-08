@@ -46,7 +46,7 @@
 ;; dracula theme
 (use-package dracula-theme
   :defer t
-;;  :init (load-theme 'dracula t)
+  ;;  :init (load-theme 'dracula t)
   :ensure t)
 
 ;; spacemacs
@@ -73,7 +73,7 @@
 
 ;; doom themes - https://github.com/hlissner/emacs-doom-themes
 (use-package doom-themes
-;;  :defer t
+  ;;  :defer t
   :ensure t
   :config
   ;; Global settings (defaults)
