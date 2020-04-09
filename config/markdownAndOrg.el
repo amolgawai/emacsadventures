@@ -216,6 +216,8 @@
   :bind
   ("C-x j" . org-journal-new-entry))
 
+(use-package org-sidebar
+  :ensure t)
 
 ;; deft for managing notes
 (use-package deft
