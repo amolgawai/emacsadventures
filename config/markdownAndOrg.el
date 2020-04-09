@@ -151,12 +151,12 @@
             ("BONUS" . (:foreground "GoldenRod" :weight bold))
             ("noexport" . (:foreground "LimeGreen" :weight bold))
             ))
-    (setq org-agenda-ndays 7)
-    (setq org-agenda-show-all-dates t)
-    (setq org-agenda-skip-deadline-if-done t)
-    (setq org-agenda-skip-scheduled-if-done t)
-    (setq org-agenda-start-on-weekday nil)
-    (setq org-deadline-warning-days 14)
+    (setq org-agenda-ndays 7
+          org-agenda-show-all-dates t
+          org-agenda-skip-deadline-if-done t
+          org-agenda-skip-scheduled-if-done t
+          org-agenda-start-on-weekday nil
+          org-deadline-warning-days 14)
     (setq org-agenda-custom-commands
           '(("g" . "GTD contexts")
             ("gh" "Home" tags-todo "HOME")
@@ -175,10 +175,10 @@
              ("~/next-actions.txt"))
             ))
     ;; Refiling - Ref -> https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
-    (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
-    (setq org-refile-use-outline-path 'file)
-    (setq org-outline-path-complete-in-steps nil)
-    (setq org-refile-allow-creating-parent-nodes 'confirm)
+    (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
+          org-refile-use-outline-path 'file
+          org-outline-path-complete-in-steps nil
+          org-refile-allow-creating-parent-nodes 'confirm)
 
 
     ;; capture
@@ -189,9 +189,9 @@
              "* TODO %?\nAdded: %U\n" :prepend t :kill-buffer t)
             ("i" "Idea" entry (file+headline (concat org-directory "/Inbox.org") "Ideas")
              "* IDEA %?\nAdded: %U\n" :prepend t :kill-buffer t)))
-    (setq org-use-speed-commands t)
-    (setq org-src-fontify-natively t)
-    (setq org-src-tab-acts-natively t)))
+    (setq org-use-speed-commands t
+          org-src-fontify-natively t
+          org-src-tab-acts-natively t)))
 
 (use-package org-bullets
   :ensure t
