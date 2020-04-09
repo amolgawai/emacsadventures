@@ -77,6 +77,7 @@
 	 "n"         '(:ignore t :which-key "notes")
 	 "nd"        '(emcsadvntr/deft-dwim :which-key "deft")
 	 "nj"        '(org-journal-new-entry :which-key "journal entry")
+     "nr"        '(org-refile :which-key "refile note")
 	 ;; open
 	 "o"         '(:ignore t :which-key "open")
 	 "of"        '(counsel-fzf :which-key "file")
