@@ -186,8 +186,8 @@
   :ensure t
   :config
   (projectile-global-mode)
-  (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
-  (setq projectile-completion-system 'helm))
+  (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
+  ;; (setq projectile-completion-system 'helm))
 
 (use-package counsel-projectile
   :ensure t

@@ -187,17 +187,41 @@ With a prefix argument, use comint-mode."
   (global-hl-todo-mode))
 
 ;; dash documentation
-;; ref - https://github.com/tuhdo/emacs-proglang/blob/master/custom/setup-helm.el
-(use-package helm-dash
-  :ensure t
+(use-package counsel-dash
+  :commands (counsel-dash
+             counsel-dash-set-local-docsets
+             counsel-dash-activate-local-docset
+             counsel-dash-activate-docset
+             counsel-dash-deactivate-docset
+             counsel-dash-install-docset)
+  :load-path "vendor/counsel-dash"
   :init
-  (global-set-key (kbd "C-c d") 'helm-dash-at-point)
-  (defun c-doc ()
-    (setq helm-dash-docsets '("C")))
-  (defun c++-doc ()
-    (setq helm-dash-docsets '("C" "C++")))
-  (add-hook 'c-mode-hook 'c-doc)
-  (add-hook 'c++-mode-hook 'c++-doc))
+  (setq counsel-dash-docsets-path "~/.docset")
+
+  (setq counsel-dash-browser-func 'eww)
+  (setq counsel-dash-common-docsets '("Emacs Lisp" "Swift" "iOS" "Go" "Rust" "C++" "Docker" "Python 3"))
+  ;; (define-key evil-normal-state-map (kbd "C-f") 'counsel-dash)
+  (add-hook 'emacs-lisp-mode-hook (lambda () (setq-local counsel-dash-docsets '("Emacs Lisp"))))
+  (add-hook 'rust-mode-hook (lambda () (setq-local counsel-dash-docsets '("Rust"))))
+  (add-hook 'dockerfile-mode-hook (lambda () (setq-local counsel-dash-docsets '("Docker"))))
+  (add-hook 'python-mode-hook (lambda () (setq-local counsel-dash-docsets '("Python 3"))))
+  (add-hook 'c++-mode-hook (lambda () (setq-local counsel-dash-docsets '("C" "C++"))))
+  (add-hook 'go-mode-hook (lambda () (setq-local counsel-dash-docsets '("Go"))))
+  ;; (add-hook 'js2-minor-mode-hook (lambda () (setq-local counsel-dash-docsets '("Javascript" "NodeJS"))))
+  ;; (add-hook 'web-mode-hook (lambda () (setq-local counsel-dash-docsets '("Javascript" "HTML""CSS"))))
+  ;; (add-hook 'scss-mode-hook (lambda () (setq-local counsel-dash-docsets '("CSS"))))
+  (add-hook 'swift-mode-hook (lambda () (setq-local counsel-dash-docsets '("iOS" "Swift")))))
+;; ref - https://github.com/tuhdo/emacs-proglang/blob/master/custom/setup-helm.el
+;; (use-package helm-dash
+;;   :ensure t
+;;   :init
+;;   (global-set-key (kbd "C-c d") 'helm-dash-at-point)
+;;   (defun c-doc ()
+;;     (setq helm-dash-docsets '("C")))
+;;   (defun c++-doc ()
+;;     (setq helm-dash-docsets '("C" "C++")))
+;;   (add-hook 'c-mode-hook 'c-doc)
+;;   (add-hook 'c++-mode-hook 'c++-doc))
 
 ;; LSP - Language Server Protocol Support for Emacs
 ;; Ref - https://github.com/emacs-lsp/lsp-mode
@@ -208,7 +232,8 @@ With a prefix argument, use comint-mode."
   :commands lsp)
 (use-package lsp-ui :ensure t :commands lsp-ui-mode)
 (use-package company-lsp :ensure t :commands company-lsp)
-(use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol)
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+;; (use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol)
 (use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list)
 ;; optionally if you want to use debugger
 (use-package dap-mode)
