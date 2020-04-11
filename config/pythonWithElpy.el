@@ -31,6 +31,35 @@
   :init
   (advice-add 'python-mode :before 'elpy-enable))
 
+;; pyenv settings
+;; ref - https://github.com/howardabrams/dot-files/blob/master/emacs-python.org
+(use-package pyenv-mode
+  :ensure t
+  :config
+  (defun projectile-pyenv-mode-set ()
+    "Set pyenv version matching project name."
+    (let ((project (projectile-project-name)))
+      (if (member project (pyenv-mode-versions))
+          (pyenv-mode-set project)
+        (pyenv-mode-unset))))
+
+  ;; ref - http://rakan.me/emacs/python-dev-with-emacs-and-pyenv/
+  (defvar pyenv-current-version nil nil)
+
+  (defun pyenv-init()
+    "Initialize pyenv's current version to the global one."
+    (let ((global-pyenv (replace-regexp-in-string "\n" "" (shell-command-to-string "pyenv global"))))
+      (message (concat "Setting pyenv version to " global-pyenv))
+      (pyenv-mode-set global-pyenv)
+      (setq pyenv-current-version global-pyenv)))
+
+  (add-hook 'after-init-hook 'pyenv-init)
+  (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
+  (add-hook 'python-mode-hook 'pyenv-mode))
+
+(use-package pyenv-mode-auto
+  :ensure t)
+
 ;; Convert from python 2 to 3
 (defun python-2to3-current-file ()
   "Convert current buffer from python 2 to python 3.
