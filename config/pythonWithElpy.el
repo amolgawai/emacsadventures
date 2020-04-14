@@ -60,6 +60,16 @@
 (use-package pyenv-mode-auto
   :ensure t)
 
+;; package managment for python
+(use-package poetry
+  :ensure t)
+
+;; code formatting
+(use-package blacken
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'blacken-mode))
+
 ;; Convert from python 2 to 3
 (defun python-2to3-current-file ()
   "Convert current buffer from python 2 to python 3.
