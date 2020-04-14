@@ -178,6 +178,7 @@ With a prefix argument, use comint-mode."
   (setq company-backends (remove 'company-ropemacs company-backends)
         company-tooltip-limit 20
         company-tooltip-align-annotations t)
+  (add-to-list 'company-backends 'company-jedi)
   (global-company-mode 1))
 
 ;; Highlight todos, fixmes etc.
