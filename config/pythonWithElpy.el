@@ -80,11 +80,13 @@
 
 ;; package managment for python
 (use-package poetry
-  :ensure t)
+  :ensure t
+  :diminish t)
 
 ;; code formatting
 (use-package blacken
   :ensure t
+  :diminish t
   :hook (python-mode-hook . blacken-mode))
 
 ;; Convert from python 2 to 3
