@@ -36,10 +36,20 @@
   (setq-default indent-tabs-mode nil)
   :hook (python-mode-hook . smartparens-mode)
   :config
-  (setq python-indent-offset 4))
-;; (setq python-shell-interpreter "ipython"
-;;   	python-shell-interpreter-args "-i --simple-prompt")
+  (setq python-indent-offset 4)
+;; ipython support, also remove weird character on ipython prompt
+(when (executable-find "ipython")
+  (setq python-shell-interpreter "ipython")
+  (setq python-shell-interpreter-args "-i --simple-prompt --pprint")))
 ;; (add-hook 'python-mode-hook 'color-identifiers-mode))
+
+;; docstring helper
+(use-package python-docstring
+  :ensure t
+  :config
+  (python-docstring-install)
+  :diminish python-docstring-mode)
+
 
 (use-package jedi
   :ensure t
@@ -60,6 +70,12 @@
   :init
   (advice-add 'python-mode :before 'elpy-enable)
   :config
+  (defalias 'workon 'pyvenv-workon)
+  ;; (setq elpy-rpc-backend "jedi")
+  ;; use flycheck instead of flymake
+  (when (load "flycheck" t t)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode))
   (setq elpy-modules
         '(elpy-module-company
           elpy-module-eldoc
@@ -67,7 +83,7 @@
           elpy-module-sane-defaults)
         elpy-shell-echo-input nil
         elpy-shell-starting-directory 'current-directory
-        elpy-shell-echo-output 'when-shell-not-visible
+        elpy-shell-echo-output nil
         elpy-rpc-virtualenv-path 'current))
 
 ;; so that elpy plays well with virtual environments
