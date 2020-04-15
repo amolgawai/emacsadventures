@@ -25,40 +25,58 @@
 
 ;;; Code:
 
+;; source - https://github.com/howardabrams/dot-files/blob/master/emacs-python.org
+
+;; basic python settings
+(use-package python
+  :mode ("\\.py\\'" . python-mode)
+  ;; ("\\.wsgi$" . python-mode)
+  :interpreter ("python" . python-mode)
+  :init
+  (setq-default indent-tabs-mode nil)
+  :hook (python-mode-hook . smartparens-mode)
+  :config
+  (setq python-indent-offset 4))
+;; (setq python-shell-interpreter "ipython"
+;;   	python-shell-interpreter-args "-i --simple-prompt")
+;; (add-hook 'python-mode-hook 'color-identifiers-mode))
+
+(use-package jedi
+  :ensure t
+  :init
+  (add-to-list 'company-backends 'company-jedi)
+  :config
+  (use-package company-jedi
+    :ensure t
+	:hook (python-mode-hook . (lambda () (add-to-list 'company-backends 'company-jedi)))
+    :init
+    (setq company-jedi-python-bin "python")))
+
+;; the python IDE
 (use-package elpy
   :ensure t
   :defer t
+  :hook (elpy-mode-hook . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
   :init
-  (advice-add 'python-mode :before 'elpy-enable))
+  (advice-add 'python-mode :before 'elpy-enable)
+  :config
+  (setq elpy-modules
+        '(elpy-module-company
+          elpy-module-eldoc
+          elpy-module-pyvenv
+          elpy-module-sane-defaults)
+        elpy-shell-echo-input nil
+        elpy-shell-starting-directory 'current-directory
+        elpy-shell-echo-output 'when-shell-not-visible
+        elpy-rpc-virtualenv-path 'current))
 
-;; pyenv settings
-;; ref - https://github.com/howardabrams/dot-files/blob/master/emacs-python.org
-(use-package pyenv-mode
+;; so that elpy plays well with virtual environments
+(use-package pyenv-mode-auto
   :ensure t
   :config
-  (defun projectile-pyenv-mode-set ()
-    "Set pyenv version matching project name."
-    (let ((project (projectile-project-name)))
-      (if (member project (pyenv-mode-versions))
-          (pyenv-mode-set project)
-        (pyenv-mode-unset))))
-
-  ;; ref - http://rakan.me/emacs/python-dev-with-emacs-and-pyenv/
-  (defvar pyenv-current-version nil nil)
-
-  (defun pyenv-init()
-    "Initialize pyenv's current version to the global one."
-    (let ((global-pyenv (replace-regexp-in-string "\n" "" (shell-command-to-string "pyenv global"))))
-      (message (concat "Setting pyenv version to " global-pyenv))
-      (pyenv-mode-set global-pyenv)
-      (setq pyenv-current-version global-pyenv)))
-
-  (add-hook 'after-init-hook 'pyenv-init)
-  (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
-  (add-hook 'python-mode-hook 'pyenv-mode))
-
-(use-package pyenv-mode-auto
-  :ensure t)
+  (let ((workon-home (expand-file-name "~/.pyenv/versions")))
+    (setenv "WORKON_HOME" workon-home)
+    (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home)))
 
 ;; package managment for python
 (use-package poetry
@@ -67,10 +85,10 @@
 ;; code formatting
 (use-package blacken
   :ensure t
-  :config
-  (add-hook 'python-mode-hook 'blacken-mode))
+  :hook (python-mode-hook . blacken-mode))
 
 ;; Convert from python 2 to 3
+;; works only in python 3 and when 2to3 is installed via pip
 (defun python-2to3-current-file ()
   "Convert current buffer from python 2 to python 3.
 This command calls python3's script 「2to3」.
