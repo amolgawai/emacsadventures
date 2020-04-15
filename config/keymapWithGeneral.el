@@ -70,8 +70,9 @@
      "er"        '(eval-region :which-key "region")
 	 ;; Frames
 	 "f"         '(:ignore t :which-key "frames")
-	 "fn"        '(find-file-other-frame :which-key "open file -> new frame")
-	 "fo"        '(other-frame :which-key "other frame")
+     "fn"        '(emcsadvntr/new-buffer-frame :which-key "new frame")
+	 "fo"        '(find-file-other-frame :which-key "open file -> new frame")
+	 "ff"        '(other-frame :which-key "other frame")
 	 "fd"        '(delete-frame :which-key "delete")
 	 ;; notes
 	 "n"         '(:ignore t :which-key "notes")

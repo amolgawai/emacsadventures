@@ -187,7 +187,7 @@
   :config
   (projectile-global-mode)
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
-  ;; (setq projectile-completion-system 'helm))
+;; (setq projectile-completion-system 'helm))
 
 (use-package counsel-projectile
   :ensure t
@@ -365,6 +365,15 @@ point reaches the beginning or end of the buffer, stop there."
 (use-package "fzf"
   :init
   (setenv "FZF_DEFAULT_COMMAND" "fd --type f"))
+
+;; open new frame with empy buffer
+(defun emcsadvntr/new-buffer-frame ()
+  "Create a new frame with a new empty buffer."
+  (interactive)
+  (let ((buffer (generate-new-buffer "untitled")))
+    (set-buffer-major-mode buffer)
+    (display-buffer buffer '(display-buffer-pop-up-frame . nil))))
+
 
 (provide 'productivity)
 ;;; productivity.el ends here
