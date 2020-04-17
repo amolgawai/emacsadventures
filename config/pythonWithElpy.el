@@ -37,11 +37,15 @@
   :hook (python-mode-hook . smartparens-mode)
   :config
   (setq python-indent-offset 4)
-;; ipython support, also remove weird character on ipython prompt
-(when (executable-find "ipython")
-  (setq python-shell-interpreter "ipython")
-  (setq python-shell-interpreter-args "-i --simple-prompt --pprint")))
+  ;; ipython support, also remove weird character on ipython prompt
+  (when (executable-find "ipython")
+    (setq python-shell-interpreter "ipython")
+    (setq python-shell-interpreter-args "-i --simple-prompt --pprint")))
 ;; (add-hook 'python-mode-hook 'color-identifiers-mode))
+
+;; emacs ipython notebook (jupyter in emacs)
+(use-package ein
+  :ensure t)
 
 ;; docstring helper
 (use-package python-docstring
