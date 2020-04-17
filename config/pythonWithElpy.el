@@ -54,6 +54,11 @@
   (python-docstring-install)
   :diminish python-docstring-mode)
 
+;; auto generate docstring
+(use-package sphinx-doc
+  :ensure t
+  :defer t
+  :hook ((python-mode . sphinx-doc-mode)))
 
 (use-package jedi
   :ensure t
