@@ -183,7 +183,7 @@
   :config
   ;; If non-nil, a word count will be added to the selection-info modeline segment.
   (setq doom-modeline-enable-word-count nil)
-
+  (doom-modeline-major-mode-color-icon t)
   ;; Major modes in which to display word count continuously.
   ;; Also applies to any derived modes. Respects `doom-modeline-enable-word-count'.
   ;; If it brings the sluggish issue, disable `doom-modeline-enable-word-count' or
@@ -193,6 +193,7 @@
   (setq doom-modeline-lsp t)
   ;; Whether display the minor modes in the mode-line.
   (setq doom-modeline-minor-modes nil))
+
 ;; posframe -  a popup frame (used for ivy and which-key)
 ;; ref - https://github.com/waymondo/hemacs/blob/master/init.el
 (use-package posframe
