@@ -106,6 +106,13 @@ With a prefix argument, use comint-mode."
 
     (setq compilation-finish-functions 'compile-autoclose)))
 
+;; quickly run/compilr any language
+;; ref - https://github.com/emacsorphanage/quickrun
+(use-package quickrun
+  :bind
+  (("<f5>" . quickrun)
+   ("M-<f5>" . quickrun-shell)))
+
 ;; Magit for git interactions
 (use-package magit
   :ensure t
@@ -169,6 +176,12 @@ With a prefix argument, use comint-mode."
   :ensure t
   :diminish
   :init (global-flycheck-mode))
+
+;; Formatting for many languages according to specific formatters
+;; rf - https://github.com/lassik/emacs-format-all-the-code
+(use-package format-all
+  :ensure t
+  :bind ("C-c C-f" . format-all-buffer))
 
 ;; Company -- complete anything
 (use-package company
