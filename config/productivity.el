@@ -331,6 +331,22 @@ point reaches the beginning or end of the buffer, stop there."
   :bind
   ("s-`" . eshell-toggle))
 
+;; Aweshell, shell extension base on eshell with better features.
+(use-package aweshell
+  :ensure t
+  :defer t
+  :quelpa (aweshell :fetcher github :repo "manateelazycat/aweshell" :version original)
+  :commands (aweshell-new aweshell-dedicated-open)
+  :bind
+  (("s-#" . aweshell-dedicated-toggle)))
+
+;; Shell Here
+;; Shell Here, a tool that opens a shell buffer in (or relative to) default-directory.
+(use-package shell-here
+  :ensure t
+  :defer t
+  :bind ("s-~" . shell-here))
+
 ;; ** edit browser text area in Emacs (sync both ways)
 ;; ref - https://superuser.com/questions/488348/edit-any-text-input-shown-by-a-browser-mostly-chrome-with-emacs?noredirect=1
 ;; source - https://github.com/alpha22jp/atomic-chrome
