@@ -57,6 +57,11 @@
 (require 'quelpa-use-package)
 (setq use-package-ensure-function 'quelpa)
 
+(eval-and-compile
+  (setq use-package-always-ensure t)
+  (setq use-package-expand-minimally t)
+  (setq use-package-compute-statistics t))
+
 ;; (unless (package-installed-p 'use-package)
 ;;   (package-install 'use-package))
 
