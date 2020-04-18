@@ -182,8 +182,8 @@
   :init (doom-modeline-mode 1)
   :config
   ;; If non-nil, a word count will be added to the selection-info modeline segment.
-  (setq doom-modeline-enable-word-count nil)
-  (doom-modeline-major-mode-color-icon t)
+  (setq doom-modeline-enable-word-count nil
+  doom-modeline-major-mode-color-icon t)
   ;; Major modes in which to display word count continuously.
   ;; Also applies to any derived modes. Respects `doom-modeline-enable-word-count'.
   ;; If it brings the sluggish issue, disable `doom-modeline-enable-word-count' or
