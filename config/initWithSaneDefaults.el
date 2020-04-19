@@ -98,7 +98,7 @@
 (column-number-mode t)
 (global-visual-line-mode t)
 ;; (global-linum-mode t)
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 (global-display-line-numbers-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (use-package nlinum-relative
