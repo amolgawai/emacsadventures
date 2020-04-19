@@ -131,31 +131,31 @@ With a prefix argument, use comint-mode."
   (interactive)
   (kill-buffer)
   (jump-to-register :magit-fullscreen))
-  
+
 (use-package evil-magit
   :after magit)
 
 ;; github with magit
 (use-package forge
-  :after magit
-  :config
-  (evil-bind-key '(normal visual) magit-mode-map "," 'forge-dispatch)
-  (evil-bind-key 'normal magit-commit-section-map (kbd "gb") 'forge-browse-dwim)
-  (evil-bind-key 'normal magit-remote-section-map (kbd "gb") 'forge-browse-remote)
-  (evil-bind-key 'normal magit-branch-section-map (kbd "gb") 'forge-browse-branch)
-  (evil-bind-key 'normal forge-topic-mode-map (kbd "C-c C-c") 'forge-create-post))
+  :after magit)
+  ;; :config
+  ;; (evil-bind-key '(normal visual) magit-mode-map "," 'forge-dispatch)
+  ;; (evil-bind-key 'normal magit-commit-section-map (kbd "gb") 'forge-browse-dwim)
+  ;; (evil-bind-key 'normal magit-remote-section-map (kbd "gb") 'forge-browse-remote)
+  ;; (evil-bind-key 'normal magit-branch-section-map (kbd "gb") 'forge-browse-branch)
+  ;; (evil-bind-key 'normal forge-topic-mode-map (kbd "C-c C-c") 'forge-create-post))
 
 (use-package forge-list
-  :defer t
-  :config
-  (evil-bind-key 'normal forge-topic-list-mode-map (kbd "q") 'quit-window)
-  (evil-bind-key 'normal forge-topic-list-mode-map (kbd "o") 'forge-browse-topic))
+  :defer t)
+  ;; :config
+  ;; (evil-bind-key 'normal forge-topic-list-mode-map (kbd "q") 'quit-window)
+  ;; (evil-bind-key 'normal forge-topic-list-mode-map (kbd "o") 'forge-browse-topic))
 
 (use-package magit-todos
   :after magit
   :config
   (magit-todos-mode))
-  
+
 ;; Ask password for pushing to remote
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
