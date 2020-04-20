@@ -55,12 +55,20 @@
 	;; basic
     (setq org-directory (expand-file-name "~/MyOrganiser")
 		  org-default-notes-file (concat org-directory "/Inbox.org")
-		  org-agenda-files '("~/MyOrganiser")
+		  ;; org-agenda-files '("~/MyOrganiser")
 		  org-log-done t
 		  org-fast-tag-selection-single-key t
           org-hide-emphasis-markers t
 		  org-use-fast-todo-selection t)
                                         ;    (setq org-startup-truncated nil)
+    ;; (setq org-agenda-files (directory-files-recursively "~/MyOrganiser" "\.org$"))
+    (setq org-agenda-files (apply 'append
+                                  (mapcar
+                                   (lambda (directory)
+                                     (directory-files-recursively
+                                      directory org-agenda-file-regexp))
+                                   '("~/MyOrganiser" "~/code/technotes"))))
+
     ;; beautification
     (let* ((variable-tuple
             (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
@@ -68,8 +76,9 @@
                   ((x-list-fonts "Verdana")         '(:font "Verdana"))
                   ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
                   (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-           (base-font-color     (face-foreground 'default nil 'default))
-           (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+           (headline           `(:inherit default :weight bold )))
+           ;; (base-font-color     (face-foreground 'default nil 'default))
+           ;; (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
 
       (custom-theme-set-faces
        'user
@@ -139,45 +148,32 @@
             ("SOMEDAY" . (:foreground "LimeGreen" :weight bold))
             ))
 
-    (setq org-tag-persistent-alist
-          '((:startgroup . nil)
-            ("HOME" . ?h)
-            ("RESEARCH" . ?r)
-            ("TEACHING" . ?t)
-            (:endgroup . nil)
-            (:startgroup . nil)
-            ("OS" . ?o)
-            ("DEV" . ?d)
-            ("WWW" . ?w)
-            (:endgroup . nil)
-            (:startgroup . nil)
-            ("EASY" . ?e)
-            ("MEDIUM" . ?m)
-            ("HARD" . ?a)
-            (:endgroup . nil)
-            ("URGENT" . ?u)
-            ("KEY" . ?k)
-            ("BONUS" . ?b)
-            ("noexport" . ?x)
-            )
-          )
+    (setq org-tag-persistent-alist '((:startgrouptag)
+                          ("GTD")
+                          (:grouptags)
+                          ("What") ("Where") ("Who") ("When")
+                          (:endgrouptag)
+                          (:startgrouptag)
+                          ("What")
+                          (:grouptags)
+                          ("Vision" . ?V) ("Goal" . ?G) ("AreaOfLife" . ?A) ("Project" . ?P)
+                          (:endgrouptag)
+                          (:startgrouptag)
+                          ("Where")
+                          (:grouptags)
+                          ("@home") ("@work") ("@desk") ("@www") ("@book") ("@email") ("@call")
+                          (:endgrouptag)
+                          (:startgrouptag)
+                          ("Who")
+                          (:grouptags)
+                          ("self")
+                          (:endgrouptag)
+                          (:startgrouptag)
+                          ("When")
+                          (:grouptags)
+                          ("1_Now") ("2_Next") ("3_Later") ("4_Someday")
+                          (:endgrouptag)))
 
-    (setq org-tag-faces
-          '(
-            ("HOME" . (:foreground "GoldenRod" :weight bold))
-            ("RESEARCH" . (:foreground "GoldenRod" :weight bold))
-            ("TEACHING" . (:foreground "GoldenRod" :weight bold))
-            ("OS" . (:foreground "IndianRed1" :weight bold))
-            ("DEV" . (:foreground "IndianRed1" :weight bold))
-            ("WWW" . (:foreground "IndianRed1" :weight bold))
-            ("URGENT" . (:foreground "Red" :weight bold))
-            ("KEY" . (:foreground "Red" :weight bold))
-            ("EASY" . (:foreground "OrangeRed" :weight bold))
-            ("MEDIUM" . (:foreground "OrangeRed" :weight bold))
-            ("HARD" . (:foreground "OrangeRed" :weight bold))
-            ("BONUS" . (:foreground "GoldenRod" :weight bold))
-            ("noexport" . (:foreground "LimeGreen" :weight bold))
-            ))
     (setq org-agenda-ndays 7
           org-agenda-show-all-dates t
           org-agenda-skip-deadline-if-done t
