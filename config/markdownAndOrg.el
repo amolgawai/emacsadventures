@@ -81,7 +81,7 @@
 
     (custom-theme-set-faces
      'user
-     '(variable-pitch ((t (:family "Source Sans Pro" :height 180 )))))
+     '(variable-pitch ((t (:family "Source Sans Pro" )))))
     ;;  '(fixed-pitch ((t ( :family "Source Code Pro" :slant normal :weight normal :height 1.0 :width normal)))))
 
 	(add-hook 'org-mode-hook
