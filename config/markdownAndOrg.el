@@ -55,13 +55,11 @@
 	;; basic
     (setq org-directory (expand-file-name "~/MyOrganiser")
 		  org-default-notes-file (concat org-directory "/Inbox.org")
-		  ;; org-agenda-files '("~/MyOrganiser")
 		  org-log-done t
 		  org-fast-tag-selection-single-key t
           org-hide-emphasis-markers t
 		  org-use-fast-todo-selection t)
                                         ;    (setq org-startup-truncated nil)
-    ;; (setq org-agenda-files (directory-files-recursively "~/MyOrganiser" "\.org$"))
     (setq org-agenda-files (apply 'append
                                   (mapcar
                                    (lambda (directory)
@@ -70,32 +68,7 @@
                                    '("~/MyOrganiser" "~/code/technotes"))))
 
     ;; beautification
-    (let* ((variable-tuple
-            (cond ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-                  ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-                  ((x-list-fonts "Verdana")         '(:font "Verdana"))
-                  ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-                  (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-           (headline           `(:inherit default :weight bold )))
-           ;; (base-font-color     (face-foreground 'default nil 'default))
-           ;; (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
-
-      (custom-theme-set-faces
-       'user
-       `(org-level-8 ((t (,@headline ,@variable-tuple))))
-       `(org-level-7 ((t (,@headline ,@variable-tuple))))
-       `(org-level-6 ((t (,@headline ,@variable-tuple))))
-       `(org-level-5 ((t (,@headline ,@variable-tuple))))
-       `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-       `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
-       `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
-       `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
-       `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
-    ;; (set-face-attribute 'org-document-title nil :height 2.0)
-    ;; (set-face-attribute 'org-level-1 nil :height 1.5)
-    ;; (set-face-attribute 'org-level-2 nil :height 1.25)
-    ;; (set-face-attribute 'org-level-3 nil :height 1.1)
-	(setq org-startup-indented t
+    	(setq org-startup-indented t
 		  ;; org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
 		  org-ellipsis "  " ;; folding symbol
 		  org-pretty-entities t
@@ -105,14 +78,14 @@
 		  org-fontify-whole-heading-line t
 		  org-fontify-done-headline t
 		  org-fontify-quote-and-verse-blocks t)
+
     (custom-theme-set-faces
      'user
-     '(variable-pitch ((t (:family "Source Sans Pro" :height 180 :weight light))))
-     '(fixed-pitch ((t ( :family "Source Code Pro" :slant normal :weight normal :height 1.0 :width normal)))))
+     '(variable-pitch ((t (:family "Source Sans Pro" :height 180 )))))
+    ;;  '(fixed-pitch ((t ( :family "Source Code Pro" :slant normal :weight normal :height 1.0 :width normal)))))
 
 	(add-hook 'org-mode-hook
 			  '(lambda ()
-                 (variable-pitch-mode t)
 				 (setq line-spacing 0.2) ;; Add more line padding for readability
 				 (variable-pitch-mode 1) ;; All fonts with variable pitch.
                  (lambda () (progn
@@ -123,7 +96,7 @@
 				  (lambda (face) ;; Other fonts with fixed-pitch.
 					(set-face-attribute face nil :inherit 'fixed-pitch))
 				  (list 'org-code
-						'org-link
+						;; 'org-link
 						'org-block
 						'org-table
 						'org-verbatim
@@ -131,21 +104,12 @@
 						'org-block-end-line
 						'org-meta-line
 						'org-document-info-keyword))))
+
 	;; GTD setup
     (setq org-todo-keywords
           '(
             (sequence "IDEA(i)" "TODO(t)" "STARTED(s)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)")
             (sequence "|" "CANCELED(c)" "DELEGATED(l)" "SOMEDAY(f)")
-            ))
-
-    (setq org-todo-keyword-faces
-          '(("IDEA" . (:foreground "GoldenRod" :weight bold))
-            ("NEXT" . (:foreground "IndianRed1" :weight bold))
-            ("STARTED" . (:foreground "OrangeRed" :weight bold))
-            ("WAITING" . (:foreground "coral" :weight bold))
-            ("CANCELED" . (:foreground "LimeGreen" :weight bold))
-            ("DELEGATED" . (:foreground "LimeGreen" :weight bold))
-            ("SOMEDAY" . (:foreground "LimeGreen" :weight bold))
             ))
 
     (setq org-tag-persistent-alist '((:startgrouptag)
@@ -157,6 +121,7 @@
                           ("What")
                           (:grouptags)
                           ("Vision" . ?V) ("Goal" . ?G) ("AreaOfLife" . ?A) ("Project" . ?P)
+                          ("Profile") ("Checklist")
                           (:endgrouptag)
                           (:startgrouptag)
                           ("Where")
@@ -174,12 +139,14 @@
                           ("1_Now") ("2_Next") ("3_Later") ("4_Someday")
                           (:endgrouptag)))
 
+    ;; Agenda settings
     (setq org-agenda-ndays 7
           org-agenda-show-all-dates t
           org-agenda-skip-deadline-if-done t
           org-agenda-skip-scheduled-if-done t
           org-agenda-start-on-weekday nil
           org-deadline-warning-days 14)
+
     (setq org-agenda-custom-commands
           '(("g" . "GTD contexts")
             ("gh" "Home" tags-todo "HOME")
