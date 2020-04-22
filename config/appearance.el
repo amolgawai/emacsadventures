@@ -25,11 +25,37 @@
 ;;; Code:
 
 ;; set the font for all the frames
-(add-to-list 'default-frame-alist
-             '(font . "Source Code Pro-16"))
+;; (add-to-list 'default-frame-alist
+;;              '(font . "Source Code Pro-16"))
+;; (custom-set-faces
+;;  '(fixed-pitch ((t (:family "Source Code Pro"))))
+;;  '(variable-pitch ((t (:family "Source Sans Pro" :height )))))
+(set-face-attribute 'default nil :family "Source Code Pro" :height 190)
+(set-face-attribute 'fixed-pitch nil :family "Source Code Pro" :height 190)
+(set-face-attribute 'variable-pitch nil :family "Source Sans Pro" :height 210)
+
+;; FIXME - find a place for these settings
+;; Use variable pitch font for info buffers
+;; ref - https://yoo2080.wordpress.com/2013/05/30/monospace-font-in-tables-and-source-code-blocks-in-org-mode-proportional-font-in-other-parts/
+;;; display Info mode buffers in proportional font
+(add-hook 'Info-mode-hook 'variable-pitch-mode)
+
+;;; but code examples in monospace font
+(defvar emcsadvntr/rx-info-code (rx bol "     " (* not-newline) eol))
+(add-hook 'Info-mode-hook 'emcsadvntr/Info-font-lock)
+(defun emcsadvntr/Info-font-lock ()
+  "Fonts for code blocks in info."
+  (interactive)
+  (require 'org)
+  (font-lock-add-keywords
+   nil
+   `((,emcsadvntr/rx-info-code
+      .
+      ;; let's just use org-block
+      (quote org-block)
+      ))))
 
 ;; themes
-
 ;; sanityinc-tomorrow-night
 (use-package color-theme-sanityinc-tomorrow
   :ensure t

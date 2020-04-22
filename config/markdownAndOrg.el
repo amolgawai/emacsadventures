@@ -24,6 +24,24 @@
 
 ;;; Code:
 
+;; variable pitch for all the text modes
+(add-hook 'text-mode-hook 'variable-pitch-mode)
+
+;; adjust specific font faces for a perticular mode
+;; ref - https://yoo2080.wordpress.com/2013/05/30/monospace-font-in-tables-and-source-code-blocks-in-org-mode-proportional-font-in-other-parts/
+(defun emcsadvntr/adjoin-to-list-or-symbol (element list-or-symbol)
+  "Use this helper function for adjusting font faces for specific blocks.
+
+Used mainly for markdown and org mode to adjust fixed width for some faces
+ELEMENT - pass the font attribute
+LIST-OR-SYMBOL - pass the list of faces"
+  (let ((list (if (not (listp list-or-symbol))
+                  (list list-or-symbol)
+                list-or-symbol)))
+    (require 'cl-lib)
+    (cl-adjoin element list)))
+
+;; markdown settings
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -33,7 +51,20 @@
   :init
   (progn
     (setq markdown-make-gfm-checkboxes-buttons t)
-    (setq markdown-command "multimarkdown")))
+    (setq markdown-command "multimarkdown"))
+  :config
+  (progn
+    (add-hook 'markdown-mode-hook
+              '(lambda ()
+                 (mapc
+                  (lambda (face)
+                    (set-face-attribute
+                     face nil
+                     :inherit
+                     (emcsadvntr/adjoin-to-list-or-symbol
+                      'fixed-pitch
+                      (face-attribute face :inherit))))
+                  (list 'markdown-pre-face 'markdown-inline-code-face))))))
 
 (use-package pdf-tools
   :ensure t
@@ -68,7 +99,7 @@
                                    '("~/MyOrganiser" "~/code/technotes"))))
 
     ;; beautification
-    	(setq org-startup-indented t
+    (setq org-startup-indented t
 		  ;; org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
 		  org-ellipsis "  " ;; folding symbol
 		  org-pretty-entities t
@@ -79,9 +110,9 @@
 		  org-fontify-done-headline t
 		  org-fontify-quote-and-verse-blocks t)
 
-    (custom-theme-set-faces
-     'user
-     '(variable-pitch ((t (:family "Source Sans Pro" :height 225 )))))
+    ;; (custom-theme-set-faces
+    ;;  'user
+    ;;  '(variable-pitch ((t (:family "Source Sans Pro" :height 225 )))))
     ;;  '(fixed-pitch ((t ( :family "Source Code Pro" :slant normal :weight normal :height 1.0 :width normal)))))
 
 	(add-hook 'org-mode-hook
@@ -93,17 +124,28 @@
                               (setq right-margin-width 2)
                               (set-window-buffer nil (current-buffer))))
 				 (mapc
-				  (lambda (face) ;; Other fonts with fixed-pitch.
-					(set-face-attribute face nil :inherit 'fixed-pitch))
-				  (list 'org-code
-						;; 'org-link
-						'org-block
-						'org-table
-						'org-verbatim
-						'org-block-begin-line
-						'org-block-end-line
-						'org-meta-line
-						'org-document-info-keyword))))
+                  (lambda (face)
+                    (set-face-attribute
+                     face nil
+                     :inherit
+                     (emcsadvntr/adjoin-to-list-or-symbol
+                      'fixed-pitch
+                      (face-attribute face :inherit))))
+                  (list 'org-code 'org-block 'org-table
+                        'org-block-background 'org-verbatim
+                        'org-meta-line
+                        'org-document-info-keyword))))
+    ;; (lambda (face) ;; Other fonts with fixed-pitch.
+    ;;   (set-face-attribute face nil :inherit 'fixed-pitch))
+    ;; (list 'org-code
+    ;;   	;; 'org-link
+    ;;   	'org-block
+    ;;   	'org-table
+    ;;   	'org-verbatim
+    ;;   	'org-block-begin-line
+    ;;   	'org-block-end-line
+    ;;   	'org-meta-line
+    ;;   	'org-document-info-keyword))))
 
 	;; GTD setup
     (setq org-todo-keywords
@@ -113,31 +155,31 @@
             ))
 
     (setq org-tag-persistent-alist '((:startgrouptag)
-                          ("GTD")
-                          (:grouptags)
-                          ("What") ("Where") ("Who") ("When")
-                          (:endgrouptag)
-                          (:startgrouptag)
-                          ("What")
-                          (:grouptags)
-                          ("Vision" . ?V) ("Goal" . ?G) ("AreaOfLife" . ?A) ("Project" . ?P)
-                          ("Profile") ("Checklist")
-                          (:endgrouptag)
-                          (:startgrouptag)
-                          ("Where")
-                          (:grouptags)
-                          ("@home") ("@work") ("@desk") ("@www") ("@book") ("@email") ("@call")
-                          (:endgrouptag)
-                          (:startgrouptag)
-                          ("Who")
-                          (:grouptags)
-                          ("self")
-                          (:endgrouptag)
-                          (:startgrouptag)
-                          ("When")
-                          (:grouptags)
-                          ("1_Now") ("2_Next") ("3_Later") ("4_Someday")
-                          (:endgrouptag)))
+                                     ("GTD")
+                                     (:grouptags)
+                                     ("What") ("Where") ("Who") ("When")
+                                     (:endgrouptag)
+                                     (:startgrouptag)
+                                     ("What")
+                                     (:grouptags)
+                                     ("Vision" . ?V) ("Goal" . ?G) ("AreaOfLife" . ?A) ("Project" . ?P)
+                                     ("Profile") ("Checklist")
+                                     (:endgrouptag)
+                                     (:startgrouptag)
+                                     ("Where")
+                                     (:grouptags)
+                                     ("@home") ("@work") ("@desk") ("@www") ("@book") ("@email") ("@call")
+                                     (:endgrouptag)
+                                     (:startgrouptag)
+                                     ("Who")
+                                     (:grouptags)
+                                     ("self")
+                                     (:endgrouptag)
+                                     (:startgrouptag)
+                                     ("When")
+                                     (:grouptags)
+                                     ("1_Now") ("2_Next") ("3_Later") ("4_Someday")
+                                     (:endgrouptag)))
 
     ;; Agenda settings
     (setq org-agenda-ndays 7
