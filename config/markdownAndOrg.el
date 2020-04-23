@@ -163,7 +163,7 @@ LIST-OR-SYMBOL - pass the list of faces"
                                      ("What")
                                      (:grouptags)
                                      ("Vision" . ?V) ("Goal" . ?G) ("AreaOfLife" . ?A) ("Project" . ?P)
-                                     ("Profile") ("Checklist")
+                                     ("Profile") ("Checklist") ("Reference")
                                      (:endgrouptag)
                                      (:startgrouptag)
                                      ("Where")
@@ -187,6 +187,8 @@ LIST-OR-SYMBOL - pass the list of faces"
           org-agenda-skip-deadline-if-done t
           org-agenda-skip-scheduled-if-done t
           org-agenda-start-on-weekday nil
+          org-agenda-restore-windows-after-quit t
+          org-agenda-window-setup 'only-window
           org-deadline-warning-days 14)
 
     (setq org-agenda-custom-commands
