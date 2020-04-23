@@ -195,27 +195,16 @@ LIST-OR-SYMBOL - pass the list of faces"
           '(("g" "Goals" tags "Goal"
              ((org-agenda-remove-tags t)
               (org-agenda-overriding-header "Goals")))
-            ("p" "Projects" tags "Project"
-             ((org-agenda-remove-tags t)
-              (org-agenda-overriding-header "Projects")))))
-    ;; (setq org-agenda-custom-commands
-    ;;       '(("g" . "GTD contexts")
-    ;;         ("gg" "Goals" tags "Goal"
-    ;;          ((org-agenda-with-colors t)
-    ;;          (org-agenda-remove-tags t)))
-    ;;         ("gp" "Projects" tags "Project")
-    ;;         ("gn" "Next Actions" tags-todo "1_Now")
-    ;;         ("G" "GTD Block Agenda"
-    ;;          ((todo "STARTED")
-    ;;           (tags-todo "URGENT")
-    ;;           (todo "NEXT"))
-    ;;          ((org-agenda-prefix-format "[ ] %T: ")
-    ;;           (org-agenda-with-colors nil)
-    ;;           (org-agenda-compact-blocks t)
-    ;;           (org-agenda-remove-tags t)
-    ;;           (ps-number-of-columns 2)
-    ;;           (ps-landscape-mode t)))
-    ;;         ))
+            ("p" "Projects" (
+                             (tags "+Project+TODO=\"STARTED\""
+                                   ((org-agenda-overriding-header "Active Projects")))
+                             (tags "+Project-TODO=\"STARTED\""
+								   ((org-agenda-overriding-header "All other Projects"))))
+			 ((org-agenda-remove-tags t)
+			  (org-agenda-overriding-header "Project List")))
+            ("n" "Next Items" todo "NEXT")
+            ("d" "Agenda + Next Actions" ((agenda) (todo "NEXT")))))
+
     ;; Refiling - Ref -> https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
     (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
           org-refile-use-outline-path 'file
