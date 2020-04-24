@@ -64,6 +64,9 @@ All the important cheatsheets are located in the [quickref](/quickref) directory
 I would be very pleased if you give me feedback to improve this configuration. I will try to improve as I go along using it.
 Thank You.
 
+## TODOs
+-[ ] Move `setq` from `:config/:init` to `:custom` as is the [suggestion](https://github.com/jwiegley/use-package#customizing-variables) for use-package
+
 ## Further Research
 
 Furhter research for improvements
