@@ -55,6 +55,9 @@
      "TAB l"     '(persp-switch-last :which-key "last")
      "TAB d"     '(persp-kill :which-key "delete")
      "TAB c"     '(:keymap perspective-map :which-key "commands")
+     "TAB p"     '(:ignore t :which-key "Load/Save")
+     "TAB p l"   '(persp-state-load :which-key "Load")
+     "TAB p s"   '(persp-state-save :which-key "Save")
 	 ;; Buffers
 	 "b"         '(:ignore t :which-key "buffer")
 	 "bb"        '(counsel-projectile-switch-to-buffer :which-key "project buffer list")
