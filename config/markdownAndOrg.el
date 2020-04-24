@@ -105,7 +105,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 		  org-pretty-entities t
 		  org-hide-emphasis-markers t
 		  ;; show actually italicized text instead of /italicized text/
-		  org-agenda-block-separator ""
+		  ;; org-agenda-block-separator '-'
 		  org-fontify-whole-heading-line t
 		  org-fontify-done-headline t
 		  org-fontify-quote-and-verse-blocks t)
@@ -224,6 +224,32 @@ LIST-OR-SYMBOL - pass the list of faces"
           org-src-fontify-natively t
           org-src-tab-acts-natively t)))
 
+;; easily open org files from ivy interface
+;; ref - https://github.com/akirak/ivy-omni-org
+(use-package ivy-omni-org
+  :custom
+  (ivy-omni-org-file-sources '(org-agenda-files)))
+
+;; supercharge the agenda with org-super-agenda
+;; (use-package org-super-agenda
+;;   :ensure t
+;;   :after org-agenda
+;;   :init
+;;   (setq org-super-agenda-groups
+;;       '((:name "Next Items"
+;;                :time-grid t
+;; 			   :todo "NEXT")
+;;         (:name "Important"
+;;                :priority "A")
+;;         (:name "Quick Picks"
+;;                :effort< "0:30")
+;;         (:priority<= "B"
+;;                      :scheduled future
+;;                      :order 1)))
+;;   :config
+;;   (org-super-agenda-mode))
+
+;; beautiful bullets for org mode
 (use-package org-bullets
   :ensure t
   :config

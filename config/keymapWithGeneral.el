@@ -81,6 +81,7 @@
 	 "n"         '(:ignore t :which-key "notes")
 	 "nd"        '(emcsadvntr/deft-dwim :which-key "deft")
 	 "nj"        '(org-journal-new-entry :which-key "journal entry")
+     "no"        '(ivy-omni-org :which-key "open org file")
      "nr"        '(org-refile :which-key "refile note")
 	 ;; open
 	 "o"         '(:ignore t :which-key "open")
