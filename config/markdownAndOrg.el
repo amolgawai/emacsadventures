@@ -105,7 +105,6 @@ LIST-OR-SYMBOL - pass the list of faces"
 		  org-pretty-entities t
 		  org-hide-emphasis-markers t
 		  ;; show actually italicized text instead of /italicized text/
-		  ;; org-agenda-block-separator '-'
 		  org-fontify-whole-heading-line t
 		  org-fontify-done-headline t
 		  org-fontify-quote-and-verse-blocks t)
@@ -192,6 +191,7 @@ LIST-OR-SYMBOL - pass the list of faces"
                                      ("1_Now") ("2_Next") ("3_Later") ("4_Someday")
                                      (:endgrouptag)))
 
+    (setq org-tags-exclude-from-inheritance (quote ("Goal" "Project")))
     ;; Agenda settings
     (setq org-agenda-ndays 7
           org-agenda-show-all-dates t
@@ -200,7 +200,10 @@ LIST-OR-SYMBOL - pass the list of faces"
           org-agenda-start-on-weekday nil
           org-agenda-restore-windows-after-quit t
           org-agenda-window-setup 'only-window
-          org-deadline-warning-days 14)
+          org-deadline-warning-days 14
+		  org-agenda-block-separator nil
+          org-agenda-compact-blocks t
+          org-agenda-start-with-log-mode t)
 
     (setq org-agenda-custom-commands
           '(("g" "Goals" tags "Goal"
@@ -213,7 +216,8 @@ LIST-OR-SYMBOL - pass the list of faces"
 								   ((org-agenda-overriding-header "❖----------------All other Projects----------------------❖"))))
 			 ((org-agenda-remove-tags t)
 			  (org-agenda-overriding-header "Project List")))
-            ("n" "Next Actions" todo "NEXT")
+            ("n" "Next Actions" todo "NEXT"
+			 ((org-agenda-overriding-header "Next Actions")))
             ("d" "Agenda + Next Actions" ((agenda) (todo "NEXT")))))
 
     ;; Refiling - Ref -> https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
@@ -234,6 +238,37 @@ LIST-OR-SYMBOL - pass the list of faces"
     (setq org-use-speed-commands t
           org-src-fontify-natively t
           org-src-tab-acts-natively t)))
+
+;;  Supercharge your Org daily/weekly agenda by grouping items
+;; https://github.com/alphapapa/org-super-agenda
+(use-package org-super-agenda
+  :init
+  (setq org-super-agenda-groups
+        '((:name "Goals"
+                 :tag "Goal")
+          (:name "Active Projects"
+                 :and (:todo "STARTED" :tag "Project"))))
+  :config
+  (org-super-agenda-mode))
+;; '((:name "Next Items"
+;;          :time-grid t
+;;          :tag ("NEXT" "outbox"))
+;;   (:name "Important"
+;;          :priority "A")
+;;   (:name "Quick Picks"
+;;          :effort< "0:30")
+;;   (:priority<= "B"
+;;                :scheduled future
+;;                :order 1))))
+
+;; Org Cliplink: insert the link in the clipboard as an org link. Adds the
+;; title of the page as the description
+;; https://github.com/rexim/org-cliplink
+(use-package org-cliplink
+  :bind (:map org-mode-map
+              ;; "C-c C-l" is bound to `org-insert-link' by default
+              ;; "C-c C-L" is bound to `org-cliplink'
+              ("C-c C-S-l" . org-cliplink)))
 
 ;; easily open org files from ivy interface
 ;; ref - https://github.com/akirak/ivy-omni-org
