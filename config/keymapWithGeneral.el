@@ -79,6 +79,8 @@
 	 "fd"        '(delete-frame :which-key "delete")
 	 ;; notes
 	 "n"         '(:ignore t :which-key "notes")
+     "na"        '(org-agenda :which-key "agenda")
+     "nc"        '(org-capture :which-key "capture")
 	 "nd"        '(emcsadvntr/deft-dwim :which-key "deft")
 	 "nj"        '(org-journal-new-entry :which-key "journal entry")
      "no"        '(ivy-omni-org :which-key "open org file")

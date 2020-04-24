@@ -197,12 +197,12 @@ LIST-OR-SYMBOL - pass the list of faces"
               (org-agenda-overriding-header "Goals")))
             ("p" "Projects" (
                              (tags "+Project+TODO=\"STARTED\""
-                                   ((org-agenda-overriding-header "Active Projects")))
+                                   ((org-agenda-overriding-header "❖----------------Active Projects----------------------❖")))
                              (tags "+Project-TODO=\"STARTED\""
-								   ((org-agenda-overriding-header "All other Projects"))))
+								   ((org-agenda-overriding-header "❖----------------All other Projects----------------------❖"))))
 			 ((org-agenda-remove-tags t)
 			  (org-agenda-overriding-header "Project List")))
-            ("n" "Next Items" todo "NEXT")
+            ("n" "Next Actions" todo "NEXT")
             ("d" "Agenda + Next Actions" ((agenda) (todo "NEXT")))))
 
     ;; Refiling - Ref -> https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
