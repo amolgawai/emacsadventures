@@ -154,6 +154,17 @@ LIST-OR-SYMBOL - pass the list of faces"
             (sequence "|" "CANCELED(c)" "DELEGATED(l)" "SOMEDAY(f)")
             ))
 
+    (setq org-todo-keyword-faces
+          '(("IDEA" . (:foreground "Magenta"))
+            ("TODO" . org-todo)
+            ("NEXT" . org-warning)
+            ("STARTED" . "yellow")
+            ("WAITING" . (:foreground "Pink"))
+            ("SOMEDAY"  . (:foreground "#FFEF9F"))
+            ("DELEGATED" . (:inherit outline-2))
+            ("CANCELED" . (:inherit org-done :strike-through t))
+            ("DONE"     . (:inherit org-done :strike-through t))))
+
     (setq org-tag-persistent-alist '((:startgrouptag)
                                      ("GTD")
                                      (:grouptags)
