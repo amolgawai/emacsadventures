@@ -149,20 +149,20 @@ LIST-OR-SYMBOL - pass the list of faces"
 	;; GTD setup
     (setq org-todo-keywords
           '(
-            (sequence "IDEA(i)" "TODO(t)" "STARTED(s)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)")
-            (sequence "|" "CANCELED(c)" "DELEGATED(l)" "SOMEDAY(f)")
+            (sequence "⚡ IDEA(i)" "☛ TODO(t)" "⚙ STARTED(s)" "☚ NEXT(n)" "⚑ WAITING(w)" "|" "✔ DONE(d)")
+            (sequence "|" "✘ CANCELED(c)" "☟ DELEGATED(l)" "♺ SOMEDAY(f)")
             ))
 
     (setq org-todo-keyword-faces
-          '(("IDEA" . (:foreground "Magenta"))
-            ("TODO" . org-todo)
-            ("NEXT" . org-warning)
-            ("STARTED" . "yellow")
-            ("WAITING" . (:foreground "Pink"))
-            ("SOMEDAY"  . (:foreground "#FFEF9F"))
-            ("DELEGATED" . (:inherit outline-2))
-            ("CANCELED" . (:inherit org-done :strike-through t))
-            ("DONE"     . (:inherit org-done :strike-through t))))
+          '(("⚡ IDEA" . (:foreground "Magenta"))
+            ("☛ TODO" . org-todo)
+            ("☚ NEXT" . org-warning)
+            ("⚙ STARTED" . "yellow")
+            ("⚑ WAITING" . (:foreground "Pink"))
+            ("♺ SOMEDAY"  . (:foreground "#FFEF9F"))
+            ("☟ DELEGATED" . (:inherit outline-2))
+            ("✘ CANCELED" . (:inherit org-done :strike-through t))
+            ("✔ DONE"     . (:inherit org-done :strike-through t))))
 
     (setq org-tag-persistent-alist '((:startgrouptag)
                                      ("GTD")
@@ -210,15 +210,15 @@ LIST-OR-SYMBOL - pass the list of faces"
              ((org-agenda-remove-tags t)
               (org-agenda-overriding-header "Goals")))
             ("p" "Projects"
-             ((tags "+Project+TODO=\"STARTED\""
+             ((tags "+Project+TODO=\"⚙ STARTED\""
                     ((org-agenda-overriding-header "❖----------------Active Projects----------------------❖")))
-              (tags "+Project-TODO=\"STARTED\""
+              (tags "+Project-TODO=\"⚙ STARTED\""
                     ((org-agenda-overriding-header "❖----------------All other Projects----------------------❖"))))
 			 ((org-agenda-remove-tags t)
 			  (org-agenda-overriding-header "Project List")))
-            ("n" "Next Actions" todo "NEXT"
+            ("n" "Next Actions" todo "☚ NEXT"
 			 ((org-agenda-overriding-header "Next Actions")))
-            ("d" "Agenda + Next Actions + All" ((agenda) (todo "NEXT") (alltodo "")))))
+            ("d" "Agenda + Next Actions + All" ((agenda) (todo "☚ NEXT") (alltodo "")))))
 
     ;; Refiling - Ref -> https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
     (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
