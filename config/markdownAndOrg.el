@@ -201,24 +201,24 @@ LIST-OR-SYMBOL - pass the list of faces"
           org-agenda-restore-windows-after-quit t
           org-agenda-window-setup 'only-window
           org-deadline-warning-days 14
-		  org-agenda-block-separator nil
-          org-agenda-compact-blocks t
+		  ;; org-agenda-block-separator nil
+          ;; org-agenda-compact-blocks t
           org-agenda-start-with-log-mode t)
 
     (setq org-agenda-custom-commands
           '(("g" "Goals" tags "Goal"
              ((org-agenda-remove-tags t)
               (org-agenda-overriding-header "Goals")))
-            ("p" "Projects" (
-                             (tags "+Project+TODO=\"STARTED\""
-                                   ((org-agenda-overriding-header "❖----------------Active Projects----------------------❖")))
-                             (tags "+Project-TODO=\"STARTED\""
-								   ((org-agenda-overriding-header "❖----------------All other Projects----------------------❖"))))
+            ("p" "Projects"
+             ((tags "+Project+TODO=\"STARTED\""
+                    ((org-agenda-overriding-header "❖----------------Active Projects----------------------❖")))
+              (tags "+Project-TODO=\"STARTED\""
+                    ((org-agenda-overriding-header "❖----------------All other Projects----------------------❖"))))
 			 ((org-agenda-remove-tags t)
 			  (org-agenda-overriding-header "Project List")))
             ("n" "Next Actions" todo "NEXT"
 			 ((org-agenda-overriding-header "Next Actions")))
-            ("d" "Agenda + Next Actions" ((agenda) (todo "NEXT")))))
+            ("d" "Agenda + Next Actions + All" ((agenda) (todo "NEXT") (alltodo "")))))
 
     ;; Refiling - Ref -> https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html
     (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
