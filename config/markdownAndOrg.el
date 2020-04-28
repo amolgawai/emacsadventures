@@ -200,6 +200,7 @@ LIST-OR-SYMBOL - pass the list of faces"
           org-agenda-start-on-weekday nil
           org-agenda-restore-windows-after-quit t
           org-agenda-window-setup 'only-window
+          org-agenda-tags-column -100
           org-deadline-warning-days 14
 		  ;; org-agenda-block-separator nil
           ;; org-agenda-compact-blocks t
