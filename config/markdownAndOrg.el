@@ -217,7 +217,13 @@ LIST-OR-SYMBOL - pass the list of faces"
                     ((org-agenda-overriding-header "❖----------------All other Projects----------------------❖"))))
 			 ((org-agenda-remove-tags t)
 			  (org-agenda-overriding-header "Project List")))
-            ("n" "Next Actions" todo "☚ NEXT"
+            ("na" "Current and Next Actions"
+             ((tags "-Project+TODO=\"⚙ STARTED\""
+                    ((org-agenda-overriding-header "❖----------------Current Actions----------------------❖")))
+              (tags "-Project+TODO=\"☚ NEXT\""
+                    ((org-agenda-overriding-header "❖----------------Next Actions----------------------❖"))))
+			 ((org-agenda-overriding-header "Action List")))
+            ("nn" "Next Actions" todo "☚ NEXT"
 			 ((org-agenda-overriding-header "Next Actions")))
             ("d" "Agenda + Next Actions + All" ((agenda) (todo "☚ NEXT") (alltodo "")))))
 
