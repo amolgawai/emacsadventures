@@ -26,6 +26,7 @@ Generic
     C-=                Expand selected region
     C-'               `avy-goto-char-2'
     C-:               `avy-goto-char'
+    C-;               flyspell-correct-ivy                   Correct spelling (M-o for options)
     M-g l             `avy-goto-line'
     M-g w             `avy-goto-word-1'
     C-c W             `wiki-summary'
