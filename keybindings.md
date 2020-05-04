@@ -15,6 +15,7 @@ EVIL quickstart
 
 Generic
 --------
+
     C-x M-c           `restart-emacs'
     <f7>              `emcsadvntr/deft-dwim'                   Start/quit deft
     C-<f8>             Invoke "Neotree"
@@ -44,6 +45,7 @@ Generic
 
 Folding
 --------
+
     C-c <up arrow>    Fold All
     C-c <down arrow>  UnFold All
     C-c <left arrow>  Fold Current
@@ -51,6 +53,7 @@ Folding
 
 Buffer/Window Navigation
 --------
+
     C-M-<Left arrow>  Move to left frame
     C-M-<Right arrow> Move to right frame
     C-M-<Up arrow>    Move to top frame
@@ -61,11 +64,13 @@ Buffer/Window Navigation
 
 prog-mode-map: <f5>
 --------
+
     <f5>              `emcsadvntr/compile-please'
     <C-f5>            `compile'
 
 dired-mode-map
 --------
+
     /                 `dired-narrow'
     I                 `dired-subtree-remove'                  was `dired-info'
     i                 `dired-subtree-insert'                  was `dired-maybe-insert-subdir'
@@ -73,12 +78,14 @@ dired-mode-map
 
 isearch-mode-map
 --------
+
     M-O               `isearch-moccur-all'
     M-o               `isearch-moccur'
 
 
 neotree-mode-map
 --------
+
     +                 `neotree-create-node'
     C                 `neotree-change-root'
     c                 `neotree-create-node'
