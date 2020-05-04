@@ -390,6 +390,46 @@ point reaches the beginning or end of the buffer, stop there."
     (set-buffer-major-mode buffer)
     (display-buffer buffer '(display-buffer-pop-up-frame . nil))))
 
+;; Spell-check
+(use-package flyspell
+  :ensure t
+  :diminish
+  :if (or (executable-find "hunspell")(executable-find "aspell"))
+  :hook (((text-mode outline-mode) . flyspell-mode)
+         (prog-mode . flyspell-prog-mode))
+         ;; (flyspell-mode . (lambda ()
+         ;;                    (dolist (key '("C-;" "C-," "C-."))
+         ;;                      (unbind-key key flyspell-mode-map)))))
+  :init
+  (setq flyspell-issue-message-flag nil)
+  ;; Set $DICPATH to "$HOME/Library/Spelling" for hunspell.
+  (cond
+   ;; try hunspell at first
+   ;; if hunspell does NOT exist, use aspell
+   ((executable-find "hunspell")
+    (setq ispell-program-name "hunspell")
+	(setq ispell-really-hunspell t)
+    (setenv
+     "DICPATH"
+     (concat (getenv "HOME") "/Library/Spelling"))
+    (setenv "DICTIONARY" "en_GB")
+    (setq ispell-local-dictionary "en_GB")
+    (setq ispell-local-dictionary-alist
+          ;; Please note the list `("-d" "en_GB")` contains ACTUAL parameters passed to hunspell
+          ;; You could use `("-d" "en_GB,en_US-med")` to check with multiple dictionaries
+          '(("UK_English" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8))))
+
+   ((executable-find "aspell")
+    (setq ispell-program-name "aspell")
+    ;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
+    (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB")))))
+
+(use-package flyspell-correct
+  :after flyspell
+  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+
+(use-package flyspell-correct-ivy
+  :after flyspell-correct)
 
 (provide 'productivity)
 ;;; productivity.el ends here
