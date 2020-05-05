@@ -97,8 +97,7 @@
 (show-paren-mode 1)
 (column-number-mode t)
 (global-visual-line-mode t)
-;; (global-linum-mode t)
-(setq-default display-line-numbers 'visual
+(setq-default display-line-numbers-type 'visual
               display-line-numbers-current-absolute t
               display-line-numbers-width 4
               display-line-numbers-widen t
