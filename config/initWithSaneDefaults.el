@@ -98,7 +98,12 @@
 (column-number-mode t)
 (global-visual-line-mode t)
 ;; (global-linum-mode t)
-(setq display-line-numbers-type 'visual)
+(setq-default display-line-numbers 'visual
+              display-line-numbers-current-absolute t
+              display-line-numbers-width 4
+              display-line-numbers-widen t
+              display-line-numbers-grow-only t
+              display-line-numbers-width-start t)
 (global-display-line-numbers-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (use-package nlinum-relative
