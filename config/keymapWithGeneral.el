@@ -80,6 +80,10 @@
 	 "fo"        '(find-file-other-frame :which-key "open file -> new frame")
 	 "ff"        '(other-frame :which-key "other frame")
 	 "fd"        '(delete-frame :which-key "delete")
+     ;; help
+     "h"         '(:ignore t :which-key "help")
+     ;; "hh"        '((general-simulate-key "C-h") :which-key "help")
+	 "hy"        '(yas-describe-tables :which-key "snippet tables")
 	 ;; notes
 	 "n"         '(:ignore t :which-key "notes")
      "na"        '(org-agenda :which-key "agenda")
@@ -134,7 +138,7 @@
 	 ))
   (general-nmap "SPC c" (general-simulate-key "C-c" :which-key "C-c"))
   (general-nmap "SPC x" (general-simulate-key "C-x" :which-key "C-x"))
-  (general-nmap "SPC h" (general-simulate-key "C-h" :which-key "help")))
+  (general-nmap "SPC h h" (general-simulate-key "C-h" :which-key "help")))
 ;; (general-nmap "SPC m" (general-simulate-key "," :which-key "major mode")))
 
 
