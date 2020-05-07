@@ -75,7 +75,10 @@
 (use-package elpy
   :ensure t
   :defer t
-  :hook (elpy-mode-hook . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
+  :hook ((elpy-mode-hook . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
+         ('elpy-mode-hook . (lambda ()
+                              (add-hook 'before-save-hook
+                                        'elpy-black-fix-code nil t))))
   :init
   (advice-add 'python-mode :before 'elpy-enable)
   :config
