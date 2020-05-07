@@ -92,4 +92,4 @@ Emacs packages from YouTube video of buildfunthings
 * counsel-imenu - jump within buffer
 * [Better company UI with icons](https://github.com/sebastiencs/company-box)
 * [Highlight indent guides](https://github.com/DarthFennec/highlight-indent-guides)
-* [dired-sidebar](https://github.com/jojojames/dired-sidebar)
+*~~ [dired-sidebar](https://github.com/jojojames/dire -sidebar)~~

@@ -118,6 +118,7 @@
 	 "qr"        '(restart-emacs :which-key "restart")
 	 ;; toggles
 	 "t"         '(:ignore t :which-key "toggle")
+	 "td"        '(dired-sidebar-toggle-sidebar :which-key "dired sidebar")
 	 "tt"        '(treemacs :which-key "treemacs")
 	 "tn"        '(neotree-toggle :which-key "neotree")
 	 "tf"        '(imenu-list-smart-toggle :which-key "function sidebar")
