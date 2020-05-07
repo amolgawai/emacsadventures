@@ -97,13 +97,30 @@
 (show-paren-mode 1)
 (column-number-mode t)
 (global-visual-line-mode t)
+
+(require 'display-line-numbers)
 (setq-default display-line-numbers-type 'visual
               display-line-numbers-current-absolute t
               display-line-numbers-width 4
               display-line-numbers-widen t
               display-line-numbers-grow-only t
               display-line-numbers-width-start t)
+;; disable line numbers in certain modes
+;; for some modes line numbers does not make sense and for others, the variable pitch font causes trouble
+;; ref - https://www.emacswiki.org/emacs/LineNumbers#toc1
+(defcustom display-line-numbers-exempt-modes '(vterm-mode eshell-mode shell-mode term-mode ansi-term-mode org-mode)
+  "Major modes on which to disable the linum mode, exempts them from global requirement."
+  :group 'display-line-numbers
+  :type 'list
+  :version "green")
+(defun display-line-numbers--turn-on ()
+  "Turn on line numbers but excempting certain majore modes defined in `display-line-numbers-exempt-modes'."
+  (if (and
+       (not (member major-mode display-line-numbers-exempt-modes))
+       (not (minibufferp)))
+      (display-line-numbers-mode)))
 (global-display-line-numbers-mode)
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (use-package nlinum-relative
 ;;   :ensure t
