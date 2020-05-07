@@ -108,32 +108,32 @@ LIST-OR-SYMBOL - pass the list of faces"
 		  org-fontify-whole-heading-line t
 		  org-fontify-done-headline t
 		  org-fontify-quote-and-verse-blocks t)
-
     ;; (custom-theme-set-faces
     ;;  'user
     ;;  '(variable-pitch ((t (:family "Source Sans Pro" :height 225 )))))
     ;;  '(fixed-pitch ((t ( :family "Source Code Pro" :slant normal :weight normal :height 1.0 :width normal)))))
 
-	(add-hook 'org-mode-hook
-			  '(lambda ()
-				 (setq line-spacing 0.2) ;; Add more line padding for readability
-				 (variable-pitch-mode 1) ;; All fonts with variable pitch.
-                 (lambda () (progn
-                              (setq left-margin-width 2)
-                              (setq right-margin-width 2)
-                              (set-window-buffer nil (current-buffer))))
-				 (mapc
-                  (lambda (face)
-                    (set-face-attribute
-                     face nil
-                     :inherit
-                     (emcsadvntr/adjoin-to-list-or-symbol
-                      'fixed-pitch
-                      (face-attribute face :inherit))))
-                  (list 'org-code 'org-block 'org-table
-                        'org-block-background 'org-verbatim
-                        'org-meta-line
-                        'org-document-info-keyword))))
+	(add-hook 'org-mode-hook 'emcsadvntr/org-mode-hook)
+    (defun emcsadvntr/org-mode-hook ()
+      "Org-mode specific settings"
+      (setq line-spacing 0.2) ;; Add more line padding for readability
+      ;; header-line-format " ")
+      (setq left-margin-width 1)
+      (setq right-margin-width 2)
+      (set-window-buffer nil (current-buffer))
+      (variable-pitch-mode 1) ;; All fonts with variable pitch.
+      (mapc
+       (lambda (face)
+         (set-face-attribute
+          face nil
+          :inherit
+          (emcsadvntr/adjoin-to-list-or-symbol
+           'fixed-pitch
+           (face-attribute face :inherit))))
+       (list 'org-code 'org-block 'org-table
+             'org-block-background 'org-verbatim
+             'org-meta-line
+             'org-document-info-keyword)))
     ;; (lambda (face) ;; Other fonts with fixed-pitch.
     ;;   (set-face-attribute face nil :inherit 'fixed-pitch))
     ;; (list 'org-code
