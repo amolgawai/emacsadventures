@@ -136,6 +136,7 @@
 	 "wd"        '(delete-window :which-key "delete window")
 	 "wx"        '(delete-other-windows :which-key "delete other windows")
      "w="        '(balance-windows :which-key "balance")
+     "ws"        '(ace-swap-window :which-key "swap")
 	 ))
   (general-nmap "SPC c" (general-simulate-key "C-c" :which-key "C-c"))
   (general-nmap "SPC x" (general-simulate-key "C-x" :which-key "C-x"))
