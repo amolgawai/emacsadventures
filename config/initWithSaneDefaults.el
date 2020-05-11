@@ -108,7 +108,9 @@
 ;; disable line numbers in certain modes
 ;; for some modes line numbers does not make sense and for others, the variable pitch font causes trouble
 ;; ref - https://www.emacswiki.org/emacs/LineNumbers#toc1
-(defcustom display-line-numbers-exempt-modes '(vterm-mode eshell-mode shell-mode term-mode ansi-term-mode org-mode)
+(defcustom display-line-numbers-exempt-modes '(vterm-mode eshell-mode shell-mode
+                                                          term-mode ansi-term-mode
+                                                          org-mode markdown-mode)
   "Major modes on which to disable the linum mode, exempts them from global requirement."
   :group 'display-line-numbers
   :type 'list

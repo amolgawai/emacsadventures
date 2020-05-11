@@ -40,7 +40,7 @@
   ;; ipython support, also remove weird character on ipython prompt
   (when (executable-find "ipython")
     (setq python-shell-interpreter "ipython")
-    (setq python-shell-interpreter-args "-i --simple-prompt --pprint")))
+    (setq python-shell-interpreter-args "-i --simple-prompt")))
 ;; (add-hook 'python-mode-hook 'color-identifiers-mode))
 
 ;; emacs ipython notebook (jupyter in emacs)
