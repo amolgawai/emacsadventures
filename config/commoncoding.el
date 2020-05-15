@@ -138,18 +138,18 @@ With a prefix argument, use comint-mode."
 ;; github with magit
 (use-package forge
   :after magit)
-  ;; :config
-  ;; (evil-bind-key '(normal visual) magit-mode-map "," 'forge-dispatch)
-  ;; (evil-bind-key 'normal magit-commit-section-map (kbd "gb") 'forge-browse-dwim)
-  ;; (evil-bind-key 'normal magit-remote-section-map (kbd "gb") 'forge-browse-remote)
-  ;; (evil-bind-key 'normal magit-branch-section-map (kbd "gb") 'forge-browse-branch)
-  ;; (evil-bind-key 'normal forge-topic-mode-map (kbd "C-c C-c") 'forge-create-post))
+;; :config
+;; (evil-bind-key '(normal visual) magit-mode-map "," 'forge-dispatch)
+;; (evil-bind-key 'normal magit-commit-section-map (kbd "gb") 'forge-browse-dwim)
+;; (evil-bind-key 'normal magit-remote-section-map (kbd "gb") 'forge-browse-remote)
+;; (evil-bind-key 'normal magit-branch-section-map (kbd "gb") 'forge-browse-branch)
+;; (evil-bind-key 'normal forge-topic-mode-map (kbd "C-c C-c") 'forge-create-post))
 
 (use-package forge-list
   :defer t)
-  ;; :config
-  ;; (evil-bind-key 'normal forge-topic-list-mode-map (kbd "q") 'quit-window)
-  ;; (evil-bind-key 'normal forge-topic-list-mode-map (kbd "o") 'forge-browse-topic))
+;; :config
+;; (evil-bind-key 'normal forge-topic-list-mode-map (kbd "q") 'quit-window)
+;; (evil-bind-key 'normal forge-topic-list-mode-map (kbd "o") 'forge-browse-topic))
 
 (use-package magit-todos
   :after magit
@@ -219,8 +219,8 @@ With a prefix argument, use comint-mode."
         company-idle-delay 0
         company-minimum-prefix-length 1
         company-selection-wrap-around t)
-)
   (add-to-list 'company-backends 'company-jedi)
+  (setq company-global-modes '(not inferior-python-mode))
   (global-company-mode 1))
 
 ;; icons for company mode

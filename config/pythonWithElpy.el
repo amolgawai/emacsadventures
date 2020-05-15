@@ -40,17 +40,19 @@
     (setenv "WORKON_HOME" workon-home)
     (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
   :hook ((python-mode . smartparens-mode)
-         (inferior-python-mode . (lambda()
-                                   (setq global-company-mode -1
-                                         company-box-mode -1
-                                         company-statistics-mode -1
-                                         company-mode -1))))
+  (inferior-python-mode . (lambda() (setq company-mode -1))))
+  ;; (global-company-mode -1
+  ;;                      company-box-mode -1
+  ;;                      company-statistics-mode -1
+  ;; company-mode -1))))
   :config
   (setq python-indent-offset 4)
   ;; ipython support, also remove weird character on ipython prompt
   (when (executable-find "ipython")
     (setq python-shell-interpreter "ipython")
     (setq python-shell-interpreter-args "--simple-prompt -colors -c exec('__import__(\\'readline\\')') -i"))
+  (add-to-list 'python-shell-completion-native-disabled-interpreters
+               "ipython")
   )
 
 ;; emacs ipython notebook (jupyter in emacs)
