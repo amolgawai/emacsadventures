@@ -125,6 +125,7 @@
 	 "ts"        '(eshell-toggle :which-key "shell")
      "to"        '(org-sidebar-toggle :which-key "org-sidebar")
      "tp"        '(elpy-shell-toggle-dedicated-shell :which-key "python shell")
+     "tr"        '(ranger :which-key "ranger file manager")
 	 ;; Window
 	 "w"         '(:ignore t :which-key "window")
 	 "wl"        '(windmove-right :which-key "move right")
