@@ -27,6 +27,7 @@
 
 ;; source - https://github.com/howardabrams/dot-files/blob/master/emacs-python.org
 
+
 ;; basic python settings
 (use-package python
   :mode ("\\.py\\'" . python-mode)
@@ -34,14 +35,23 @@
   :interpreter ("python" . python-mode)
   :init
   (setq-default indent-tabs-mode nil)
-  :hook (python-mode-hook . smartparens-mode)
+  (setenv "PYTHONIOENCODING" "utf-8")
+  (let ((workon-home (expand-file-name "~/.pyenv/versions")))
+    (setenv "WORKON_HOME" workon-home)
+    (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
+  :hook ((python-mode . smartparens-mode)
+         (inferior-python-mode . (lambda()
+                                   (setq global-company-mode -1
+                                         company-box-mode -1
+                                         company-statistics-mode -1
+                                         company-mode -1))))
   :config
   (setq python-indent-offset 4)
   ;; ipython support, also remove weird character on ipython prompt
   (when (executable-find "ipython")
     (setq python-shell-interpreter "ipython")
-    (setq python-shell-interpreter-args "-i --simple-prompt")))
-;; (add-hook 'python-mode-hook 'color-identifiers-mode))
+    (setq python-shell-interpreter-args "--simple-prompt -colors -c exec('__import__(\\'readline\\')') -i"))
+  )
 
 ;; emacs ipython notebook (jupyter in emacs)
 (use-package ein
@@ -76,9 +86,10 @@
   :ensure t
   :defer t
   :hook ((elpy-mode-hook . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
-         ('elpy-mode-hook . (lambda ()
-                              (add-hook 'before-save-hook
-                                        'elpy-black-fix-code nil t))))
+         ;; (pyenv-mode . elpy-rpc-restart)
+         (elpy-mode-hook . (lambda ()
+                             (add-hook 'before-save-hook
+                                       'elpy-black-fix-code nil t))))
   :init
   (advice-add 'python-mode :before 'elpy-enable)
   :config
@@ -98,13 +109,35 @@
         elpy-shell-echo-output nil
         elpy-rpc-virtualenv-path 'current))
 
+;; pyenv for emacs
+;; (use-package pyenv-mode
+;;   :ensure t
+;;   :init
+;;   (let ((workon-home (expand-file-name "~/.pyenv/versions")))
+;;     (setenv "WORKON_HOME" workon-home)
+;;     (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
+;;   :config
+;;   (defun projectile-pyenv-mode-set ()
+;;     "Set pyenv version matching project name."
+;;     (let ((project (projectile-project-name)))
+;;       (if (member project (pyenv-mode-versions))
+;;           (pyenv-mode-set project)
+;;         (pyenv-mode-unset))))
+
+;;   (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
+;;   (add-hook 'python-mode-hook 'pyenv-mode))
+
 ;; so that elpy plays well with virtual environments
-(use-package pyenv-mode-auto
-  :ensure t
-  :config
-  (let ((workon-home (expand-file-name "~/.pyenv/versions")))
-    (setenv "WORKON_HOME" workon-home)
-    (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home)))
+;; (use-package pyenv-mode-auto
+;;   :ensure t)
+;; :config
+;; (let ((workon-home (expand-file-name "~/.pyenv/versions")))
+;;   (setenv "WORKON_HOME" workon-home)
+;;   (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home)))
+
+;; (use-package auto-virtualenv
+;;   :ensure t
+;;   :hook (python-mode-hook . 'auto-virtualenv-set-virtualenv))
 
 ;; package managment for python
 (use-package poetry
