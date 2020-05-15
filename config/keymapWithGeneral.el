@@ -118,6 +118,8 @@
 	 "qr"        '(restart-emacs :which-key "restart")
 	 ;; toggles
 	 "t"         '(:ignore t :which-key "toggle")
+	 "tb"        '(ibuffer-sidebar-toggle-sidebar :which-key "ibuffer sidebar")
+	 "tc"        '(emcsadvntr/sidebar-toggle :which-key "dired/ibuffer sidebar")
 	 "td"        '(dired-sidebar-toggle-sidebar :which-key "dired sidebar")
 	 "tt"        '(treemacs :which-key "treemacs")
 	 "tn"        '(neotree-toggle :which-key "neotree")

@@ -246,9 +246,15 @@ It added extra strings at the front and back of the default dired buffer name."
   (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
 
   (setq dired-sidebar-subtree-line-prefix "__")
-  (setq dired-sidebar-theme 'vscode)
+  (setq dired-sidebar-theme 'icons)
   (setq dired-sidebar-use-term-integration t)
   (setq dired-sidebar-use-custom-font t))
+
+(defun emcsadvntr/sidebar-toggle ()
+  "Toggle both `dired-sidebar' and `ibuffer-sidebar'."
+  (interactive)
+  (dired-sidebar-toggle-sidebar)
+  (ibuffer-sidebar-toggle-sidebar))
 
 (provide 'dirNav)
 ;;; dirNav.el ends here

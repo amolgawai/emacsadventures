@@ -250,6 +250,15 @@
               (unless (eq ibuffer-sorting-mode 'alphabetic)
                 (ibuffer-do-sort-by-alphabetic)))))
 
+(use-package ibuffer-sidebar
+  ;; :load-path "~/.emacs.d/fork/ibuffer-sidebar"
+  :ensure nil
+  :commands (ibuffer-sidebar-toggle-sidebar)
+  ;; :config
+  ;; (setq ibuffer-sidebar-use-custom-font t)
+  ;; (setq ibuffer-sidebar-face `(:family "Helvetica" :height 140))
+  )
+
 (use-package beacon
   :ensure t
   :config
