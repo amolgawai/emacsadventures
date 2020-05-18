@@ -224,7 +224,7 @@ With a prefix argument, use comint-mode."
 
 ;; Company -- complete anything
 (use-package company
-  ;; :defer t
+  :defer t
   :ensure t
   :diminish company-mode
   :config

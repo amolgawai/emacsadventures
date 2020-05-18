@@ -27,7 +27,12 @@
 
 ;; Make startup faster by reducing the frequency of garbage
 ;; collection.  The default is 800 kilobytes.  Measured in bytes.
-(setq gc-cons-threshold (* 50 1000 1000))
+;; (setq gc-cons-threshold (* 50 1000 1000))
+
+(defvar last-file-name-handler-alist file-name-handler-alist)
+(setq gc-cons-threshold 402653184
+      gc-cons-percentage 0.6
+      file-name-handler-alist nil)
 
 ;; measure startup time
 ;; Use a hook so the message doesn't get clobbered by other messages.
@@ -86,7 +91,16 @@
 
 
 ;; Make gc pauses faster by decreasing the threshold.
-(setq gc-cons-threshold (* 2 1000 1000))
+;; (setq gc-cons-threshold (* 2 1000 1000))
+
+;; after startup, it is important you reset this to some reasonable default. A large
+;; gc-cons-threshold will cause freezing and stuttering during long-term
+;; interactive use. I find these are nice defaults:
+(add-hook 'emacs-startup-hook
+          (lambda()
+            (setq gc-cons-threshold 16777216
+                  gc-cons-percentage 0.1
+                  file-name-handler-alist last-file-name-handler-alist)))
 
 (provide 'loadMyConfig)
 ;;; loadMyConfig.el ends here

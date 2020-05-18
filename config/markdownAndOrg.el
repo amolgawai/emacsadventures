@@ -316,11 +316,11 @@ LIST-OR-SYMBOL - pass the list of faces"
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(use-package org-ac
-  :defer t
-  :ensure t
-  :init (progn
-          (org-ac/config-default)))
+;; (use-package org-ac
+;;   :defer t
+;;   :ensure t
+;;   :init (progn
+;;           (org-ac/config-default)))
 
 (use-package org-journal
   :defer t

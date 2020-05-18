@@ -166,88 +166,82 @@
   :init
   (add-hook 'dired-mode-hook 'auto-revert-mode) ; Auto-refresh dired on file change
   :config
-  (progn
-    (setq dired-recursive-deletes 'always)
-    (setq dired-recursive-copies  'always)
-    ;; Set this variable to non-nil, Dired will try to guess a default
-    ;; target directory. This means: if there is a dired buffer
-    ;; displayed in the next window, use its current subdir, instead
-    ;; of the current subdir of this dired buffer. The target is used
-    ;; in the prompt for file copy, rename etc.
-    (setq dired-dwim-target t)
+  (setq dired-recursive-deletes 'always)
+  (setq dired-recursive-copies  'always)
+  ;; Set this variable to non-nil, Dired will try to guess a default
+  ;; target directory. This means: if there is a dired buffer
+  ;; displayed in the next window, use its current subdir, instead
+  ;; of the current subdir of this dired buffer. The target is used
+  ;; in the prompt for file copy, rename etc.
+  (setq dired-dwim-target t)
 
-    ;; Dired listing switches
-    ;;  -a : Do not ignore entries starting with .
-    ;;  -l : Use long listing format.
-    ;;  -G : Do not print group names like 'users'
-    ;;  -h : Human-readable sizes like 1K, 234M, ..
-    ;;  -v : Do natural sort .. so the file names starting with . will show up first.
-    ;;  -F : Classify filenames by appending '*' to executables,
-    ;;       '/' to directories, etc.
-    (setq dired-listing-switches "-alGhvF --group-directories-first") ; default: "-al"
+  ;; Dired listing switches
+  ;;  -a : Do not ignore entries starting with .
+  ;;  -l : Use long listing format.
+  ;;  -G : Do not print group names like 'users'
+  ;;  -h : Human-readable sizes like 1K, 234M, ..
+  ;;  -v : Do natural sort .. so the file names starting with . will show up first.
+  ;;  -F : Classify filenames by appending '*' to executables,
+  ;;       '/' to directories, etc.
+  (setq dired-listing-switches "-alGhvF --group-directories-first") ; default: "-al"
 
-    (defun my/dired-rename-buffer-name ()
-      "Rename the dired buffer name to distinguish it from file buffers.
+  (defun my/dired-rename-buffer-name ()
+    "Rename the dired buffer name to distinguish it from file buffers.
 It added extra strings at the front and back of the default dired buffer name."
-      (let ((name (buffer-name)))
-        (if (not (string-match "/$" name))
-            (rename-buffer (concat "*Dired* " name "/") t))))
+    (let ((name (buffer-name)))
+      (if (not (string-match "/$" name))
+          (rename-buffer (concat "*Dired* " name "/") t))))
 
-    (defun my/dired-truncate-lines ()
-      (toggle-truncate-lines 1))
+  (defun my/dired-truncate-lines ()
+    (toggle-truncate-lines 1))
 
-    (add-hook 'dired-mode-hook #'my/dired-rename-buffer-name)
-    (add-hook 'dired-mode-hook #'my/dired-truncate-lines)
+  (add-hook 'dired-mode-hook #'my/dired-rename-buffer-name)
+  (add-hook 'dired-mode-hook #'my/dired-truncate-lines))
 
-    (use-package dired-x
-      :defer t
-      :config
-      (progn
-        (setq dired-omit-verbose nil)
-        ;; hide backup, autosave, *.*~ files
-        ;; omit mode can be toggled using `M-o' in dired buffer
-        (add-hook 'dired-mode-hook #'dired-omit-mode)))
-    (use-package dired+
-      :defer t
-      :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus")
-      :ensure t
-      :config
-      (progn
-        (setq diredp-hide-details-initially-flag nil)
-        (diredp-toggle-find-file-reuse-dir 1)))
+(use-package dired-x
+  :defer t
+  :config
+  (progn
+    (setq dired-omit-verbose nil)
+    ;; hide backup, autosave, *.*~ files
+    ;; omit mode can be toggled using `M-o' in dired buffer
+    (add-hook 'dired-mode-hook #'dired-omit-mode)))
+(use-package dired+
+  :defer t
+  :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus")
+  :config
+  (progn
+    (setq diredp-hide-details-initially-flag nil)
+    (diredp-toggle-find-file-reuse-dir 1)))
 
-    ;; http://pragmaticemacs.com/emacs/tree-style-directory-views-in-dired-with-dired-subtree/
-    (use-package dired-subtree
-      :defer t
-      :ensure t
-      :bind (:map dired-mode-map
-                  ("i" . dired-subtree-insert)
-                  ("I" . dired-subtree-remove)))
-    ;; https://github.com/Fuco1/dired-hacks/blob/master/dired-collapse.el
-    (use-package dired-collapse
-      :defer t
-      :ensure t
-      :commands (dired-collapse dired-collapse-mode)
-      :config
-      (add-hook 'dired-mode-hook 'dired-collapse-mode)))
-  ;; filter dired buffer. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
-  (use-package dired-narrow
-    :defer t
-    :ensure t
-    :bind (:map dired-mode-map
-                ("/" . dired-narrow)))
-  ;; quicj preview certain files. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
-  (use-package quick-preview
-	:defer t
-    :ensure t
-    :init
-    (global-set-key (kbd "C-c q") 'quick-preview-at-point)
-    (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point)))
+;; http://pragmaticemacs.com/emacs/tree-style-directory-views-in-dired-with-dired-subtree/
+(use-package dired-subtree
+  :defer t
+  :bind (:map dired-mode-map
+              ("i" . dired-subtree-insert)
+              ("I" . dired-subtree-remove)))
+;; https://github.com/Fuco1/dired-hacks/blob/master/dired-collapse.el
+(use-package dired-collapse
+  :defer t
+  :commands (dired-collapse dired-collapse-mode)
+  :config
+  (add-hook 'dired-mode-hook 'dired-collapse-mode))
+;; filter dired buffer. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
+(use-package dired-narrow
+  :defer t
+  :ensure t
+  :bind (:map dired-mode-map
+              ("/" . dired-narrow)))
+;; quicj preview certain files. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
+(use-package quick-preview
+  :defer t
+  :init
+  (global-set-key (kbd "C-c q") 'quick-preview-at-point)
+  (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point))
 
 (use-package dired-sidebar
   :defer t
   ;; :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
-  :ensure t
   :commands (dired-sidebar-toggle-sidebar)
   :init
   (add-hook 'dired-sidebar-mode-hook

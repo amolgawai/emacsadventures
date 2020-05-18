@@ -70,34 +70,28 @@
 ;;   :init (add-to-list 'company-backends 'company-go))
 
 (use-package go-autocomplete
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package go-eldoc
   :defer t
-  :ensure t
   :commands go-eldoc-setup
   :init (add-hook 'go-mode-hook 'go-eldoc-setup))
 
 (use-package go-guru
   :defer t
-  :ensure t
-  :commands go-guru-hl-identifier-mode
-  :init (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode))
+  :hook (go-mode-hook . go-guru-hl-identifier-mode)
+  :commands go-guru-hl-identifier-mode)
 
 (use-package go-rename
   :defer t
-  :ensure t
   :commands go-rename)
 
 (use-package go-add-tags
   :defer t
-  :ensure t
   :commands go-add-tags)
 
 (use-package godoctor
   :defer t
-  :ensure t
   :bind (:map go-mode-map
               ("C-c d d" . godoctor-godoc)
               ("C-c d e" . godoctor-extract)
@@ -108,10 +102,10 @@
 ;; "vendor" dirs (https://github.com/dominikh/go-mode.el/issues/135)
 (defun schnouki/go-packages-strip-vendor (packages)
   (mapcar (lambda (pkg)
-	    (if (string-match "/vendor/\\(.*\\)" pkg)
-		(match-string 1 pkg)
-	      pkg))
-	  packages))
+            (if (string-match "/vendor/\\(.*\\)" pkg)
+                (match-string 1 pkg)
+              pkg))
+          packages))
 (defun schnouki/go-packages-native-without-vendor ()
   "Return a list of all installed Go packages, stripping vendor directories."
   (schnouki/go-packages-strip-vendor (go-packages-native)))

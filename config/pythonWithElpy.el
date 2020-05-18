@@ -40,7 +40,7 @@
     (setenv "WORKON_HOME" workon-home)
     (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
   :hook ((python-mode . smartparens-mode)
-  (inferior-python-mode . (lambda() (setq company-mode -1))))
+         (inferior-python-mode . (lambda() (setq company-mode -1))))
   ;; (global-company-mode -1
   ;;                      company-box-mode -1
   ;;                      company-statistics-mode -1
@@ -76,16 +76,14 @@
 
 (use-package jedi
   :defer t
+  :ensure t)
+
+(use-package company-jedi
+  :defer t
   :ensure t
+  :hook (python-mode-hook . (lambda () (add-to-list 'company-backends 'company-jedi)))
   :init
-  (add-to-list 'company-backends 'company-jedi)
-  :config
-  (use-package company-jedi
-    :defer t
-    :ensure t
-	:hook (python-mode-hook . (lambda () (add-to-list 'company-backends 'company-jedi)))
-    :init
-    (setq company-jedi-python-bin "python")))
+  (setq company-jedi-python-bin "python"))
 
 ;; the python IDE
 (use-package elpy
