@@ -52,9 +52,9 @@
 (quelpa
  '(quelpa-use-package
    :fetcher git
-   :url "https://framagit.org/steckerhalter/quelpa-use-package.git"))
-
+   :url "https://github.com/quelpa/quelpa-use-package.git"))
 (require 'quelpa-use-package)
+
 (setq use-package-ensure-function 'quelpa)
 
 (eval-and-compile
@@ -91,6 +91,7 @@
   :defer t
   :ensure t)
 (use-package try
+  :defer t
   :ensure t)
 
 (use-package bind-key

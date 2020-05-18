@@ -56,7 +56,9 @@
               ([C-f5] . compile))
   :init
   (progn
-    (use-package ansi-color)
+    (use-package ansi-color
+      :defer t
+      :ensure t)
 
     ;; colorize that buffer plz
     (defun colorize-compilation-buffer ()

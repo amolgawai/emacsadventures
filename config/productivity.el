@@ -363,6 +363,7 @@ point reaches the beginning or end of the buffer, stop there."
 ;; ref - https://superuser.com/questions/488348/edit-any-text-input-shown-by-a-browser-mostly-chrome-with-emacs?noredirect=1
 ;; source - https://github.com/alpha22jp/atomic-chrome
 (use-package atomic-chrome
+  :defer t
   ;; dependency Atomic Chrome extension (in Chrome)
   :ensure t
   :init
@@ -385,12 +386,14 @@ point reaches the beginning or end of the buffer, stop there."
 (use-package homebrew-mode
   :if (memq window-system '(mac ns))
   :quelpa (homebrew-mode :fetcher github :repo "dunn/homebrew-mode")
+  :defer t
   :ensure t
   :config
   (global-homebrew-mode))
 
 ;; fuzzy search using fzf - make sure fzf is installed
 (use-package fzf
+  :defer t
   :init
   (setenv "FZF_DEFAULT_COMMAND" "fd --type f"))
 
@@ -404,6 +407,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; Spell-check
 (use-package flyspell
+  :defer t
   :ensure t
   :diminish
   :if (or (executable-find "hunspell")(executable-find "aspell"))
@@ -437,11 +441,21 @@ point reaches the beginning or end of the buffer, stop there."
     (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB")))))
 
 (use-package flyspell-correct
+  :defer t
   :after flyspell
   :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
 
 (use-package flyspell-correct-ivy
+  :defer t
   :after flyspell-correct)
+
+;; profiling the startup time
+;; ref - https://github.com/jschaf/esup
+(use-package esup
+  :ensure t
+  ;; To use MELPA Stable use ":pin mepla-stable",
+  :pin melpa
+  :commands (esup))
 
 (provide 'productivity)
 ;;; productivity.el ends here

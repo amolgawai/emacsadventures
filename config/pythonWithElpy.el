@@ -81,6 +81,7 @@
   (add-to-list 'company-backends 'company-jedi)
   :config
   (use-package company-jedi
+    :defer t
     :ensure t
 	:hook (python-mode-hook . (lambda () (add-to-list 'company-backends 'company-jedi)))
     :init

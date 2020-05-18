@@ -204,6 +204,7 @@ LIST-OR-SYMBOL - pass the list of faces"
           org-agenda-restore-windows-after-quit t
           org-agenda-window-setup 'only-window
           org-agenda-tags-column -100
+          org-agenda-inhibit-startup t
           org-deadline-warning-days 14
 		  ;; org-agenda-block-separator nil
           ;; org-agenda-compact-blocks t
@@ -319,7 +320,6 @@ LIST-OR-SYMBOL - pass the list of faces"
   :defer t
   :ensure t
   :init (progn
-          (require 'org-ac)
           (org-ac/config-default)))
 
 (use-package org-journal
@@ -336,6 +336,7 @@ LIST-OR-SYMBOL - pass the list of faces"
   ("C-x j" . org-journal-new-entry))
 
 (use-package org-sidebar
+  :defer t
   :ensure t)
 
 ;; deft for managing notes

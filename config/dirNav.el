@@ -200,6 +200,7 @@ It added extra strings at the front and back of the default dired buffer name."
     (add-hook 'dired-mode-hook #'my/dired-truncate-lines)
 
     (use-package dired-x
+      :defer t
       :config
       (progn
         (setq dired-omit-verbose nil)
@@ -207,33 +208,37 @@ It added extra strings at the front and back of the default dired buffer name."
         ;; omit mode can be toggled using `M-o' in dired buffer
         (add-hook 'dired-mode-hook #'dired-omit-mode)))
     (use-package dired+
+      :defer t
       :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus")
       :ensure t
       :config
       (progn
-        (require 'dired+)
         (setq diredp-hide-details-initially-flag nil)
         (diredp-toggle-find-file-reuse-dir 1)))
 
     ;; http://pragmaticemacs.com/emacs/tree-style-directory-views-in-dired-with-dired-subtree/
     (use-package dired-subtree
+      :defer t
       :ensure t
       :bind (:map dired-mode-map
                   ("i" . dired-subtree-insert)
                   ("I" . dired-subtree-remove)))
     ;; https://github.com/Fuco1/dired-hacks/blob/master/dired-collapse.el
     (use-package dired-collapse
+      :defer t
       :ensure t
       :commands (dired-collapse dired-collapse-mode)
       :config
       (add-hook 'dired-mode-hook 'dired-collapse-mode)))
   ;; filter dired buffer. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
   (use-package dired-narrow
+    :defer t
     :ensure t
     :bind (:map dired-mode-map
                 ("/" . dired-narrow)))
   ;; quicj preview certain files. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
   (use-package quick-preview
+	:defer t
     :ensure t
     :init
     (global-set-key (kbd "C-c q") 'quick-preview-at-point)
