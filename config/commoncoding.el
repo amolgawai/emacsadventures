@@ -40,6 +40,7 @@
 
 ;; show what function we're in
 (use-package which-func
+  :defer t
   :ensure t
   :init
   (which-function-mode 1))
@@ -48,6 +49,7 @@
 ;; ref - http://endlessparentheses.com/better-compile-command.html
 ;; https://github.com/krgn/emacs.d/blob/824b4f7b0c1f19ac15942f404c94e5e98c3d8820/config/setup-compile.el
 (use-package compile
+  :defer t
   :commands (emcsadvntr/compile-please)
   :bind (:map prog-mode-map
               ([f5] . emcsadvntr/compile-please)
@@ -109,6 +111,7 @@ With a prefix argument, use comint-mode."
 ;; quickly run/compilr any language
 ;; ref - https://github.com/emacsorphanage/quickrun
 (use-package quickrun
+  :defer t
   :bind
   (("<f5>" . quickrun)
    ("M-<f5>" . quickrun-shell)))
@@ -133,10 +136,12 @@ With a prefix argument, use comint-mode."
   (jump-to-register :magit-fullscreen))
 
 (use-package evil-magit
+  :defer t
   :after magit)
 
 ;; github with magit
 (use-package forge
+  :defer t
   :after magit)
 ;; :config
 ;; (evil-bind-key '(normal visual) magit-mode-map "," 'forge-dispatch)
@@ -152,6 +157,7 @@ With a prefix argument, use comint-mode."
 ;; (evil-bind-key 'normal forge-topic-list-mode-map (kbd "o") 'forge-browse-topic))
 
 (use-package magit-todos
+  :defer t
   :after magit
   :config
   (magit-todos-mode))
@@ -160,21 +166,25 @@ With a prefix argument, use comint-mode."
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
 (use-package git-gutter
+  :defer t
   :ensure t
   :config
   (global-git-gutter-mode t))
 
 (use-package git-timemachine
+  :defer t
   :ensure t
   )
 
 ;; snippets
 (use-package yasnippet
+  :defer t
   :ensure t
   :diminish yas-minor-mode
   :config
 
   (use-package yasnippet-snippets
+    :defer t
     :ensure t)
 
   (yas-global-mode 1)
@@ -198,6 +208,7 @@ With a prefix argument, use comint-mode."
 
 ;; syntax checking with flycheck
 (use-package flycheck
+  :defer t
   :ensure t
   :diminish
   :init (global-flycheck-mode))
@@ -205,11 +216,13 @@ With a prefix argument, use comint-mode."
 ;; Formatting for many languages according to specific formatters
 ;; rf - https://github.com/lassik/emacs-format-all-the-code
 (use-package format-all
+  :defer t
   :ensure t
   :bind ("C-c C-f" . format-all-buffer))
 
 ;; Company -- complete anything
 (use-package company
+  ;; :defer t
   :ensure t
   :diminish company-mode
   :config
@@ -226,6 +239,7 @@ With a prefix argument, use comint-mode."
 ;; icons for company mode
 ;; ref - https://github.com/TheBB/dotemacs/blob/master/init.el
 (use-package company-box
+  :defer t
   :diminish company-box-mode
   :hook (company-mode . company-box-mode)
   :init
@@ -273,12 +287,14 @@ With a prefix argument, use comint-mode."
 
 ;; Highlight todos, fixmes etc.
 (use-package hl-todo
+  :defer t
   :ensure t
   :config
   (global-hl-todo-mode))
 
 ;; dash documentation
 (use-package counsel-dash
+  :defer t
   :commands (counsel-dash
              counsel-dash-set-local-docsets
              counsel-dash-activate-local-docset
@@ -319,15 +335,16 @@ With a prefix argument, use comint-mode."
 ;; Configure the hooks for each language in the respective language config
 ;; Install LSPs for specific language. See - https://github.com/emacs-lsp/lsp-mode#supported-languages
 (use-package lsp-mode
+  :defer t
   :hook (rust-mode .  lsp-deferred)
   :commands lsp)
-(use-package lsp-ui :ensure t :commands lsp-ui-mode)
-(use-package company-lsp :ensure t :commands company-lsp)
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-ui :ensure t :defer t :commands lsp-ui-mode)
+(use-package company-lsp :ensure t :defer t :commands company-lsp)
+(use-package lsp-ivy :ensure t :defer t :commands lsp-ivy-workspace-symbol)
 ;; (use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol)
-(use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list)
+(use-package lsp-treemacs :ensure t :defer t :commands lsp-treemacs-errors-list)
 ;; optionally if you want to use debugger
-(use-package dap-mode)
+(use-package dap-mode :ensure t :defer t)
 ;; (use-package lsp-mode
 ;;   :hook (rust-mode . lsp)
 ;;   :commands (lsp lsp-deferred))

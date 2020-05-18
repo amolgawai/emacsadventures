@@ -74,6 +74,7 @@
 ;; search multiple buffers - ref https://github.com/jwiegley/use-package
 (use-package color-moccur
   :ensure t
+  :defer t
   :commands (isearch-moccur isearch-all)
   :bind (("M-s O" . moccur)
          :map isearch-mode-map
@@ -171,6 +172,7 @@
 ;; workspaces
 (use-package perspective
   :ensure t
+  :defer t
   :commands persp-mode
   :config
   ;; create directory for perspectives if doesn't exist
@@ -252,7 +254,8 @@
 
 (use-package ibuffer-sidebar
   ;; :load-path "~/.emacs.d/fork/ibuffer-sidebar"
-  :ensure nil
+  :ensure t
+  :defer t
   :commands (ibuffer-sidebar-toggle-sidebar)
   ;; :config
   ;; (setq ibuffer-sidebar-use-custom-font t)

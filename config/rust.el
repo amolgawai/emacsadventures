@@ -23,10 +23,12 @@
 
 
 (use-package toml-mode
+  :defer t
   :quelpa (toml-mode :fetcher github :repo "dryman/toml-mode")
   :ensure t)
 
 (use-package rustic
+  :defer t
   :ensure t)
   ;; :hook (rust-mode . (lambda ()
   ;;                       (lsp)
@@ -59,6 +61,7 @@
 ;; cargo install cargo-edit
 
 (use-package flycheck-rust
+  :defer t
   :quelpa (flycheck-rust :fetcher github :repo "flycheck/flycheck-rust")
   :ensure t
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))

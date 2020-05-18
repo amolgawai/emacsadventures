@@ -57,10 +57,12 @@
 
 ;; emacs ipython notebook (jupyter in emacs)
 (use-package ein
+  :defer t
   :ensure t)
 
 ;; docstring helper
 (use-package python-docstring
+  :defer t
   :ensure t
   :config
   (python-docstring-install)
@@ -73,6 +75,7 @@
   :hook ((python-mode . sphinx-doc-mode)))
 
 (use-package jedi
+  :defer t
   :ensure t
   :init
   (add-to-list 'company-backends 'company-jedi)
@@ -143,11 +146,13 @@
 
 ;; package managment for python
 (use-package poetry
+  :defer t
   :ensure t
   :diminish t)
 
 ;; code formatting
 (use-package blacken
+  :defer t
   :ensure t
   :diminish t
   :hook (python-mode-hook . blacken-mode))

@@ -33,6 +33,7 @@
   (setq imenu-list-focus-after-activation t))
 
 (use-package avy
+  :defer t
   :ensure t
   :diminish
   :bind (("M-g l" . avy-goto-line)

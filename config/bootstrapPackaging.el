@@ -88,15 +88,18 @@
   :diminish subword-mode)
 (use-package delight
   :quelpa (delight :fetcher github :repo "emacsmirror/delight")
+  :defer t
   :ensure t)
 (use-package try
   :ensure t)
 
 (use-package bind-key
+  :defer t
   :ensure t)
 
 ;; enhance emacs list - https://github.com/rolandwalker/list-utils
 (use-package list-utils
+  :defer t
   :ensure t)
 ;; If you want to install multiple packages at once, creat a list
 ;; use-package is much better alternative to reduce startup delay

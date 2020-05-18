@@ -33,6 +33,7 @@
 
 (use-package shackle
   :ensure t
+  :defer t
 ;;  :if (not (bound-and-true-p disable-pkg-shackle))
   :config
   (progn

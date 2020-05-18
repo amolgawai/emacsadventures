@@ -27,6 +27,7 @@
 
 (use-package go-mode
   :ensure t
+  :defer t
   :mode "\\.go\\'"
   :commands (godoc gofmt gofmt-before-save)
   :bind (:map go-mode-map
@@ -69,27 +70,33 @@
 ;;   :init (add-to-list 'company-backends 'company-go))
 
 (use-package go-autocomplete
+  :defer t
   :ensure t)
 
 (use-package go-eldoc
+  :defer t
   :ensure t
   :commands go-eldoc-setup
   :init (add-hook 'go-mode-hook 'go-eldoc-setup))
 
 (use-package go-guru
+  :defer t
   :ensure t
   :commands go-guru-hl-identifier-mode
   :init (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode))
 
 (use-package go-rename
+  :defer t
   :ensure t
   :commands go-rename)
 
 (use-package go-add-tags
+  :defer t
   :ensure t
   :commands go-add-tags)
 
 (use-package godoctor
+  :defer t
   :ensure t
   :bind (:map go-mode-map
               ("C-c d d" . godoctor-godoc)

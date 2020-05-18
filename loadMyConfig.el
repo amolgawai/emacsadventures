@@ -25,6 +25,20 @@
 
 ;;; Code:
 
+;; Make startup faster by reducing the frequency of garbage
+;; collection.  The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
+
+;; measure startup time
+;; Use a hook so the message doesn't get clobbered by other messages.
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Emacs ready in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+
 ;; add the directory to load path
 (add-to-list 'load-path (locate-user-emacs-file "emacsadventures/config"))
 
@@ -69,6 +83,10 @@
         (markdown-mode))
       (switch-to-buffer "*emacsadventures-keyref*"))
   (error (message "%s" error-message-string err)))
+
+
+;; Make gc pauses faster by decreasing the threshold.
+(setq gc-cons-threshold (* 2 1000 1000))
 
 (provide 'loadMyConfig)
 ;;; loadMyConfig.el ends here

@@ -43,6 +43,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 
 ;; markdown settings
 (use-package markdown-mode
+  :defer t
   :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
@@ -67,6 +68,7 @@ LIST-OR-SYMBOL - pass the list of faces"
                   (list 'markdown-pre-face 'markdown-inline-code-face))))))
 
 (use-package pdf-tools
+  :defer t
   :ensure t
   :magic ("%PDF" . pdf-view-mode)
   :config
@@ -76,6 +78,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; org mode
 
 (use-package org
+  :defer t
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
@@ -249,6 +252,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;;  Supercharge your Org daily/weekly agenda by grouping items
 ;; https://github.com/alphapapa/org-super-agenda
 (use-package org-super-agenda
+  :defer t
   :init
   (setq org-super-agenda-groups
         '((:name "Goals"
@@ -272,6 +276,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; title of the page as the description
 ;; https://github.com/rexim/org-cliplink
 (use-package org-cliplink
+  :defer t
   :bind (:map org-mode-map
               ;; "C-c C-l" is bound to `org-insert-link' by default
               ;; "C-c C-L" is bound to `org-cliplink'
@@ -280,6 +285,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; easily open org files from ivy interface
 ;; ref - https://github.com/akirak/ivy-omni-org
 (use-package ivy-omni-org
+  :defer t
   :custom
   (ivy-omni-org-file-sources '(org-agenda-files)))
 
@@ -304,17 +310,20 @@ LIST-OR-SYMBOL - pass the list of faces"
 
 ;; beautiful bullets for org mode
 (use-package org-bullets
+  :defer t
   :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package org-ac
+  :defer t
   :ensure t
   :init (progn
           (require 'org-ac)
           (org-ac/config-default)))
 
 (use-package org-journal
+  :defer t
   :after org
   :custom
   (org-journal-dir (concat (file-name-as-directory org-directory) "journal"))
@@ -331,6 +340,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 
 ;; deft for managing notes
 (use-package deft
+  :defer t
   :ensure t
   :after org
   :bind ("<f7>" . emcsadvntr/deft-dwim)
@@ -438,6 +448,7 @@ Else call `deft'."
 
 ;; taskpaper mode to support taskpaper
 (use-package taskpaper-mode
+  :defer t
   :ensure t
   :mode ("\\.todo\\'" . taskpaper-mode))
 

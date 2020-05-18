@@ -25,6 +25,7 @@
 ;;; Code:
 
 (use-package ivy
+  :defer t
   :ensure t
   :diminish
   :config
@@ -44,16 +45,19 @@
         '((t   . ivy--regex-ignore-order))))
 
 (use-package all-the-icons-ivy
+  :defer t
   :ensure t
   :config
   (all-the-icons-ivy-setup))
 
 (use-package counsel
+  :defer t
   :ensure t
   :diminish
   )
 
 (use-package swiper
+  :defer t
   :ensure t
   :diminish
   :config
@@ -82,6 +86,7 @@
 ;; display ivy things in a frame rather than in the minibuffer
 ;; ref - https://ladicle.com/post/config/#
 (use-package ivy-posframe
+  :defer t
   :after ivy
   :ensure t
   :config
@@ -108,6 +113,7 @@
 ;; More friendly display transformer for Ivy
 ;; ref - https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-ivy.el
 (use-package ivy-rich
+  :defer t
   :after ivy
   :ensure t
   :hook ((ivy-mode . ivy-rich-mode)
@@ -440,7 +446,7 @@
           counsel-list-processes
           (:columns
            ((ivy-rich-process-icon)
-            (ivy-rich-candidate))
+            (ivy-rich-candidate)
            :delimiter "\t")
           counsel-projectile-switch-project
           (:columns
@@ -466,7 +472,7 @@
           (:columns
            ((ivy-rich-file-icon)
             (ivy-rich-candidate))
-           :delimiter "\t"))))
+           :delimiter "\t")))))
 
 (provide 'ivycounselswiper)
 

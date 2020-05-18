@@ -28,6 +28,7 @@
 ;;; Code:
 
 (use-package neotree
+  :defer t
   :ensure t
   :config
   (progn
@@ -126,19 +127,23 @@
         ("C-x t M-t" . treemacs-find-tag)))
 
 (use-package treemacs-evil
+  :defer t
   :after treemacs evil
   :ensure t)
 
 (use-package treemacs-projectile
+  :defer t
   :after treemacs projectile
   :ensure t)
 
 (use-package treemacs-icons-dired
+  :defer t
   :after treemacs dired
   :ensure t
   :config (treemacs-icons-dired-mode))
 
 (use-package treemacs-magit
+  :defer t
   :after treemacs magit
   :ensure t)
 
@@ -148,6 +153,7 @@
 ;;   :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package ranger
+  :defer t
   :ensure t
   :bind* ("C-x C-d" . ranger))
 
@@ -155,6 +161,7 @@
 ;; ref - https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-dired.el
 
 (use-package dired
+  :defer t
   :commands (dired-toggle-read-only) ; to toggle read-only state of any buffer
   :init
   (add-hook 'dired-mode-hook 'auto-revert-mode) ; Auto-refresh dired on file change
@@ -233,6 +240,7 @@ It added extra strings at the front and back of the default dired buffer name."
     (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point)))
 
 (use-package dired-sidebar
+  :defer t
   ;; :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
   :ensure t
   :commands (dired-sidebar-toggle-sidebar)

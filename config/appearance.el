@@ -155,6 +155,7 @@
 
 (use-package all-the-icons-dired
   :ensure t
+  :defer t
   :diminish
   :init
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
@@ -223,6 +224,7 @@
 ;; posframe -  a popup frame (used for ivy and which-key)
 ;; ref - https://github.com/waymondo/hemacs/blob/master/init.el
 (use-package posframe
+  :defer t
   :custom
   (posframe-arghandler #'emcsadvntr-posframe-arghandler)
   :config

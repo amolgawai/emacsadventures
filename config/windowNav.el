@@ -25,6 +25,7 @@
 ;;; Code:
 
 (use-package ace-window
+  :defer t
   :ensure t
   :init
   (progn
@@ -44,6 +45,7 @@
 
 ;; Move buffers between windows
 (use-package buffer-move
+  :defer t
   :config
   (global-set-key (kbd "<C-s-up>")     'buf-move-up)
   (global-set-key (kbd "<C-s-down>")   'buf-move-down)
