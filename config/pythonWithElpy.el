@@ -57,37 +57,31 @@
 
 ;; emacs ipython notebook (jupyter in emacs)
 (use-package ein
-  :defer t
-  :ensure t)
+  :defer t)
 
 ;; docstring helper
 (use-package python-docstring
   :defer t
-  :ensure t
   :config
   (python-docstring-install)
   :diminish python-docstring-mode)
 
 ;; auto generate docstring
 (use-package sphinx-doc
-  :ensure t
   :defer t
   :hook ((python-mode . sphinx-doc-mode)))
 
 (use-package jedi
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package company-jedi
   :defer t
-  :ensure t
   :hook (python-mode-hook . (lambda () (add-to-list 'company-backends 'company-jedi)))
   :init
   (setq company-jedi-python-bin "python"))
 
 ;; the python IDE
 (use-package elpy
-  :ensure t
   :defer t
   :hook ((elpy-mode-hook . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
          ;; (pyenv-mode . elpy-rpc-restart)
@@ -115,7 +109,6 @@
 
 ;; pyenv for emacs
 ;; (use-package pyenv-mode
-;;   :ensure t
 ;;   :init
 ;;   (let ((workon-home (expand-file-name "~/.pyenv/versions")))
 ;;     (setenv "WORKON_HOME" workon-home)
@@ -132,27 +125,23 @@
 ;;   (add-hook 'python-mode-hook 'pyenv-mode))
 
 ;; so that elpy plays well with virtual environments
-;; (use-package pyenv-mode-auto
-;;   :ensure t)
+;; (use-package pyenv-mode-auto)
 ;; :config
 ;; (let ((workon-home (expand-file-name "~/.pyenv/versions")))
 ;;   (setenv "WORKON_HOME" workon-home)
 ;;   (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home)))
 
 ;; (use-package auto-virtualenv
-;;   :ensure t
 ;;   :hook (python-mode-hook . 'auto-virtualenv-set-virtualenv))
 
 ;; package managment for python
 (use-package poetry
   :defer t
-  :ensure t
   :diminish t)
 
 ;; code formatting
 (use-package blacken
   :defer t
-  :ensure t
   :diminish t
   :hook (python-mode-hook . blacken-mode))
 

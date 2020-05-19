@@ -41,7 +41,6 @@
 ;; show what function we're in
 (use-package which-func
   :defer t
-  :ensure t
   :init
   (which-function-mode 1))
 
@@ -106,8 +105,7 @@ With a prefix argument, use comint-mode."
 (setq compilation-finish-functions 'compile-autoclose))
 
 (use-package ansi-color
-  :defer t
-  :ensure t)
+  :defer t)
 
 ;; quickly run/compilr any language
 ;; ref - https://github.com/emacsorphanage/quickrun
@@ -119,7 +117,6 @@ With a prefix argument, use comint-mode."
 
 ;; Magit for git interactions
 (use-package magit
-  :ensure t
   :defer t
   :bind ("C-x g" . magit-status)
   :config
@@ -168,30 +165,25 @@ With a prefix argument, use comint-mode."
 
 (use-package git-gutter
   :defer t
-  :ensure t
   :config
   (global-git-gutter-mode t))
 
 (use-package git-timemachine
   :defer t
-  :ensure t
   )
 
 ;; snippets
 (use-package yasnippet
   :defer t
-  :ensure t
   :diminish yas-minor-mode
   :config
 
   (use-package yasnippet-snippets
-    :defer t
-    :ensure t)
+    :defer t)
 
   (yas-global-mode 1)
   )
 ;; (use-package yasnippet                  ; Snippets
-;;   :ensure t
 ;;   :diminish
 ;;   :config
 ;;   (validate-setq
@@ -204,13 +196,10 @@ With a prefix argument, use comint-mode."
 ;;   (yas-reload-all)
 ;;   (yas-global-mode))
 
-;; (use-package yasnippet-snippets         ; Collection of snippets
-;;    :ensure t)
 
 ;; syntax checking with flycheck
 (use-package flycheck
   :defer t
-  :ensure t
   :diminish
   :init (global-flycheck-mode))
 
@@ -218,13 +207,11 @@ With a prefix argument, use comint-mode."
 ;; rf - https://github.com/lassik/emacs-format-all-the-code
 (use-package format-all
   :defer t
-  :ensure t
   :bind ("C-c C-f" . format-all-buffer))
 
 ;; Company -- complete anything
 (use-package company
   :defer 0.1
-  :ensure t
   :diminish company-mode
   :config
   (setq company-backends (remove 'company-ropemacs company-backends)
@@ -289,7 +276,6 @@ With a prefix argument, use comint-mode."
 ;; Highlight todos, fixmes etc.
 (use-package hl-todo
   :defer t
-  :ensure t
   :config
   (global-hl-todo-mode))
 
@@ -321,7 +307,6 @@ With a prefix argument, use comint-mode."
   (add-hook 'swift-mode-hook (lambda () (setq-local counsel-dash-docsets '("iOS" "Swift")))))
 ;; ref - https://github.com/tuhdo/emacs-proglang/blob/master/custom/setup-helm.el
 ;; (use-package helm-dash
-;;   :ensure t
 ;;   :init
 ;;   (global-set-key (kbd "C-c d") 'helm-dash-at-point)
 ;;   (defun c-doc ()
@@ -339,13 +324,13 @@ With a prefix argument, use comint-mode."
   :defer t
   :hook (rust-mode .  lsp-deferred)
   :commands lsp)
-(use-package lsp-ui :ensure t :defer t :commands lsp-ui-mode)
-(use-package company-lsp :ensure t :defer t :commands company-lsp)
-(use-package lsp-ivy :ensure t :defer t :commands lsp-ivy-workspace-symbol)
-;; (use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol)
-(use-package lsp-treemacs :ensure t :defer t :commands lsp-treemacs-errors-list)
+(use-package lsp-ui :defer t :commands lsp-ui-mode)
+(use-package company-lsp :defer t :commands company-lsp)
+(use-package lsp-ivy :defer t :commands lsp-ivy-workspace-symbol)
+;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+(use-package lsp-treemacs :defer t :commands lsp-treemacs-errors-list)
 ;; optionally if you want to use debugger
-(use-package dap-mode :ensure t :defer t)
+(use-package dap-mode :defer t)
 ;; (use-package lsp-mode
 ;;   :hook (rust-mode . lsp)
 ;;   :commands (lsp lsp-deferred))
@@ -370,7 +355,6 @@ With a prefix argument, use comint-mode."
 ;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 ;; ;; optionally if you want to use debugger
 ;; (use-package dap-mode
-;;   :ensure t
 ;;   :commands dap-mode
 ;;   :config
 ;;   (dap-mode 1)

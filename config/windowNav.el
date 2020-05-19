@@ -26,7 +26,6 @@
 
 (use-package ace-window
   :defer t
-  :ensure t
   :init
   (progn
     (setq aw-scope 'frame)
@@ -56,7 +55,6 @@
 ;; https://github.com/ema2159/centaur-tabs
 (use-package centaur-tabs
   :defer 0.1
-  :ensure t
   :demand
   :config
   (setq centaur-tabs-style "bar"
@@ -122,7 +120,6 @@
   ("C-c t p" . centaur-tabs-group-by-projectile-project)
   ("C-c t g" . centaur-tabs-group-buffer-groups))
 ;; (use-package centaur-tabs
-;;   :ensure t
 ;;   :demand
 ;;   :hook
 ;;   (dired-mode . centaur-tabs-local-mode)

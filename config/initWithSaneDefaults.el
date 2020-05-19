@@ -76,7 +76,6 @@
 ;; set path - especially useful on mac
 ;; ref - https://github.com/manute/emacs.d/blob/master/init.el
 (use-package exec-path-from-shell
-  :ensure t
   :defer 0.1
   :if (memq window-system '(mac ns))
   :config
@@ -126,7 +125,6 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; (use-package nlinum-relative
-;;   :ensure t
 ;;   :config
 ;;   ;; something else you want
 ;;   (nlinum-relative-setup-evil)

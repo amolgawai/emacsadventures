@@ -29,7 +29,6 @@
 
 (use-package neotree
   :defer t
-  :ensure t
   :config
   (progn
     (setq-default neo-smart-open t)    ;  every time when the neotree window is
@@ -63,7 +62,6 @@
 ;; Ref - https://github.com/Alexander-Miller/treemacs
 
 (use-package treemacs
-  :ensure t
   :defer t
   :init
   (with-eval-after-load 'winum
@@ -128,33 +126,27 @@
 
 (use-package treemacs-evil
   :defer t
-  :after treemacs evil
-  :ensure t)
+  :after treemacs evil)
 
 (use-package treemacs-projectile
   :defer t
-  :after treemacs projectile
-  :ensure t)
+  :after treemacs projectile)
 
 (use-package treemacs-icons-dired
   :defer t
   :after treemacs dired
-  :ensure t
   :config (treemacs-icons-dired-mode))
 
 (use-package treemacs-magit
   :defer t
-  :after treemacs magit
-  :ensure t)
+  :after treemacs magit)
 
 ;; (use-package treemacs-persp
 ;;   :after treemacs persp-mode
-;;   :ensure t
 ;;   :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package ranger
   :defer t
-  :ensure t
   :bind* ("C-x C-d" . ranger))
 
 ;; dired config
@@ -229,7 +221,6 @@ It added extra strings at the front and back of the default dired buffer name."
 ;; filter dired buffer. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
 (use-package dired-narrow
   :defer t
-  :ensure t
   :bind (:map dired-mode-map
               ("/" . dired-narrow)))
 ;; quicj preview certain files. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13

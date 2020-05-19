@@ -25,8 +25,7 @@
 ;;; Code:
 
 (use-package ivy
-  :defer t
-  :ensure t
+  :defer 0.1
   :diminish
   :config
   (ivy-mode 1)
@@ -46,24 +45,22 @@
 
 (use-package all-the-icons-ivy
   :defer t
-  :ensure t
+  :after ivy all-the-icons
+  :hook (after-init-hook . all-the-icons-ivy-setup)
   :config
-  (all-the-icons-ivy-setup))
+  (setq all-the-icons-ivy-file-commands
+      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir)))
 
 (use-package counsel
-  :defer t
-  :ensure t
+  :defer 0.1
   :diminish
   )
 
 (use-package swiper
-  :defer t
-  :ensure t
+  :defer 0.1
+  :after ivy counsel
   :diminish
   :config
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
     (global-set-key "\C-s" 'swiper)
     (global-set-key (kbd "C-c C-r") 'ivy-resume)
     (global-set-key (kbd "<f6>") 'ivy-resume)
@@ -81,14 +78,13 @@
     (global-set-key (kbd "C-x l") 'counsel-locate)
     (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-    ))
+    )
 
 ;; display ivy things in a frame rather than in the minibuffer
 ;; ref - https://ladicle.com/post/config/#
 (use-package ivy-posframe
   :defer t
   :after ivy
-  :ensure t
   :config
   (setq ivy-posframe-display-functions-alist
 		'((swiper          . ivy-posframe-display-at-frame-center)
@@ -115,7 +111,6 @@
 (use-package ivy-rich
   :defer t
   :after ivy
-  :ensure t
   :hook ((ivy-mode . ivy-rich-mode)
          (ivy-rich-mode . (lambda ()
                             (setq ivy-virtual-abbreviate

@@ -44,7 +44,6 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; markdown settings
 (use-package markdown-mode
   :defer t
-  :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
@@ -69,7 +68,6 @@ LIST-OR-SYMBOL - pass the list of faces"
 
 (use-package pdf-tools
   :defer t
-  :ensure t
   :magic ("%PDF" . pdf-view-mode)
   :config
   (pdf-tools-install)
@@ -292,7 +290,6 @@ LIST-OR-SYMBOL - pass the list of faces"
 
 ;; supercharge the agenda with org-super-agenda
 ;; (use-package org-super-agenda
-;;   :ensure t
 ;;   :after org-agenda
 ;;   :init
 ;;   (setq org-super-agenda-groups
@@ -312,13 +309,11 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; beautiful bullets for org mode
 (use-package org-bullets
   :defer t
-  :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; (use-package org-ac
 ;;   :defer t
-;;   :ensure t
 ;;   :init (progn
 ;;           (org-ac/config-default)))
 
@@ -336,13 +331,11 @@ LIST-OR-SYMBOL - pass the list of faces"
   ("C-x j" . org-journal-new-entry))
 
 (use-package org-sidebar
-  :defer t
-  :ensure t)
+  :defer t)
 
 ;; deft for managing notes
 (use-package deft
   :defer t
-  :ensure t
   :after org
   :bind ("<f7>" . emcsadvntr/deft-dwim)
   :custom
@@ -450,7 +443,6 @@ Else call `deft'."
 ;; taskpaper mode to support taskpaper
 (use-package taskpaper-mode
   :defer t
-  :ensure t
   :mode ("\\.todo\\'" . taskpaper-mode))
 
 (provide 'markdownAndOrg)

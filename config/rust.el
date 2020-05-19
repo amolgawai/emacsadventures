@@ -24,12 +24,10 @@
 
 (use-package toml-mode
   :defer t
-  :quelpa (toml-mode :fetcher github :repo "dryman/toml-mode")
-  :ensure t)
+  :quelpa (toml-mode :fetcher github :repo "dryman/toml-mode"))
 
 (use-package rustic
-  :defer t
-  :ensure t)
+  :defer t)
   ;; :hook (rust-mode . (lambda ()
   ;;                       (lsp)
   ;;                       (lsp-ui-doc-mode)
@@ -41,7 +39,6 @@
 
 ;; Add keybindings for interacting with Cargo
 ;; (use-package cargo
-;;   :ensure t
 ;;   :after rust-mode
 ;;   :hook (rust-mode . cargo-minor-mode))
 ;; add following at commandline  for cargo mode to work properly
@@ -63,7 +60,6 @@
 (use-package flycheck-rust
   :defer t
   :quelpa (flycheck-rust :fetcher github :repo "flycheck/flycheck-rust")
-  :ensure t
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (provide 'rust)

@@ -25,7 +25,6 @@
 ;;; Code:
 
 (use-package imenu-list
-  :ensure t
   :defer t
   :bind ([f9] . imenu-list-smart-toggle)
   :config
@@ -34,7 +33,6 @@
 
 (use-package avy
   :defer t
-  :ensure t
   :diminish
   :bind (("M-g l" . avy-goto-line)
          ("M-g w" . avy-goto-word-1)

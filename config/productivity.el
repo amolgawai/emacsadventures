@@ -26,7 +26,6 @@
 
 ;; guide-key is helful for displaying available key bindings
 ;; (use-package guide-key
-;;   :ensure t
 ;;   :config
 ;;   (progn
 ;;     (setq guide-key/guide-key-sequence t)
@@ -36,7 +35,6 @@
 ;; which-key is similar to guide-key but little more powerful
 ;; which-key
 (use-package which-key
-  :ensure t
   :init
   (setq which-key-separator " → "
         which-key-prefix-prefix "+"
@@ -52,7 +50,6 @@
 ;; display which key in a frame rather than minibuffer
 ;; ref - https://github.com/waymondo/hemacs/blob/master/init.el
 ;; (use-package which-key-posframe
-;;   :ensure t
 ;;   :after which-key
 ;;   :config
 ;;   (which-key-posframe-mode t)
@@ -73,7 +70,6 @@
 
 ;; search multiple buffers - ref https://github.com/jwiegley/use-package
 (use-package color-moccur
-  :ensure t
   :defer t
   :commands (isearch-moccur isearch-all)
   :bind (("M-s O" . moccur)
@@ -86,7 +82,6 @@
   (use-package moccur-edit :quelpa t))
 
 ;; (use-package auto-complete
-;;   :ensure t
 ;;   :diminish
 ;;   :init
 ;;   (progn
@@ -161,17 +156,14 @@
 ;;                      verilog-mode))))
 
 (use-package restart-emacs
-  :ensure t
   :bind* (("C-x M-c" . restart-emacs)))
 
 (use-package smartparens
-  :ensure t
   :init (smartparens-global-mode 1)
   :diminish smartparens-mode)
 
 ;; workspaces
 (use-package perspective
-  :ensure t
   :defer t
   :commands persp-mode
   :config
@@ -185,19 +177,16 @@
 
 ;; projectile
 (use-package projectile
-  :ensure t
   :config
   (projectile-global-mode)
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map))
 ;; (setq projectile-completion-system 'helm))
 
 (use-package counsel-projectile
-  :ensure t
   :config
   (counsel-projectile-mode))
 
 (use-package persp-projectile
-  :ensure t
   :after projectile
   :config
   (setq wg-morph-on nil ;; switch off animation
@@ -239,12 +228,10 @@
   (add-hook 'ripgrep-search-mode-hook 'hl-line-mode))
 
 ;; (use-package helm-projectile
-;;   :ensure t
 ;;   :config
 ;;   (helm-projectile-on))
                                         ; flashes the cursor's line when you scroll
 (use-package ibuffer-projectile
-  :ensure t
   :config
   (add-hook 'ibuffer-hook
             (lambda ()
@@ -254,7 +241,6 @@
 
 (use-package ibuffer-sidebar
   ;; :load-path "~/.emacs.d/fork/ibuffer-sidebar"
-  :ensure t
   :defer t
   :commands (ibuffer-sidebar-toggle-sidebar)
   ;; :config
@@ -263,7 +249,6 @@
   )
 
 (use-package beacon
-  :ensure t
   :config
   (beacon-mode 1)
                                         ; (setq beacon-color "#666600")
@@ -271,19 +256,16 @@
 
                                         ; deletes all the whitespace when you hit backspace or delete
 (use-package hungry-delete
-  :ensure t
   :config
   (global-hungry-delete-mode))
 
                                         ; expand the marked region in semantic increments (negative prefix to reduce region)
 (use-package expand-region
-  :ensure t
   :config
   (global-set-key (kbd "C-=") 'er/expand-region))
 
 ;; move lines/regions
 (use-package move-text
-  :ensure t
   :config
   (move-text-default-bindings))
 
@@ -345,7 +327,6 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; Aweshell, shell extension base on eshell with better features.
 (use-package aweshell
-  :ensure t
   :defer t
   :quelpa (aweshell :fetcher github :repo "manateelazycat/aweshell" :version original)
   :commands (aweshell-new aweshell-dedicated-open)
@@ -355,7 +336,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Shell Here
 ;; Shell Here, a tool that opens a shell buffer in (or relative to) default-directory.
 (use-package shell-here
-  :ensure t
   :defer t
   :bind ("s-~" . shell-here))
 
@@ -365,7 +345,6 @@ point reaches the beginning or end of the buffer, stop there."
 (use-package atomic-chrome
   :defer t
   ;; dependency Atomic Chrome extension (in Chrome)
-  :ensure t
   :init
   (setq atomic-chrome-default-major-mode 'markdown-mode)
   (setq atomic-chrome-extension-type-list '(atomic-chrome))
@@ -377,7 +356,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; replace the standard kill, mark with easy kill
 ;; ref - https://github.com/leoliu/easy-kill
 (use-package easy-kill
-  :ensure t
   :config
   (global-set-key [remap kill-ring-save] #'easy-kill)
   (global-set-key [remap mark-sexp] #'easy-mark))
@@ -387,7 +365,6 @@ point reaches the beginning or end of the buffer, stop there."
   :if (memq window-system '(mac ns))
   :quelpa (homebrew-mode :fetcher github :repo "dunn/homebrew-mode")
   :defer t
-  :ensure t
   :config
   (global-homebrew-mode))
 
@@ -408,7 +385,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Spell-check
 (use-package flyspell
   :defer t
-  :ensure t
   :diminish
   :if (or (executable-find "hunspell")(executable-find "aspell"))
   :hook (((text-mode outline-mode) . flyspell-mode)
@@ -457,7 +433,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; profiling the startup time
 ;; ref - https://github.com/jschaf/esup
 (use-package esup
-  :ensure t
   ;; To use MELPA Stable use ":pin mepla-stable",
   :pin melpa
   :commands (esup))

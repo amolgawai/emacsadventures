@@ -26,7 +26,6 @@
 ;;; Code:
 
 (use-package go-mode
-  :ensure t
   :defer t
   :hook (go-mode-hook . (lambda()
                 (if (not (string-match "go" compile-command))
@@ -63,7 +62,6 @@
                       (file-name-as-directory ".GOPATH"))))))
 
 ;; (use-package company-go
-;;   :ensure t
 ;;   :commands company-go
 ;;   :init (add-to-list 'company-backends 'company-go))
 

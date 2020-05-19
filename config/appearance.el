@@ -169,14 +169,12 @@
 ;;   :init
 ;;   :config
 ;;   (powerline-center-theme)
-;;   (setq powerline-default-separator 'arrow)
-;;   :ensure t)
+;;   (setq powerline-default-separator 'arrow))
 
 ;; Spaceline - a modified powerline from spacemacs
 ;; ref - https://github.com/TheBB/spaceline
 ;; config ref - https://writequit.org/eos/eos-appearance.html
 ;; (use-package spaceline
-;;   :ensure t
 ;;   :init
 ;;   (setq powerline-default-separator 'arrow
 ;;         spaceline-minor-modes-separator " ")
@@ -186,18 +184,15 @@
 ;;   ;;  (spaceline-helm-mode)
 ;;   (use-package info+
 ;;     :quelpa (info+ :fetcher github :repo "emacsmirror/info-plus")
-;;     :ensure t
 ;;     :init
 ;;     (spaceline-info-mode))
 ;;   (use-package fancy-battery
-;;     :ensure t
 ;;     :init
 ;;     (add-hook 'after-init-hook #'fancy-battery-mode)
 ;;     (display-battery-mode -1)))
 
 ;; (use-package spaceline-all-the-icons
 ;;   :after spaceline
-;;   :ensure t
 ;;   :config
 ;;   (setq spaceline-all-the-icons-separator-type 'arrow)
 ;;   (spaceline-all-the-icons-theme)
