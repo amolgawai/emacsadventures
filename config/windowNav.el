@@ -55,6 +55,7 @@
 ;; buffer tabs with centaur tabs
 ;; https://github.com/ema2159/centaur-tabs
 (use-package centaur-tabs
+  :defer 0.1
   :ensure t
   :demand
   :config

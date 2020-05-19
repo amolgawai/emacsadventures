@@ -31,7 +31,7 @@
 
 ;; FIXME - Make this general and remove package specific things to respective use-package
 (use-package general
-  :ensure t
+  :defer 0.2
   :commands (general-define-key general-override-mode general-evil-setup general--simulate-keys)
   :config
   (progn

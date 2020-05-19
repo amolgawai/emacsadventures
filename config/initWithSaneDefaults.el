@@ -77,6 +77,7 @@
 ;; ref - https://github.com/manute/emacs.d/blob/master/init.el
 (use-package exec-path-from-shell
   :ensure t
+  :defer 0.1
   :if (memq window-system '(mac ns))
   :config
   (setq exec-path-from-shell-arguments '("-l"))

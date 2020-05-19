@@ -26,7 +26,7 @@
 ;;; Code:
 
 (use-package evil
-  :ensure t
+  :defer .1 ;; don't block emacs when starting, load evil immediately after startup
   :init
   (setq evil-want-C-u-scroll t
         evil-want-keybinding nil)
@@ -36,25 +36,28 @@
 ;; evil-collection for useful extra keymaps
 (use-package evil-collection
   :after evil
-  :ensure t
+  :defer t
   :config
   (setq evil-collection-company-use-tng nil)
   (evil-collection-init))
 
 ;; other evil helpers
 (use-package evil-surround
-  :ensure t
+  :defer t
+  :after evil
   :config
   (global-evil-surround-mode 1))
 
 (use-package evil-commentary
   :after evil
+  :defer t
   :diminish
   :config (evil-commentary-mode +1))
 
 ;; highlight the editing
 (use-package evil-goggles
-  :ensure t
+  :after evil
+  :defer t
   :config
   (evil-goggles-mode)
 
@@ -66,7 +69,8 @@
 
 ;; align operators - adds gl and gL
 (use-package evil-lion
-  :ensure t
+  :after evil
+  :defer t
   :config
   (evil-lion-mode))
 

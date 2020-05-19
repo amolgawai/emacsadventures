@@ -37,22 +37,25 @@
 (package-initialize)
 
                                         ; fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
+;; (unless package-archive-contents
+;;   (package-refresh-contents))
 
 ;; bootstrap quelpa
 ;; don't auto-update on windows as it results in various problems
 (unless (package-installed-p 'quelpa)
-    (with-temp-buffer
-      (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-      (eval-buffer)
-      (quelpa-self-upgrade)))
+  (with-temp-buffer
+    (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+    (eval-buffer)
+    (quelpa-self-upgrade)))
+(setq quelpa-update-melpa-p nil)
 
 ;; use quelpa with use-package
-(quelpa
- '(quelpa-use-package
-   :fetcher git
-   :url "https://github.com/quelpa/quelpa-use-package.git"))
+(unless (package-installed-p 'quelpa-use-package)
+  (quelpa
+   '(quelpa-use-package
+     :fetcher git
+     :url "https://github.com/quelpa/quelpa-use-package.git")))
+(setq quelpa-use-package-inhibit-loading-quelpa t)
 (require 'quelpa-use-package)
 
 (setq use-package-ensure-function 'quelpa)
@@ -79,8 +82,7 @@
 
 ;;(require 'diminish)
 (use-package diminish
-  :ensure t
-  :demand t
+  :defer 0.1
   :diminish (visual-line-mode . "?")
   :diminish hs-minor-mode
   :diminish abbrev-mode
@@ -88,20 +90,16 @@
   :diminish subword-mode)
 (use-package delight
   :quelpa (delight :fetcher github :repo "emacsmirror/delight")
-  :defer t
-  :ensure t)
+  :defer t)
 (use-package try
-  :defer t
-  :ensure t)
+  :defer t)
 
 (use-package bind-key
-  :defer t
-  :ensure t)
+  :defer t)
 
 ;; enhance emacs list - https://github.com/rolandwalker/list-utils
 (use-package list-utils
-  :defer t
-  :ensure t)
+  :defer t)
 ;; If you want to install multiple packages at once, creat a list
 ;; use-package is much better alternative to reduce startup delay
                                         ; list the packages you want

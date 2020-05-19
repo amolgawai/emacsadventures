@@ -58,49 +58,42 @@
 ;; themes
 ;; sanityinc-tomorrow-night
 (use-package color-theme-sanityinc-tomorrow
-  :ensure t
   :defer t)
 
 ;;  material-theme
 (use-package material-theme
-  :defer t
-  :ensure t)
+  :defer t)
 
 ;;  :config
 ;;  (load-theme 'material t))
 
 ;; dracula theme
 (use-package dracula-theme
-  :defer t
+  :defer t)
   ;;  :init (load-theme 'dracula t)
-  :ensure t)
 
 ;; spacemacs
 (use-package spacemacs-theme
   :defer t
   :init
-  (setq spacemacs-use-variable-pitch nil)
-  :ensure t)
+  (setq spacemacs-use-variable-pitch nil))
 
 ;; solarised
 (use-package solarized-theme
   :defer t
   :init
-  (setq solarized-use-variable-pitch nil)
-  :ensure t)
+  (setq solarized-use-variable-pitch nil))
 
 ;; monokai
 (use-package monokai-theme
   :if (window-system)
   :defer t
-  :ensure t
   :init
   (setq monokai-use-variable-pitch nil))
 
 ;; doom themes - https://github.com/hlissner/emacs-doom-themes
 (use-package doom-themes
   ;;  :defer t
-  :ensure t
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
@@ -143,18 +136,15 @@
 
 ;; rainboaw delimiters
 (use-package rainbow-delimiters
-  :ensure t
   :diminish
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 ;; icons
 (use-package all-the-icons
-  :ensure t
   :diminish) ; call M-x all-the-icons-install-fonts
 
 (use-package all-the-icons-dired
-  :ensure t
   :defer t
   :diminish
   :init
@@ -205,7 +195,6 @@
 ;; doom-modeline, clean and beautiful modeline
 ;; ref - https://github.com/seagle0128/doom-modeline#install
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1)
   :config
   ;; If non-nil, a word count will be added to the selection-info modeline segment.

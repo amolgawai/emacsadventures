@@ -28,6 +28,10 @@
 (use-package go-mode
   :ensure t
   :defer t
+  :hook (go-mode-hook . (lambda()
+                (if (not (string-match "go" compile-command))
+                    (set (make-local-variable 'compile-command)
+                         "go build -v && go test -v && go vet"))))
   :mode "\\.go\\'"
   :commands (godoc gofmt gofmt-before-save)
   :bind (:map go-mode-map
@@ -39,7 +43,6 @@
   :init
   (add-hook 'before-save-hook 'gofmt-before-save)
   :config
-  (progn
     (add-to-list 'go-guess-gopath-functions #'schnouki/go-hellogopher-gopath)
     (defadvice go-root-and-paths (around schnouki/go-root-and-paths)
       (let* ((root-and-paths ad-do-it)
@@ -50,13 +53,8 @@
     (ad-activate 'go-root-and-paths)
     (add-hook 'go-mode-hook #'go-set-project)
     (setq gofmt-command "goimports")                ; gofmt uses invokes goimports
-    (add-hook 'go-mode-hook ; set compile command default
-              (lambda()
-                (if (not (string-match "go" compile-command))
-                    (set (make-local-variable 'compile-command)
-                         "go build -v && go test -v && go vet"))))
     (setq tab-width 4)
-    (setq indent-tabs-mode 1)))
+    (setq indent-tabs-mode 1))
 
 (defun schnouki/go-hellogopher-gopath ()
   (let ((d (locate-dominating-file buffer-file-name ".GOPATH")))
