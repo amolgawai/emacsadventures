@@ -81,13 +81,13 @@
 (my-load-all-in-directory (locate-user-emacs-file "emacsadventures/private"))
 
 ;; load keybindings in a buffer
-;; (condition-case err
-;;     (let ((buffer (get-buffer-create "*emacsadventures-keyref*")))
-;;       (with-current-buffer buffer
-;;         (insert-file-contents (locate-user-emacs-file "emacsadventures/keybindings.md"))
-;;         (markdown-mode))
-;;       (switch-to-buffer "*emacsadventures-keyref*"))
-;;   (error (message "%s" error-message-string err)))
+(condition-case err
+    (let ((buffer (get-buffer-create "*emacsadventures-keyref*")))
+      (with-current-buffer buffer
+        (insert-file-contents (locate-user-emacs-file "emacsadventures/keybindings.md"))
+        (markdown-mode))
+      (switch-to-buffer "*emacsadventures-keyref*"))
+  (error (message "%s" error-message-string err)))
 
 
 ;; Make gc pauses faster by decreasing the threshold.
