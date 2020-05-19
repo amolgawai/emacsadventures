@@ -413,9 +413,9 @@ point reaches the beginning or end of the buffer, stop there."
   :if (or (executable-find "hunspell")(executable-find "aspell"))
   :hook (((text-mode outline-mode) . flyspell-mode)
          (prog-mode . flyspell-prog-mode))
-         ;; (flyspell-mode . (lambda ()
-         ;;                    (dolist (key '("C-;" "C-," "C-."))
-         ;;                      (unbind-key key flyspell-mode-map)))))
+  ;; (flyspell-mode . (lambda ()
+  ;;                    (dolist (key '("C-;" "C-," "C-."))
+  ;;                      (unbind-key key flyspell-mode-map)))))
   :init
   (setq flyspell-issue-message-flag nil)
   ;; Set $DICPATH to "$HOME/Library/Spelling" for hunspell.
@@ -439,6 +439,11 @@ point reaches the beginning or end of the buffer, stop there."
     (setq ispell-program-name "aspell")
     ;; Please note ispell-extra-args contains ACTUAL parameters passed to aspell
     (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB")))))
+
+(use-package flyspell-lazy
+  :ensure t
+  :config
+  (flyspell-lazy-mode 1))
 
 (use-package flyspell-correct
   :defer t
