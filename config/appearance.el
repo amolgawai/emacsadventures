@@ -55,6 +55,17 @@
       (quote org-block)
       ))))
 
+(use-package diminish
+  :defer 0.1
+  :diminish (visual-line-mode . "?")
+  :diminish hs-minor-mode
+  :diminish abbrev-mode
+  :diminish auto-fill-function
+  :diminish subword-mode)
+(use-package delight
+  :quelpa (delight :fetcher github :repo "emacsmirror/delight")
+  :defer t)
+
 ;; themes
 ;; sanityinc-tomorrow-night
 (use-package color-theme-sanityinc-tomorrow

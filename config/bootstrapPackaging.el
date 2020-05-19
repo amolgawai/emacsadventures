@@ -57,40 +57,26 @@
      :url "https://github.com/quelpa/quelpa-use-package.git")))
 (setq quelpa-use-package-inhibit-loading-quelpa t)
 (require 'quelpa-use-package)
-
+(require 'use-package-ensure)
 (setq use-package-ensure-function 'quelpa)
-
 (eval-and-compile
   (setq use-package-always-ensure t)
   (setq use-package-expand-minimally t)
   (setq use-package-compute-statistics t))
 
-;; (unless (package-installed-p 'use-package)
-;;   (package-install 'use-package))
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
 
-;; (require 'quelpa-use-package)
+;; for benchmarking init time, uncomment when needed
+;; (use-package benchmark-init
+;;   :ensure t
+;;   :config
+;;   ;; To disable collection of benchmark data after init is done.
+;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
-;; (eval-when-compile
-;;   (require 'use-package))
-
-;; bootstrap quelpa for use-package
-;; (quelpa
-;;  '(quelpa-use-package
-;;    :fetcher git
-;;    :url "https://framagit.org/steckerhalter/quelpa-use-package.git"))
-;; (require 'quelpa-use-package)
-
-;;(require 'diminish)
-(use-package diminish
-  :defer 0.1
-  :diminish (visual-line-mode . "?")
-  :diminish hs-minor-mode
-  :diminish abbrev-mode
-  :diminish auto-fill-function
-  :diminish subword-mode)
-(use-package delight
-  :quelpa (delight :fetcher github :repo "emacsmirror/delight")
-  :defer t)
 (use-package try
   :defer t)
 
@@ -100,15 +86,6 @@
 ;; enhance emacs list - https://github.com/rolandwalker/list-utils
 (use-package list-utils
   :defer t)
-;; If you want to install multiple packages at once, creat a list
-;; use-package is much better alternative to reduce startup delay
-                                        ; list the packages you want
-;;(setq package-list '(package1 package2))
-
-                                        ; install the missing packages
-;; (dolist (package package-list)
-;;   (unless (package-installed-p package)
-;;     (package-install package)))
 
 ;; Additional information about packages in the mode-line
 (use-package paradox
