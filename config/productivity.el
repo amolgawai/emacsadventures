@@ -441,7 +441,7 @@ point reaches the beginning or end of the buffer, stop there."
     (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB")))))
 
 (use-package flyspell-lazy
-  :ensure t
+  :defer t
   :config
   (flyspell-lazy-mode 1))
 
