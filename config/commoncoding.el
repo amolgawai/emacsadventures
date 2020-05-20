@@ -115,6 +115,12 @@ With a prefix argument, use comint-mode."
   (("<f5>" . quickrun)
    ("M-<f5>" . quickrun-shell)))
 
+;; bazel build system
+(use-package bazel
+    :mode ("BUILD\\|WORKSPACE\\|CROSSTOOL\\|\\.bazel\\'\\.bzl'" . bazel-mode)
+    :config
+    (add-hook 'bazel-mode-hook 'bazel-install-reformat))
+
 ;; Magit for git interactions
 (use-package magit
   :defer t
