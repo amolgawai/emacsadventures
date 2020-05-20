@@ -7,9 +7,9 @@ Let the pictures do talking...
 Doom-one theme, dired-sidebar, ibuffer-sidebar, two buffers, three perspectives
 [[file:Sidebar-DiredAndiBuffer.png]]
 Python development - treemacs, ipython
-[[file:screenshots/PythonWithTreemacs.png]]
+[[file:PythonWithTreemacs.png]]
 Sidebars - Neotree and Function List (Imenu list)
-[[file:screenshots/Sidebar-Neotree-Functions.png]]
+[[file:Sidebar-Neotree-Functions.png]]
 Older screenshots
  [[/screenshots/InAction.png]]
 [[/screenshots/WithSpaceLine.png]]
