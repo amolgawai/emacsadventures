@@ -33,7 +33,15 @@ A very similar config I found is
    :CUSTOM_ID: screenshots
    :END:
 
-Let the pictures do talking... [[/screenshots/InAction.png]]
+Let the pictures do talking...
+Doom-one theme, dired-sidebar, ibuffer-sidebar, two buffers, three perspectives
+[[file:screenshots/Sidebar-DiredAndiBuffer.png][Dired And iBuffer sidebars]]
+Python development - treemacs, ipython
+[[file:screenshots/PythonWithTreemacs.png][Python with iPython shell]]
+Sidebars - Neotree and Function List (Imenu list)
+[[file:screenshots/Sidebar-Neotree-Functions.png][Neotree and Function List]]
+Older screenshots
+ [[/screenshots/InAction.png]]
 [[/screenshots/WithSpaceLine.png]]
 
 ** How To Install
