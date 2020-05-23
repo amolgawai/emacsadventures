@@ -328,7 +328,7 @@ With a prefix argument, use comint-mode."
 ;; Install LSPs for specific language. See - https://github.com/emacs-lsp/lsp-mode#supported-languages
 (use-package lsp-mode
   :defer t
-  :hook (rust-mode .  lsp-deferred)
+  :hook ((c++-mode rust-mode) .  lsp-deferred)
   :commands lsp)
 (use-package lsp-ui :defer t :commands lsp-ui-mode)
 (use-package company-lsp :defer t :commands company-lsp)
