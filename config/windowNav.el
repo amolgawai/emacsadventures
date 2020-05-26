@@ -37,19 +37,33 @@
     ))
 
 ;; Fast move between adjacent windows with windmove
-(global-set-key (kbd "C-M-<left>")  'windmove-left)
-(global-set-key (kbd "C-M-<right>") 'windmove-right)
-(global-set-key (kbd "C-M-<up>")    'windmove-up)
-(global-set-key (kbd "C-M-<down>")  'windmove-down)
+(use-package windmove
+  :defer 0.1
+  :bind
+("C-M-<left>" . windmove-left)
+("C-M-<right>" . windmove-right)
+("C-M-<up>" . windmove-up)
+("C-M-<down>" . windmove-down))
 
 ;; Move buffers between windows
 (use-package buffer-move
-  :defer t
+  :defer 0.1
+  :bind
+  ("<C-s-up>" . buf-move-up)
+  ("<C-s-down>" . buf-move-down)
+  ("<C-s-left>" . buf-move-left)
+  ("<C-s-right>" . buf-move-right))
+
+;; buffer expose - switch buffers visually like app-expose
+;; ref - https://github.com/clemera/buffer-expose
+(use-package buffer-expose
+  :defer 0.1
   :config
-  (global-set-key (kbd "<C-s-up>")     'buf-move-up)
-  (global-set-key (kbd "<C-s-down>")   'buf-move-down)
-  (global-set-key (kbd "<C-s-left>")   'buf-move-left)
-  (global-set-key (kbd "<C-s-right>")  'buf-move-right))
+  (buffer-expose-mode 1)
+  :bind
+  ("<s-tab>" . buffer-expose)
+  ("<C-tab>" . buffer-expose-no-stars)
+  ("<C-s-tab>" . buffer-expose-stars))
 
 ;; buffer tabs with centaur tabs
 ;; https://github.com/ema2159/centaur-tabs
