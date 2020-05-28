@@ -329,46 +329,60 @@ With a prefix argument, use comint-mode."
 (use-package lsp-mode
   :defer t
   :hook ((c++-mode rust-mode) .  lsp-deferred)
-  :commands lsp)
-(use-package lsp-ui :defer t :commands lsp-ui-mode)
+  :commands lsp
+  :config
+  ;; `-background-index' requires clangd v8+!
+  (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error")))
+;; (use-package lsp-ui :defer t :commands lsp-ui-mode)
 (use-package company-lsp :defer t :commands company-lsp)
 (use-package lsp-ivy :defer t :commands lsp-ivy-workspace-symbol)
 ;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 (use-package lsp-treemacs :defer t :commands lsp-treemacs-errors-list)
 ;; optionally if you want to use debugger
-(use-package dap-mode :defer t)
+;; (use-package dap-mode :defer t)
 ;; (use-package lsp-mode
 ;;   :hook (rust-mode . lsp)
 ;;   :commands (lsp lsp-deferred))
-;; (use-package lsp-ui
-;;   :requires lsp-mode flycheck
-;;   :config
-;;   (setq lsp-ui-doc-enable t
-;;         lsp-ui-doc-use-childframe t
-;;         lsp-ui-doc-position 'top
-;;         lsp-ui-doc-include-signature t
-;;         lsp-ui-sideline-enable nil
-;;         lsp-ui-flycheck-enable t
-;;         lsp-ui-flycheck-list-position 'right
-;;         lsp-ui-flycheck-live-reporting t
-;;         lsp-ui-peek-enable t
-;;         lsp-ui-peek-list-width 60
-;;         lsp-ui-peek-peek-height 25)
+(use-package lsp-ui
+  :defer t
+  :commands lsp-ui-mode
+  :requires lsp-mode flycheck
+  :config
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-use-childframe t
+        lsp-ui-doc-position 'top
+        lsp-ui-doc-include-signature t
+        lsp-ui-sideline-enable nil
+        lsp-ui-flycheck-enable t
+        lsp-ui-flycheck-list-position 'right
+        lsp-ui-flycheck-live-reporting t
+        lsp-ui-peek-enable t
+        lsp-ui-peek-list-width 60
+        lsp-ui-peek-peek-height 25))
 
 ;;   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 ;; (use-package company-lsp :commands company-lsp)
 ;; (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 ;; (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 ;; ;; optionally if you want to use debugger
-;; (use-package dap-mode
-;;   :commands dap-mode
-;;   :config
-;;   (dap-mode 1)
-;;   (require 'dap-ui)
-;;   (dap-ui-mode 1)
-;;   (require 'dap-lldb))
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+(use-package dap-mode
+  :defer t
+  :commands dap-mode
+  :config
+  (dap-mode 1)
+  (use-package dap-ui
+    :defer t
+    :config
+    (dap-ui-mode 1))
+  (use-package dap-lldb
+    :defer t))
+;; (use-package dap-LANGUAGE) ;; to load the dap adapter for your language
 
+;; show color for the values
+(use-package rainbow-mode
+  :defer t
+  :hook prog-mode
+  :config (setq-default rainbow-x-colors-major-mode-list '()))
 
 (provide 'commoncoding)
 ;;; commoncoding.el ends here
