@@ -35,6 +35,9 @@
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+(setq-default frame-title-format
+              (setq-default icon-title-format '("%b [%m]")))
+
 (setq inhibit-splash-screen t
       inhibit-startup-screen t
       visible-bell nil
