@@ -226,9 +226,9 @@ It added extra strings at the front and back of the default dired buffer name."
 ;; quicj preview certain files. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
 (use-package quick-preview
   :defer t
-  :init
-  (global-set-key (kbd "C-c q") 'quick-preview-at-point)
-  (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point))
+  :bind (("C-c q" . quick-preview-at-point)
+         :map dired-mode-map
+              ("Q" . quick-preview-at-point)))
 
 (use-package dired-sidebar
   :defer t
