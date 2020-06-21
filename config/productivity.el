@@ -371,9 +371,9 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; fuzzy search using fzf - make sure fzf is installed
 (use-package fzf
-  :defer t)
-  ;; :init
-  ;; (setenv "FZF_DEFAULT_COMMAND" "fd --type f"))
+  :defer t
+  :init
+  (setenv "FZF_DEFAULT_COMMAND" "ag --hidden --ignore .git -g \"\""))
 
 ;; open new frame with empy buffer
 (defun emcsadvntr/new-buffer-frame ()
