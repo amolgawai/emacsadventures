@@ -82,6 +82,9 @@
 	 "fd"        '(delete-frame :which-key "delete")
      ;; help
      "h"         '(:ignore t :which-key "help")
+     "hf"        '(counsel-describe-function :which-key "describe function")
+     "hv"        '(counsel-describe-variable :which-key "describe variable")
+     "ho"        '(counsel-describe-symbol :which-key "describe symbol")
      ;; "hh"        '((general-simulate-key "C-h") :which-key "help")
 	 "hy"        '(yas-describe-tables :which-key "snippet tables")
 	 ;; notes
