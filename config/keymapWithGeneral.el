@@ -110,6 +110,8 @@
 	 "sf"        '(counsel-imenu :which-key "functions")
 	 "sp"        '(projectile-ripgrep :which-key "in project")
      "so"        '(counsel-org-agenda-headlines :which-key "in org notes")
+     "ss"        '(swiper :which-key "in file")
+     "sd"        '(counsel-ag :which-key "in directory")
 	 ;; quit
 	 "q"         '(:ignore t :which-key "quit")
 	 "ql"        '(persp-state-restore :which-key "reload last session")
