@@ -132,10 +132,15 @@
   :defer t
   :after treemacs projectile)
 
-(use-package treemacs-icons-dired
-  :defer t
-  :after treemacs dired
-  :config (treemacs-icons-dired-mode))
+(use-package treemacs-all-the-icons
+  :after treemacs
+  :config
+  (treemacs-load-theme "all-the-icons"))
+
+;; (use-package treemacs-icons-dired
+;;   :defer t
+;;   :after treemacs dired
+;;   :config (treemacs-icons-dired-mode))
 
 (use-package treemacs-magit
   :defer t
@@ -228,7 +233,7 @@ It added extra strings at the front and back of the default dired buffer name."
   :defer t
   :bind (("C-c q" . quick-preview-at-point)
          :map dired-mode-map
-              ("Q" . quick-preview-at-point)))
+         ("Q" . quick-preview-at-point)))
 
 (use-package dired-sidebar
   :defer t
