@@ -123,6 +123,12 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+;; Or if you have use-package installed
+(use-package kaolin-themes
+  :config
+  ;; (load-theme 'kaolin-dark t)
+  (kaolin-treemacs-theme))
+
 ;; function for changing themes
 (defun switch-theme (theme)
   "Disables any currently active themes and loads THEME."
