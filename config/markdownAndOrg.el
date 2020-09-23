@@ -76,7 +76,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; org mode
 
 (use-package org
-  :defer t
+  ;; :defer t
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
@@ -132,7 +132,8 @@ LIST-OR-SYMBOL - pass the list of faces"
            'fixed-pitch
            (face-attribute face :inherit))))
        (list 'org-code 'org-block 'org-table
-             'org-block-background 'org-verbatim
+             ;; 'org-block-background
+             'org-verbatim
              'org-meta-line
              'org-document-info-keyword)))
     ;; (lambda (face) ;; Other fonts with fixed-pitch.
@@ -252,6 +253,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; https://github.com/alphapapa/org-super-agenda
 (use-package org-super-agenda
   :defer t
+  :after org
   :init
   (setq org-super-agenda-groups
         '((:name "Goals"
@@ -285,6 +287,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; ref - https://github.com/akirak/ivy-omni-org
 (use-package ivy-omni-org
   :defer t
+  :after org
   :custom
   (ivy-omni-org-file-sources '(org-agenda-files)))
 
@@ -309,8 +312,8 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; beautiful bullets for org mode
 (use-package org-bullets
   :defer t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  :after org
+  :hook (org-mode-hook . org-bullets-mode))
 
 ;; (use-package org-ac
 ;;   :defer t
