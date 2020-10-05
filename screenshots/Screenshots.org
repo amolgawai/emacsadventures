@@ -11,7 +11,7 @@ Python development - treemacs, ipython
 Sidebars - Neotree and Function List (Imenu list)
 [[file:Sidebar-Neotree-Functions.png]]
 Just for fun - Spacevim running inside vterm
-file:SpacevimWithVterm.png
+[[file:SpacevimWithVterm.png]]
 Older screenshots
  [[/screenshots/InAction.png]]
 [[/screenshots/WithSpaceLine.png]]
