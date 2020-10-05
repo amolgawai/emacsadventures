@@ -340,6 +340,9 @@ point reaches the beginning or end of the buffer, stop there."
   :defer t
   :bind ("s-~" . shell-here))
 
+(use-package vterm
+  :defer t)
+
 ;; ** edit browser text area in Emacs (sync both ways)
 ;; ref - https://superuser.com/questions/488348/edit-any-text-input-shown-by-a-browser-mostly-chrome-with-emacs?noredirect=1
 ;; source - https://github.com/alpha22jp/atomic-chrome

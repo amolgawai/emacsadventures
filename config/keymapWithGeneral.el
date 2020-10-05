@@ -78,6 +78,7 @@
 	 "f"         '(:ignore t :which-key "frames")
      "fn"        '(emcsadvntr/new-buffer-frame :which-key "new frame")
 	 "fo"        '(find-file-other-frame :which-key "open file -> new frame")
+	 "fs"        '(save-buffer :which-key "save")
 	 "ff"        '(other-frame :which-key "other frame")
 	 "fd"        '(delete-frame :which-key "delete")
      ;; help
@@ -130,6 +131,7 @@
 	 "tn"        '(neotree-toggle :which-key "neotree")
 	 "tf"        '(imenu-list-smart-toggle :which-key "function sidebar")
 	 "ts"        '(eshell-toggle :which-key "shell")
+     "tv"        '(vterm :which-key "terminal - vterm")
      "to"        '(org-sidebar-toggle :which-key "org-sidebar")
      "tp"        '(elpy-shell-toggle-dedicated-shell :which-key "python shell")
      "tr"        '(ranger :which-key "ranger file manager")
