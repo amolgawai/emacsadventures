@@ -82,6 +82,12 @@
 	 "fs"        '(save-buffer :which-key "save")
 	 "ff"        '(other-frame :which-key "other frame")
 	 "fd"        '(delete-frame :which-key "delete")
+	 ;; git/magit
+	 "g"         '(:ignore t :which-key "git")
+	 "gg"        '(magit-status :which-key "status")
+	 "gs"        '(magit-stage :which-key "stage current")
+	 "gc"        '(magit-commit :which-key "commit staged")
+	 "gr"        '(magit-revert :which-key "revert")
      ;; help
      "h"         '(:ignore t :which-key "help")
      "hf"        '(counsel-describe-function :which-key "describe function")
