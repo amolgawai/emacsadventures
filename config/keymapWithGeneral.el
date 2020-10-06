@@ -51,6 +51,7 @@
 	 "m"         '(magit-status :which-key "Magit")
      ;; perspectives
      "TAB"       '(:ignore t :which-key "perspectives")
+	 "TAB s"     '(persp-state-restore :which-key "reload last session")
      "TAB TAB"   '(persp-switch :which-key "switch to/create new")
      "TAB l"     '(persp-switch-last :which-key "last")
      "TAB d"     '(persp-kill :which-key "delete")
@@ -118,7 +119,7 @@
      "sd"        '(counsel-ag :which-key "in directory")
 	 ;; quit
 	 "q"         '(:ignore t :which-key "quit")
-	 "ql"        '(persp-state-restore :which-key "reload last session")
+	 ;; "ql"        '(persp-state-restore :which-key "reload last session")
 	 "qz"        '(delete-frame :which-key "delete frame")
 	 "qq"        '(kill-emacs :which-key "quit")
 	 "qr"        '(restart-emacs :which-key "restart")
