@@ -41,6 +41,14 @@ LIST-OR-SYMBOL - pass the list of faces"
     (require 'cl-lib)
     (cl-adjoin element list)))
 
+(defun emcsadvntr/markdown-preview-file ()
+  "Use Marked 2 to preview the current file."
+  (interactive)
+  (shell-command
+   (format "open -a 'Marked 2.app' %s"
+       (shell-quote-argument (buffer-file-name))))
+)
+
 ;; markdown settings
 (use-package markdown-mode
   :defer t

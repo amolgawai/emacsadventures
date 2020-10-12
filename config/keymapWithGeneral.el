@@ -103,6 +103,7 @@
 	 "nj"        '(org-journal-new-entry :which-key "journal entry")
      "no"        '(ivy-omni-org :which-key "open org file")
      "nr"        '(org-refile :which-key "refile note")
+     "np"        '(emcsadvntr/markdown-preview-file :which-key "preview in Marked 2")
 	 ;; open
 	 "o"         '(:ignore t :which-key "open")
 	 "of"        '(counsel-fzf :which-key "file")
