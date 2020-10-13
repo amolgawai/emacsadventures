@@ -31,7 +31,25 @@
   (setq evil-want-C-u-scroll t
         evil-want-keybinding nil)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  ;; set initial evil state for particular modes
+  (cl-loop for (mode . state) in '((deft-mode              . emacs)
+                                   (dired-mode             . normal)
+                                   (magit-mode             . normal)
+                                   (magit-status-mode      . emacs)
+                                   (magit-diff-mode        . normal)
+                                   (magit-log-mode         . normal)
+                                   (magit-process-mode     . normal)
+                                   (magit-popup-mode       . emacs)
+                                   ;; this allows vi-mode in shells
+                                   (term-mode              . emacs)
+                                   ;; (tide-references-mode   . emacs)
+                                   (xref--xref-buffer-mode . emacs))
+           do (evil-set-initial-state mode state)))
+
+(use-package evil-matchit
+  :config
+  (global-evil-matchit-mode 1))
 
 ;; evil-collection for useful extra keymaps
 (use-package evil-collection
