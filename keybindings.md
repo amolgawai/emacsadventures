@@ -5,7 +5,7 @@ EVIL quickstart
 
     SPC               <leader>                           All the possibilities are shown after SPC
 	C-SPC             non-normal <leader>
-    SPC q l           load last session
+    SPC TAB s         load last session
     C-z               toggle evil mode
 	gc                comment/uncomment
 	zm                fold-all
