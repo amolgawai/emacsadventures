@@ -60,7 +60,7 @@ LIST-OR-SYMBOL - pass the list of faces"
   (progn
     (setq markdown-make-gfm-checkboxes-buttons t)
     (setq markdown-command "multimarkdown"))
-  :config
+  :init
   (progn
     (add-hook 'markdown-mode-hook
               '(lambda ()
@@ -346,7 +346,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 
 ;; deft for managing notes
 (use-package deft
-  :defer t
+;;  :defer t
   :after org
   :bind ("<f7>" . emcsadvntr/deft-dwim)
   :custom
