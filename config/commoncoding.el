@@ -141,6 +141,7 @@ With a prefix argument, use comint-mode."
 
 (use-package evil-magit
   :defer t
+  :requires magit evil
   :after magit)
 
 ;; github with magit

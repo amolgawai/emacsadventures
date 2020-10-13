@@ -35,12 +35,12 @@
   ;; set initial evil state for particular modes
   (cl-loop for (mode . state) in '((deft-mode              . emacs)
                                    (dired-mode             . normal)
-                                   (magit-mode             . normal)
-                                   (magit-status-mode      . emacs)
-                                   (magit-diff-mode        . normal)
-                                   (magit-log-mode         . normal)
-                                   (magit-process-mode     . normal)
-                                   (magit-popup-mode       . emacs)
+                                   ;; (magit-mode             . normal)
+                                   ;; (magit-status-mode      . emacs)
+                                   ;; (magit-diff-mode        . normal)
+                                   ;; (magit-log-mode         . normal)
+                                   ;; (magit-process-mode     . normal)
+                                   ;; (magit-popup-mode       . emacs)
                                    ;; this allows vi-mode in shells
                                    (term-mode              . emacs)
                                    ;; (tide-references-mode   . emacs)
