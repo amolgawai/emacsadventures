@@ -125,6 +125,7 @@
 
 ;; Or if you have use-package installed
 (use-package kaolin-themes
+  :after all-the-icons
   :config
   ;; (load-theme 'kaolin-dark t)
   (kaolin-treemacs-theme))

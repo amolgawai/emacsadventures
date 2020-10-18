@@ -88,6 +88,7 @@
 	 "gs"        '(magit-stage :which-key "stage current")
 	 "gc"        '(magit-commit :which-key "commit staged")
 	 "gr"        '(magit-revert :which-key "revert")
+     "gl"        '(magit-log :which-key "log")
      ;; help
      "h"         '(:ignore t :which-key "help")
      "hf"        '(counsel-describe-function :which-key "describe function")

@@ -88,7 +88,7 @@
 
 ;; Additional information about packages in the mode-line
 (use-package paradox
-  :defer 1
+  :defer t
   :custom
   (paradox-column-width-package 27)
   (paradox-column-width-version 13)
