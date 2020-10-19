@@ -167,6 +167,10 @@ With a prefix argument, use comint-mode."
   :config
   (magit-todos-mode))
 
+(use-package magit-delta
+  :defer t
+  :requires magit)
+
 ;; Ask password for pushing to remote
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
