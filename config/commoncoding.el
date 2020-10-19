@@ -54,55 +54,55 @@
               ([f5] . emcsadvntr/compile-please)
               ([C-f5] . compile))
   :init
-;; colorize that buffer plz
-(defun colorize-compilation-buffer ()
-  (toggle-read-only)
-  (ansi-color-apply-on-region (point-min) (point-max))
-  (toggle-read-only))
+  ;; colorize that buffer plz
+  (defun colorize-compilation-buffer ()
+    (toggle-read-only)
+    (ansi-color-apply-on-region (point-min) (point-max))
+    (toggle-read-only))
 
-;; close if compilation was successful
-(defun compile-autoclose (buffer string)
-  "Bury a compilation buffer if succeeded without warnings "
-  (if (and
-       (string-match "compilation" (buffer-name buffer))
-       (string-match "finished" string)
-       (not
-        (with-current-buffer buffer
-          (search-forward "warning" nil t))))
-      (run-with-timer 1 nil
-                      (lambda (buf)
-                        (delete-window (get-buffer-window buf)))
-                      buffer)))
-(setq compilation-window-height 10)
-(defun emcsadvntr/compile-please (comint)
-  "Compile without confirmation.
+  ;; close if compilation was successful
+  (defun compile-autoclose (buffer string)
+    "Bury a compilation buffer if succeeded without warnings "
+    (if (and
+         (string-match "compilation" (buffer-name buffer))
+         (string-match "finished" string)
+         (not
+          (with-current-buffer buffer
+            (search-forward "warning" nil t))))
+        (run-with-timer 1 nil
+                        (lambda (buf)
+                          (delete-window (get-buffer-window buf)))
+                        buffer)))
+  (setq compilation-window-height 10)
+  (defun emcsadvntr/compile-please (comint)
+    "Compile without confirmation.
 With a prefix argument, use comint-mode."
-  (interactive "P")
-  ;; Do the command without a prompt.
-  ;;      (save-window-excursion
-  (compile (eval compile-command) (and comint t)))
-(defun my-compilation-hook ()
-  (when (not (get-buffer-window "*compilation*"))
-    (save-selected-window
-      (save-excursion
-        (let* ((w (split-window-vertically))
-               (h (window-height w)))
-          (select-window w)
-          (switch-to-buffer "*compilation*")
-          (shrink-window (- h compilation-window-height)))))))
-(add-hook 'compilation-mode-hook 'my-compilation-hook)
+    (interactive "P")
+    ;; Do the command without a prompt.
+    ;;      (save-window-excursion
+    (compile (eval compile-command) (and comint t)))
+  (defun my-compilation-hook ()
+    (when (not (get-buffer-window "*compilation*"))
+      (save-selected-window
+        (save-excursion
+          (let* ((w (split-window-vertically))
+                 (h (window-height w)))
+            (select-window w)
+            (switch-to-buffer "*compilation*")
+            (shrink-window (- h compilation-window-height)))))))
+  (add-hook 'compilation-mode-hook 'my-compilation-hook)
 
-;; jump to first error
-(setq compilation-auto-jump-to-first-error t)
+  ;; jump to first error
+  (setq compilation-auto-jump-to-first-error t)
 
-;; and add the hook
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-;; scroll output
-(setq compilation-scroll-output t)
-;; don't hang on warnings, only errors
-(setq compilation-skip-threshold 2)
+  ;; and add the hook
+  (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+  ;; scroll output
+  (setq compilation-scroll-output t)
+  ;; don't hang on warnings, only errors
+  (setq compilation-skip-threshold 2)
 
-(setq compilation-finish-functions 'compile-autoclose))
+  (setq compilation-finish-functions 'compile-autoclose))
 
 (use-package ansi-color
   :defer t)
