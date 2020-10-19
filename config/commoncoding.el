@@ -385,7 +385,7 @@ With a prefix argument, use comint-mode."
 
 ;; show color for the values
 (use-package rainbow-mode
-  :defer t
+  ;; :defer t
   :hook prog-mode
   :config (setq-default rainbow-x-colors-major-mode-list '()))
 
