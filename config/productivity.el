@@ -376,7 +376,7 @@ point reaches the beginning or end of the buffer, stop there."
 (use-package fzf
   :defer t
   :init
-  (setenv "FZF_DEFAULT_COMMAND" "ag --hidden --ignore .git -g \"\""))
+  (setenv "FZF_DEFAULT_COMMAND" "rg --hidden --ignore .git -g \"\""))
 
 ;; open new frame with empy buffer
 (defun emcsadvntr/new-buffer-frame ()
