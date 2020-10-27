@@ -40,10 +40,16 @@
 (use-package windmove
   :defer 0.1
   :bind
-("C-M-<left>" . windmove-left)
-("C-M-<right>" . windmove-right)
-("C-M-<up>" . windmove-up)
-("C-M-<down>" . windmove-down))
+  ("C-M-<left>" . windmove-left)
+  ("C-M-<right>" . windmove-right)
+  ("C-M-<up>" . windmove-up)
+  ("C-M-<down>" . windmove-down))
+
+;; window resize
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
 ;; Move buffers between windows
 (use-package buffer-move
