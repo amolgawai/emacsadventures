@@ -234,6 +234,22 @@
     (let ((info '(:internal-border-width 12 :min-width 80 :background-color "#282a36")))
       (or (plist-get info arg-name) value))))
 
+;; Show 80th columns in prog-mode
+(use-package fill-column-indicator
+  :defer t
+  :diminish fci-mode
+  :hook ((prog-mode . (lambda ()
+                        (fci-mode)
+                        (set-fill-column 80)))))
+
+;; Show block in prog-mode
+(use-package highlight-indent-guides
+  :defer t
+  :diminish highlight-indent-guides-mode
+  :hook (prog-mode . highlight-indent-guides-mode)
+  :config
+  (setq highlight-indent-guides-method 'bitmap))
+
 
 (provide 'appearance)
 ;;; appearance.el ends here
