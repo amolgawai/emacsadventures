@@ -13,6 +13,28 @@ EVIL quickstart
 	zc                close current fold
 	zo                open current fold
 
+Window creation/Adjustment
+-----------
+
+    SPC w /          Split window right
+    SPC w -          Split window bottom
+    SPC w =          Balance windows
+    C-S-<arrow>      Narrow/Widen window
+	SPC w h/j/k/l    Move window left/down/up/right
+	SPC s            Swap windows
+
+Buffer/Window/Frame Navigation
+--------
+
+    C-M-<Left arrow>  Move to left window
+    C-M-<Right arrow> Move to right window
+    C-M-<Up arrow>    Move to top window
+    C-M-<Down arrow>> Move to bottom window
+    C-x o             Move to any window                      Ace-window
+    C-<next>          Move to next buffer/project            Centaur-tabs - next is PageUp
+    C-<prior>         Move to previous buffer/project        Centaur-tabs - prior is PageDown
+    s-<arrow>         Move to next/previous frame
+
 Generic
 --------
 
@@ -51,17 +73,6 @@ Folding
     C-c <down arrow>  UnFold All
     C-c <left arrow>  Fold Current
     C-c <right arrow> UnFold Current
-
-Buffer/Window Navigation
---------
-
-    C-M-<Left arrow>  Move to left frame
-    C-M-<Right arrow> Move to right frame
-    C-M-<Up arrow>    Move to top frame
-    C-M-<Down arrow>> Move to bottom frame
-    C-x o             Move to any frame                      Ace-window
-    C-<next>          Move to next buffer/project            Centaur-tabs - next is PageUp
-    C-<prior>         Move to previous buffer/project        Centaur-tabs - prior is PageDown
 
 prog-mode-map: <f5>
 --------
