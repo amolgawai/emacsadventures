@@ -79,6 +79,7 @@
      "er"        '(eval-region :which-key "region")
 	 ;; Frames
 	 "f"         '(:ignore t :which-key "frames")
+     "fl"        '(select-frame-by-name :which-key "list")
      "fn"        '(emcsadvntr/new-buffer-frame :which-key "new frame")
 	 "fo"        '(find-file-other-frame :which-key "open file -> new frame")
 	 "fs"        '(save-buffer :which-key "save")
