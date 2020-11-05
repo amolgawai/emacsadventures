@@ -320,7 +320,6 @@ LIST-OR-SYMBOL - pass the list of faces"
 ;; beautiful bullets for org mode
 (use-package org-bullets
   :defer t
-  :after org
   :hook (org-mode-hook . org-bullets-mode))
 
 ;; (use-package org-ac
