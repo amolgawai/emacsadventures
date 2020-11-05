@@ -42,7 +42,7 @@
 	 :non-normal-prefix "C-SPC"
 	 ;; general
 	 "/"         '(projectile-ripgrep :which-key "ripgrep")
-	 "."         '(counsel-find-file :which-key "open file")
+	 "."         '(counsel-fzf :which-key "open file")
 	 ","         '(fzf-projectile :which-key "fuzzy open file in project")
 	 ;; ":"         '(indent-buffer :which-key "format buffer")
 	 ":"         '(format-all-buffer :which-key "format buffer")
