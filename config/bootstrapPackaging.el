@@ -27,8 +27,8 @@
                                         ; list the repositories containing them
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("melpa" . "http://melpa.org/packages/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
+;;                         ("marmalade" . "http://marmalade-repo.org/packages/")))
 ;; avoid problems with files newer than their byte-compiled counterparts
 ;; it's better a lower startup than load an outdated and maybe bugged package
 (setq load-prefer-newer t)
