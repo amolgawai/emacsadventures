@@ -35,6 +35,7 @@
   :interpreter ("python" . python-mode)
   :init
   (setq-default indent-tabs-mode nil)
+  (setq python-indent-offset 4)
   (setenv "PYTHONIOENCODING" "utf-8")
   (let ((workon-home (expand-file-name "~/.pyenv/versions")))
     (setenv "WORKON_HOME" workon-home)
@@ -46,7 +47,6 @@
   ;;                      company-statistics-mode -1
   ;; company-mode -1))))
   :config
-  (setq python-indent-offset 4)
   ;; ipython support, also remove weird character on ipython prompt
   (when (executable-find "ipython")
     (setq python-shell-interpreter "ipython")
