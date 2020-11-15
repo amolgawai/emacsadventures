@@ -162,6 +162,7 @@
 	 ))
   (general-nmap "SPC c" (general-simulate-key "C-c" :which-key "C-c"))
   (general-nmap "SPC x" (general-simulate-key "C-x" :which-key "C-x"))
+  (general-nmap "SPC !" (general-simulate-key "C-c !" :which-key "flycheck"))
   (general-nmap "SPC h h" (general-simulate-key "C-h" :which-key "help")))
 ;; (general-nmap "SPC m" (general-simulate-key "," :which-key "major mode")))
 
