@@ -65,6 +65,7 @@
 (require 'pythonWithElpy)
 (require 'golang)
 (require 'rust)
+(require 'webdev)
 (require 'keymapWithGeneral)
 
 ;; Load private config
