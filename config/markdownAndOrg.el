@@ -25,7 +25,7 @@
 ;;; Code:
 
 ;; variable pitch for all the text modes
-(add-hook 'text-mode-hook 'variable-pitch-mode)
+;; (add-hook 'text-mode-hook 'variable-pitch-mode)
 
 ;; adjust specific font faces for a perticular mode
 ;; ref - https://yoo2080.wordpress.com/2013/05/30/monospace-font-in-tables-and-source-code-blocks-in-org-mode-proportional-font-in-other-parts/
@@ -56,14 +56,13 @@ LIST-OR-SYMBOL - pass the list of faces"
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init
-  (progn
-    (setq markdown-make-gfm-checkboxes-buttons t)
-    (setq markdown-command "multimarkdown"))
+  :custom ((markdown-make-gfm-checkboxes-buttons t)
+           (markdown-command "multimarkdown"))
   :init
   (progn
     (add-hook 'markdown-mode-hook
               '(lambda ()
+                (variable-pitch-mode t)
                  (mapc
                   (lambda (face)
                     (set-face-attribute
