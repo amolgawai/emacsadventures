@@ -111,6 +111,7 @@
 	 ;; open
 	 "o"         '(:ignore t :which-key "open")
 	 "of"        '(counsel-fzf :which-key "file")
+     "ow"        '(find-file-other-window :which-key "file in new windw")
 	 ;; projectile
 	 "p"         '(:ignore t :which-key "projectile")
 	 "pc"        '(:keymap projectile-command-map :which-key "commands")
