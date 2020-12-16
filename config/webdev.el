@@ -67,14 +67,14 @@ formatted HTML tag."
 (use-package emmet-mode
   :diminish (emmet-mode . "ε")
   :defer t
+  :after web-mode
   :bind* (("C-)" . emmet-next-edit-point)
           ("C-(" . emmet-prev-edit-point))
   :commands (emmet-mode
              emmet-next-edit-point
              emmet-prev-edit-point)
-  :init
-  (setq emmet-indentation 2)
-  (setq emmet-move-cursor-between-quotes t)
+  :custom ((emmet-indentation 2)
+           (emmet-move-cursor-between-quotes t))
   :config
   ;; Auto-start on any markup modes
   (add-hook 'sgml-mode-hook 'emmet-mode)

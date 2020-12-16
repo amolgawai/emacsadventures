@@ -185,15 +185,14 @@ With a prefix argument, use comint-mode."
 
 ;; snippets
 (use-package yasnippet
-  :defer t
+  ;; :defer t
   :diminish yas-minor-mode
-  :config
+  :init
+  (yas-global-mode 1))
 
-  (use-package yasnippet-snippets
-    :defer t)
-
-  (yas-global-mode 1)
-  )
+;; default snippets
+(use-package yasnippet-snippets
+  :after yasnippet)
 ;; (use-package yasnippet                  ; Snippets
 ;;   :diminish
 ;;   :config

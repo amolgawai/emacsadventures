@@ -33,14 +33,18 @@
   :mode ("\\.py\\'" . python-mode)
   ;; ("\\.wsgi$" . python-mode)
   :interpreter ("python" . python-mode)
+  ;; :custom ((indent-tabs-mode nil)
+  ;;          (python-indent-offset 4))
   :init
-  (setq-default indent-tabs-mode nil)
-  (setq python-indent-offset 4)
   (setenv "PYTHONIOENCODING" "utf-8")
   (let ((workon-home (expand-file-name "~/.pyenv/versions")))
     (setenv "WORKON_HOME" workon-home)
     (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
   :hook ((python-mode . smartparens-mode)
+         (python-mode . (lambda () ((setq indent-tabs-mode nil)
+                                    (setq python-indent 4)
+                                    (setq tab-width 4))))
+         ;; (untabify (point-min) (point-max))))
          (inferior-python-mode . (lambda() (setq company-mode -1))))
   ;; (global-company-mode -1
   ;;                      company-box-mode -1
