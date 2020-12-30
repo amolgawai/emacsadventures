@@ -33,18 +33,20 @@
   :mode ("\\.py\\'" . python-mode)
   ;; ("\\.wsgi$" . python-mode)
   :interpreter ("python" . python-mode)
-  ;; :custom ((indent-tabs-mode nil)
-  ;;          (python-indent-offset 4))
+  :custom ((indent-tabs-mode nil)
+           (python-indent-offset 4)
+           (tab-width 4))
   :init
   (setenv "PYTHONIOENCODING" "utf-8")
   (let ((workon-home (expand-file-name "~/.pyenv/versions")))
     (setenv "WORKON_HOME" workon-home)
     (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
   :hook ((python-mode . smartparens-mode)
-         (python-mode . (lambda () ((setq indent-tabs-mode nil)
-                                    (setq python-indent 4)
-                                    (setq tab-width 4))))
-         ;; (untabify (point-min) (point-max))))
+         (python-mode . (lambda ()
+                          ((setq indent-tabs-mode nil
+                                 python-indent 4
+                                 tab-width 4)
+                           (untabify (point-min) (point-max)))))
          (inferior-python-mode . (lambda() (setq company-mode -1))))
   ;; (global-company-mode -1
   ;;                      company-box-mode -1
@@ -70,6 +72,12 @@
   (python-docstring-install)
   :diminish python-docstring-mode)
 
+;; suggest imports automatically
+;; make sure to add following in the respective environments
+;; pip install importmagic epc
+(use-package importmagic
+  :hook (python-mode . importmagic-mode))
+
 ;; auto generate docstring
 (use-package sphinx-doc
   :defer t
@@ -87,11 +95,11 @@
 ;; the python IDE
 (use-package elpy
   :defer t
-  :hook ((elpy-mode-hook . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
+  :hook ((elpy-mode . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
          ;; (pyenv-mode . elpy-rpc-restart)
-         (elpy-mode-hook . (lambda ()
-                             (add-hook 'before-save-hook
-                                       'elpy-black-fix-code nil t))))
+         (elpy-mode . (lambda ()
+                        (add-hook 'before-save-hook
+                                  'elpy-black-fix-code nil t))))
   :init
   (advice-add 'python-mode :before 'elpy-enable)
   :config

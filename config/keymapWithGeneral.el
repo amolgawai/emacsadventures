@@ -1,4 +1,4 @@
-;; keymapWithGeneral.el --- custom keymapping with general.el  -*- lexical-binding: t; -*-
+; keymapWithGeneral.el --- custom keymapping with general.el  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2020  Amol Gawai
 
@@ -114,6 +114,8 @@
      "ow"        '(find-file-other-window :which-key "file in new windw")
 	 ;; projectile
 	 "p"         '(:ignore t :which-key "projectile")
+     "pa"        '(projectile-add-known-project :which-key "add known project")
+     "ps"        '(projectile-discover-projects-in-directory :which-key "discover projects in dir")
 	 "pc"        '(:keymap projectile-command-map :which-key "commands")
 	 "pf"        '(counsel-projectile-find-file :which-key "find files")
 	 "pp"        '(projectile-persp-switch-project :which-key "switch project")

@@ -236,11 +236,19 @@ With a prefix argument, use comint-mode."
   (company-tooltip-limit 20)
   ;; selection wrap-around
   (company-selection-wrap-around t)
+  ;; cotion sorting weight by frequency
+  (company-transformers '(company-sort-by-occurrence))
   :config
   ;; (unless clangd-p (delete 'company-clang company-backends))
   (setq company-backends (remove 'company-ropemacs company-backends))
   :init
   (global-company-mode 1))
+
+;; company sorting
+(use-package company-statistics
+  :after company
+  :config
+  (add-hook 'after-init-hook 'company-statistics-mode))
 
 ;; icons for company mode
 ;; ref - https://github.com/TheBB/dotemacs/blob/master/init.el
