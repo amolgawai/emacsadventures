@@ -183,7 +183,7 @@
 ;; (setq projectile-completion-system 'helm))
 
 (use-package counsel-projectile
-  :after projectile counsel
+  :after (projectile counsel)
   :config
   (counsel-projectile-mode))
 

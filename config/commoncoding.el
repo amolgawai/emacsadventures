@@ -395,7 +395,7 @@ With a prefix argument, use comint-mode."
   (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error")))
 (use-package company-lsp
   :defer t
-  :after company lsp-mode
+  :after (company lsp-mode)
   :config
   (push 'company-lsp company-backends))
 (use-package lsp-ivy :defer t :commands lsp-ivy-workspace-symbol)

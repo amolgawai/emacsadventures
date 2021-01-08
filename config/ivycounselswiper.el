@@ -45,7 +45,7 @@
 
 (use-package all-the-icons-ivy
   :defer 0.1
-  :after ivy all-the-icons
+  :after (ivy all-the-icons)
   :hook (after-init . all-the-icons-ivy-setup)
   :config
   (setq all-the-icons-ivy-file-commands
@@ -58,7 +58,7 @@
 
 (use-package swiper
   :defer 0.1
-  :after ivy counsel
+  :after (ivy counsel)
   :diminish
   :bind
     ("\C-s" . swiper)

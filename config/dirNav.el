@@ -126,11 +126,11 @@
 
 (use-package treemacs-evil
   :defer t
-  :after treemacs evil)
+  :after (treemacs evil))
 
 (use-package treemacs-projectile
   :defer t
-  :after treemacs projectile)
+  :after (treemacs projectile))
 
 (use-package treemacs-all-the-icons
   :after treemacs
@@ -139,15 +139,15 @@
 
 ;; (use-package treemacs-icons-dired
 ;;   :defer t
-;;   :after treemacs dired
+;;   :after (treemacs dired)
 ;;   :config (treemacs-icons-dired-mode))
 
 (use-package treemacs-magit
   :defer t
-  :after treemacs magit)
+  :after (treemacs magit))
 
 ;; (use-package treemacs-persp
-;;   :after treemacs persp-mode
+;;   :after (treemacs persp-mode)
 ;;   :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package ranger
