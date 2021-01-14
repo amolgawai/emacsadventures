@@ -404,19 +404,28 @@ With a prefix argument, use comint-mode."
 (use-package lsp-ui
   :defer t
   :commands lsp-ui-mode
+  :after (lsp-mode)
   :requires lsp-mode flycheck
   :config
   (setq lsp-ui-doc-enable t
         lsp-ui-doc-use-childframe t
-        lsp-ui-doc-position 'top
         lsp-ui-doc-include-signature t
+        lsp-ui-doc-header nil
+        lsp-ui-doc-delay 0.2
+        lsp-ui-doc-alignment 'at-point
+        lsp-ui-doc-border (face-foreground 'default)
+        lsp-eldoc-enable-hover nil ; Disable eldoc displays in minibuffer
+        lsp-ui-peek-show-directory t
         lsp-ui-sideline-enable nil
+        lsp-ui-sideline-ignore-duplicate t
         lsp-ui-flycheck-enable t
         lsp-ui-flycheck-list-position 'right
         lsp-ui-flycheck-live-reporting t
+        lsp-ui-imenu-enable t
         lsp-ui-peek-enable t
         lsp-ui-peek-list-width 60
         lsp-ui-peek-peek-height 25))
+
 
 ;; optionally if you want to use debugger
 (use-package dap-mode
