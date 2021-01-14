@@ -120,6 +120,7 @@
 	 "pf"        '(counsel-projectile-find-file :which-key "find files")
 	 "pp"        '(projectile-persp-switch-project :which-key "switch project")
 	 "pb"        '(counsel-projectile-switch-to-buffer :which-key "switch buffer")
+	 "pt"        '(projectile-toggle-between-implementation-and-test :which-key "switch test/source")
      ;; run/compile
      "r"         '(:ignore t :which-key "run/compile")
      "rr"        '(quickrun :which-key "quickrun/compile")

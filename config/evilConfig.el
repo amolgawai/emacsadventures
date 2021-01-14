@@ -29,18 +29,20 @@
   :defer .1 ;; don't block emacs when starting, load evil immediately after startup
   :init
   (setq evil-want-C-u-scroll t
-        evil-want-keybinding nil)
+        evil-want-keybinding nil
+        evil-undo-system undo-fu
+        evil-want-fine-undo t)
   :config
   (evil-mode 1)
   ;; set initial evil state for particular modes
   (cl-loop for (mode . state) in '((deft-mode              . emacs)
                                    (dired-mode             . normal)
-                                   ;; (magit-mode             . normal)
+                                   (magit-mode             . normal)
                                    ;; (magit-status-mode      . emacs)
                                    ;; (magit-diff-mode        . normal)
                                    ;; (magit-log-mode         . normal)
                                    ;; (magit-process-mode     . normal)
-                                   ;; (magit-popup-mode       . emacs)
+                                   (magit-popup-mode       . emacs)
                                    ;; this allows vi-mode in shells
                                    (term-mode              . emacs)
                                    ;; (tide-references-mode   . emacs)
