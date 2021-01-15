@@ -30,7 +30,7 @@
   :init
   (setq evil-want-C-u-scroll t
         evil-want-keybinding nil
-        evil-undo-system undo-fu
+        evil-undo-system 'undo-fu
         evil-want-fine-undo t)
   :config
   (evil-mode 1)
