@@ -54,11 +54,11 @@
 ;; advanced undo-redo required by evil
 (use-package undo-fu
   :defer t
-  :after (evil)
-  :config
-  (global-undo-tree-mode -1)
-  (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
-  (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
+  :after (evil))
+  ;; :config
+  ;; (global-undo-tree-mode -1)
+  ;; (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
+  ;; (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo))
 
 (use-package evil-matchit
   :config
