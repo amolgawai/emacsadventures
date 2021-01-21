@@ -60,95 +60,103 @@
           python-shell-prompt-regexp "In \\[[0-9]+\\]: "
           python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: ")))
 
-  ;; emacs ipython notebook (jupyter in emacs)
-  (use-package ein
-    :defer t)
+;; emacs ipython notebook (jupyter in emacs)
+(use-package ein
+  :defer t)
 
-  ;; docstring helper
-  (use-package python-docstring
-    :defer t
-    :config
-    (python-docstring-install)
-    :diminish python-docstring-mode)
+;; docstring helper
+(use-package python-docstring
+  :defer t
+  :config
+  (python-docstring-install)
+  :diminish python-docstring-mode)
 
-  ;; suggest imports automatically
-  ;; make sure to add following in the respective environments
-  ;; pip install importmagic epc
-  (use-package importmagic
-    :hook (python-mode . importmagic-mode))
+;; suggest imports automatically
+;; make sure to add following in the respective environments
+;; pip install importmagic epc
+(use-package importmagic
+  :hook (python-mode . importmagic-mode))
 
-  ;; auto generate docstring
-  (use-package sphinx-doc
-    :defer t
-    :hook ((python-mode . sphinx-doc-mode)))
+;; auto generate docstring
+(use-package sphinx-doc
+  :defer t
+  :hook ((python-mode . sphinx-doc-mode)))
 
-  (use-package jedi
-    :defer t)
+(use-package jedi
+  :defer t)
 
-  (use-package company-jedi
-    :defer t
-    :hook (python-mode-hook . (lambda () (add-to-list 'company-backends 'company-jedi)))
-    :init
-    (setq company-jedi-python-bin "python"))
+(use-package company-jedi
+  :defer t
+  :hook (python-mode-hook . (lambda () (add-to-list 'company-backends 'company-jedi)))
+  :init
+  (setq company-jedi-python-bin "python"))
 
-  ;; the python IDE
-  (use-package elpy
-    :defer t
-    :hook ((elpy-mode . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
-           ;; (pyenv-mode . elpy-rpc-restart)
-           (elpy-mode . (lambda ()
-                          (add-hook 'before-save-hook
-                                    'elpy-black-fix-code nil t))))
-    :init
-    (advice-add 'python-mode :before 'elpy-enable)
-    :config
-    (defalias 'workon 'pyvenv-workon)
-    ;; (setq elpy-rpc-backend "jedi")
-    ;; use flycheck instead of flymake
-    (when (load "flycheck" t t)
-      (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-      (add-hook 'elpy-mode-hook 'flycheck-mode))
-    (setq elpy-modules
-          '(elpy-module-company
-            elpy-module-eldoc
-            elpy-module-pyvenv
-            elpy-module-sane-defaults)
-          elpy-shell-echo-input nil
-          elpy-shell-starting-directory 'current-directory
-          elpy-shell-echo-output nil
-          elpy-rpc-virtualenv-path 'current))
+;; the python IDE
+(use-package elpy
+  :defer t
+  :hook ((elpy-mode . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
+         ;; (pyenv-mode . elpy-rpc-restart)
+         (elpy-mode . (lambda ()
+                        (add-hook 'before-save-hook
+                                  'elpy-black-fix-code nil t))))
+  :init
+  (advice-add 'python-mode :before 'elpy-enable)
+  :config
+  (defalias 'workon 'pyvenv-workon)
+  ;; (setq elpy-rpc-backend "jedi")
+  ;; use flycheck instead of flymake
+  (when (load "flycheck" t t)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode))
+  (setq elpy-modules
+        '(elpy-module-company
+          elpy-module-eldoc
+          elpy-module-pyvenv
+          elpy-module-sane-defaults)
+        elpy-shell-echo-input nil
+        elpy-shell-starting-directory 'current-directory
+        elpy-shell-echo-output nil
+        elpy-rpc-virtualenv-path 'current))
 
-  ;; pyenv for emacs
-  ;; (use-package pyenv-mode
-  ;;   :init
-  ;;   (let ((workon-home (expand-file-name "~/.pyenv/versions")))
-  ;;     (setenv "WORKON_HOME" workon-home)
-  ;;     (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
-  ;;   :config
-  ;;   (defun projectile-pyenv-mode-set ()
-  ;;     "Set pyenv version matching project name."
-  ;;     (let ((project (projectile-project-name)))
-  ;;       (if (member project (pyenv-mode-versions))
-  ;;           (pyenv-mode-set project)
-  ;;         (pyenv-mode-unset))))
+;; pyenv for emacs
+;; (use-package pyenv-mode
+;;   :init
+;;   (let ((workon-home (expand-file-name "~/.pyenv/versions")))
+;;     (setenv "WORKON_HOME" workon-home)
+;;     (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
+;;   :config
+;;   (defun projectile-pyenv-mode-set ()
+;;     "Set pyenv version matching project name."
+;;     (let ((project (projectile-project-name)))
+;;       (if (member project (pyenv-mode-versions))
+;;           (pyenv-mode-set project)
+;;         (pyenv-mode-unset))))
 
-  ;;   (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
-  ;;   (add-hook 'python-mode-hook 'pyenv-mode))
+;;   (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
+;;   (add-hook 'python-mode-hook 'pyenv-mode))
 
-  ;; so that elpy plays well with virtual environments
-  ;; (use-package pyenv-mode-auto)
-  ;; :config
-  ;; (let ((workon-home (expand-file-name "~/.pyenv/versions")))
-  ;;   (setenv "WORKON_HOME" workon-home)
-  ;;   (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home)))
+;; so that elpy plays well with virtual environments
+;; (use-package pyenv-mode-auto)
+;; :config
+;; (let ((workon-home (expand-file-name "~/.pyenv/versions")))
+;;   (setenv "WORKON_HOME" workon-home)
+;;   (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home)))
 
-  ;; (use-package auto-virtualenv
-  ;;   :hook (python-mode-hook . 'auto-virtualenv-set-virtualenv))
+;; (use-package auto-virtualenv
+;;   :hook (python-mode-hook . 'auto-virtualenv-set-virtualenv))
 
-  ;; package managment for python
-  (use-package poetry
-    :defer t
-    :diminish t)
+;; package managment for python
+(use-package poetry
+  :defer t
+  :diminish t)
+
+;; multiple checkers
+(use-package flycheck-pycheckers
+  :defer t
+  :hook (flycheck-mode . flycheck-pycheckers-setup)
+  :config
+  ;; (setq flycheck-pycheckers-checkers '(pylint pep8 flake8 mypy3))
+  (setq flycheck-pycheckers-checkers '(pylint flake8 mypy3))
 
   ;; code formatting
   (use-package blacken
