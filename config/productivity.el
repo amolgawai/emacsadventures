@@ -166,6 +166,8 @@
 (use-package perspective
   :defer t
   :commands persp-mode
+  :bind (("s-<up>" . persp-next)
+         ("s-<down>" . persp-prev))
   :config
   ;; create directory for perspectives if doesn't exist
   (let ((perspective-dir (expand-file-name "perspectives" user-emacs-directory)))

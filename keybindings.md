@@ -23,17 +23,18 @@ Window creation/Adjustment
 	SPC w h/j/k/l    Move window left/down/up/right
 	SPC s            Swap windows
 
-Buffer/Window/Frame Navigation
+Buffer/Window/Frame/perspective Navigation
 --------
 
-    C-M-<Left arrow>  Move to left window
-    C-M-<Right arrow> Move to right window
-    C-M-<Up arrow>    Move to top window
-    C-M-<Down arrow>> Move to bottom window
-    C-x o             Move to any window                      Ace-window
-    C-<next>          Move to next buffer/project            Centaur-tabs - next is PageUp
-    C-<prior>         Move to previous buffer/project        Centaur-tabs - prior is PageDown
-    s-<arrow>         Move to next/previous frame
+    C-M-<Left arrow>     Move to left window
+    C-M-<Right arrow>    Move to right window
+    C-M-<Up arrow>       Move to top window
+    C-M-<Down arrow>>    Move to bottom window
+    C-x o                Move to any window                      Ace-window
+    C-<next>             Move to next buffer/project            Centaur-tabs - next is PageUp
+    C-<prior>            Move to previous buffer/project        Centaur-tabs - prior is PageDown
+    s-<right/left arrow> Move to next/previous frame
+    s-<up/down arrow>    Move to next/previous perspective
 
 Generic
 --------
