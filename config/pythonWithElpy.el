@@ -156,7 +156,7 @@
   :hook (flycheck-mode . flycheck-pycheckers-setup)
   :config
   ;; (setq flycheck-pycheckers-checkers '(pylint pep8 flake8 mypy3))
-  (setq flycheck-pycheckers-checkers '(pylint flake8 mypy3))
+  (setq flycheck-pycheckers-checkers '(pylint flake8 mypy3)))
 
   ;; code formatting
   (use-package blacken
