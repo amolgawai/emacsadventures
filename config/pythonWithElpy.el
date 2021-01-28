@@ -158,31 +158,31 @@
   ;; (setq flycheck-pycheckers-checkers '(pylint pep8 flake8 mypy3))
   (setq flycheck-pycheckers-checkers '(pylint flake8 mypy3)))
 
-  ;; code formatting
-  (use-package blacken
-    :defer t
-    :diminish t
-    :hook (python-mode-hook . blacken-mode))
+;; code formatting
+(use-package blacken
+  :defer t
+  :diminish t
+  :hook (python-mode-hook . blacken-mode))
 
-  ;; Convert from python 2 to 3
-  ;; works only in python 3 and when 2to3 is installed via pip
-  (defun python-2to3-current-file ()
-    "Convert current buffer from python 2 to python 3.
+;; Convert from python 2 to 3
+;; works only in python 3 and when 2to3 is installed via pip
+(defun python-2to3-current-file ()
+  "Convert current buffer from python 2 to python 3.
 This command calls python3's script 「2to3」.
 URL `http://ergoemacs.org/emacs/elisp_python_2to3.html'
 Version 2016-02-16"
-    (interactive)
-    (let* (
-           (fName (buffer-file-name))
-           (fSuffix (file-name-extension fName)))
-      (when (buffer-modified-p)
-        (save-buffer))
-      (if (or (string-equal fSuffix "py") (string-equal fSuffix "py3"))
-          (progn
-            (shell-command (format "2to3 -w %s" fName))
-            (revert-buffer  "IGNORE-AUTO" "NOCONFIRM" "PRESERVE-MODES"))
-        (error "File 「%s」 doesn't end in “.py” or “.py3”" fName))))
+  (interactive)
+  (let* (
+         (fName (buffer-file-name))
+         (fSuffix (file-name-extension fName)))
+    (when (buffer-modified-p)
+      (save-buffer))
+    (if (or (string-equal fSuffix "py") (string-equal fSuffix "py3"))
+        (progn
+          (shell-command (format "2to3 -w %s" fName))
+          (revert-buffer  "IGNORE-AUTO" "NOCONFIRM" "PRESERVE-MODES"))
+      (error "File 「%s」 doesn't end in “.py” or “.py3”" fName))))
 
 
-  (provide 'pythonWithElpy)
+(provide 'pythonWithElpy)
 ;;; pythonWithElpy.el ends here
