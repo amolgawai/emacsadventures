@@ -46,8 +46,8 @@ LIST-OR-SYMBOL - pass the list of faces"
   (interactive)
   (shell-command
    (format "open -a 'Marked 2.app' %s"
-       (shell-quote-argument (buffer-file-name))))
-)
+           (shell-quote-argument (buffer-file-name))))
+  )
 
 ;; markdown settings
 (use-package markdown-mode
@@ -62,7 +62,7 @@ LIST-OR-SYMBOL - pass the list of faces"
   (progn
     (add-hook 'markdown-mode-hook
               '(lambda ()
-                (variable-pitch-mode t)
+                 (variable-pitch-mode t)
                  (mapc
                   (lambda (face)
                     (set-face-attribute
@@ -115,7 +115,8 @@ LIST-OR-SYMBOL - pass the list of faces"
 		  ;; show actually italicized text instead of /italicized text/
 		  org-fontify-whole-heading-line t
 		  org-fontify-done-headline t
-		  org-fontify-quote-and-verse-blocks t)
+		  org-src-fontify-natively t
+          org-fontify-quote-and-verse-blocks t)
     ;; (custom-theme-set-faces
     ;;  'user
     ;;  '(variable-pitch ((t (:family "Source Sans Pro" :height 225 )))))
@@ -139,7 +140,6 @@ LIST-OR-SYMBOL - pass the list of faces"
            'fixed-pitch
            (face-attribute face :inherit))))
        (list 'org-code 'org-block 'org-table
-             ;; 'org-block-background
              'org-verbatim
              'org-meta-line
              'org-document-info-keyword)))
@@ -254,7 +254,26 @@ LIST-OR-SYMBOL - pass the list of faces"
              "* IDEA %?\nAdded: %U\n" :prepend t :kill-buffer t)))
     (setq org-use-speed-commands t
           org-src-fontify-natively t
-          org-src-tab-acts-natively t)))
+          org-src-tab-acts-natively t)
+
+    (use-package ob-ipython)
+    ;; (use-package ob-sh)
+    ;; Run/highlight code using babel in org-mode
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '(
+       (python . t)
+       (ipython . t)
+       ;; (sh . t)
+       (shell . t)
+       ;; Include other languages here...
+       ))
+    ;; Syntax highlight in #+BEGIN_SRC blocks
+    (setq org-src-fontify-natively t)
+    ;; Don't prompt before running code in org
+    (setq org-confirm-babel-evaluate nil)
+    ;; Fix an incompatibility between the ob-async and ob-ipython packages
+    (setq ob-async-no-async-languages-alist '("ipython"))))
 
 ;;  Supercharge your Org daily/weekly agenda by grouping items
 ;; https://github.com/alphapapa/org-super-agenda
@@ -344,7 +363,7 @@ LIST-OR-SYMBOL - pass the list of faces"
 
 ;; deft for managing notes
 (use-package deft
-;;  :defer t
+  ;;  :defer t
   :after org
   :bind ("<f7>" . emcsadvntr/deft-dwim)
   :custom
@@ -453,6 +472,11 @@ Else call `deft'."
 (use-package taskpaper-mode
   :defer t
   :mode ("\\.todo\\'" . taskpaper-mode))
+
+;;yaml mode
+(use-package yaml
+  :defer t
+  :mode ("\\.yaml\\'" "\\.yml\\'"))
 
 (provide 'markdownAndOrg)
 ;;; markdownAndOrg.el ends here
