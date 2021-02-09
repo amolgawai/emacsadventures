@@ -331,7 +331,11 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Aweshell, shell extension base on eshell with better features.
 (use-package aweshell
   :defer t
-  :quelpa (aweshell :fetcher github :repo "manateelazycat/aweshell" :version original)
+  :straight (aweshell
+             :type git
+             :host github
+             :repo "manateelazycat/aweshell")
+  ;; :quelpa (aweshell :fetcher github :repo "manateelazycat/aweshell" :version original)
   :commands (aweshell-new aweshell-dedicated-open)
   :bind
   (("s-#" . aweshell-dedicated-toggle)))

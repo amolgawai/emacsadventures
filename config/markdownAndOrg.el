@@ -474,7 +474,7 @@ Else call `deft'."
   :mode ("\\.todo\\'" . taskpaper-mode))
 
 ;;yaml mode
-(use-package yaml
+(use-package yaml-mode
   :defer t
   :mode ("\\.yaml\\'" "\\.yml\\'"))
 

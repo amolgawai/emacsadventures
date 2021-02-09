@@ -155,8 +155,8 @@ With a prefix argument, use comint-mode."
 ;; (evil-bind-key 'normal magit-branch-section-map (kbd "gb") 'forge-browse-branch)
 ;; (evil-bind-key 'normal forge-topic-mode-map (kbd "C-c C-c") 'forge-create-post))
 
-(use-package forge-list
-  :defer t)
+;; (use-package forge-list
+;;   :defer t)
 ;; :config
 ;; (evil-bind-key 'normal forge-topic-list-mode-map (kbd "q") 'quit-window)
 ;; (evil-bind-key 'normal forge-topic-list-mode-map (kbd "o") 'forge-browse-topic))

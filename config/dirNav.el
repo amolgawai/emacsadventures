@@ -158,6 +158,7 @@
 ;; ref - https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-dired.el
 
 (use-package dired
+  :straight nil
   :defer t
   :commands (dired-toggle-read-only) ; to toggle read-only state of any buffer
   :init
@@ -196,6 +197,7 @@ It added extra strings at the front and back of the default dired buffer name."
   (add-hook 'dired-mode-hook #'my/dired-truncate-lines))
 
 (use-package dired-x
+  :straight nil
   :defer t
   :config
   (progn
