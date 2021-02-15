@@ -63,7 +63,7 @@
   :diminish auto-fill-function
   :diminish subword-mode)
 (use-package delight
-  :quelpa (delight :fetcher github :repo "emacsmirror/delight")
+  :straight (delight :type git :host github :repo "emacsmirror/delight")
   :defer t)
 
 ;; themes
@@ -190,7 +190,7 @@
 ;;   (spaceline-emacs-theme)
 ;;   ;;  (spaceline-helm-mode)
 ;;   (use-package info+
-;;     :quelpa (info+ :fetcher github :repo "emacsmirror/info-plus")
+;;     :straight (info+ :type git :host github :repo "emacsmirror/info-plus")
 ;;     :init
 ;;     (spaceline-info-mode))
 ;;   (use-package fancy-battery

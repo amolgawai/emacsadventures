@@ -23,8 +23,8 @@
 
 
 (use-package toml-mode
-  :defer t
-  :quelpa (toml-mode :fetcher github :repo "dryman/toml-mode"))
+  :straight (toml-mode :type git :host github :repo "dryman/toml-mode.el")
+  :defer t)
 
 (use-package rustic
   :defer t)
@@ -59,7 +59,7 @@
 
 (use-package flycheck-rust
   :defer t
-  :quelpa (flycheck-rust :fetcher github :repo "flycheck/flycheck-rust")
+  :straight (flycheck-rust :type git :host github :repo "flycheck/flycheck-rust")
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (provide 'rust)

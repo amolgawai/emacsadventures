@@ -161,8 +161,7 @@
   :straight nil
   :defer t
   :commands (dired-toggle-read-only) ; to toggle read-only state of any buffer
-  :init
-  (add-hook 'dired-mode-hook 'auto-revert-mode) ; Auto-refresh dired on file change
+  :hook ((dired-mode . auto-revert-mode)) ; Auto-refresh dired on file change
   :config
   (setq dired-recursive-deletes 'always)
   (setq dired-recursive-copies  'always)
@@ -196,18 +195,18 @@ It added extra strings at the front and back of the default dired buffer name."
   (add-hook 'dired-mode-hook #'my/dired-rename-buffer-name)
   (add-hook 'dired-mode-hook #'my/dired-truncate-lines))
 
-(use-package dired-x
-  :straight nil
-  :defer t
-  :config
-  (progn
-    (setq dired-omit-verbose nil)
-    ;; hide backup, autosave, *.*~ files
-    ;; omit mode can be toggled using `M-o' in dired buffer
-    (add-hook 'dired-mode-hook #'dired-omit-mode)))
+;; (use-package dired-x
+;;   :straight nil
+;;   :defer t
+;;   :config
+;;   (progn
+;;     (setq dired-omit-verbose nil)
+;;     ;; hide backup, autosave, *.*~ files
+;;     ;; omit mode can be toggled using `M-o' in dired buffer
+;;     (add-hook 'dired-mode-hook #'dired-omit-mode)))
 (use-package dired+
+  ;; :straight (dired+ :type git :host github :repo "emacsmirror/dired-plus")
   :defer t
-  :quelpa (dired+ :fetcher github :repo "emacsmirror/dired-plus")
   :config
   (progn
     (setq diredp-hide-details-initially-flag nil)

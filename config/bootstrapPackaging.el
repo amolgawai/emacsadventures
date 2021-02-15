@@ -43,23 +43,23 @@
 
 ;; bootstrap quelpa
 ;; don't auto-update on windows as it results in various problems
-(unless (package-installed-p 'quelpa)
-  (with-temp-buffer
-    (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-    (eval-buffer)
-    (quelpa-self-upgrade)))
-(setq quelpa-update-melpa-p nil)
+;; (unless (package-installed-p 'quelpa)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+;;     (eval-buffer)
+;;     (quelpa-self-upgrade)))
+;; (setq quelpa-update-melpa-p nil)
 
 ;; use quelpa with use-package
-(unless (package-installed-p 'quelpa-use-package)
-  (quelpa
-   '(quelpa-use-package
-     :fetcher git
-     :url "https://github.com/quelpa/quelpa-use-package.git")))
-(setq quelpa-use-package-inhibit-loading-quelpa t)
-(require 'quelpa-use-package)
+;; (unless (package-installed-p 'quelpa-use-package)
+;;   (quelpa
+;;    '(quelpa-use-package
+;;      :fetcher git
+;;      :url "https://github.com/quelpa/quelpa-use-package.git")))
+;; (setq quelpa-use-package-inhibit-loading-quelpa t)
+;; (require 'quelpa-use-package)
 (require 'use-package-ensure)
-(setq use-package-ensure-function 'quelpa)
+;; (setq use-package-ensure-function 'quelpa)
 (eval-and-compile
   (setq use-package-always-ensure t)
   (setq use-package-expand-minimally t)
@@ -81,10 +81,11 @@
   (load bootstrap-file nil 'nomessage))
 
 ;; Always use straight to install on systems other than Linux
-(setq straight-use-package-by-default (not (eq system-type 'gnu/linux)))
+;; (setq straight-use-package-by-default (not (eq system-type 'gnu/linux)))
 
 ;; Use straight.el for use-package expressions
 (straight-use-package 'use-package)
+(setq straight-recipes-emacsmirror-use-mirror t)
 
 (use-package auto-package-update
   :custom

@@ -79,7 +79,7 @@
   :init
   (setq isearch-lazy-highlight t)
   :config
-  (use-package moccur-edit :quelpa t))
+  (use-package moccur-edit :straight t))
 
 ;; (use-package auto-complete
 ;;   :diminish
@@ -105,7 +105,7 @@
 ;;     (setq ac-fuzzy-enable t)
 
 ;;     (use-package ac-dabbrev
-;;       :quelpa (ac-dabbrev :fetcher github :repo "emacsmirror/ac-dabbrev")
+;;       :straight (ac-dabbrev :type git :host github :repo "emacsmirror/ac-dabbrev")
 ;;       :config
 ;;       (progn
 ;;         (add-to-list 'ac-sources 'ac-source-dabbrev)))
@@ -324,7 +324,7 @@ point reaches the beginning or end of the buffer, stop there."
   (eshell-toggle-use-projectile-root t)
   (eshell-toggle-run-command nil)
   (eshell-toggle-init-function #'eshell-toggle-init-eshell)
-  :quelpa (eshell-toggle :fetcher github :repo "4DA/eshell-toggle" :version original)
+  :straight (eshell-toggle :type git :host github :repo "4DA/eshell-toggle")
   :bind
   ("s-`" . eshell-toggle))
 
@@ -335,7 +335,7 @@ point reaches the beginning or end of the buffer, stop there."
              :type git
              :host github
              :repo "manateelazycat/aweshell")
-  ;; :quelpa (aweshell :fetcher github :repo "manateelazycat/aweshell" :version original)
+  ;; :straight (aweshell :type git :host github :repo "manateelazycat/aweshell")
   :commands (aweshell-new aweshell-dedicated-open)
   :bind
   (("s-#" . aweshell-dedicated-toggle)))
@@ -410,7 +410,7 @@ point reaches the beginning or end of the buffer, stop there."
 ;; homebrew on macos
 (use-package homebrew-mode
   :if (memq window-system '(mac ns))
-  :quelpa (homebrew-mode :fetcher github :repo "dunn/homebrew-mode")
+  :straight (homebrew-mode :type git :host github :repo "dunn/homebrew-mode")
   :defer t
   :config
   (global-homebrew-mode))
