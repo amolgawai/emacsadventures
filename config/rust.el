@@ -27,15 +27,14 @@
   :defer t)
 
 (use-package rustic
-  :defer t)
+  :defer t
+  :mode (("\\.rs\\'" . rustic-mode)))
   ;; :hook (rust-mode . (lambda ()
   ;;                       (lsp)
   ;;                       (lsp-ui-doc-mode)
   ;;                       (lsp-ui-sideline-mode)
   ;;                       (eldoc-mode)
   ;;                       (smart-dash-mode)))
-  ;; :init
-  ;; (add-to-list 'auto-mode-alist '("\\.rs\\'" . rustic)))
 
 ;; Add keybindings for interacting with Cargo
 ;; (use-package cargo

@@ -413,6 +413,7 @@ With a prefix argument, use comint-mode."
         lsp-ui-doc-header nil
         lsp-ui-doc-delay 0.2
         lsp-ui-doc-alignment 'at-point
+        lsp-ui-doc-position 'at-point
         lsp-ui-doc-border (face-foreground 'default)
         lsp-eldoc-enable-hover nil ; Disable eldoc displays in minibuffer
         lsp-ui-peek-show-directory t
