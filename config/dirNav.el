@@ -158,10 +158,12 @@
 ;; ref - https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-dired.el
 
 (use-package dired
-  :straight nil
-  :defer t
+  :straight (:type built-in)
+  ;; :defer t
   :commands (dired-toggle-read-only) ; to toggle read-only state of any buffer
-  :hook ((dired-mode . auto-revert-mode)) ; Auto-refresh dired on file change
+  :hook ((dired-mode . auto-revert-mode) ; Auto-refresh dired on file change
+         (dired-mode . my/dired-rename-buffer-name)
+         (dired-mode . my/dired-truncate-lines))
   :config
   (setq dired-recursive-deletes 'always)
   (setq dired-recursive-copies  'always)
@@ -190,10 +192,8 @@ It added extra strings at the front and back of the default dired buffer name."
           (rename-buffer (concat "*Dired* " name "/") t))))
 
   (defun my/dired-truncate-lines ()
-    (toggle-truncate-lines 1))
+    (toggle-truncate-lines 1)))
 
-  (add-hook 'dired-mode-hook #'my/dired-rename-buffer-name)
-  (add-hook 'dired-mode-hook #'my/dired-truncate-lines))
 
 ;; (use-package dired-x
 ;;   :straight nil
@@ -206,7 +206,9 @@ It added extra strings at the front and back of the default dired buffer name."
 ;;     (add-hook 'dired-mode-hook #'dired-omit-mode)))
 (use-package dired+
   ;; :straight (dired+ :type git :host github :repo "emacsmirror/dired-plus")
+  :straight nil
   :defer t
+  :after (dired)
   :config
   (progn
     (setq diredp-hide-details-initially-flag nil)
@@ -214,30 +216,40 @@ It added extra strings at the front and back of the default dired buffer name."
 
 ;; http://pragmaticemacs.com/emacs/tree-style-directory-views-in-dired-with-dired-subtree/
 (use-package dired-subtree
+  :straight nil
   :defer t
+  :after (dired)
   :bind (:map dired-mode-map
               ("i" . dired-subtree-insert)
               ("I" . dired-subtree-remove)))
 ;; https://github.com/Fuco1/dired-hacks/blob/master/dired-collapse.el
 (use-package dired-collapse
   :defer t
+  :straight nil
+  :after (dired)
   :commands (dired-collapse dired-collapse-mode)
   :config
   (add-hook 'dired-mode-hook 'dired-collapse-mode))
 ;; filter dired buffer. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
 (use-package dired-narrow
   :defer t
+  :straight nil
+  :after (dired)
   :bind (:map dired-mode-map
               ("/" . dired-narrow)))
 ;; quicj preview certain files. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
 (use-package quick-preview
   :defer t
+  :after (dired)
+  :straight nil
   :bind (("C-c q" . quick-preview-at-point)
          :map dired-mode-map
          ("Q" . quick-preview-at-point)))
 
 (use-package dired-sidebar
   :defer t
+  :straight nil
+  :after (dired)
   ;; :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
   :commands (dired-sidebar-toggle-sidebar)
   :init

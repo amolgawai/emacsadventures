@@ -147,8 +147,6 @@
 ;; Enable filesets to group a set of files
 (filesets-init)
 
-;; Auto-refresh dired on file change
-(add-hook 'dired-mode-hook 'auto-revert-mode)
 
 ;; UTF-8 please
 (setq locale-coding-system 'utf-8) ; pretty
