@@ -80,22 +80,19 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Always use straight to install on systems other than Linux
-;; (setq straight-use-package-by-default (not (eq system-type 'gnu/linux)))
 
 ;; Use straight.el for use-package expressions
 (straight-use-package 'use-package)
 (setq straight-recipes-emacsmirror-use-mirror t)
+;; Always use straight to install on systems other than Linux
+(setq straight-use-package-by-default (not (eq system-type 'gnu/linux)))
 
 (use-package auto-package-update
   :custom
   (auto-package-update-interval 7)
   (auto-package-update-prompt-before-update t)
   (auto-package-update-hide-results t)
-  (auto-package-update-delete-old-versions t)
-  :config
-  (auto-package-update-at-time "09:00")
-  (auto-package-update-maybe))
+  (auto-package-update-delete-old-versions t))
 
 ;; for benchmarking init time, uncomment when needed
 ;; (use-package benchmark-init

@@ -431,15 +431,21 @@ With a prefix argument, use comint-mode."
 ;; optionally if you want to use debugger
 (use-package dap-mode
   :defer t
+  :straight t
   :commands dap-mode
   :config
   (dap-mode 1)
-  (use-package dap-ui
-    :defer t
-    :config
-    (dap-ui-mode 1))
-  (use-package dap-lldb
-    :defer t))
+  (dap-ui-mode 1)
+  (dap-tooltip-mode 1)
+  ;; use tooltips for mouse hover
+  ;; if it is not enabled `dap-mode' will use the minibuffer.
+  (tooltip-mode 1)
+  ;; displays floating panel with debug buttons
+  ;; requies emacs 26+
+  (dap-ui-controls-mode 1))
+  ;; (use-package dap-lldb
+  ;;   :straight t
+  ;;   :defer t))
 ;; (use-package dap-LANGUAGE) ;; to load the dap adapter for your language
 
 ;; show color for the values
