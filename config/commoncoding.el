@@ -388,8 +388,12 @@ With a prefix argument, use comint-mode."
 ;; Install LSPs for specific language. See - https://github.com/emacs-lsp/lsp-mode#supported-languages
 (use-package lsp-mode
   :defer t
-  :hook ((c++-mode rust-mode) .  lsp-deferred)
+  :hook ((lsp-mode . lsp-ui-mode)
+         ((c++-mode rust-mode) .  lsp-deferred))
   :commands lsp
+  :custom
+  (lsp-rust-analyzer-cargo-watch-command "clippy")
+  (lsp-rust-analyzer-server-display-inlay-hints t)
   :config
   ;; `-background-index' requires clangd v8+!
   (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error")))
