@@ -96,7 +96,6 @@ LIST-OR-SYMBOL - pass the list of faces"
 		  org-default-notes-file (concat org-directory "/Inbox.org")
 		  org-log-done t
 		  org-fast-tag-selection-single-key t
-          org-hide-emphasis-markers t
 		  org-use-fast-todo-selection t)
                                         ;    (setq org-startup-truncated nil)
     (setq org-agenda-files (apply 'append
@@ -112,6 +111,9 @@ LIST-OR-SYMBOL - pass the list of faces"
 		  org-ellipsis "  " ;; folding symbol
 		  org-pretty-entities t
 		  org-hide-emphasis-markers t
+          line-spacing 0.2 ;; Add more line padding for readability
+          left-margin-width 5
+          right-margin-width 3
 		  ;; show actually italicized text instead of /italicized text/
 		  org-fontify-whole-heading-line t
 		  org-fontify-done-headline t
@@ -125,10 +127,6 @@ LIST-OR-SYMBOL - pass the list of faces"
 	(add-hook 'org-mode-hook 'emcsadvntr/org-mode-hook)
     (defun emcsadvntr/org-mode-hook ()
       "Org-mode specific settings"
-      (setq line-spacing 0.2) ;; Add more line padding for readability
-      ;; header-line-format " ")
-      (setq left-margin-width 1)
-      (setq right-margin-width 2)
       (set-window-buffer nil (current-buffer))
       (variable-pitch-mode 1) ;; All fonts with variable pitch.
       (mapc

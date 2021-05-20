@@ -29,44 +29,65 @@
 
 (use-package neotree
   :defer t
+  :custom
+  (neo-smart-open t)
+  (neo-dont-be-alone t)
+  (neo-theme 'icons)
+  :bind (("<C-f8>" . neotree-toggle)
+         (:map neotree-mode-map
+               ("<C-return>" . neotree-change-root)
+               ("C"          . neotree-change-root)
+               ("c"          . neotree-create-node)
+               ("+"          . neotree-create-node)
+               ("d"          . neotree-delete-node)
+               ("r"          . neotree-rename-node)))
   :config
-  (progn
-    (setq-default neo-smart-open t)    ;  every time when the neotree window is
-                                        ;  opened, it will try to find current
-                                        ;  file and jump to node.
-    (setq-default neo-dont-be-alone t) ; Don't allow neotree to be the only open
-                                        ; window
-    (setq neo-theme 'icons ) ;; make sure all-the-icons
-    ;; is installed
-    ;;    (setq neo-theme 'nerd) ; 'classic, 'nerd, 'ascii, 'arrow
+  (defun neotree-resize-window (&rest _args)
+    "Resize neotree window.
+https://github.com/jaypei/emacs-neotree/pull/110"
+    (interactive)
+    (neo-buffer--with-resizable-window
+     (let ((fit-window-to-buffer-horizontally t))
+       (fit-window-to-buffer))))
 
-    (setq neo-window-fixed-size nil)
-    (setq neo-fit-to-contents t)
-    (global-set-key [C-f8] 'neotree-toggle)
-
-    ;; (add-hook 'neo-change-root-hook
-    ;;           (lambda () (neo-buffer--with-resizable-window
-    ;;                       (let ((fit-window-to-buffer-horizontally t))
-    ;;                         (fit-window-to-buffer)))))
-
-    (bind-keys
-     :map neotree-mode-map
-     ("<C-return>" . neotree-change-root)
-     ("C"          . neotree-change-root)
-     ("c"          . neotree-create-node)
-     ("+"          . neotree-create-node)
-     ("d"          . neotree-delete-node)
-     ("r"          . neotree-rename-node))))
+  (add-hook 'neo-change-root-hook #'neotree-resize-window)
+  (add-hook 'neo-enter-hook #'neotree-resize-window)
+  )
 
 ;; Treemacs - replaces the Neotree
 ;; Ref - https://github.com/Alexander-Miller/treemacs
-
 (use-package treemacs
   :defer t
   :init
   (with-eval-after-load 'winum
     (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
   :config
+  (use-package treemacs-evil
+    :defer t
+    :after (treemacs evil))
+
+  (use-package treemacs-projectile
+    :defer t
+    :after (treemacs projectile))
+
+  (use-package treemacs-all-the-icons
+    :after treemacs
+    :config
+    (treemacs-load-theme "all-the-icons"))
+
+  ;; (use-package treemacs-icons-dired
+  ;;   :defer t
+  ;;   :after (treemacs dired)
+  ;;   :config (treemacs-icons-dired-mode))
+
+  (use-package treemacs-magit
+    :defer t
+    :after (treemacs magit))
+
+  (use-package treemacs-persp
+    :after (treemacs persp-mode)
+    :config (treemacs-set-scope-type 'Perspectives))
+
   (progn
     (setq treemacs-collapse-dirs                 (if (executable-find "python3") 3 0)
           treemacs-deferred-git-apply-delay      0.5
@@ -123,32 +144,6 @@
         ("C-x t B"   . treemacs-bookmark)
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)))
-
-(use-package treemacs-evil
-  :defer t
-  :after (treemacs evil))
-
-(use-package treemacs-projectile
-  :defer t
-  :after (treemacs projectile))
-
-(use-package treemacs-all-the-icons
-  :after treemacs
-  :config
-  (treemacs-load-theme "all-the-icons"))
-
-;; (use-package treemacs-icons-dired
-;;   :defer t
-;;   :after (treemacs dired)
-;;   :config (treemacs-icons-dired-mode))
-
-(use-package treemacs-magit
-  :defer t
-  :after (treemacs magit))
-
-;; (use-package treemacs-persp
-;;   :after (treemacs persp-mode)
-;;   :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package ranger
   :defer t

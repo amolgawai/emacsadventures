@@ -68,6 +68,7 @@
 	 "bl"        '(ibuffer :which-key "buffer list")
 	 "bd"        '(kill-buffer :which-key "kill")
 	 "bs"        '(save-buffer :which-key "save")
+     "bw"        '(counsel-switch-buffer-other-window :which-key "switch other window")
 	 "b <left>"  '(centaur-tabs-backward :which-key "previous")
 	 "b <right>" '(centaur-tabs-forward :which-key "next")
 	 ;; "b <left>"  '(projectile-previous-project-buffer :which-key "previous")
