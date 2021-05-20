@@ -107,18 +107,26 @@ LIST-OR-SYMBOL - pass the list of faces"
 
     ;; beautification
     (setq org-startup-indented t
-		  ;; org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
+		  org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
 		  org-ellipsis "  " ;; folding symbol
 		  org-pretty-entities t
 		  org-hide-emphasis-markers t
-          line-spacing 0.2 ;; Add more line padding for readability
-          left-margin-width 5
-          right-margin-width 3
+          ;; line-spacing 0.2 ;; Add more line padding for readability
+          ;; left-margin-width 5
+          ;; right-margin-width 3
 		  ;; show actually italicized text instead of /italicized text/
 		  org-fontify-whole-heading-line t
 		  org-fontify-done-headline t
 		  org-src-fontify-natively t
           org-fontify-quote-and-verse-blocks t)
+    (custom-set-faces
+     '(org-document-title ((t (:inherit outline-1 :height 1.75))))
+     '(org-level-1 ((t (:inherit outline-1 :height 1.3))))
+     '(org-level-2 ((t (:inherit outline-2 :height 1.2))))
+     '(org-level-3 ((t (:inherit outline-3 :height 1.1))))
+     '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+     '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
+     )
     ;; (custom-theme-set-faces
     ;;  'user
     ;;  '(variable-pitch ((t (:family "Source Sans Pro" :height 225 )))))
@@ -272,6 +280,15 @@ LIST-OR-SYMBOL - pass the list of faces"
     (setq org-confirm-babel-evaluate nil)
     ;; Fix an incompatibility between the ob-async and ob-ipython packages
     (setq ob-async-no-async-languages-alist '("ipython"))))
+
+;; tasks without requiring them to be headers
+;; (use-package org-inlinetask
+;;   :defer t
+;;   :straight nil
+;;   :bind (:map org-mode-map
+;;               ("C-c C-x t" . org-inlinetask-insert-task))
+;;   :after (org)
+;;   :commands (org-inlinetask-insert-task))
 
 ;;  Supercharge your Org daily/weekly agenda by grouping items
 ;; https://github.com/alphapapa/org-super-agenda
