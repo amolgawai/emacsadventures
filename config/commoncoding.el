@@ -116,8 +116,8 @@ With a prefix argument, use comint-mode."
    ("M-<f5>" . quickrun-shell)))
 
 ;; bazel build system
-(use-package bazel-mode
-    :mode ("BUILD\\|WORKSPACE\\|CROSSTOOL\\|\\.bazel|\\.bzl\\'"))
+;; (use-package bazel-mode
+;;   :mode ("BUILD\\|WORKSPACE\\|CROSSTOOL\\|\\.bazel|\\.bzl\\'"))
     ;; :config
     ;; (add-hook 'bazel-mode-hook 'bazel-install-reformat))
 
