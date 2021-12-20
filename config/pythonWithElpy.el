@@ -199,5 +199,9 @@ Version 2016-02-16"
   (setq conda-anaconda-home (expand-file-name "~/miniforge3"))
   (setq conda-env-home-directory (expand-file-name "~/miniforge3")))
 
+(use-package python-pytest
+ :custom
+ (python-pytest-confirm t))
+
 (provide 'pythonWithElpy)
 ;;; pythonWithElpy.el ends here

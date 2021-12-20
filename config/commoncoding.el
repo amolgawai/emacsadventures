@@ -116,10 +116,11 @@ With a prefix argument, use comint-mode."
    ("M-<f5>" . quickrun-shell)))
 
 ;; bazel build system
-;; (use-package bazel-mode
-;;   :mode ("BUILD\\|WORKSPACE\\|CROSSTOOL\\|\\.bazel|\\.bzl\\'"))
-    ;; :config
-    ;; (add-hook 'bazel-mode-hook 'bazel-install-reformat))
+(use-package bazel-mode
+  :straight (emacs-bazel-mode :type git :host github :repo "bazelbuild/emacs-bazel-mode")
+  :mode ("BUILD\\|WORKSPACE\\|CROSSTOOL\\|\\.bazel|\\.bzl\\'")
+  :config
+  (add-hook 'bazel-mode-hook 'bazel-install-reformat))
 
 ;; Magit for git interactions
 (use-package magit
@@ -447,9 +448,9 @@ With a prefix argument, use comint-mode."
   ;; displays floating panel with debug buttons
   ;; requies emacs 26+
   (dap-ui-controls-mode 1))
-  ;; (use-package dap-lldb
-  ;;   :straight t
-  ;;   :defer t))
+;; (use-package dap-lldb
+;;   :straight t
+;;   :defer t))
 ;; (use-package dap-LANGUAGE) ;; to load the dap adapter for your language
 
 ;; show color for the values

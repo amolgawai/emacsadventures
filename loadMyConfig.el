@@ -62,6 +62,7 @@
 (require 'dirNav)
 (require 'windowNav)
 ;;(require 'pythonWithAnaconda)
+(require 'cpp)
 (require 'pythonWithElpy)
 (require 'golang)
 (require 'rust)
