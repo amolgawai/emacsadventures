@@ -1,4 +1,4 @@
-;;; commoncoding.el --- configuration which is common to all programming languages  -*- lexical-binding: t; -*-
+;;; ommoncoding.el --- configuration which is common to all programming languages  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017  Amol Gawai
 
@@ -397,7 +397,8 @@ With a prefix argument, use comint-mode."
   (lsp-rust-analyzer-server-display-inlay-hints t)
   :config
   ;; `-background-index' requires clangd v8+!
-  (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error")))
+  ;; (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error")))
+  )
 (use-package company-lsp
   :defer t
   :after (company lsp-mode)

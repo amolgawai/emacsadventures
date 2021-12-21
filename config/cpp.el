@@ -37,7 +37,12 @@
 		"--clang-tidy"
 		"--compile-commands-dir=build"
 		"--cross-file-rename"
+        "-log=error"
 		"--suggest-missing-includes"))
+
+(use-package clang-format+
+  :straight (clang-format+ :type git :host github
+						   :repo "SavchenkoValeriy/emacs-clang-format-plus"))
 
 (use-package modern-cpp-font-lock
   :config
