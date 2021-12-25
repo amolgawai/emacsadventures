@@ -100,6 +100,9 @@
      "ho"        '(counsel-describe-symbol :which-key "describe symbol")
      ;; "hh"        '((general-simulate-key "C-h") :which-key "help")
 	 "hy"        '(yas-describe-tables :which-key "snippet tables")
+     ;; lsp
+     "l"         '(:package lsp :ignore t :which-key "lsp")
+     "lc"        '(:package lsp :keymap lsp-command-map :which-key "lsp commands")
 	 ;; notes
 	 "n"         '(:ignore t :which-key "notes")
      "na"        '(org-agenda :which-key "agenda")
