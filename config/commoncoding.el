@@ -1,4 +1,4 @@
-;;; ommoncoding.el --- configuration which is common to all programming languages  -*- lexical-binding: t; -*-
+;;; commoncoding.el --- configuration which is common to all programming languages  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017  Amol Gawai
 
@@ -122,6 +122,35 @@ With a prefix argument, use comint-mode."
   :config
   (add-hook 'bazel-mode-hook 'bazel-install-reformat))
 
+;; cmake build system
+(use-package cmake-mode
+  :hook (cmake-mode . lsp-deferred)
+  :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'"))
+
+(use-package cmake-font-lock
+  :hook (cmake-mode . cmake-font-lock-activate))
+
+;; cmake-ide
+(use-package cmake-ide
+  :after projectile
+  :init (cmake-ide-setup)
+  :hook (c++-mode . my/cmake-ide-find-project)
+  :preface
+  (defun my/cmake-ide-find-project ()
+    "Find the directory of the project for cmake-ide."
+    (with-eval-after-load 'projectile
+      (setq cmake-ide-project-dir (projectile-project-root))
+      (setq cmake-ide-build-dir (concat cmake-ide-project-dir "build")))
+    (setq cmake-ide-compile-command
+          (concat "cd " cmake-ide-build-dir " && cmake .. && make"))
+    (cmake-ide-load-db))
+
+  (defun my/switch-to-compilation-window ()
+    "Switch to the *compilation* buffer after compilation."
+    (other-window 1))
+  :bind ([remap comment-region] . cmake-ide-compile)
+  :config (advice-add 'cmake-ide-compile :after #'my/switch-to-compilation-window))
+
 ;; Magit for git interactions
 (use-package magit
   :defer t
@@ -175,14 +204,11 @@ With a prefix argument, use comint-mode."
 ;; Ask password for pushing to remote
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
-(use-package git-gutter
-  :defer t
+(use-package git-timemachine)
+(use-package git-gutter-fringe+
   :config
-  (global-git-gutter-mode t))
-
-(use-package git-timemachine
-  :defer t
-  )
+  (global-git-gutter+-mode)
+  (git-gutter-fr+-minimal))
 
 ;; snippets
 (use-package yasnippet
