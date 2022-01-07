@@ -136,6 +136,7 @@
      "so"        '(counsel-org-agenda-headlines :which-key "in org notes")
      "ss"        '(swiper :which-key "in file")
      "sd"        '(counsel-ag :which-key "in directory")
+     "sw"        '(counsel-google :which-key "web")
 	 ;; quit
 	 "q"         '(:ignore t :which-key "quit")
 	 ;; "ql"        '(persp-state-restore :which-key "reload last session")
