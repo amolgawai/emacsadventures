@@ -270,6 +270,7 @@ LIST-OR-SYMBOL - pass the list of faces"
      '(
        (python . t)
        (ipython . t)
+       (ein . t)
        ;; (sh . t)
        (shell . t)
        ;; Include other languages here...

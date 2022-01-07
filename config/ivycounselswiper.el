@@ -49,11 +49,25 @@
   :hook (after-init . all-the-icons-ivy-setup)
   :config
   (setq all-the-icons-ivy-file-commands
-      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir)))
+        '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir)))
 
 (use-package counsel
   :defer 0.1
   :diminish
+  )
+
+(use-package counsel-web
+  :commands (counsel-web-suggest counsel-web-search)
+  :config
+  ;; :disabled
+  ;; (setq counsel-web-search-action #'browse-url)
+  ;; alternate browser
+  ;; (setq counsel-web-search-alternate-action #'w3m)
+  (setq counsel-web-engine 'google)
+  ;; (setq counsel-web-engine 'duckduckgo)
+  ;; counsel-web-engine-alist
+  ;; update search results with each key press: experimental
+  (setq counsel-web-search-dynamic-update t)
   )
 
 (use-package swiper
@@ -61,25 +75,25 @@
   :after (ivy counsel)
   :diminish
   :bind
-    ("\C-s" . swiper)
-    ("C-c C-r" . ivy-resume)
-    ("<f6>" . ivy-resume)
-    ("M-x" . counsel-M-x)
-    ("C-x C-f" . counsel-find-file)
-    ("<f1> f" . counsel-describe-function)
-    ("<f1> v" . counsel-describe-variable)
-    ("<f1> l" . counsel-load-library)
-    ("<f2> i" . counsel-info-lookup-symbol)
-    ("<f2> u" . counsel-unicode-char)
-    ("C-c g" . counsel-git)
-    ("C-c i" . counsel-imenu)
-    ("C-c j" . counsel-git-grep)
-    ("C-c k" . counsel-ag)
-    ("C-x l" . counsel-locate)
-    ("C-S-o" . counsel-rhythmbox)
+  ("\C-s" . swiper)
+  ("C-c C-r" . ivy-resume)
+  ("<f6>" . ivy-resume)
+  ("M-x" . counsel-M-x)
+  ("C-x C-f" . counsel-find-file)
+  ("<f1> f" . counsel-describe-function)
+  ("<f1> v" . counsel-describe-variable)
+  ("<f1> l" . counsel-load-library)
+  ("<f2> i" . counsel-info-lookup-symbol)
+  ("<f2> u" . counsel-unicode-char)
+  ("C-c g" . counsel-git)
+  ("C-c i" . counsel-imenu)
+  ("C-c j" . counsel-git-grep)
+  ("C-c k" . counsel-ag)
+  ("C-x l" . counsel-locate)
+  ("C-S-o" . counsel-rhythmbox)
   :config
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-    )
+  (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+  )
 
 ;; display ivy things in a frame rather than in the minibuffer
 ;; ref - https://ladicle.com/post/config/#
@@ -443,32 +457,32 @@
           (:columns
            ((ivy-rich-process-icon)
             (ivy-rich-candidate)
-           :delimiter "\t")
-          counsel-projectile-switch-project
-          (:columns
-           ((ivy-rich-file-icon)
-            (ivy-rich-candidate))
-           :delimiter "\t")
-          counsel-projectile-find-file
-          (:columns
-           ((ivy-rich-file-icon)
-            (counsel-projectile-find-file-transformer))
-           :delimiter "\t")
-          counsel-projectile-find-dir
-          (:columns
-           ((ivy-rich-project-icon)
-            (counsel-projectile-find-dir-transformer))
-           :delimiter "\t")
-          counsel-minor
-          (:columns
-           ((ivy-rich-mode-icon)
-            (ivy-rich-candidate))
-           :delimiter "\t")
-          treemacs-projectile
-          (:columns
-           ((ivy-rich-file-icon)
-            (ivy-rich-candidate))
-           :delimiter "\t")))))
+            :delimiter "\t")
+           counsel-projectile-switch-project
+           (:columns
+            ((ivy-rich-file-icon)
+             (ivy-rich-candidate))
+            :delimiter "\t")
+           counsel-projectile-find-file
+           (:columns
+            ((ivy-rich-file-icon)
+             (counsel-projectile-find-file-transformer))
+            :delimiter "\t")
+           counsel-projectile-find-dir
+           (:columns
+            ((ivy-rich-project-icon)
+             (counsel-projectile-find-dir-transformer))
+            :delimiter "\t")
+           counsel-minor
+           (:columns
+            ((ivy-rich-mode-icon)
+             (ivy-rich-candidate))
+            :delimiter "\t")
+           treemacs-projectile
+           (:columns
+            ((ivy-rich-file-icon)
+             (ivy-rich-candidate))
+            :delimiter "\t")))))
 
 (provide 'ivycounselswiper)
 
