@@ -92,8 +92,8 @@ LIST-OR-SYMBOL - pass the list of faces"
   :config
   (progn
 	;; basic
-    (setq org-directory (expand-file-name "~/MyOrganiser")
-		  org-default-notes-file (concat org-directory "/Inbox.org")
+    (setq org-directory (expand-file-name "~/Notes")
+		  org-default-notes-file (concat org-directory "Myorganiser/Inbox.org")
 		  org-log-done t
 		  org-fast-tag-selection-single-key t
 		  org-use-fast-todo-selection t)
@@ -103,7 +103,7 @@ LIST-OR-SYMBOL - pass the list of faces"
                                    (lambda (directory)
                                      (directory-files-recursively
                                       directory org-agenda-file-regexp))
-                                   '("~/MyOrganiser" "~/code/technotes"))))
+                                   '("~/Notes/MyOrganiser" "~/Notes/technotes"))))
 
     ;; beautification
     (setq org-startup-indented t
@@ -262,7 +262,7 @@ LIST-OR-SYMBOL - pass the list of faces"
           org-src-fontify-natively t
           org-src-tab-acts-natively t)
 
-    (use-package ob-ipython)
+    ;; (use-package ob-ipython)
     ;; (use-package ob-sh)
     ;; Run/highlight code using babel in org-mode
     (org-babel-do-load-languages
