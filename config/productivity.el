@@ -347,11 +347,15 @@ point reaches the beginning or end of the buffer, stop there."
   :bind ("s-~" . shell-here))
 
 (use-package vterm
-  :defer t)
+  :straight t
+  :defer t
+  :config
+  (setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no"))
 
 ;; manage multiple vterm
 (use-package multi-vterm
   :defer t
+  :after vterm
   :config
   (add-hook 'vterm-mode-hook
 			(lambda ()

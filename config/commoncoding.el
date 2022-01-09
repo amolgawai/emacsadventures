@@ -151,6 +151,10 @@ With a prefix argument, use comint-mode."
   :bind ([remap comment-region] . cmake-ide-compile)
   :config (advice-add 'cmake-ide-compile :after #'my/switch-to-compilation-window))
 
+;; for various Git configuration files
+(use-package git-modes
+  :defer t)
+
 ;; Magit for git interactions
 (use-package magit
   :defer t
