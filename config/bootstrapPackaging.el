@@ -100,6 +100,10 @@
 ;;   ;; To disable collection of benchmark data after init is done.
 ;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
+;; for ensuring system utilities are installed
+(use-package use-package-ensure-system-package
+  :ensure t)
+
 (use-package try
   :defer t)
 
