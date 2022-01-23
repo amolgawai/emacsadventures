@@ -42,7 +42,14 @@
 
 (use-package clang-format+
   :straight (clang-format+ :type git :host github
-						   :repo "SavchenkoValeriy/emacs-clang-format-plus"))
+						   :repo "SavchenkoValeriy/emacs-clang-format-plus")
+  :hook
+  (c-mode-common-hook . clang-format+-mode))
+
+(use-package flycheck-clang-tidy
+  :after flycheck
+  :hook
+  (flycheck-mode . flycheck-clang-tidy-setup))
 
 (use-package modern-cpp-font-lock
   :config
