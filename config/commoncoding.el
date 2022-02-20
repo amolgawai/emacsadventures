@@ -155,6 +155,21 @@ With a prefix argument, use comint-mode."
 (use-package git-modes
   :defer t)
 
+(use-package blamer
+  :ensure t
+  :bind (("s-i" . blamer-show-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 140
+                    :italic t)))
+  :config
+  (global-blamer-mode 1))
+
 ;; Magit for git interactions
 (use-package magit
   :defer t
