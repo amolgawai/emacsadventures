@@ -63,15 +63,13 @@ https://github.com/jaypei/emacs-neotree/pull/110"
     (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
   :config
   (use-package treemacs-evil
-    :defer t
-    :after (treemacs evil))
+    :requires (treemacs evil))
 
   (use-package treemacs-projectile
-    :defer t
     :after (treemacs projectile))
 
   (use-package treemacs-all-the-icons
-    :after treemacs
+    :requires treemacs
     :config
     (treemacs-load-theme "all-the-icons"))
 
@@ -81,11 +79,10 @@ https://github.com/jaypei/emacs-neotree/pull/110"
   ;;   :config (treemacs-icons-dired-mode))
 
   (use-package treemacs-magit
-    :defer t
-    :after (treemacs magit))
+    :requires (treemacs magit))
 
   (use-package treemacs-persp
-    :after (treemacs persp-mode)
+    :requires (treemacs persp-mode)
     :config (treemacs-set-scope-type 'Perspectives))
 
   (progn

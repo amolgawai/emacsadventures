@@ -141,8 +141,8 @@
 (tooltip-mode -1)
 
 ;; split the window vertically on right - useful for wide screen
-(setq split-width-threshold nil
-      split-width-threshold 0)
+(setq split-width-threshold nil)
+      ;; split-width-threshold 0)
 
 ;; Enable filesets to group a set of files
 (filesets-init)

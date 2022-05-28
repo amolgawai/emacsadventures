@@ -119,31 +119,31 @@
         elpy-rpc-virtualenv-path 'current))
 
 ;; pyenv for emacs
-;; (use-package pyenv-mode
-;;   :init
-;;   (let ((workon-home (expand-file-name "~/.pyenv/versions")))
-;;     (setenv "WORKON_HOME" workon-home)
-;;     (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
-;;   :config
-;;   (defun projectile-pyenv-mode-set ()
-;;     "Set pyenv version matching project name."
-;;     (let ((project (projectile-project-name)))
-;;       (if (member project (pyenv-mode-versions))
-;;           (pyenv-mode-set project)
-;;         (pyenv-mode-unset))))
+(use-package pyenv-mode
+  :init
+  (let ((workon-home (expand-file-name "~/.pyenv/versions")))
+    (setenv "WORKON_HOME" workon-home)
+    (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home))
+  :config
+  (defun projectile-pyenv-mode-set ()
+    "Set pyenv version matching project name."
+    (let ((project (projectile-project-name)))
+      (if (member project (pyenv-mode-versions))
+          (pyenv-mode-set project)
+        (pyenv-mode-unset))))
 
-;;   (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
-;;   (add-hook 'python-mode-hook 'pyenv-mode))
+  (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
+  (add-hook 'python-mode-hook 'pyenv-mode))
 
 ;; so that elpy plays well with virtual environments
-;; (use-package pyenv-mode-auto)
-;; :config
-;; (let ((workon-home (expand-file-name "~/.pyenv/versions")))
-;;   (setenv "WORKON_HOME" workon-home)
-;;   (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home)))
+(use-package pyenv-mode-auto
+:config
+(let ((workon-home (expand-file-name "~/.pyenv/versions")))
+  (setenv "WORKON_HOME" workon-home)
+  (setenv "VIRTUALENVWRAPPER_HOOK_DIR" workon-home)))
 
-;; (use-package auto-virtualenv
-;;   :hook (python-mode-hook . 'auto-virtualenv-set-virtualenv))
+(use-package auto-virtualenv
+  :hook (python-mode-hook . 'auto-virtualenv-set-virtualenv))
 
 ;; package managment for python
 (use-package poetry
@@ -202,6 +202,12 @@ Version 2016-02-16"
 (use-package python-pytest
  :custom
  (python-pytest-confirm t))
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))  ; or lsp-deferred
 
 (provide 'pythonWithElpy)
 ;;; pythonWithElpy.el ends here

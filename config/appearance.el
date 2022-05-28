@@ -40,6 +40,11 @@
 ;;; display Info mode buffers in proportional font
 (add-hook 'Info-mode-hook 'variable-pitch-mode)
 
+;;fill column indicator (> Emacs 27)
+(setq-default display-fill-column-indicator-column 120)
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+
+
 ;;; but code examples in monospace font
 (defvar emcsadvntr/rx-info-code (rx bol "     " (* not-newline) eol))
 (add-hook 'Info-mode-hook 'emcsadvntr/Info-font-lock)
@@ -236,12 +241,12 @@
       (or (plist-get info arg-name) value))))
 
 ;; Show 80th columns in prog-mode
-(use-package fill-column-indicator
-  :defer t
-  :diminish fci-mode
-  :hook ((prog-mode . (lambda ()
-                        (fci-mode)
-                        (set-fill-column 80)))))
+;; (use-package fill-column-indicator
+;;   :defer t
+;;   :diminish fci-mode
+;;   :hook ((prog-mode . (lambda ()
+;;                         (fci-mode)
+;;                         (set-fill-column 80)))))
 
 ;; Show block in prog-mode
 (use-package highlight-indent-guides
