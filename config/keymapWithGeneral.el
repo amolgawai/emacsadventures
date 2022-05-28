@@ -114,7 +114,7 @@
      "np"        '(emcsadvntr/markdown-preview-file :which-key "preview in Marked 2")
 	 ;; open
 	 "o"         '(:ignore t :which-key "open")
-	 "of"        '(counsel-fzf :which-key "file")
+	 "of"        '(counsel-find-file :which-key "file")
      "ow"        '(find-file-other-window :which-key "file in new windw")
 	 ;; projectile
 	 "p"         '(:ignore t :which-key "projectile")

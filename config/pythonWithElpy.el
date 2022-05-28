@@ -92,31 +92,31 @@
   (setq company-jedi-python-bin "python"))
 
 ;; the python IDE
-(use-package elpy
-  :defer t
-  :hook ((elpy-mode . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
-         ;; (pyenv-mode . elpy-rpc-restart)
-         (elpy-mode . (lambda ()
-                        (add-hook 'before-save-hook
-                                  'elpy-black-fix-code nil t))))
-  :init
-  (advice-add 'python-mode :before 'elpy-enable)
-  :config
-  (defalias 'workon 'pyvenv-workon)
-  ;; (setq elpy-rpc-backend "jedi")
-  ;; use flycheck instead of flymake
-  (when (load "flycheck" t t)
-    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-    (add-hook 'elpy-mode-hook 'flycheck-mode))
-  (setq elpy-modules
-        '(elpy-module-company
-          elpy-module-eldoc
-          elpy-module-pyvenv
-          elpy-module-sane-defaults)
-        elpy-shell-echo-input nil
-        elpy-shell-starting-directory 'current-directory
-        elpy-shell-echo-output nil
-        elpy-rpc-virtualenv-path 'current))
+;; (use-package elpy
+;;   :defer t
+;;   :hook ((elpy-mode . (lambda () (elpy-shell-toggle-dedicated-shell 1)))
+;;          ;; (pyenv-mode . elpy-rpc-restart)
+;;          (elpy-mode . (lambda ()
+;;                         (add-hook 'before-save-hook
+;;                                   'elpy-black-fix-code nil t))))
+;;   :init
+;;   (advice-add 'python-mode :before 'elpy-enable)
+;;   :config
+;;   (defalias 'workon 'pyvenv-workon)
+;;   ;; (setq elpy-rpc-backend "jedi")
+;;   ;; use flycheck instead of flymake
+;;   (when (load "flycheck" t t)
+;;     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;     (add-hook 'elpy-mode-hook 'flycheck-mode))
+;;   (setq elpy-modules
+;;         '(elpy-module-company
+;;           elpy-module-eldoc
+;;           elpy-module-pyvenv
+;;           elpy-module-sane-defaults)
+;;         elpy-shell-echo-input nil
+;;         elpy-shell-starting-directory 'current-directory
+;;         elpy-shell-echo-output nil
+;;         elpy-rpc-virtualenv-path 'current))
 
 ;; pyenv for emacs
 (use-package pyenv-mode
@@ -160,7 +160,6 @@
 
 ;; code formatting
 (use-package blacken
-  :defer t
   :diminish t
   :hook (python-mode-hook . blacken-mode))
 

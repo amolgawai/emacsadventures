@@ -258,10 +258,14 @@
   )
 
                                         ; deletes all the whitespace when you hit backspace or delete
+;; (use-package hungry-delete
+;;   :config
+;;   (global-hungry-delete-mode))
 (use-package hungry-delete
-  :config
-  (global-hungry-delete-mode))
-
+   :diminish
+   :hook (after-init . global-hungry-delete-mode)
+   :init (setq hungry-delete-except-modes
+               '(help-mode minibuffer-mode minibuffer-inactive-mode calc-mode)))
                                         ; expand the marked region in semantic increments (negative prefix to reduce region)
 (use-package expand-region
   :config
