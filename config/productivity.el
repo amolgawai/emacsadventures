@@ -169,6 +169,7 @@
   :bind (("s-<up>" . persp-next)
          ("s-<down>" . persp-prev))
   :config
+  (setq persp-suppress-no-prefix-key-warning t)
   ;; create directory for perspectives if doesn't exist
   (let ((perspective-dir (expand-file-name "perspectives" user-emacs-directory)))
 	(make-directory perspective-dir :parents)))
