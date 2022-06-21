@@ -28,6 +28,7 @@
 (c-set-offset 'innamespace 0)
 (c-set-offset 'brace-list-open 0)
 (setq c-basic-offset 4)
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (setq lsp-clients-clangd-args
 	  '("-j=8"
@@ -44,7 +45,9 @@
   :straight (clang-format+ :type git :host github
 						   :repo "SavchenkoValeriy/emacs-clang-format-plus")
   :hook
-  (c-mode-common-hook . clang-format+-mode))
+  (c-mode-common-hook . clang-format+-mode)
+  :config
+  (setq clang-format+-always-enable t))
 
 (use-package flycheck-clang-tidy
   :after flycheck
