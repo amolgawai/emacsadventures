@@ -115,6 +115,21 @@ configuration. I will try to improve as I go along using it. Thank You.
 [[https://github.com/jwiegley/use-package#customizing-variables][suggestion]]
 for use-package
 
+** Tips and Tricks
+If you are facing problems for vterm on M1 macs after update, following is a solution.
+From - [[https://github.com/akermu/emacs-libvterm/issues/593#issuecomment-1754747095]]
+
+#+BEGIN_SRC bash
+$ cd ~/.config/emacs/.local/straight/build-29.1/vterm
+$ rm -rf build
+$ mkdir build
+$ arch -arm64 cmake -B build
+$ arch -arm64 cmake --build build
+
+$ file vterm-module.so
+vterm-module.so: Mach-O 64-bit bundle arm6
+#+END_SRC
+
 ** Further Research
    :PROPERTIES:
    :CUSTOM_ID: further-research
