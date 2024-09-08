@@ -60,5 +60,9 @@
 
 (use-package cmake-mode)
 
+(require 'dap-cpptools)
+(dap-cpptools-setup)
+;; (require 'dap-gdb-lldb)
+;; (dap-gdb-lldb-setup)
 (provide 'cpp)
 ;;; cpp.el ends here

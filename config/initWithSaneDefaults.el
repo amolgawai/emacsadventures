@@ -80,13 +80,21 @@
 ;; ref - https://github.com/manute/emacs.d/blob/master/init.el
 (use-package exec-path-from-shell
   :defer 0.1
-  :if (memq window-system '(mac ns))
+  :if (memq window-system '(mac ns x))
   :config
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-env "GOROOT")
-  (exec-path-from-shell-copy-env "GOPATH")
-  (exec-path-from-shell-copy-env "NPMBIN"))
+  (exec-path-from-shell-copy-envs
+   '("GOPATH" "GO111MODULE" "GOPROXY" ;; golang
+     "LC_ALL" "LANG" "LC_TYPE"
+     "SSH_AGENT_PID" "SSH_AUTH_SOCK" ;; ssh
+     "SHELL"
+     "GPG_TTY" ;; gpg session
+     "NPMBIN"  ;; npm
+     ;; Using x11 the .bashrc or .zshrc could have not been sourcered yet
+     ;; so it may need this symlink:
+     ;; ln -s /home/manu/.nvm/versions/node/v17.5.0/bin/node /usr/bin/node
+     )))
 
 ;; delete the previous selection when overrides it with a new insertion.
 (delete-selection-mode t)
@@ -142,7 +150,7 @@
 
 ;; split the window vertically on right - useful for wide screen
 (setq split-width-threshold nil)
-      ;; split-width-threshold 0)
+;; split-width-threshold 0)
 
 ;; Enable filesets to group a set of files
 (filesets-init)
