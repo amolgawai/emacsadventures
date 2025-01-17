@@ -1,3 +1,4 @@
 
 *.el~
 config/#bootstrapPackaging.el#
+/eln-cache/
