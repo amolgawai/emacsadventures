@@ -25,45 +25,6 @@
 ;;; Code:
 
                                         ; list the repositories containing them
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "http://elpa.gnu.org/packages/")))
-;;                         ("marmalade" . "http://marmalade-repo.org/packages/")))
-;; avoid problems with files newer than their byte-compiled counterparts
-;; it's better a lower startup than load an outdated and maybe bugged package
-(setq load-prefer-newer t)
-
-                                        ; activate all the packages (in particular autoloads)
-(package-initialize)
-
-                                        ; fetch the list of packages available
-;; (unless package-archive-contents
-;;   (package-refresh-contents))
-
-;; bootstrap quelpa
-;; don't auto-update on windows as it results in various problems
-;; (unless (package-installed-p 'quelpa)
-;;   (with-temp-buffer
-;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-;;     (eval-buffer)
-;;     (quelpa-self-upgrade)))
-;; (setq quelpa-update-melpa-p nil)
-
-;; use quelpa with use-package
-;; (unless (package-installed-p 'quelpa-use-package)
-;;   (quelpa
-;;    '(quelpa-use-package
-;;      :fetcher git
-;;      :url "https://github.com/quelpa/quelpa-use-package.git")))
-;; (setq quelpa-use-package-inhibit-loading-quelpa t)
-;; (require 'quelpa-use-package)
-(require 'use-package-ensure)
-;; (setq use-package-ensure-function 'quelpa)
-(eval-and-compile
-  (setq use-package-always-ensure t)
-  (setq use-package-expand-minimally t)
-  (setq use-package-compute-statistics t))
 
 ;; Bootstrap straight.el
 ;; TODO - Replace quelpa with straight
@@ -85,7 +46,12 @@
 (straight-use-package 'use-package)
 (setq straight-recipes-emacsmirror-use-mirror t)
 ;; Always use straight to install on systems other than Linux
-(setq straight-use-package-by-default (not (eq system-type 'gnu/linux)))
+(setq straight-use-package-by-default t)
+
+(eval-and-compile
+  (setq use-package-always-ensure t)
+  (setq use-package-expand-minimally t)
+  (setq use-package-compute-statistics t))
 
 (use-package auto-package-update
   :custom
@@ -101,8 +67,20 @@
 ;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 ;; for ensuring system utilities are installed
-(use-package use-package-ensure-system-package
-  :ensure t)
+;; (use-package use-package-ensure-system-package
+;;   :ensure t)
+
+(use-package diminish
+  :straight t
+  ;; :defer 0.1
+  :diminish (visual-line-mode . "?")
+  :diminish hs-minor-mode
+  :diminish abbrev-mode
+  :diminish auto-fill-function
+  :diminish subword-mode)
+(use-package delight
+  :straight (delight :type git :host github :repo "emacsmirror/delight")
+  :defer t)
 
 (use-package try
   :defer t)

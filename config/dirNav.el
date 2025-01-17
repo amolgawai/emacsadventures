@@ -65,8 +65,6 @@ https://github.com/jaypei/emacs-neotree/pull/110"
   (use-package treemacs-evil
     :requires (treemacs evil))
 
-  (use-package treemacs-projectile
-    :after (treemacs projectile))
 
   (use-package treemacs-all-the-icons
     :requires treemacs
@@ -102,6 +100,8 @@ https://github.com/jaypei/emacs-neotree/pull/110"
           treemacs-missing-project-action        'ask
           treemacs-no-png-images                 nil
           treemacs-no-delete-other-windows       t
+		  treemacs-display-current-project-exclusively t
+          treemacs-project-follow-mode           t
           treemacs-project-follow-cleanup        nil
           treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
           treemacs-recenter-distance             0.1
@@ -141,6 +141,10 @@ https://github.com/jaypei/emacs-neotree/pull/110"
         ("C-x t B"   . treemacs-bookmark)
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :hook (projectile-after-switch-project-hook . treemacs-display-current-project-exclusively))
 
 (use-package ranger
   :defer t
@@ -197,8 +201,7 @@ It added extra strings at the front and back of the default dired buffer name."
 ;;     ;; omit mode can be toggled using `M-o' in dired buffer
 ;;     (add-hook 'dired-mode-hook #'dired-omit-mode)))
 (use-package dired+
-  ;; :straight (dired+ :type git :host github :repo "emacsmirror/dired-plus")
-  :straight nil
+  :straight (dired+ :type git :host github :repo "emacsmirror/dired-plus")
   :defer t
   :after (dired)
   :config
@@ -208,7 +211,7 @@ It added extra strings at the front and back of the default dired buffer name."
 
 ;; http://pragmaticemacs.com/emacs/tree-style-directory-views-in-dired-with-dired-subtree/
 (use-package dired-subtree
-  :straight nil
+  :straight dired-hacks
   :defer t
   :after (dired)
   :bind (:map dired-mode-map
@@ -217,7 +220,7 @@ It added extra strings at the front and back of the default dired buffer name."
 ;; https://github.com/Fuco1/dired-hacks/blob/master/dired-collapse.el
 (use-package dired-collapse
   :defer t
-  :straight nil
+  :straight dired-hacks
   :after (dired)
   :commands (dired-collapse dired-collapse-mode)
   :config
@@ -225,7 +228,7 @@ It added extra strings at the front and back of the default dired buffer name."
 ;; filter dired buffer. Ref - https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline13
 (use-package dired-narrow
   :defer t
-  :straight nil
+  :straight dired-hacks
   :after (dired)
   :bind (:map dired-mode-map
               ("/" . dired-narrow)))
@@ -233,14 +236,14 @@ It added extra strings at the front and back of the default dired buffer name."
 (use-package quick-preview
   :defer t
   :after (dired)
-  :straight nil
+  :straight dired-hacks
   :bind (("C-c q" . quick-preview-at-point)
          :map dired-mode-map
          ("Q" . quick-preview-at-point)))
 
 (use-package dired-sidebar
   :defer t
-  :straight nil
+  :straight dired-hacks
   :after (dired)
   ;; :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
   :commands (dired-sidebar-toggle-sidebar)

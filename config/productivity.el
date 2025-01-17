@@ -490,7 +490,7 @@ point reaches the beginning or end of the buffer, stop there."
 ;; ref - https://github.com/jschaf/esup
 (use-package esup
   ;; To use MELPA Stable use ":pin mepla-stable",
-  :pin melpa
+  ;; :pin melpa
   :commands (esup))
 
 (provide 'productivity)

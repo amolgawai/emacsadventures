@@ -54,12 +54,6 @@
               ([f5] . emcsadvntr/compile-please)
               ([C-f5] . compile))
   :init
-  ;; colorize that buffer plz
-  (defun colorize-compilation-buffer ()
-    (toggle-read-only)
-    (ansi-color-apply-on-region (point-min) (point-max))
-    (toggle-read-only))
-
   ;; close if compilation was successful
   (defun compile-autoclose (buffer string)
     "Bury a compilation buffer if succeeded without warnings "
@@ -95,8 +89,6 @@ With a prefix argument, use comint-mode."
   ;; jump to first error
   (setq compilation-auto-jump-to-first-error t)
 
-  ;; and add the hook
-  (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
   ;; scroll output
   (setq compilation-scroll-output t)
   ;; don't hang on warnings, only errors
@@ -105,8 +97,7 @@ With a prefix argument, use comint-mode."
   (setq compilation-finish-functions 'compile-autoclose))
 
 (use-package ansi-color
-  :defer t)
-
+    :hook (compilation-filter . ansi-color-compilation-filter))
 ;; quickly run/compilr any language
 ;; ref - https://github.com/emacsorphanage/quickrun
 (use-package quickrun
@@ -172,7 +163,6 @@ With a prefix argument, use comint-mode."
 
 ;; Magit for git interactions
 (use-package magit
-  :defer t
   :bind ("C-x g" . magit-status)
   :config
   (define-key magit-status-mode-map (kbd "q") 'magit-quit-session))
@@ -224,10 +214,17 @@ With a prefix argument, use comint-mode."
 (setenv "SSH_ASKPASS" "git-gui--askpass")
 
 (use-package git-timemachine)
-(use-package git-gutter-fringe+
+
+(use-package git-gutter
+  :hook (prog-mode . git-gutter-mode)
   :config
-  (global-git-gutter+-mode)
-  (git-gutter-fr+-minimal))
+  (setq git-gutter:update-interval 0.02))
+
+(use-package git-gutter-fringe
+  :config
+  (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
+  (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
 
 ;; snippets
 (use-package yasnippet
