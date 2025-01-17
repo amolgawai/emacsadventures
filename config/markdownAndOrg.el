@@ -262,7 +262,7 @@ LIST-OR-SYMBOL - pass the list of faces"
           org-src-fontify-natively t
           org-src-tab-acts-natively t)
 
-    ;; (use-package ob-ipython)
+    (use-package ob-ipython)
     ;; (use-package ob-sh)
     ;; Run/highlight code using babel in org-mode
     (org-babel-do-load-languages
